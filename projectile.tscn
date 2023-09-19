@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck8blk1lxdlwb"]
+
+[ext_resource type="Material" uid="uid://bwql5yqnwnv6u" path="res://turrets/Projectile/projectile.tres" id="1_01l2b"]
+[ext_resource type="Texture2D" uid="uid://jsph5xplg3mf" path="res://turrets/Projectile/fireball.png" id="1_6gi20"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5d5bo"]
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.1
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+anim_offset_max = 1.0
+
+[node name="Projectile" type="GPUParticles2D"]
+material = ExtResource("1_01l2b")
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_5d5bo")
+texture = ExtResource("1_6gi20")
+lifetime = 2.0

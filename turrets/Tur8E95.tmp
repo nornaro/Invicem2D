@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0rwbvwtqs065"]
+
+[ext_resource type="Script" path="res://turrets/Turret.gd" id="1_diqa7"]
+[ext_resource type="Texture2D" uid="uid://jxb73txwyc2f" path="res://turrets/cannon.png" id="1_q1x53"]
+[ext_resource type="PackedScene" uid="uid://ck8blk1lxdlwb" path="res://projectile.tscn" id="3_ami0g"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2dbdr"]
+size = Vector2(20, 20)
+orientation = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jd7h1"]
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_241ig"]
+radius = 1.0
+
+[node name="Turret" type="Node2D"]
+script = ExtResource("1_diqa7")
+
+[node name="Turret1" type="MeshInstance2D" parent="."]
+position = Vector2(10, 50)
+mesh = SubResource("PlaneMesh_2dbdr")
+texture = ExtResource("1_q1x53")
+
+[node name="Turret2" type="MeshInstance2D" parent="."]
+position = Vector2(30, 45)
+mesh = SubResource("PlaneMesh_2dbdr")
+texture = ExtResource("1_q1x53")
+
+[node name="Turret3" type="MeshInstance2D" parent="."]
+position = Vector2(-5, 40)
+mesh = SubResource("PlaneMesh_2dbdr")
+texture = ExtResource("1_q1x53")
+
+[node name="Turret4" type="MeshInstance2D" parent="."]
+position = Vector2(-25, 45)
+mesh = SubResource("PlaneMesh_2dbdr")
+texture = ExtResource("1_q1x53")
+
+[node name="Min" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Min"]
+shape = SubResource("CircleShape2D_jd7h1")
+
+[node name="Max" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Max"]
+shape = SubResource("CircleShape2D_241ig")
+
+[node name="Projectile" parent="." instance=ExtResource("3_ami0g")]
+position = Vector2(5, 46)
+
+[connection signal="area_entered" from="Min" to="." method="_on_min_area_entered"]
+[connection signal="area_exited" from="Min" to="." method="_on_min_area_exited"]
+[connection signal="area_entered" from="Max" to="." method="_on_max_area_entered"]
+[connection signal="area_exited" from="Max" to="." method="_on_max_area_exited"]

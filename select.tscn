@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bydkjmor6dd4g"]
+
+[ext_resource type="Texture2D" uid="uid://boutncgoxrwg8" path="res://Select.png" id="1_m56cg"]
+[ext_resource type="Script" path="res://select.gd" id="1_oklhx"]
+[ext_resource type="Texture2D" uid="uid://wakyef5pxvta" path="res://nope.png" id="2_c1sk5"]
+
+[node name="Select" type="Node2D"]
+script = ExtResource("1_oklhx")
+
+[node name="green" type="Sprite2D" parent="."]
+visible = false
+rotation = 3.14159
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_m56cg")
+
+[node name="red" type="Sprite2D" parent="."]
+visible = false
+rotation = 3.14159
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_c1sk5")

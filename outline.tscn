@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct3y5sva7tum"]
+
+[ext_resource type="Script" path="res://outline.gd" id="1_1vval"]
+
+[node name="outline" type="Line2D"]
+points = PackedVector2Array(-1, -1, 1, -1, 1, 1, -1, 1, -1, -1)
+width = 2.0
+default_color = Color(0, 1, 0, 1)
+script = ExtResource("1_1vval")

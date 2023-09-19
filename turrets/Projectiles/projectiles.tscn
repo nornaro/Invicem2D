@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuanolvs502co"]
+
+[ext_resource type="Script" path="res://turrets/Projectiles/Projectiles.gd" id="1_gqn52"]
+
+[node name="Projectiles" type="Node"]
+script = ExtResource("1_gqn52")

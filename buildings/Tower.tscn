@@ -1,0 +1,46 @@
+[gd_scene load_steps=10 format=3 uid="uid://c64bqwnv25phb"]
+
+[ext_resource type="Texture2D" uid="uid://cufrrxvxrf5ie" path="res://buildings/tower.png" id="1_0nb5l"]
+[ext_resource type="Script" path="res://buildings/tower.gd" id="2_55f2b"]
+[ext_resource type="Script" path="res://Areas/Area2D.gd" id="3_tc1b3"]
+[ext_resource type="PackedScene" uid="uid://bydkjmor6dd4g" path="res://select.tscn" id="4_h5n2u"]
+[ext_resource type="Script" path="res://turrets/2DO.gd" id="5_kbjpx"]
+[ext_resource type="PackedScene" uid="uid://thxp1hm0ingo" path="res://targeting.tscn" id="7_hhxkg"]
+[ext_resource type="PackedScene" uid="uid://cuanolvs502co" path="res://turrets/Projectiles/projectiles.tscn" id="7_qld62"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c4ufr"]
+size = Vector2(100, 100)
+orientation = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xg3sn"]
+size = Vector2(60, 60)
+
+[node name="Tower" type="MeshInstance2D"]
+z_as_relative = false
+y_sort_enabled = true
+rotation = 3.14159
+mesh = SubResource("PlaneMesh_c4ufr")
+texture = ExtResource("1_0nb5l")
+script = ExtResource("2_55f2b")
+
+[node name="2DO" type="Node" parent="."]
+script = ExtResource("5_kbjpx")
+
+[node name="Area2D" type="Area2D" parent="." groups=["building"]]
+script = ExtResource("3_tc1b3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_xg3sn")
+
+[node name="Select" parent="." instance=ExtResource("4_h5n2u")]
+
+[node name="Projectiles" parent="." instance=ExtResource("7_qld62")]
+
+[node name="Targeting" parent="." instance=ExtResource("7_hhxkg")]
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="Area2D" method="_on_area_exited"]
+[connection signal="input_event" from="Area2D" to="Area2D" method="_on_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="Area2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="Area2D" method="_on_mouse_exited"]
