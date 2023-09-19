@@ -1,7 +1,7 @@
 extends MeshInstance2D
 
 @export var temp = true
-@export var overlapping = []
+@export var overlapping = {}
 @onready var spawn = $"../../../Map/Spawn/CollisionShape2D"
 var minion_scene = preload("res://minion.tscn")
 var elapsed_time = 0.0

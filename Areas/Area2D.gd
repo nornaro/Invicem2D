@@ -14,22 +14,17 @@ func _ready():
 	
 func _on_area_entered(area):
 	if !area.is_in_group("building"): return
-	mesh.overlapping.append(area.get_instance_id())
+	mesh.overlapping[get_instance_id()] = []
+	mesh.overlapping[get_instance_id()].append(area.get_instance_id())
 
 func _on_area_exited(area):
 	if !area.is_in_group("building"): return
-	var id_to_remove = area.get_instance_id()
-	if mesh.overlapping.has(id_to_remove):
-		print(mesh.overlapping)
-		var index = mesh.overlapping.find(id_to_remove)
-		if index != -1:
-			mesh.overlapping.erase(index)
-
+	mesh.overlapping[get_instance_id()].erase(area.get_instance_id())
 	
 func _process(_delta):
 	if mesh.temp: mesh.modulate = placement_color
 	$"../Select".color = "green"
-	if mesh.overlapping:	
+	if mesh.overlapping.has(get_instance_id()):	
 		if mesh.temp: mesh.modulate = collision_color
 		$"../Select".color = "red"
 

@@ -1,7 +1,7 @@
 extends MeshInstance2D
 
 @export var temp = true
-@export var overlapping = []
+@export var overlapping = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

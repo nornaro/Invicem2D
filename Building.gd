@@ -60,7 +60,9 @@ func _process(_delta):
 		return
 	if instance:
 		instance.position = get_snap_to_hundred($"../Map/Ground".get_local_mouse_position())
-	if !instance.overlapping.is_empty():
+	if !instance.overlapping:
+		return
+	if !instance.overlapping[get_instance_id()].is_empty():
 		return
 	if build: instance_scene_from_name(building_to_build)
 #	var asd = []

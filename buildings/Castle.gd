@@ -1,6 +1,6 @@
 extends MeshInstance2D
 
-@export var overlapping = []
+@export var overlapping = {}
 @export var temp = false
 @export var max_health = 1000
 @export var base_health = 100
