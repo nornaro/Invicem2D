@@ -8,8 +8,9 @@ var speed = 0
 # scale = size
 
 func _ready():
-	if !Tower.Data["projectileSpeed"]:
-		Tower.Data["projectileSpeed"] = projectileSpeed
+	if !Tower.Data.has("projectileSpeed"):
+		return
+#		Tower.Data["projectileSpeed"] = projectileSpeed
 	projectileSpeed = Tower.Data["projectileSpeed"]
 	speed = projectileSpeed[0]
 	gravity_scale = 0

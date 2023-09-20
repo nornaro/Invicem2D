@@ -15,6 +15,6 @@ func _process(delta):
 			if !barrack.temp: 
 				barrack.spawn_minion($"../../Minion")
 				mobcount += 1
-				$"../../UI/MobCount".text = str(mobcount)
+				$"../../MobCount".text = str(mobcount)
 		elapsed_time = 0.0
 	pass

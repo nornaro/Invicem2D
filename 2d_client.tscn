@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://d0k7m2mj4ditp"]
+[gd_scene load_steps=44 format=3 uid="uid://d0k7m2mj4ditp"]
 
 [ext_resource type="Script" path="res://Map.gd" id="1_3thwx"]
 [ext_resource type="Texture2D" uid="uid://c8t7f875qd2pi" path="res://data/Gravel022_1K_Color.jpg" id="1_5tq7d"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://dyg8xjh5lmjm6" path="res://Texture/TX Tileset Grass.png" id="13_e2af3"]
 [ext_resource type="Texture2D" uid="uid://cvyugx3icevn8" path="res://Texture/TX Tileset Stone Ground.png" id="14_3kmj1"]
 [ext_resource type="Texture2D" uid="uid://baonlc0t15qoh" path="res://Texture/TX Tileset Wall.png" id="15_kf1qu"]
+[ext_resource type="Script" path="res://Placement.gd" id="16_vf4a4"]
+[ext_resource type="Script" path="res://Castle.gd" id="18_70wkf"]
 [ext_resource type="Script" path="res://UI.gd" id="19_md733"]
 [ext_resource type="Script" path="res://BuildingMenu.gd" id="20_34hvs"]
 [ext_resource type="Script" path="res://TurretList.gd" id="20_amcv5"]
@@ -5833,11 +5835,15 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
+[node name="Placement" type="Node" parent="."]
+script = ExtResource("16_vf4a4")
+
 [node name="Building" type="Node2D" parent="."]
 script = ExtResource("5_xuu3b")
 
 [node name="Castle" type="Node2D" parent="Building"]
 unique_name_in_owner = true
+script = ExtResource("18_70wkf")
 
 [node name="Barrack" type="Node2D" parent="Building"]
 position = Vector2(0, 15)
@@ -5863,34 +5869,6 @@ offset_right = -836.0
 offset_bottom = -360.0
 auto_height = true
 script = ExtResource("20_f24gq")
-
-[node name="Numbers" type="ItemList" parent="UI"]
-offset_left = -960.0
-offset_top = -480.0
-offset_right = -920.0
-offset_bottom = -200.0
-item_count = 10
-item_0/text = "0"
-item_0/selectable = false
-item_1/text = "1"
-item_1/selectable = false
-item_2/text = "2"
-item_2/selectable = false
-item_3/text = "3"
-item_3/selectable = false
-item_4/text = "4"
-item_4/selectable = false
-item_5/text = "5"
-item_5/selectable = false
-item_6/text = "6"
-item_6/selectable = false
-item_7/text = "7"
-item_7/selectable = false
-item_8/text = "8"
-item_8/selectable = false
-item_9/text = "9"
-item_9/selectable = false
-script = ExtResource("21_ne80m")
 
 [node name="TurretList" type="ItemList" parent="UI"]
 visible = false
@@ -5947,14 +5925,42 @@ text = "Confirm"
 layout_mode = 2
 text = "Cancel"
 
-[node name="BulletCount" type="TextEdit" parent="UI"]
+[node name="Numbers" type="ItemList" parent="."]
+offset_left = -960.0
+offset_top = -480.0
+offset_right = -920.0
+offset_bottom = -200.0
+item_count = 10
+item_0/text = "0"
+item_0/selectable = false
+item_1/text = "1"
+item_1/selectable = false
+item_2/text = "2"
+item_2/selectable = false
+item_3/text = "3"
+item_3/selectable = false
+item_4/text = "4"
+item_4/selectable = false
+item_5/text = "5"
+item_5/selectable = false
+item_6/text = "6"
+item_6/selectable = false
+item_7/text = "7"
+item_7/selectable = false
+item_8/text = "8"
+item_8/selectable = false
+item_9/text = "9"
+item_9/selectable = false
+script = ExtResource("21_ne80m")
+
+[node name="BulletCount" type="TextEdit" parent="."]
 offset_left = -950.0
 offset_top = 425.0
-offset_right = -900.0
-offset_bottom = 455.0
-scale = Vector2(2, 2)
+offset_right = -875.0
+offset_bottom = 465.0
+scale = Vector2(1.5, 1.5)
 
-[node name="MobCount" type="TextEdit" parent="UI"]
+[node name="MobCount" type="TextEdit" parent="."]
 offset_left = -950.0
 offset_top = 350.0
 offset_right = -875.0
@@ -5969,7 +5975,7 @@ scale = Vector2(1.5, 1.5)
 zoom = Vector2(0.5, 0.5)
 
 [node name="In" type="Sprite2D" parent="."]
-position = Vector2(812, 0)
+position = Vector2(810, 0)
 scale = Vector2(2.5, 200)
 texture = ExtResource("11_mhjmg")
 

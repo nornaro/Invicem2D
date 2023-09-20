@@ -9,7 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !Tower.Data["targetingRrange"]:
+	if !Tower.Data.has("targetingRrange"):
 		return
 	$Min/CollisionShape2D.shape.radius = Tower.Data["targetingRrange"][0]
 	$Max/CollisionShape2D.shape.radius = Tower.Data["targetingRrange"][1]

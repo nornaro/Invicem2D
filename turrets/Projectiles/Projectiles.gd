@@ -7,9 +7,9 @@ func _ready():
 	set_process(true) # Starts the _process function.
 
 func _process(delta):
-	if !Tower.Data["projectile"]:
+	if !Tower.Data.has("projectile"):
 		return
-	if !Tower.Data["aspd"]:
+	if !Tower.Data.has("aspd"):
 		return
 	elapsed_time += delta
 	if elapsed_time >= 1 / Tower.Data["aspd"]:

@@ -11,10 +11,14 @@ func _ready():
 	scale *= size
 
 func _physics_process(delta):
-	if position.y > 50:
-		position.y = 50
-	if position.y < -50:
-		position.y = -50
+	if position.y > 60:
+		position.y = 60
+	if position.y < -820:
+		position.y = -820
+	if position.x > 820:
+		position.y = 820
+	if position.y < -60:
+		position.y = -60
 	if rotation > 0:
 		rotation -= delta
 	if rotation < 0:

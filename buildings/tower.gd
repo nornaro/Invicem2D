@@ -1,7 +1,7 @@
 extends MeshInstance2D
 
 @export var temp = true
-@export var overlapping = {}
+
 @export var Data = {}
 
 func _ready():

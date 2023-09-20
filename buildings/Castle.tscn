@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4m4gefrlhjsd"]
+[gd_scene load_steps=14 format=3 uid="uid://b4m4gefrlhjsd"]
 
 [ext_resource type="Script" path="res://buildings/Castle.gd" id="1_2ligi"]
 [ext_resource type="Texture2D" uid="uid://cuvcfp30a7gf8" path="res://buildings/main.png" id="2_urjdr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bydkjmor6dd4g" path="res://select.tscn" id="4_wepsp"]
 [ext_resource type="Script" path="res://buildings/Health.gd" id="6_s22ti"]
 [ext_resource type="Script" path="res://buildings/Warning.gd" id="7_tfe03"]
+[ext_resource type="PackedScene" uid="uid://bqejbv3xdrebh" path="res://id.tscn" id="8_71vyo"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l11f8"]
 size = Vector2(300, 300)
@@ -84,6 +85,8 @@ offset_bottom = 300.0
 rotation = 3.14159
 bbcode_enabled = true
 script = ExtResource("7_tfe03")
+
+[node name="ID" parent="." instance=ExtResource("8_71vyo")]
 
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="Area2D" method="_on_area_exited"]
