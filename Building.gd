@@ -48,6 +48,7 @@ func instance_scene_from_name(scene_name: String):
 		print("Scene does not exist:", scene_path)
 	var scene = load(scene_path)
 	instance = scene.instantiate()
+	instance.position = get_snap_to_hundred($"../Map/Ground".get_local_mouse_position())
 	instance.temp = true
 	instance.modulate = placement_color
 	get_node(scene_name).add_child(instance)
@@ -60,10 +61,11 @@ func _process(_delta):
 		return
 	if instance:
 		instance.position = get_snap_to_hundred($"../Map/Ground".get_local_mouse_position())
-	if !instance.overlapping:
-		return
-	if !instance.overlapping[get_instance_id()].is_empty():
-		return
+	if instance.overlapping.has():
+		print(instance.overlapping)
+		if instance.overlapping[instance].is_empty():
+			print(instance.overlapping[get_instance_id()])
+			return
 	if build: instance_scene_from_name(building_to_build)
 #	var asd = []
 #	asd.is_empty()
