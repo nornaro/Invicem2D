@@ -23,18 +23,7 @@ func _on_area_exited(area):
 	Placement.overlapping[get_parent().get_instance_id()].erase(area.get_parent().get_instance_id())
 	
 func _process(_delta):
-	if mesh.temp: mesh.modulate = placement_color
-	$"../Select".color = "green"
-	if Placement.overlapping[get_parent().get_instance_id()].is_empty():
-		return
-	if mesh.temp: mesh.modulate = collision_color
-	$"../Select".color = "red"
-
-	if Input.is_key_pressed(KEY_DELETE):	
-		UI.get_node("Destroy").show()		
-	if UI.get_node("Destroy").confirm != null:
-		instance_from_id(UI.get_node("Destroy").confirm).queue_free()
-		UI.get_node("Destroy").confirm = null
+	pass
 
 func _on_input_event(viewport, event, shape_idx):
 	if Building.instance:
@@ -73,3 +62,5 @@ func _input(event):
 	if event.is_action_released("Ctrl"):
 		show_building_menu()
 		multiselect = false
+	if Input.is_key_pressed(KEY_DELETE):	
+		UI.get_node("Destroy").show()

@@ -21,14 +21,6 @@ func _process(delta):
 		return
 	if Building.instance:
 		return
-	clear()
-
-	if Building.selected_building:
-		%UI.get_node("Destroy").choice = Building.selected_building[0]
-		%UI.get_node("Destroy").get_node("VBoxContainer/Text").set_text("Destroy the " + instance_from_id(Building.selected_building[0]).get_parent().name + "?")
-	for item in menu[instance_from_id(Building.selected_building[0]).get_parent().name]:
-		add_item(item)
-	show()
 
 func _on_item_selected(_index):
 	get_selected_items()

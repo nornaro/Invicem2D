@@ -2,6 +2,9 @@ extends Node2D
 
 @onready var UI = %UI
 @onready var BuildArea = $"../Map/Area"
+@onready var Placement = $"../Placement"
+@onready var Ground = $"../Map/Ground"
+
 @export var property_list = false
 
 var instance
@@ -15,13 +18,29 @@ var placement = false
 
 func _input(event):	
 	if event.is_action_pressed("RMB"):
+		selected_building.clear()
 		if instance:
 			instance.queue_free()
 			instance = null
+		%UI.clear()
 	if event.is_action_pressed("LMB"):
 		build = true
 	if event.is_action_released("LMB"):
 		build = false
+	if not instance:
+		return
+	instance.position = snap(Ground.get_local_mouse_position())
+	if Placement.overlapping.has(instance.get_instance_id()):
+		if !Placement.overlapping[instance.get_instance_id()].is_empty():
+			instance.modulate = collision_color
+			instance.get_node("Select").color = "red"
+			return
+	instance.modulate = placement_color
+	if !build:
+		return
+	instance.modulate = normal_color
+	instance.temp = false
+	instance_scene_from_name(building_to_build)
 		
 func is_point_in_mesh_bounds(mesh: MeshInstance2D, point: Vector2) -> bool:
 	var mesh_extents = mesh.mesh.get_aabb().size / 2
@@ -36,37 +55,25 @@ func _on_item_list_item_selected(index):
 	instance_scene_from_name(building_to_build)
 
 func instance_scene_from_name(scene_name: String):
-	var scene_path = "res://buildings/" + scene_name + ".tscn"
-	var old_overlap
+	var old_id
 	if instance:
-		instance.modulate = normal_color
-		instance.temp = false
-		old_overlap = instance.get_node("Area2D")
-	%UI.clear()
-	if !ResourceLoader.exists(scene_path):
-		print("Scene does not exist:", scene_path)
-	var scene = load(scene_path)
+		old_id = instance.get_instance_id()
+	var scene = load("res://buildings/" + scene_name + ".tscn")
 	instance = scene.instantiate()
-	$"../Placement".overlapping[instance.get_instance_id()] = []
-	instance.position = get_snap_to_hundred($"../Map/Ground".get_local_mouse_position())
+	if old_id:
+		Placement.overlapping[instance.get_instance_id()] = {old_id:null}
+	instance.position = snap(Ground.get_local_mouse_position())
 	instance.temp = true
 	instance.modulate = placement_color
+	instance.get_node("Select").color = "green"
 	get_node(scene_name).add_child(instance)
-	if old_overlap:
-		instance.get_node("Area2D")._on_area_entered(old_overlap)
-		old_overlap._on_area_entered(instance.get_node("Area2D"))
 	instance.add_child(load("res://id.tscn").instantiate())
+	return instance.get_instance_id()
 
 func _process(_delta):
-	if not instance:
-		return
-	instance.position = get_snap_to_hundred($"../Map/Ground".get_local_mouse_position())
-	if !$"../Placement".overlapping[instance.get_instance_id()].is_empty():
-		return
-	if build:
-		instance_scene_from_name(building_to_build)
+	pass
 	
-func get_snap_to_hundred(position: Vector2) -> Vector2:
+func snap(position: Vector2) -> Vector2:
 	var x = round(position.x / 25.0) * 25
 	var y = round(position.y / 25.0) * 25
 	

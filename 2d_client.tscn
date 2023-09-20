@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://d0k7m2mj4ditp"]
+[gd_scene load_steps=45 format=3 uid="uid://d0k7m2mj4ditp"]
 
 [ext_resource type="Script" path="res://Map.gd" id="1_3thwx"]
 [ext_resource type="Texture2D" uid="uid://c8t7f875qd2pi" path="res://data/Gravel022_1K_Color.jpg" id="1_5tq7d"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://BuildingList.gd" id="20_f24gq"]
 [ext_resource type="Script" path="res://Confirm.gd" id="21_ljb7u"]
 [ext_resource type="Script" path="res://Numbers.gd" id="21_ne80m"]
+[ext_resource type="Script" path="res://MobCount.gd" id="26_1wank"]
 [ext_resource type="Script" path="res://Control.gd" id="27_doo5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ruswv"]
@@ -5966,6 +5967,7 @@ offset_top = 350.0
 offset_right = -875.0
 offset_bottom = 390.0
 scale = Vector2(1.5, 1.5)
+script = ExtResource("26_1wank")
 
 [node name="Minion" type="Node" parent="."]
 

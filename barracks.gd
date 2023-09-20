@@ -14,7 +14,7 @@ func _process(delta):
 		for barrack in get_children():
 			if !barrack.temp: 
 				barrack.spawn_minion($"../../Minion")
-				mobcount += 1
-				$"../../MobCount".text = str(mobcount)
+#				mobcount += 1
+#				$"../../MobCount".text = str(mobcount)
 		elapsed_time = 0.0
 	pass

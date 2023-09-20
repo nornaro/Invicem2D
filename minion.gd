@@ -9,8 +9,13 @@ extends RigidBody2D
 func _ready():
 	add_to_group("minions")
 	scale *= size
+	linear_velocity.y = 0
+	linear_velocity.x = -speed
+	gravity_scale = 0
 
 func _physics_process(delta):
+	if get_tree().get_nodes_in_group("minions").size()>=100:
+		return
 	if position.y > 60:
 		position.y = 60
 	if position.y < -820:
@@ -23,8 +28,5 @@ func _physics_process(delta):
 		rotation -= delta
 	if rotation < 0:
 		rotation += delta
-		
-	linear_velocity.y = 0
-	linear_velocity.x = -speed
-	gravity_scale = 0
+
 	move_and_collide(linear_velocity)
