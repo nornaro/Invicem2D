@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 @onready var Castle = preload("res://buildings/Castle.tscn")
 # Called when the node enters the scene tree for the first time.

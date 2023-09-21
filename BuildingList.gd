@@ -1,34 +1,37 @@
 extends ItemList
 
-# Called when the node enters the scene tree for the first time.
+@onready var Building = $"../../Building"
+
 func _ready():
 	var directory = DirAccess.open("res://buildings/")
-	if directory:
-		directory.list_dir_begin()
-		var file_name = directory.get_next()
-		while file_name != "":
-			if file_name.ends_with(".tscn") and file_name != "Castle.tscn":
-				add_item(file_name.replace(".tscn", ""))
-			file_name = directory.get_next()
-		directory.list_dir_end()
-	else:
-		print("Failed to open directory.")
+	if !directory:
+		return
+	directory.list_dir_begin()
+	var file_name = directory.get_next()
+	while file_name != "":
+		if !file_name.ends_with(".tscn"):
+			continue 
+		if file_name == "Castle.tscn":
+			continue 
+		add_item(file_name.replace(".tscn", ""))
+		file_name = directory.get_next()
+	directory.list_dir_end()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
 
-func _on_item_selected(_index):
-	get_selected_items()
-	hide()
+func _on_item_selected(index):
+	if Building.instance:
+		Building.instance.queue_free()
+		Building.instance = null
+	Building.instance_scene_from_name(get_item_text(index))
 
 func _input(event):
-	if visible:
-		for i in range(10): # Loop through numbers 0-9
-			if Input.is_key_pressed(KEY_0 + i):
-				if $"../../Building".instance:
-					$"../../Building".instance.queue_free()
-					$"../../Building".instance = null
-				%UI.clear()
-				$"../../Building"._on_item_list_item_selected(i)
-				_on_item_selected(i)
+	if !visible:
+		return
+	for i in range(10):# Loop through numbers 0-9
+		if i > item_count:
+			return
+		if Input.is_key_pressed(KEY_0 + i):
+			_on_item_selected(i)

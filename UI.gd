@@ -10,16 +10,17 @@ func _ready():
 func _process(delta):
 	pass
 
-func _input(event):	
-	pass
+func _input(event):
+	if Input.is_key_pressed(KEY_ESCAPE):
+		clear()
 	
 func clear():
 	for ui in get_children():
-		if "List" in ui.name || "Menu" in ui.name:
+		if ui.get_class() == "ItemList":
 			ui.deselect_all()
 		ui.hide()
 
-func active():	
+func active():
 	for ui in get_children():
-		if ("List" in ui.name || "Menu" in ui.name) && ui.visible:
+		if ("List" in ui.name) && ui.visible:
 			return ui

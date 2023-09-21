@@ -6,6 +6,7 @@ var timeout = 100
 func _ready():
 	bbcode_enabled = true
 
+"""
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if text && timeout == 1:
@@ -18,8 +19,6 @@ func _process(delta):
 	if timeout < delta:
 		timeout -= delta
 		return
-		"""
+		
 		2DO better timeout
 		"""
-		
-	

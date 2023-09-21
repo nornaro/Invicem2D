@@ -1,11 +1,11 @@
-extends Node2D
+extends Node
 
 @onready var UI = %UI
 @onready var BuildArea = $"../Map/Area"
 @onready var Placement = $"../Placement"
 @onready var Ground = $"../Map/Ground"
 
-@export var property_list = false
+# 2DO Placement grid?
 
 var instance
 var build = false
@@ -40,7 +40,7 @@ func _input(event):
 		return
 	instance.modulate = normal_color
 	instance.temp = false
-	instance_scene_from_name(building_to_build)
+	instance_scene_from_name(instance.get_parent().name)
 		
 func is_point_in_mesh_bounds(mesh: MeshInstance2D, point: Vector2) -> bool:
 	var mesh_extents = mesh.mesh.get_aabb().size / 2
@@ -49,10 +49,6 @@ func is_point_in_mesh_bounds(mesh: MeshInstance2D, point: Vector2) -> bool:
 	var max_point = mesh.global_position + mesh_extents_2d
 
 	return point.x > min_point.x and point.x < max_point.x and point.y > min_point.y and point.y < max_point.y
-	
-func _on_item_list_item_selected(index):
-	building_to_build = UI.get_node("BuildingList").get_item_text(index)
-	instance_scene_from_name(building_to_build)
 
 func instance_scene_from_name(scene_name: String):
 	var old_id

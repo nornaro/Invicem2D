@@ -25,7 +25,7 @@ func _on_area_exited(area):
 func _process(_delta):
 	pass
 
-func _on_input_event(viewport, event, shape_idx):
+func _on_input_event(_viewport, event, _shape_idx):
 	if Building.instance:
 		return
 	if event.is_action_pressed("LMB"):
@@ -51,11 +51,7 @@ func show_building_menu():
 		if UI.fixed: 
 			UI.get_node("BuildingMenuList").position = Building.BuildArea.get_local_mouse_position()
 		UI.get_node("BuildingMenuList").show()
-
-func _on_mouse_entered():
-	Building.property_list = true
-func _on_mouse_exited():
-	Building.property_list = false
+	
 func _input(event):
 	if event.is_action_pressed("Ctrl"):
 		multiselect = true
