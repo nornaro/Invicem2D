@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://5b3v7b6ahib1"]
 
 [ext_resource type="Script" path="res://Scenes/Minions/Minion/minion.gd" id="1_aqoyr"]
-[ext_resource type="Texture2D" uid="uid://c8ocj5c2hwjno" path="res://icon.svg" id="2_mw6ny"]
-[ext_resource type="Script" path="res://ProgressBar.gd" id="3_6gien"]
+[ext_resource type="Texture2D" uid="uid://dl2spma87x5ie" path="res://Scenes/Minions/Minion/icon.svg" id="2_hv13b"]
+[ext_resource type="Script" path="res://Scenes/Minions/Minion/hpBar.gd" id="3_wco0e"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7goe2"]
 radius = 4.0
@@ -31,7 +31,7 @@ script = ExtResource("1_aqoyr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.2)
-texture = ExtResource("2_mw6ny")
+texture = ExtResource("2_hv13b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_7goe2")
@@ -49,7 +49,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ProgressBar" type="ProgressBar" parent="Control"]
+[node name="hpBar" type="ProgressBar" parent="Control"]
 layout_mode = 0
 offset_left = -6.0
 offset_top = -18.0
@@ -62,4 +62,4 @@ step = 1.0
 value = 50.0
 allow_greater = true
 show_percentage = false
-script = ExtResource("3_6gien")
+script = ExtResource("3_wco0e")

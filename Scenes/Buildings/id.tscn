@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Buildings/id.gd" id="1_t46uf"]
 
 [node name="ID" type="TextEdit"]
+visible = false
 y_sort_enabled = true
 clip_contents = true
 offset_right = 130.0

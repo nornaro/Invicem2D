@@ -14,10 +14,9 @@ func _input(_event):
 		if Input.is_key_pressed(KEY_ENTER):
 			_on_confirm_pressed()
 
-func _on_confirm_pressed():
-	print(Buildings.selected_building)
-	for building in Buildings.selected_building:
-		print(instance_from_id(building).get_parent().name)
-		instance_from_id(building).queue_free()
-	Buildings.selected_building.clear()
+func _on_confirm_pressed():	
+	for building in get_tree().get_nodes_in_group("BuildingMesh"):
+		if !building.Data.has("selected"):
+			return
+		building.queue_free()
 	hide()

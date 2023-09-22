@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/Buildings/Building/Areas/Area2D.gd" id="2_gfola"]
 [ext_resource type="Script" path="res://Scenes/Buildings/Building/building.gd" id="2_ygnhd"]
+[ext_resource type="PackedScene" uid="uid://bydkjmor6dd4g" path="res://Scenes/Buildings/Building/select.tscn" id="4_1boqr"]
 [ext_resource type="PackedScene" uid="uid://ct3y5sva7tum" path="res://Scenes/Buildings/Building/outline.tscn" id="4_7bb2w"]
-[ext_resource type="PackedScene" uid="uid://bydkjmor6dd4g" path="res://select.tscn" id="4_puw83"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cv3ra"]
 size = Vector2(200, 200)
@@ -29,11 +29,11 @@ script = ExtResource("2_gfola")
 position = Vector2(10, -1.5)
 shape = SubResource("RectangleShape2D_b5tgk")
 
-[node name="Select" parent="." instance=ExtResource("4_puw83")]
-
 [node name="Script" type="Node" parent="."]
 
 [node name="outline" parent="." instance=ExtResource("4_7bb2w")]
+
+[node name="Select" parent="." instance=ExtResource("4_1boqr")]
 
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="Area2D" method="_on_area_exited"]

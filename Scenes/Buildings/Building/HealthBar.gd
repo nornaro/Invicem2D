@@ -9,13 +9,23 @@ func _ready():
 
 func update():
 	value = Castle.Data["health"]
-	if value>max_value/2:
-		modulate = Color(0,(value-max_value/2)/(max_value/2),(value-max_value/2)/(max_value/2),0.8)
-	var gradient = Gradient.new()
-	gradient.add_point(0.0, Color(0, 0, 0))
-	gradient.add_point(0.1, Color(1, 0, 0))
-	gradient.add_point(0.5, Color(0, 1, 1))
-	gradient.add_point(1.0, Color(0, 1, 0))
-	var style_box = StyleBoxTexture.new()
-	style_box.texture = gradient
-	self.add_theme_stylebox_override("foreground", style_box)
+	var style_box = StyleBoxFlat.new()
+	var percentage = value / max_value
+	style_box.bg_color = colorpicker(percentage)
+	add_theme_stylebox_override("fill", style_box)
+	add_theme_stylebox_override("foreground", style_box)
+	print(value,style_box.bg_color)
+
+func colorpicker(percentage):
+	var ratio
+	if percentage <= 0.2:
+		ratio = percentage / 0.2
+		return Color(ratio, 0, 0, 0.8)
+	if percentage <= 0.5:
+		ratio = (percentage - 0.2) / 0.3
+		return Color(1, ratio, 0, 0.8)
+	if percentage <= 1:
+		ratio = (percentage - 0.5) / 0.5
+		return Color(1 - ratio, 1, 0, 0.8)
+	ratio = min((percentage - 1.0) / 9.0, 1.0)
+	return Color(ratio, 1, ratio, 0.8)

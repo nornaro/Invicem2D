@@ -1,6 +1,5 @@
 extends MeshInstance2D
 
-
 @export var Data = {
 	"temp" = false,
 	"max_health" = 1000,
@@ -12,5 +11,6 @@ extends MeshInstance2D
 func _ready():
 	Data["health"] = Data["base_health"]
 	texture = load("res://Scenes/Buildings/Building/"+get_parent().name+".png")
-	pass
+	modulate = Color(1, 1, 1, 1)
+	$Control/HealthBar.update()
 
