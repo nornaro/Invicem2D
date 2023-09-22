@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtyg0s8ymt64s"]
+
+[ext_resource type="Script" path="res://Scenes/Buildings/type.gd" id="1_cdr8u"]
+
+[node name="Type" type="Node"]
+script = ExtResource("1_cdr8u")

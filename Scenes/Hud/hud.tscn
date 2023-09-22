@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://crtx4pfoxksfn"]
+
+[ext_resource type="Script" path="res://Scenes/Hud/hud.gd" id="1_j7m1u"]
+[ext_resource type="Script" path="res://Numbers.gd" id="2_rrqny"]
+[ext_resource type="Script" path="res://MobCount.gd" id="3_akqim"]
+
+[node name="Hud" type="Node"]
+script = ExtResource("1_j7m1u")
+
+[node name="Numbers" type="ItemList" parent="."]
+offset_left = -960.0
+offset_top = -480.0
+offset_right = -920.0
+offset_bottom = -200.0
+item_count = 10
+item_0/text = "0"
+item_0/selectable = false
+item_1/text = "1"
+item_1/selectable = false
+item_2/text = "2"
+item_2/selectable = false
+item_3/text = "3"
+item_3/selectable = false
+item_4/text = "4"
+item_4/selectable = false
+item_5/text = "5"
+item_5/selectable = false
+item_6/text = "6"
+item_6/selectable = false
+item_7/text = "7"
+item_7/selectable = false
+item_8/text = "8"
+item_8/selectable = false
+item_9/text = "9"
+item_9/selectable = false
+script = ExtResource("2_rrqny")
+
+[node name="BulletCount" type="TextEdit" parent="."]
+offset_left = -950.0
+offset_top = 425.0
+offset_right = -875.0
+offset_bottom = 465.0
+scale = Vector2(1.5, 1.5)
+
+[node name="MobCount" type="TextEdit" parent="."]
+offset_left = -950.0
+offset_top = 350.0
+offset_right = -875.0
+offset_bottom = 390.0
+scale = Vector2(1.5, 1.5)
+script = ExtResource("3_akqim")

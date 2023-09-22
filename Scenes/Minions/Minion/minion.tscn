@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://5b3v7b6ahib1"]
+
+[ext_resource type="Script" path="res://Scenes/Minions/Minion/minion.gd" id="1_aqoyr"]
+[ext_resource type="Texture2D" uid="uid://c8ocj5c2hwjno" path="res://icon.svg" id="2_mw6ny"]
+[ext_resource type="Script" path="res://ProgressBar.gd" id="3_6gien"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7goe2"]
+radius = 4.0
+height = 20.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bex45"]
+radius = 4.0
+height = 20.0
+
+[sub_resource type="Theme" id="Theme_1g8mw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcnvf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krg58"]
+bg_color = Color(0, 1, 0, 0.392157)
+
+[node name="Minion" type="RigidBody2D" groups=["minions"]]
+script = ExtResource("1_aqoyr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.2)
+texture = ExtResource("2_mw6ny")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7goe2")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_bex45")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -18.0
+offset_right = 6.0
+offset_bottom = -13.0
+theme = SubResource("Theme_1g8mw")
+theme_override_styles/background = SubResource("StyleBoxFlat_pcnvf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_krg58")
+step = 1.0
+value = 50.0
+allow_greater = true
+show_percentage = false
+script = ExtResource("3_6gien")

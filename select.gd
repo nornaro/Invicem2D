@@ -11,5 +11,7 @@ func _ready():
 func _process(_delta):
 	$green.visible = false
 	$red.visible = false
+	if !Controls:
+		return
 	if Controls.showCollision || Controls.showCollisionToggle:
 		get_node(color).visible = true
