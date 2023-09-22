@@ -5,8 +5,4 @@ extends MeshInstance2D
 func _ready():
 	Data["temp"]=true
 	texture = load("res://Scenes/Buildings/Building/"+get_parent().name+".png")
-	var script = load("res://Scenes/Buildings/Building/"+get_parent().name+".gd")
-	
-#	FileAccess.file_exists(script)
-#	if FileAccess.file_exists(script):
-#		set_script(script)
+	var _script = load("res://Scenes/Buildings/Building/"+get_parent().name+".gd")

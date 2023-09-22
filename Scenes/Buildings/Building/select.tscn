@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bydkjmor6dd4g"]
 
-[ext_resource type="Texture2D" uid="uid://clfvnqwjgri3d" path="res://Scenes/Buildings/Building/Select.png" id="1_m56cg"]
 [ext_resource type="Script" path="res://Scenes/Buildings/Building/select.gd" id="1_oklhx"]
-[ext_resource type="Texture2D" uid="uid://ba0v1k3jimilr" path="res://Scenes/Buildings/Building/nope.png" id="2_c1sk5"]
+[ext_resource type="Texture2D" uid="uid://dvu0wyuyfwdtm" path="res://Scenes/Buildings/Select.png" id="2_ccw11"]
+[ext_resource type="Texture2D" uid="uid://bnsb1joookmv7" path="res://Scenes/Buildings/nope.png" id="3_1bjwy"]
 
 [node name="Select" type="Node2D"]
 script = ExtResource("1_oklhx")
@@ -11,10 +11,10 @@ script = ExtResource("1_oklhx")
 visible = false
 rotation = 3.14159
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_m56cg")
+texture = ExtResource("2_ccw11")
 
 [node name="red" type="Sprite2D" parent="."]
 visible = false
 rotation = 3.14159
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_c1sk5")
+texture = ExtResource("3_1bjwy")

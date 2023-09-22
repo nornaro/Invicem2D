@@ -24,11 +24,10 @@ func _on_input_event(_viewport, event, _shape_idx):
 #				clear_selection()
 #			return
 	if event.is_action_released("RMB"):
-		show_building_menu()
+		UI.List.menu(get_parent().get_parent().name+"s")
 	if event.is_action_pressed("LMB"):
 		add_selection()
 	
-#	print(pointover)
 #		if event.mouse_shape_entered
 #	if event.mouse_shape_entered():
 #		pointover = true
@@ -45,7 +44,6 @@ func _input(event):
 		multiselect = true
 	if event.is_action_released("Ctrl"):
 		multiselect = false
-#	print(pointover)
 	if pointover:
 		return
 	if multiselect:
@@ -53,6 +51,7 @@ func _input(event):
 	if event.is_action_pressed("RMB"):
 		clear_selection()
 	if event.is_action_pressed("LMB"):
+		UI.List.menu("Buildings")
 		clear_selection()
 
 func _on_area_entered(area):
@@ -71,17 +70,10 @@ func clear_selection():
 		get_parent().Data["selected"] = false
 		
 func add_selection():
-	print(multiselect)
 	if !multiselect:
 		clear_selection()
 	get_parent().get_node("outline").show()
 	get_parent().Data["selected"] = true
-
-func show_building_menu():
-		UI.clear()
-		if !UI.fixed:
-			UI.get_node("BuildingMenuList").position = global_position
-		UI.get_node("BuildingMenuList").show()
 
 func _on_mouse_entered():
 	pointover = true

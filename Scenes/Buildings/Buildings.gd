@@ -39,13 +39,11 @@ func add_buildings_list(list):
 		instance.name = buildings
 		add_child(instance)
 		var script = "res://Scenes/Buildings/"+buildings+"s.gd"
-		print(instance.get_script())
 		FileAccess.file_exists(script)
 		if FileAccess.file_exists(script):
 			instance.set_script(load(script))
-			print(instance.get_script())
 
-func _input(event):	
+func _input(event):
 	if event.is_action_pressed("RMB"):
 		if temp_instance:
 			temp_instance.queue_free()

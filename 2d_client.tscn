@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0k7m2mj4ditp"]
+[gd_scene load_steps=9 format=3 uid="uid://d0k7m2mj4ditp"]
 
 [ext_resource type="Script" path="res://2d_client.gd" id="1_th4ev"]
 [ext_resource type="PackedScene" uid="uid://fkjje7ggp1rq" path="res://Scenes/Placement/placement.tscn" id="2_x4c5v"]
 [ext_resource type="PackedScene" uid="uid://c4ma53dgi0oje" path="res://Scenes/Map/map.tscn" id="2_yhlvb"]
 [ext_resource type="PackedScene" uid="uid://cidx2d5wiam6y" path="res://Scenes/Buildings/buildings.tscn" id="3_ahp38"]
 [ext_resource type="PackedScene" uid="uid://ctyric4lpymab" path="res://Scenes/UI/ui.tscn" id="4_xvbv6"]
+[ext_resource type="Script" path="res://Timers.gd" id="5_y26ug"]
 [ext_resource type="PackedScene" uid="uid://d1o076tfyfprr" path="res://Scenes/Control/controls.tscn" id="6_osmn7"]
 [ext_resource type="PackedScene" uid="uid://bmry5otyyudj1" path="res://Scenes/Minions/minions.tscn" id="10_ncmxa"]
 
@@ -19,14 +20,12 @@ y_sort_enabled = true
 [node name="Buildings" parent="." instance=ExtResource("3_ahp38")]
 
 [node name="Timers" type="Node" parent="."]
+script = ExtResource("5_y26ug")
 
 [node name="Minion" type="Timer" parent="Timers"]
 autostart = true
 
 [node name="UI" parent="." instance=ExtResource("4_xvbv6")]
-
-[node name="ItemList" parent="UI" index="0"]
-visible = false
 
 [node name="Controls" parent="." instance=ExtResource("6_osmn7")]
 offset_left = 1.0

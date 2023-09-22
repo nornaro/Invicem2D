@@ -12,7 +12,7 @@ func _ready():
 	gravity_scale = 0
 
 func _physics_process(delta):
-	if get_tree().get_nodes_in_group("minions").size()>=500:
+	if get_tree().get_nodes_in_group("true").size()>0:
 		return
 	if rotation != 0:
 		if rotation > 0+delta:

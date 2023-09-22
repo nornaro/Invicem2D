@@ -1,48 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctyric4lpymab"]
+[gd_scene load_steps=5 format=3 uid="uid://ctyric4lpymab"]
 
 [ext_resource type="Script" path="res://Scenes/UI/ui.gd" id="1_2xbke"]
-[ext_resource type="Script" path="res://Scenes/UI/ItemList.gd" id="2_2im5r"]
-[ext_resource type="Script" path="res://Scenes/UI/BuildingList.gd" id="2_fsf3p"]
-[ext_resource type="Script" path="res://Scenes/UI/TurretList.gd" id="3_scjw5"]
-[ext_resource type="Script" path="res://Scenes/UI/BuildingMenu.gd" id="4_j5f7y"]
+[ext_resource type="Script" path="res://Scenes/UI/List.gd" id="2_1tmki"]
+[ext_resource type="Script" path="res://Scenes/UI/Numbers.gd" id="3_xheqc"]
 [ext_resource type="Script" path="res://Scenes/UI/Confirm.gd" id="5_rq4vg"]
 
 [node name="UI" type="Node"]
 script = ExtResource("1_2xbke")
 
-[node name="ItemList" type="ItemList" parent="."]
-offset_left = -920.0
-offset_top = -480.0
+[node name="List" type="ItemList" parent="."]
+offset_left = -935.0
+offset_top = -440.0
 offset_right = -835.0
-offset_bottom = -360.0
-script = ExtResource("2_2im5r")
+offset_bottom = -190.0
+script = ExtResource("2_1tmki")
 
-[node name="BuildingList" type="ItemList" parent="."]
-visible = false
-offset_left = -920.0
-offset_top = -480.0
-offset_right = -836.0
-offset_bottom = -360.0
-auto_height = true
-script = ExtResource("2_fsf3p")
-
-[node name="TurretList" type="ItemList" parent="."]
-visible = false
-offset_left = -920.0
-offset_top = -480.0
-offset_right = -836.0
-offset_bottom = -360.0
-auto_height = true
-script = ExtResource("3_scjw5")
-
-[node name="BuildingMenuList" type="ItemList" parent="."]
-visible = false
-clip_contents = false
-offset_left = -920.0
-offset_top = -480.0
-offset_right = -836.0
-offset_bottom = -360.0
-script = ExtResource("4_j5f7y")
+[node name="Numbers" type="ItemList" parent="."]
+offset_left = -960.0
+offset_top = -440.0
+offset_right = -935.0
+offset_bottom = -190.0
+focus_mode = 0
+mouse_filter = 2
+allow_search = false
+script = ExtResource("3_xheqc")
 
 [node name="Destroy" type="Panel" parent="."]
 visible = false
@@ -81,8 +62,5 @@ text = "Confirm"
 layout_mode = 2
 text = "Cancel"
 
-[connection signal="item_selected" from="ItemList" to="ItemList" method="_on_item_selected"]
-[connection signal="item_selected" from="BuildingList" to="BuildingList" method="_on_item_selected"]
-[connection signal="item_selected" from="TurretList" to="TurretList" method="_on_item_selected"]
-[connection signal="item_selected" from="BuildingMenuList" to="BuildingMenuList" method="_on_item_selected"]
+[connection signal="item_selected" from="List" to="List" method="_on_item_selected"]
 [connection signal="pressed" from="Destroy/VBoxContainer/HBoxContainer/Confirm" to="Destroy" method="_on_confirm_pressed"]

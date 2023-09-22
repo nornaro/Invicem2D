@@ -9,7 +9,6 @@ func _ready():
 	gravity_scale = 0
 	add_to_group("projectiles")
 #	if target:
-##		print((global_position - target.global_position).normalized()*speed)
 ##		linear_velocity = (global_position - (target.global_position-Vector2(target.speed*100000/speed,0))).normalized() * speed * Vector2(-1,-1)
 #		var relative_position = target.global_position - global_position
 #		var d = relative_position.length()

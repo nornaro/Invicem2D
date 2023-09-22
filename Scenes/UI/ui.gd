@@ -1,6 +1,7 @@
 extends Node
 
 @export var fixed = true
+@onready var List = $List
 
 func _input(_event):
 	if Input.is_key_pressed(KEY_ESCAPE):
