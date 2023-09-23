@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://ben5m8sl8ft4s"]
 
-[ext_resource type="Script" path="res://turrets/Projectiles/HomingProjectile.gd" id="1_oyf6s"]
-[ext_resource type="Texture2D" uid="uid://jsph5xplg3mf" path="res://turrets/Projectile/fireball.png" id="2_81m6a"]
+[ext_resource type="Script" path="res://Scenes/Buildings/Building/Projectiles/HomingProjectile.gd" id="1_oyf6s"]
+[ext_resource type="Texture2D" uid="uid://be11ohqifso8p" path="res://Scenes/Buildings/Building/Projectiles/fireball.png" id="2_81m6a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j6wxg"]
 atlas = ExtResource("2_81m6a")

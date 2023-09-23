@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://byw30x5iv50nv"]
 
-[ext_resource type="Texture2D" uid="uid://jxb73txwyc2f" path="res://turrets/cannon.png" id="1_gkaqp"]
-[ext_resource type="Script" path="res://turrets/turret.gd" id="2_ctege"]
+[ext_resource type="Texture2D" uid="uid://s21w25abivax" path="res://Scenes/Buildings/Building/Turrets/Cannon.png" id="1_gkaqp"]
+[ext_resource type="Script" path="res://Scenes/Buildings/Building/Turrets/Turret.gd" id="2_ctege"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2dbdr"]
 size = Vector2(20, 20)

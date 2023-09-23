@@ -13,4 +13,3 @@ func _ready():
 	texture = load("res://Scenes/Buildings/Building/"+get_parent().name+".png")
 	modulate = Color(1, 1, 1, 1)
 	$Control/HealthBar.update()
-

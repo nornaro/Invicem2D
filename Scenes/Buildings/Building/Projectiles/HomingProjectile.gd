@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var projectileSpeed = [0, 0] # min, max
-@onready var Tower = $".."
+@onready var Tower = $"../../.."
 var target = null  
 var speed = 0
 # mass = dmg
@@ -20,7 +20,7 @@ func _physics_process(delta):
 	if speed < projectileSpeed[1]:
 		speed += delta*(projectileSpeed[1]-projectileSpeed[0])
 	if is_instance_valid(target):
-		linear_velocity = (target.global_position - global_position-Vector2(target.speed, 0)).normalized()*projectileSpeed
+		linear_velocity = (target.global_position - global_position-Vector2(target.speed, 0)).normalized()*projectileSpeed[0]
 	if !is_instance_valid(target):
 		queue_free()
 

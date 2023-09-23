@@ -17,6 +17,7 @@ func _input(_event):
 func _on_confirm_pressed():	
 	for building in get_tree().get_nodes_in_group("BuildingMesh"):
 		if !building.Data.has("selected"):
+			hide()
 			return
 		building.queue_free()
 	hide()

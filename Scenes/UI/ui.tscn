@@ -13,6 +13,7 @@ offset_left = -935.0
 offset_top = -440.0
 offset_right = -835.0
 offset_bottom = -190.0
+allow_reselect = true
 script = ExtResource("2_1tmki")
 
 [node name="Numbers" type="ItemList" parent="."]
@@ -59,6 +60,43 @@ layout_mode = 2
 text = "Confirm"
 
 [node name="Cancel" type="Button" parent="Destroy/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="Defeat" type="Panel" parent="."]
+visible = false
+offset_left = -100.0
+offset_top = -50.0
+offset_right = -100.0
+
+[node name="Panel" type="Panel" parent="Defeat"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Defeat"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Text" type="TextEdit" parent="Defeat/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "You have been Defeated!"
+editable = false
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Defeat/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Confirm" type="Button" parent="Defeat/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Confirm"
+
+[node name="Cancel" type="Button" parent="Defeat/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Cancel"
 

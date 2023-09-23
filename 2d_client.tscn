@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0k7m2mj4ditp"]
+[gd_scene load_steps=11 format=3 uid="uid://d0k7m2mj4ditp"]
 
 [ext_resource type="Script" path="res://2d_client.gd" id="1_th4ev"]
 [ext_resource type="PackedScene" uid="uid://fkjje7ggp1rq" path="res://Scenes/Placement/placement.tscn" id="2_x4c5v"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ctyric4lpymab" path="res://Scenes/UI/ui.tscn" id="4_xvbv6"]
 [ext_resource type="Script" path="res://Timers.gd" id="5_y26ug"]
 [ext_resource type="PackedScene" uid="uid://d1o076tfyfprr" path="res://Scenes/Control/controls.tscn" id="6_osmn7"]
+[ext_resource type="Script" path="res://Bugs.gd" id="9_syjex"]
+[ext_resource type="Script" path="res://2DO.gd" id="10_b3j2j"]
 [ext_resource type="PackedScene" uid="uid://bmry5otyyudj1" path="res://Scenes/Minions/minions.tscn" id="10_ncmxa"]
 
 [node name="2DClient" type="Node"]
@@ -25,8 +27,6 @@ script = ExtResource("5_y26ug")
 [node name="Minion" type="Timer" parent="Timers"]
 autostart = true
 
-[node name="UI" parent="." instance=ExtResource("4_xvbv6")]
-
 [node name="Controls" parent="." instance=ExtResource("6_osmn7")]
 offset_left = 1.0
 offset_right = 1.0
@@ -36,9 +36,17 @@ offset_right = 1.0
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 
+[node name="UI" parent="." instance=ExtResource("4_xvbv6")]
+
+[node name="Bugs" type="Node" parent="."]
+script = ExtResource("9_syjex")
+
+[node name="2DO" type="Node" parent="."]
+script = ExtResource("10_b3j2j")
+
 [connection signal="timeout" from="Timers/Minion" to="." method="_on_minion_timeout"]
 
 [editable path="Map"]
-[editable path="UI"]
 [editable path="Controls"]
 [editable path="Minions"]
+[editable path="UI"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c0rwbvwtqs065"]
 
-[ext_resource type="Script" path="res://turrets/Turret.gd" id="1_diqa7"]
-[ext_resource type="Texture2D" uid="uid://jxb73txwyc2f" path="res://turrets/cannon.png" id="1_q1x53"]
-[ext_resource type="Script" path="res://turrets/Projectiles/Projectiles.gd" id="3_n2fmn"]
+[ext_resource type="Script" path="res://Scenes/Buildings/Building/Turrets/Turret.gd" id="1_diqa7"]
+[ext_resource type="Texture2D" uid="uid://s21w25abivax" path="res://Scenes/Buildings/Building/Turrets/Cannon.png" id="1_q1x53"]
+[ext_resource type="Script" path="res://Scenes/Buildings/Building/Projectiles/Projectiles.gd" id="3_n2fmn"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2dbdr"]
 size = Vector2(20, 20)
@@ -15,7 +15,27 @@ radius = 1.0
 radius = 1.0
 
 [node name="Turret" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_diqa7")
+
+[node name="ProjectileSpawns" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="ProjectileSpawns"]
+position = Vector2(5, 48)
+
+[node name="1" type="Node2D" parent="ProjectileSpawns"]
+position = Vector2(-15, 53)
+
+[node name="2" type="Node2D" parent="ProjectileSpawns"]
+position = Vector2(20, 58)
+
+[node name="3" type="Node2D" parent="ProjectileSpawns"]
+position = Vector2(40, 53)
+
+[node name="Turret0" type="MeshInstance2D" parent="."]
+position = Vector2(-25, 45)
+mesh = SubResource("PlaneMesh_2dbdr")
+texture = ExtResource("1_q1x53")
 
 [node name="Turret1" type="MeshInstance2D" parent="."]
 position = Vector2(10, 50)
@@ -29,11 +49,6 @@ texture = ExtResource("1_q1x53")
 
 [node name="Turret3" type="MeshInstance2D" parent="."]
 position = Vector2(-5, 40)
-mesh = SubResource("PlaneMesh_2dbdr")
-texture = ExtResource("1_q1x53")
-
-[node name="Turret4" type="MeshInstance2D" parent="."]
-position = Vector2(-25, 45)
 mesh = SubResource("PlaneMesh_2dbdr")
 texture = ExtResource("1_q1x53")
 

@@ -1,6 +1,8 @@
 extends Node
 
-@export var Data = {}
+@export var Data = {
+	"menu":["Upgrade"]
+}
 
 func _ready():
 	pass

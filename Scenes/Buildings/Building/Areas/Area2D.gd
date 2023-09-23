@@ -16,23 +16,10 @@ func _ready():
 	mesh.modulate = placement_color
 	
 func _on_input_event(_viewport, event, _shape_idx):
-#	if !is_in_group("BuildingArea"):
-#		if  !multiselect:
-#			if event.is_action_released("RMB"):
-#				clear_selection()
-#			if event.is_action_pressed("LMB"):
-#				clear_selection()
-#			return
 	if event.is_action_released("RMB"):
-		UI.List.menu(get_parent().get_parent().name+"s")
+		UI.List.menu(get_parent().get_parent().name)
 	if event.is_action_pressed("LMB"):
 		add_selection()
-	
-#		if event.mouse_shape_entered
-#	if event.mouse_shape_entered():
-#		pointover = true
-#	if event.mouse_shape_entered():
-#		pointover = false
 		
 func _input(event):
 	if Input.is_key_pressed(KEY_ESCAPE):
@@ -48,11 +35,10 @@ func _input(event):
 		return
 	if multiselect:
 		return
-	if event.is_action_pressed("RMB"):
-		clear_selection()
-	if event.is_action_pressed("LMB"):
-		UI.List.menu("Buildings")
-		clear_selection()
+#	if event.is_action_pressed("RMB"):
+#		clear_selection()
+#	if event.is_action_pressed("LMB"):
+#		clear_selection()
 
 func _on_area_entered(area):
 	if !area.is_in_group("BuildingArea"): return

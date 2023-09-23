@@ -11,7 +11,7 @@ func clear():
 	for ui in get_children():
 		if ui.get_class() == "ItemList":
 			ui.deselect_all()
-		ui.hide()
+#		ui.hide()
 
 func active():
 	for ui in get_children():

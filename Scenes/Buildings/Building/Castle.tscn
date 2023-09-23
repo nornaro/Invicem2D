@@ -28,14 +28,14 @@ border_color = Color(1, 1, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5xb7"]
 bg_color = Color(0, 1, 0, 1)
 
-[node name="Castle" type="MeshInstance2D" groups=["building"]]
+[node name="Castle" type="MeshInstance2D" groups=["BuildingMesh", "buildingMesh"]]
 position = Vector2(0, -75)
 rotation = 3.14159
 mesh = SubResource("PlaneMesh_l11f8")
 texture = SubResource("CompressedTexture2D_cf0y4")
 script = ExtResource("1_2ligi")
 
-[node name="Area2D" type="Area2D" parent="." groups=["building"]]
+[node name="Area2D" type="Area2D" parent="." groups=["BuildingArea", "buildingArea"]]
 position = Vector2(0, -50)
 script = ExtResource("3_p6m1t")
 
