@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp4rs15tn50dm"]
+
+[ext_resource type="SpriteFrames" uid="uid://dioxgg0s5ugdd" path="res://Scenes/Building/Tower/Turrets/T1/T1v3.tres" id="1_0dwyt"]
+
+[node name="Turret" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_0dwyt")
+frame_progress = 0.362029

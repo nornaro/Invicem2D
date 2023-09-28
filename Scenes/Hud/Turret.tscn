@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://hu6q10yshngu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jd7h1"]
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_241ig"]
+radius = 1.0
+
+[node name="Turret" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="Min" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Min"]
+shape = SubResource("CircleShape2D_jd7h1")
+
+[node name="Max" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Max"]
+shape = SubResource("CircleShape2D_241ig")
+
+[connection signal="area_entered" from="Min" to="." method="_on_min_area_entered"]
+[connection signal="area_exited" from="Min" to="." method="_on_min_area_exited"]
+[connection signal="area_entered" from="Max" to="." method="_on_max_area_entered"]
+[connection signal="area_exited" from="Max" to="." method="_on_max_area_exited"]

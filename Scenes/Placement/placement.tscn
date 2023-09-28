@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://fkjje7ggp1rq"]
-
-[ext_resource type="Script" path="res://Scenes/Placement/placement.gd" id="1_8eu62"]
-
-[node name="Placement" type="Node"]
-script = ExtResource("1_8eu62")

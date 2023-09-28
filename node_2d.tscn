@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlcr05pehhy48"]
+
+[ext_resource type="Texture2D" uid="uid://ccjd6ttghd28f" path="res://Scenes/Building/Barrack/Barrack.png" id="1_4hpx1"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y0qxe"]
+size = Vector2(20, 20)
+orientation = 2
+
+[sub_resource type="Environment" id="Environment_ega04"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("PlaneMesh_y0qxe")
+texture = ExtResource("1_4hpx1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ega04")

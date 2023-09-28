@@ -2,5 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Buildings/Buildings.gd" id="1_spheu"]
 
-[node name="Buildings" type="Node"]
+[node name="Buildings" type="Node2D"]
 script = ExtResource("1_spheu")
+
+[connection signal="property_list_changed" from="." to="." method="_on_property_list_changed"]

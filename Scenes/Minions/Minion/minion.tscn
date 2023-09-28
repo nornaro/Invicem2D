@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://5b3v7b6ahib1"]
 
-[ext_resource type="Script" path="res://Scenes/Minions/Minion/minion.gd" id="1_aqoyr"]
-[ext_resource type="Texture2D" uid="uid://dl2spma87x5ie" path="res://Scenes/Minions/Minion/icon.svg" id="2_hv13b"]
-[ext_resource type="Script" path="res://Scenes/Minions/Minion/hpBar.gd" id="3_wco0e"]
+[ext_resource type="Script" path="res://Scenes/Minions/Minion/minion.cs" id="1_3x0mk"]
+[ext_resource type="Texture2D" uid="uid://pw26yklenbx8" path="res://Scenes/Minions/icon.svg" id="2_scp6m"]
+[ext_resource type="Script" path="res://Scenes/Minions/Minion/Area2D.gd" id="3_u5uqm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7goe2"]
 radius = 4.0
@@ -27,11 +27,13 @@ border_blend = true
 bg_color = Color(0, 1, 0, 0.392157)
 
 [node name="Minion" type="RigidBody2D" groups=["minions"]]
-script = ExtResource("1_aqoyr")
+gravity_scale = 0.0
+linear_damp_mode = 1
+script = ExtResource("1_3x0mk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.2)
-texture = ExtResource("2_hv13b")
+texture = ExtResource("2_scp6m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_7goe2")
@@ -39,18 +41,12 @@ shape = SubResource("CapsuleShape2D_7goe2")
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 5
 collision_mask = 5
+script = ExtResource("3_u5uqm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_bex45")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="hpBar" type="ProgressBar" parent="Control"]
-layout_mode = 0
+[node name="hpBar" type="ProgressBar" parent="."]
 offset_left = -6.0
 offset_top = -18.0
 offset_right = 6.0
@@ -62,4 +58,5 @@ step = 1.0
 value = 50.0
 allow_greater = true
 show_percentage = false
-script = ExtResource("3_wco0e")
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]

@@ -100,5 +100,5 @@ text = "Confirm"
 layout_mode = 2
 text = "Cancel"
 
-[connection signal="item_selected" from="List" to="List" method="_on_item_selected"]
+[connection signal="item_selected" from="List" to="." method="_on_list_item_selected"]
 [connection signal="pressed" from="Destroy/VBoxContainer/HBoxContainer/Confirm" to="Destroy" method="_on_confirm_pressed"]

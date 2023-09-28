@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bydkjmor6dd4g"]
+
+[ext_resource type="Texture2D" uid="uid://ch5n8d5u0heui" path="res://Scenes/Buildings/Select/green.png" id="2_ccw11"]
+[ext_resource type="Texture2D" uid="uid://cwrvjinqew3sv" path="res://Scenes/Buildings/Select/red.png" id="3_1bjwy"]
+
+[node name="Select" type="Node2D"]
+
+[node name="green" type="Sprite2D" parent="."]
+visible = false
+rotation = 3.14159
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ccw11")
+
+[node name="red" type="Sprite2D" parent="."]
+visible = false
+rotation = 3.14159
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_1bjwy")

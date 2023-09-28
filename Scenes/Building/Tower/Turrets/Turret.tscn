@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bp4rs15tn50dm"]
+
+[ext_resource type="SpriteFrames" uid="uid://cywpgil6msv4o" path="res://Scenes/Building/Turret/T1/T1.tres" id="1_vlnxx"]
+
+[node name="Turret" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_vlnxx")
