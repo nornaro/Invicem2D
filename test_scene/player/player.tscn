@@ -1,0 +1,314 @@
+[gd_scene load_steps=31 format=3 uid="uid://bucpd0eiixigo"]
+
+[ext_resource type="Script" path="res://test_scene/player/player.gd" id="1_o8qvm"]
+[ext_resource type="Texture2D" uid="uid://u4nn2pmw7c3r" path="res://test_scene/assets/v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_run_spritesheet.png" id="2_fe2st"]
+[ext_resource type="Texture2D" uid="uid://deg4os07crdvk" path="res://test_scene/assets/v1.1 dungeon crawler 16X16 pixel pack/heroes/knight/knight_idle_spritesheet.png" id="2_q6mwv"]
+[ext_resource type="Resource" uid="uid://cnx0dr021b6o4" path="res://test_scene/player/weapon1_pattern.tres" id="5_1s3td"]
+[ext_resource type="Resource" uid="uid://mhdwvqj4iuum" path="res://test_scene/player/weapon2_pattern.tres" id="6_focav"]
+[ext_resource type="PackedScene" uid="uid://dej14csvkg4li" path="res://test_scene/player/player_projectile.tscn" id="6_pd7uc"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/patterns/pattern_elem2d.gd" id="7_kjj4n"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/trajectories/circular_trajectory2d.gd" id="8_evtff"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/patterns/pattern2d.gd" id="9_c52h2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t7jq"]
+atlas = ExtResource("2_q6mwv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wexf"]
+atlas = ExtResource("2_q6mwv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa1yp"]
+atlas = ExtResource("2_q6mwv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yicmn"]
+atlas = ExtResource("2_q6mwv")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vpa3"]
+atlas = ExtResource("2_q6mwv")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx80o"]
+atlas = ExtResource("2_q6mwv")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uagx"]
+atlas = ExtResource("2_fe2st")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27dgl"]
+atlas = ExtResource("2_fe2st")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32vlk"]
+atlas = ExtResource("2_fe2st")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdjbg"]
+atlas = ExtResource("2_fe2st")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsp00"]
+atlas = ExtResource("2_fe2st")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_487ok"]
+atlas = ExtResource("2_fe2st")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q04lr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1t7jq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wexf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa1yp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yicmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vpa3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx80o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uagx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27dgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32vlk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdjbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsp00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_487ok")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dndgf"]
+size = Vector2(32, 39)
+
+[sub_resource type="GDScript" id="GDScript_jyy5l"]
+script/source = "@tool
+extends Node2D
+
+signal new_projectile_shot(projectile: Projectile2D)
+signal all_fired()
+
+@export var pattern: Pattern2D
+@export var projectiles_group: String = \"\"
+
+var tracked_projectiles: Array[WeakRef] = []
+var projectiles_parent: Node
+var left_to_fire: int = 0
+
+
+func get_projectile_parent() -> Node:
+	if projectiles_group.is_empty():
+		return null
+	return get_tree().get_first_node_in_group(projectiles_group)
+
+
+func _ready() -> void:
+	projectiles_parent = get_projectile_parent()
+	if projectiles_parent == null:
+		projectiles_parent = Node.new()
+		projectiles_parent.name = \"Projectiles\"
+		add_child(projectiles_parent)
+
+
+func fire_pattern() -> void:
+	if !pattern:
+		return
+	
+	left_to_fire = pattern.data.size()
+	for d in pattern.data:
+		spawn_projectile(d)
+	
+	if left_to_fire <= 0:
+		emit_signal(\"all_fired\")
+
+
+func clear() -> void:
+	for c in get_children():
+		if not c == projectiles_parent:
+			c.queue_free()
+	for p in tracked_projectiles:
+		if p and p.get_ref():
+			p.get_ref().queue_free()
+
+
+func get_closest_target(pos: Vector2, group_name: String) -> Node2D:
+	if group_name == \"\":
+		return null
+	var nodes: Array[Node] = get_tree().get_nodes_in_group(group_name)
+	
+	var min_dist: float = INF
+	var closest_node: Node2D = null
+	
+	for n in nodes:
+		if n is Node2D:
+			var dist: float = pos.distance_to(n.global_position)
+			if dist < min_dist:
+				min_dist = dist
+				closest_node = n
+	return closest_node
+
+
+func spawn_projectile(elem: PatternElem2D) -> void:
+	var new_projectile: Projectile2D = elem.projectile.instantiate()
+	
+	new_projectile.trajectory = elem.trajectory
+	new_projectile.global_position = global_position + elem.position.rotated(rotation)
+	var target_obj: Node2D = get_closest_target(new_projectile.global_position, elem.target_group)
+	if target_obj != null:
+		new_projectile.travel_angle = rad_to_deg(Vector2(1, 0).angle_to(\\
+			target_obj.global_position - new_projectile.global_position))
+	else:
+		new_projectile.travel_angle = elem.angle + rotation_degrees
+		new_projectile.travel_angle += (randf() - 0.5)*elem.rand_spread*360.0
+	new_projectile.speed = elem.speed
+	new_projectile.range = elem.range
+	new_projectile.delay = elem.travel_delay
+	new_projectile.speed_ramp = elem.speed_ramp
+	new_projectile.run_in_editor = Engine.is_editor_hint()
+	
+	if elem.spawn_delay == 0.0:
+		projectiles_parent.add_child(new_projectile)
+		tracked_projectiles.append(weakref(new_projectile))
+		emit_signal(\"new_projectile_shot\", new_projectile)
+	else:
+		var timer: Timer = Timer.new()
+		timer.wait_time = elem.spawn_delay
+		timer.connect(\"timeout\", Callable(self, \"_on_spawn_delay_timeout\").bind(new_projectile, timer))
+		add_child(timer)
+		timer.start()
+
+
+func _on_spawn_delay_timeout(projectile: Projectile2D, timer: Timer) -> void:
+	projectiles_parent.add_child(projectile)
+	tracked_projectiles.append(weakref(projectile))
+	timer.queue_free()
+	emit_signal(\"new_projectile_shot\", projectile)
+	if left_to_fire <= 0:
+		emit_signal(\"all_fired\")
+
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings: PackedStringArray = []
+	if !pattern:
+		warnings.append(\"Patter not assigned\")
+	return warnings
+"
+
+[sub_resource type="Resource" id="Resource_nylku"]
+script = ExtResource("8_evtff")
+rotation_time = 1.0
+radius = 20.0
+
+[sub_resource type="Resource" id="Resource_0p5mi"]
+script = ExtResource("7_kjj4n")
+projectile = ExtResource("6_pd7uc")
+position = Vector2(45.2548, -45.2548)
+angle = 0.0
+trajectory = SubResource("Resource_nylku")
+speed = 106.0
+range = 110.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_n83r1"]
+script = ExtResource("7_kjj4n")
+projectile = ExtResource("6_pd7uc")
+position = Vector2(-45.2548, -45.2548)
+angle = 0.0
+trajectory = SubResource("Resource_nylku")
+speed = 106.0
+range = 110.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_yuahg"]
+script = ExtResource("7_kjj4n")
+projectile = ExtResource("6_pd7uc")
+position = Vector2(-45.2548, 45.2548)
+angle = 0.0
+trajectory = SubResource("Resource_nylku")
+speed = 106.0
+range = 110.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_tomtx"]
+script = ExtResource("7_kjj4n")
+projectile = ExtResource("6_pd7uc")
+position = Vector2(45.2548, 45.2548)
+angle = 0.0
+trajectory = SubResource("Resource_nylku")
+speed = 106.0
+range = 110.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_tyvbr"]
+script = ExtResource("9_c52h2")
+data = Array[ExtResource("7_kjj4n")]([SubResource("Resource_0p5mi"), SubResource("Resource_n83r1"), SubResource("Resource_yuahg"), SubResource("Resource_tomtx")])
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+texture_filter = 1
+script = ExtResource("1_o8qvm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_q04lr")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(3, 3.5)
+shape = SubResource("RectangleShape2D_dndgf")
+
+[node name="Weapons" type="Node2D" parent="."]
+
+[node name="Weapon1" type="Node2D" parent="Weapons"]
+script = SubResource("GDScript_jyy5l")
+pattern = ExtResource("5_1s3td")
+
+[node name="Weapon2" type="Node2D" parent="Weapons"]
+script = SubResource("GDScript_jyy5l")
+pattern = ExtResource("6_focav")
+
+[node name="Weapon3" type="Node2D" parent="Weapons"]
+script = SubResource("GDScript_jyy5l")
+pattern = SubResource("Resource_tyvbr")

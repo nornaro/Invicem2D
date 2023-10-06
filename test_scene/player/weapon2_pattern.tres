@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="Pattern2D" load_steps=15 format=3 uid="uid://mhdwvqj4iuum"]
+
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/patterns/pattern_elem2d.gd" id="1_g8qbi"]
+[ext_resource type="PackedScene" uid="uid://dej14csvkg4li" path="res://test_scene/player/player_projectile.tscn" id="1_psky7"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/patterns/pattern2d.gd" id="3_btngb"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/trajectories/combined_trajectory2d.gd" id="3_wfdq7"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/trajectories/linear_trajectory2d.gd" id="4_k0suj"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/trajectories/zigzag_trajectory.gd" id="5_67kym"]
+
+[sub_resource type="Resource" id="Resource_h3mlu"]
+script = ExtResource("4_k0suj")
+
+[sub_resource type="Resource" id="Resource_4ldeb"]
+script = ExtResource("5_67kym")
+type = "sin"
+amplitude = 20.0
+phase_shift = 0.0
+angle_deg = 90.0
+cycle_time = 50.0
+
+[sub_resource type="Resource" id="Resource_ay5h1"]
+script = ExtResource("3_wfdq7")
+trajectories = Array[Resource("res://addons/projectiles_plugin/2d/trajectories/trajectory2d.gd")]([SubResource("Resource_h3mlu"), SubResource("Resource_4ldeb")])
+
+[sub_resource type="Resource" id="Resource_c35ck"]
+script = ExtResource("1_g8qbi")
+projectile = ExtResource("1_psky7")
+position = Vector2(0, 0)
+angle = 0.0
+trajectory = SubResource("Resource_ay5h1")
+speed = 500.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_xyjap"]
+script = ExtResource("4_k0suj")
+
+[sub_resource type="Resource" id="Resource_plkp8"]
+script = ExtResource("5_67kym")
+type = "sin"
+amplitude = 20.0
+phase_shift = 180.0
+angle_deg = 90.0
+cycle_time = 50.0
+
+[sub_resource type="Resource" id="Resource_6jyg5"]
+script = ExtResource("3_wfdq7")
+trajectories = Array[Resource("res://addons/projectiles_plugin/2d/trajectories/trajectory2d.gd")]([SubResource("Resource_xyjap"), SubResource("Resource_plkp8")])
+
+[sub_resource type="Resource" id="Resource_0ysbt"]
+script = ExtResource("1_g8qbi")
+projectile = ExtResource("1_psky7")
+position = Vector2(0, 0)
+angle = 0.0
+trajectory = SubResource("Resource_6jyg5")
+speed = 500.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[resource]
+script = ExtResource("3_btngb")
+data = Array[ExtResource("1_g8qbi")]([SubResource("Resource_c35ck"), SubResource("Resource_0ysbt")])

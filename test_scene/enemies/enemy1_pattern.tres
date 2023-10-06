@@ -1,0 +1,138 @@
+[gd_resource type="Resource" script_class="Pattern2D" load_steps=21 format=3 uid="uid://rju6tv1mvnnv"]
+
+[ext_resource type="PackedScene" uid="uid://7mudsepl0jv8" path="res://test_scene/enemies/enemy_projectile.tscn" id="1_2p7p1"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/patterns/pattern_elem2d.gd" id="2_o7if5"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/trajectories/linear_trajectory2d.gd" id="3_lkqyq"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/patterns/pattern2d.gd" id="4_ho3vm"]
+
+[sub_resource type="Resource" id="Resource_nir21"]
+script = ExtResource("3_lkqyq")
+
+[sub_resource type="Resource" id="Resource_2bj4h"]
+script = ExtResource("2_o7if5")
+projectile = ExtResource("1_2p7p1")
+position = Vector2(12.2459, 29.5641)
+angle = 67.4999
+trajectory = SubResource("Resource_nir21")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.18
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_tf3sc"]
+script = ExtResource("3_lkqyq")
+
+[sub_resource type="Resource" id="Resource_a8lvg"]
+script = ExtResource("2_o7if5")
+projectile = ExtResource("1_2p7p1")
+position = Vector2(29.5641, 12.2459)
+angle = 22.5001
+trajectory = SubResource("Resource_tf3sc")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.12
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_ychj3"]
+script = ExtResource("3_lkqyq")
+
+[sub_resource type="Resource" id="Resource_cllx3"]
+script = ExtResource("2_o7if5")
+projectile = ExtResource("1_2p7p1")
+position = Vector2(29.5641, -12.2459)
+angle = -22.5001
+trajectory = SubResource("Resource_ychj3")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.04
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_wik2y"]
+script = ExtResource("3_lkqyq")
+
+[sub_resource type="Resource" id="Resource_tncol"]
+script = ExtResource("2_o7if5")
+projectile = ExtResource("1_2p7p1")
+position = Vector2(12.2459, -29.5641)
+angle = -67.4999
+trajectory = SubResource("Resource_wik2y")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_ltklq"]
+script = ExtResource("3_lkqyq")
+
+[sub_resource type="Resource" id="Resource_ivboe"]
+script = ExtResource("2_o7if5")
+projectile = ExtResource("1_2p7p1")
+position = Vector2(-12.2459, -29.5641)
+angle = -112.5
+trajectory = SubResource("Resource_ltklq")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.42
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_uvgri"]
+script = ExtResource("3_lkqyq")
+
+[sub_resource type="Resource" id="Resource_ysqee"]
+script = ExtResource("2_o7if5")
+projectile = ExtResource("1_2p7p1")
+position = Vector2(-29.5641, -12.2459)
+angle = -157.5
+trajectory = SubResource("Resource_uvgri")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.36
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_6ssdx"]
+script = ExtResource("3_lkqyq")
+
+[sub_resource type="Resource" id="Resource_24fvy"]
+script = ExtResource("2_o7if5")
+projectile = ExtResource("1_2p7p1")
+position = Vector2(-29.5641, 12.2459)
+angle = 157.5
+trajectory = SubResource("Resource_6ssdx")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.3
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_qh40g"]
+script = ExtResource("3_lkqyq")
+
+[sub_resource type="Resource" id="Resource_ubi5s"]
+script = ExtResource("2_o7if5")
+projectile = ExtResource("1_2p7p1")
+position = Vector2(-12.2459, 29.5641)
+angle = 112.5
+trajectory = SubResource("Resource_qh40g")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.24
+rand_spread = 0.0
+target_group = ""
+
+[resource]
+script = ExtResource("4_ho3vm")
+data = Array[ExtResource("2_o7if5")]([SubResource("Resource_2bj4h"), SubResource("Resource_a8lvg"), SubResource("Resource_cllx3"), SubResource("Resource_tncol"), SubResource("Resource_ivboe"), SubResource("Resource_ysqee"), SubResource("Resource_24fvy"), SubResource("Resource_ubi5s")])

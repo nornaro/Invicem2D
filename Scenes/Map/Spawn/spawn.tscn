@@ -7,5 +7,5 @@ size = Vector2(1, 2)
 position = Vector2(-150, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(10, 100)
+scale = Vector2(8, 80)
 shape = SubResource("RectangleShape2D_ruswv")

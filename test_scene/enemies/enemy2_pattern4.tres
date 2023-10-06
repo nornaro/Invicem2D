@@ -1,0 +1,186 @@
+[gd_resource type="Resource" script_class="Pattern2D" load_steps=27 format=3 uid="uid://d2e1dbuaiqib6"]
+
+[ext_resource type="PackedScene" uid="uid://7mudsepl0jv8" path="res://test_scene/enemies/enemy_projectile.tscn" id="1_nkv5w"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/patterns/pattern_elem2d.gd" id="2_fxhyr"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/trajectories/linear_trajectory2d.gd" id="3_3fwfi"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/patterns/pattern2d.gd" id="4_2ev2t"]
+
+[sub_resource type="Resource" id="Resource_ltklq"]
+script = ExtResource("3_3fwfi")
+
+[sub_resource type="Resource" id="Resource_ivboe"]
+script = ExtResource("2_fxhyr")
+projectile = ExtResource("1_nkv5w")
+position = Vector2(-32, -64)
+angle = 0.380276
+trajectory = SubResource("Resource_ltklq")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_365j7"]
+script = ExtResource("3_3fwfi")
+
+[sub_resource type="Resource" id="Resource_qsx5y"]
+script = ExtResource("2_fxhyr")
+projectile = ExtResource("1_nkv5w")
+position = Vector2(-32, -32)
+angle = 0.380276
+trajectory = SubResource("Resource_365j7")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_sg1l7"]
+script = ExtResource("3_3fwfi")
+
+[sub_resource type="Resource" id="Resource_cvasc"]
+script = ExtResource("2_fxhyr")
+projectile = ExtResource("1_nkv5w")
+position = Vector2(-32, 0)
+angle = 0.380276
+trajectory = SubResource("Resource_sg1l7")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_1f4yi"]
+script = ExtResource("3_3fwfi")
+
+[sub_resource type="Resource" id="Resource_qut7g"]
+script = ExtResource("2_fxhyr")
+projectile = ExtResource("1_nkv5w")
+position = Vector2(-32, 32)
+angle = 0.380276
+trajectory = SubResource("Resource_1f4yi")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_5wfr6"]
+script = ExtResource("3_3fwfi")
+
+[sub_resource type="Resource" id="Resource_ij4sa"]
+script = ExtResource("2_fxhyr")
+projectile = ExtResource("1_nkv5w")
+position = Vector2(-32, 64)
+angle = 0.380276
+trajectory = SubResource("Resource_5wfr6")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_o6syl"]
+script = ExtResource("3_3fwfi")
+
+[sub_resource type="Resource" id="Resource_agcu4"]
+script = ExtResource("2_fxhyr")
+projectile = ExtResource("1_nkv5w")
+position = Vector2(32, -32)
+angle = 0.380276
+trajectory = SubResource("Resource_o6syl")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_cscdy"]
+script = ExtResource("3_3fwfi")
+
+[sub_resource type="Resource" id="Resource_vqwxg"]
+script = ExtResource("2_fxhyr")
+projectile = ExtResource("1_nkv5w")
+position = Vector2(32, 0)
+angle = 0.380276
+trajectory = SubResource("Resource_cscdy")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_8mtjk"]
+script = ExtResource("3_3fwfi")
+
+[sub_resource type="Resource" id="Resource_htq11"]
+script = ExtResource("2_fxhyr")
+projectile = ExtResource("1_nkv5w")
+position = Vector2(0, -64)
+angle = 0.380276
+trajectory = SubResource("Resource_8mtjk")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_3xgd6"]
+script = ExtResource("3_3fwfi")
+
+[sub_resource type="Resource" id="Resource_i6x0j"]
+script = ExtResource("2_fxhyr")
+projectile = ExtResource("1_nkv5w")
+position = Vector2(32, -64)
+angle = 0.380276
+trajectory = SubResource("Resource_3xgd6")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_s78op"]
+script = ExtResource("3_3fwfi")
+
+[sub_resource type="Resource" id="Resource_b6ija"]
+script = ExtResource("2_fxhyr")
+projectile = ExtResource("1_nkv5w")
+position = Vector2(0, 64)
+angle = 0.380276
+trajectory = SubResource("Resource_s78op")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_sgelc"]
+script = ExtResource("3_3fwfi")
+
+[sub_resource type="Resource" id="Resource_hrsju"]
+script = ExtResource("2_fxhyr")
+projectile = ExtResource("1_nkv5w")
+position = Vector2(32, 64)
+angle = 0.380276
+trajectory = SubResource("Resource_sgelc")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[resource]
+script = ExtResource("4_2ev2t")
+data = Array[ExtResource("2_fxhyr")]([SubResource("Resource_ivboe"), SubResource("Resource_qsx5y"), SubResource("Resource_cvasc"), SubResource("Resource_qut7g"), SubResource("Resource_ij4sa"), SubResource("Resource_agcu4"), SubResource("Resource_vqwxg"), SubResource("Resource_htq11"), SubResource("Resource_i6x0j"), SubResource("Resource_b6ija"), SubResource("Resource_hrsju")])

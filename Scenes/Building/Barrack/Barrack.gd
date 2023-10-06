@@ -1,4 +1,4 @@
-extends MeshInstance2D
+extends StaticBody2D
 
 @export var Data = {
 	"linear_velocity":200
@@ -12,7 +12,7 @@ func spawn(Minions,Spawn):
 		return
 	var scene = load("res://Scenes/Minions/Minion/minion.tscn")
 	var instance = scene.instantiate()
-	instance.position = Vector2(Spawn.position.x,randi_range(-Spawn.scale.y,Spawn.scale.y))
+	instance.position = Vector2(Spawn.get_parent().position.x,randi_range(-Spawn.scale.y,Spawn.scale.y))
 	instance.linear_velocity = Vector2(-Data["linear_velocity"],0)
 	instance.name = str(instance.get_instance_id())
 	Minions.add_child(instance)

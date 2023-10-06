@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctyric4lpymab"]
+[gd_scene load_steps=4 format=3 uid="uid://ctyric4lpymab"]
 
 [ext_resource type="Script" path="res://Scenes/UI/ui.gd" id="1_2xbke"]
-[ext_resource type="Script" path="res://Scenes/UI/List.gd" id="2_1tmki"]
 [ext_resource type="Script" path="res://Scenes/UI/Numbers.gd" id="3_xheqc"]
 [ext_resource type="Script" path="res://Scenes/UI/Confirm.gd" id="5_rq4vg"]
 
@@ -14,7 +13,6 @@ offset_top = -440.0
 offset_right = -835.0
 offset_bottom = -190.0
 allow_reselect = true
-script = ExtResource("2_1tmki")
 
 [node name="Numbers" type="ItemList" parent="."]
 offset_left = -960.0

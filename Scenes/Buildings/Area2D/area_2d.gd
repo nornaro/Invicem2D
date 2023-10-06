@@ -3,11 +3,12 @@ extends Area2D
 var id
 var type
 var multiselect
-signal selection_toggled(selection)
+#signal selection_toggled(selection)
 var selected
 signal menu(selected)
 @export var showCollisionToggle = false
 @export var showCollision = false
+var selection_rectangle = CollisionShape2D.new()
 
 func _input(event):
 	if event.is_action_pressed("Ctrl"):
@@ -30,7 +31,7 @@ func _input(event):
 #				get_parent().get_node("Select/red").show()
 #
 #				get_parent().get_node("Select/green").hide()
-	
+
 func set_selected(selection):
 	if selection:
 		_make_exclusive()
@@ -40,7 +41,7 @@ func set_selected(selection):
 		remove_from_group("selected")
 		get_parent().get_node("Outline").hide()
 	selected = selection
-	emit_signal("selection_toggled",selected)
+#	emit_signal("selection_toggled",selected)
 
 func _make_exclusive() :
 	if multiselect:

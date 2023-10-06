@@ -1,14 +1,30 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0k7m2mj4ditp"]
+[gd_scene load_steps=15 format=3 uid="uid://d0k7m2mj4ditp"]
 
 [ext_resource type="Script" path="res://2d_client.gd" id="1_th4ev"]
-[ext_resource type="PackedScene" uid="uid://c8jfc2jypl6xb" path="res://Scenes/Building/Castle/health_bar.tscn" id="2_ja24o"]
 [ext_resource type="PackedScene" uid="uid://c4ma53dgi0oje" path="res://Scenes/Map/map.tscn" id="2_yhlvb"]
 [ext_resource type="PackedScene" uid="uid://cidx2d5wiam6y" path="res://Scenes/Buildings/buildings.tscn" id="3_ahp38"]
 [ext_resource type="PackedScene" uid="uid://ctyric4lpymab" path="res://Scenes/UI/ui.tscn" id="4_xvbv6"]
 [ext_resource type="Script" path="res://Timers.gd" id="5_y26ug"]
+[ext_resource type="Script" path="res://SelectionRectangle.gd" id="8_6u2oo"]
 [ext_resource type="PackedScene" uid="uid://1f5dk1ss87fi" path="res://Scenes/Camera/camera.tscn" id="8_adqel"]
+[ext_resource type="Script" path="res://Scenes/HealhBar/HealthBar.gd" id="8_j3274"]
 [ext_resource type="Script" path="res://Bugs.gd" id="9_syjex"]
 [ext_resource type="PackedScene" uid="uid://bmry5otyyudj1" path="res://Scenes/Minions/minions.tscn" id="10_ncmxa"]
+[ext_resource type="Script" path="res://2DO.gd" id="11_p01gy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jws3q"]
+size = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dq6f6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5xb7"]
+bg_color = Color(0, 1, 0, 1)
 
 [node name="2DClient" type="Node"]
 script = ExtResource("1_th4ev")
@@ -24,8 +40,16 @@ autostart = true
 unique_name_in_owner = true
 y_sort_enabled = true
 
+[node name="SelectionRectangle" type="Area2D" parent="Map" groups=["SelectionRectangle"]]
+script = ExtResource("8_6u2oo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/SelectionRectangle"]
+modulate = Color(0, 0.2, 0.345098, 1)
+shape = SubResource("RectangleShape2D_jws3q")
+
 [node name="Buildings" parent="." instance=ExtResource("3_ahp38")]
 unique_name_in_owner = true
+visible = false
 
 [node name="Minions" parent="." instance=ExtResource("10_ncmxa")]
 unique_name_in_owner = true
@@ -35,22 +59,30 @@ unique_name_in_owner = true
 [node name="UI" parent="." instance=ExtResource("4_xvbv6")]
 unique_name_in_owner = true
 
-[node name="List" parent="UI" index="0"]
-script = null
+[node name="List" parent="UI" index="0" groups=["List"]]
 
-[node name="HealthBar" parent="." instance=ExtResource("2_ja24o")]
+[node name="HealthBar" type="ProgressBar" parent="." groups=["HealthBar"]]
 offset_left = -415.0
 offset_top = -500.0
 offset_right = 415.0
 offset_bottom = -485.0
+theme_override_styles/background = SubResource("StyleBoxFlat_dq6f6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_o5xb7")
+step = 1.0
 value = 100.0
+allow_greater = true
+show_percentage = false
+script = ExtResource("8_j3274")
 
 [node name="Bugs" type="Node" parent="."]
 script = ExtResource("9_syjex")
 
 [node name="2DO" type="Node" parent="."]
+script = ExtResource("11_p01gy")
 
 [connection signal="timeout" from="Timers/Minion" to="." method="_on_minion_timeout"]
+[connection signal="area_entered" from="Map/SelectionRectangle" to="Map/SelectionRectangle" method="_on_area_entered"]
+[connection signal="area_exited" from="Map/SelectionRectangle" to="Map/SelectionRectangle" method="_on_area_exited"]
 [connection signal="pressed" from="UI/Destroy/VBoxContainer/HBoxContainer/Cancel" to="UI/Destroy" method="_on_cancel_pressed"]
 
 [editable path="Map"]

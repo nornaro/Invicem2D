@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://23kf6rbawp6t"]
+
+[ext_resource type="Texture2D" uid="uid://cv80ykpa515a2" path="res://Scenes/Building/Forge/Forge.png" id="1_oon2l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pisk6"]
+atlas = ExtResource("1_oon2l")
+region = Rect2(50, 0, 500, 470)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pisk6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

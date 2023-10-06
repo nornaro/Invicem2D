@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dej14csvkg4li"]
+
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/projectiles/projectile2d.gd" id="1_vixx2"]
+[ext_resource type="Shader" path="res://test_scene/projectile.gdshader" id="2_h6wux"]
+[ext_resource type="Texture2D" uid="uid://d07ly53ak1aak" path="res://icon.svg" id="3_cjopu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6fng"]
+shader = ExtResource("2_h6wux")
+shader_parameter/c1 = Color(1, 1, 1, 1)
+shader_parameter/c2 = Color(0.0941176, 0.482353, 0.784314, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rogcu"]
+radius = 15.0333
+
+[node name="Projectile2D" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_vixx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_g6fng")
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("3_cjopu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rogcu")

@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://btix7urleuwe2"]
+
+[ext_resource type="Script" path="res://test_scene/enemies/enemy.gd" id="1_qypfk"]
+[ext_resource type="Texture2D" uid="uid://d226xjqedoyhn" path="res://test_scene/assets/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_spritesheet.png" id="2_s4v6r"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/patterns/pattern_shooter2d.gd" id="3_hbe7y"]
+[ext_resource type="Resource" uid="uid://rju6tv1mvnnv" path="res://test_scene/enemies/enemy1_pattern.tres" id="4_u5ywh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gymta"]
+atlas = ExtResource("2_s4v6r")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yteqs"]
+atlas = ExtResource("2_s4v6r")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4txn"]
+atlas = ExtResource("2_s4v6r")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2fqt"]
+atlas = ExtResource("2_s4v6r")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3fg2"]
+atlas = ExtResource("2_s4v6r")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4c5s"]
+atlas = ExtResource("2_s4v6r")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_in4mt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gymta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yteqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4txn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2fqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3fg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4c5s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1jb2"]
+size = Vector2(14.25, 10.75)
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+z_index = 1
+scale = Vector2(4, 4)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_qypfk")
+shoot_cd = 1.2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_in4mt")
+autoplay = "default"
+frame_progress = 0.621738
+
+[node name="Patterns" type="Node2D" parent="."]
+
+[node name="PatternShooter2D" type="Node2D" parent="Patterns"]
+script = ExtResource("3_hbe7y")
+pattern = ExtResource("4_u5ywh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.125, 1.125)
+shape = SubResource("RectangleShape2D_t1jb2")

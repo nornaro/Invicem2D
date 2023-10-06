@@ -1,0 +1,539 @@
+[gd_scene load_steps=73 format=3 uid="uid://l5lgy7tgqp4"]
+
+[ext_resource type="Script" path="res://test_scene/enemies/enemy.gd" id="1_2lgwj"]
+[ext_resource type="Texture2D" uid="uid://d226xjqedoyhn" path="res://test_scene/assets/v1.1 dungeon crawler 16X16 pixel pack/enemies/slime/slime_idle_spritesheet.png" id="2_01rw2"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/patterns/targeted_shooter2d.gd" id="3_vskyt"]
+[ext_resource type="Resource" uid="uid://bpcd4lfc3k7d5" path="res://test_scene/enemies/enemy2_pattern1.tres" id="4_bk3vc"]
+[ext_resource type="Resource" uid="uid://dsonwtrotsdls" path="res://test_scene/enemies/enemy2_pattern2.tres" id="5_1vclf"]
+[ext_resource type="PackedScene" uid="uid://7mudsepl0jv8" path="res://test_scene/enemies/enemy_projectile.tscn" id="6_kbdk2"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/patterns/pattern_elem2d.gd" id="7_n27ho"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/trajectories/linear_trajectory2d.gd" id="8_a5exm"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/patterns/pattern2d.gd" id="9_ntjln"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gymta"]
+atlas = ExtResource("2_01rw2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yteqs"]
+atlas = ExtResource("2_01rw2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4txn"]
+atlas = ExtResource("2_01rw2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2fqt"]
+atlas = ExtResource("2_01rw2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3fg2"]
+atlas = ExtResource("2_01rw2")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4c5s"]
+atlas = ExtResource("2_01rw2")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_in4mt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gymta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yteqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4txn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2fqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3fg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4c5s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_ihib6"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_nwt4x"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(-32, -64)
+angle = 0.380276
+trajectory = SubResource("Resource_ihib6")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_yb1bb"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_ouxut"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(-32, -32)
+angle = 0.380276
+trajectory = SubResource("Resource_yb1bb")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_t2sk3"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_ef7hy"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(-32, 0)
+angle = 0.380276
+trajectory = SubResource("Resource_t2sk3")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_iejtu"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_kh7py"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(-32, 32)
+angle = 0.380276
+trajectory = SubResource("Resource_iejtu")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_faree"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_d6js8"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(-32, 64)
+angle = 0.380276
+trajectory = SubResource("Resource_faree")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_byjm1"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_v6kcv"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(0, 64)
+angle = 0.380276
+trajectory = SubResource("Resource_byjm1")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_pj2dm"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_6lcq2"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(32, 64)
+angle = 0.380276
+trajectory = SubResource("Resource_pj2dm")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_go1pu"]
+script = ExtResource("9_ntjln")
+data = Array[ExtResource("7_n27ho")]([SubResource("Resource_nwt4x"), SubResource("Resource_ouxut"), SubResource("Resource_ef7hy"), SubResource("Resource_kh7py"), SubResource("Resource_d6js8"), SubResource("Resource_v6kcv"), SubResource("Resource_6lcq2")])
+
+[sub_resource type="Resource" id="Resource_ltklq"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_ivboe"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(-32, -64)
+angle = 0.380276
+trajectory = SubResource("Resource_ltklq")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_365j7"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_qsx5y"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(-32, -32)
+angle = 0.380276
+trajectory = SubResource("Resource_365j7")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_sg1l7"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_cvasc"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(-32, 0)
+angle = 0.380276
+trajectory = SubResource("Resource_sg1l7")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_1f4yi"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_qut7g"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(-32, 32)
+angle = 0.380276
+trajectory = SubResource("Resource_1f4yi")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_5wfr6"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_ij4sa"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(-32, 64)
+angle = 0.380276
+trajectory = SubResource("Resource_5wfr6")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_s78op"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_b6ija"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(0, 64)
+angle = 0.380276
+trajectory = SubResource("Resource_s78op")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_sgelc"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_hrsju"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(32, 64)
+angle = 0.380276
+trajectory = SubResource("Resource_sgelc")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_75xab"]
+script = ExtResource("9_ntjln")
+data = Array[ExtResource("7_n27ho")]([SubResource("Resource_ivboe"), SubResource("Resource_qsx5y"), SubResource("Resource_cvasc"), SubResource("Resource_qut7g"), SubResource("Resource_ij4sa"), SubResource("Resource_b6ija"), SubResource("Resource_hrsju")])
+
+[sub_resource type="Resource" id="Resource_v1xyn"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_owfht"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(-32, -64)
+angle = 0.380276
+trajectory = SubResource("Resource_v1xyn")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_6xd2f"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_bgrnw"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(-32, -32)
+angle = 0.380276
+trajectory = SubResource("Resource_6xd2f")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_t2urj"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_ay8o0"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(-32, 0)
+angle = 0.380276
+trajectory = SubResource("Resource_t2urj")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_iuvkh"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_cisfw"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(-32, 32)
+angle = 0.380276
+trajectory = SubResource("Resource_iuvkh")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_6m4h6"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_upt1h"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(-32, 64)
+angle = 0.380276
+trajectory = SubResource("Resource_6m4h6")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_3ac58"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_3pex4"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(32, -32)
+angle = 0.380276
+trajectory = SubResource("Resource_3ac58")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_uk2pa"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_m2o64"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(32, 0)
+angle = 0.380276
+trajectory = SubResource("Resource_uk2pa")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_e88dm"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_38xrs"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(0, -64)
+angle = 0.380276
+trajectory = SubResource("Resource_e88dm")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_d45qe"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_akqs2"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(32, -64)
+angle = 0.380276
+trajectory = SubResource("Resource_d45qe")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_2s1oj"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_hvahr"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(0, 64)
+angle = 0.380276
+trajectory = SubResource("Resource_2s1oj")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_803rb"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_sl3ui"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(32, 64)
+angle = 0.380276
+trajectory = SubResource("Resource_803rb")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_fy2rd"]
+script = ExtResource("8_a5exm")
+
+[sub_resource type="Resource" id="Resource_wmbe5"]
+script = ExtResource("7_n27ho")
+projectile = ExtResource("6_kbdk2")
+position = Vector2(32, 32)
+angle = 0.380276
+trajectory = SubResource("Resource_fy2rd")
+speed = 342.0
+range = 300.0
+spawn_delay = 0.0
+travel_delay = 0.0
+rand_spread = 0.0
+target_group = ""
+
+[sub_resource type="Resource" id="Resource_d8yvo"]
+script = ExtResource("9_ntjln")
+data = Array[ExtResource("7_n27ho")]([SubResource("Resource_owfht"), SubResource("Resource_bgrnw"), SubResource("Resource_ay8o0"), SubResource("Resource_cisfw"), SubResource("Resource_upt1h"), SubResource("Resource_3pex4"), SubResource("Resource_m2o64"), SubResource("Resource_38xrs"), SubResource("Resource_akqs2"), SubResource("Resource_hvahr"), SubResource("Resource_sl3ui"), SubResource("Resource_wmbe5")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1jb2"]
+size = Vector2(14.25, 10.75)
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+z_index = 1
+scale = Vector2(6, 6)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_2lgwj")
+shoot_cd = 1.2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.647059, 0.54902, 1, 1)
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_in4mt")
+autoplay = "default"
+frame_progress = 0.621738
+
+[node name="Patterns" type="Node2D" parent="."]
+
+[node name="TargetedShooter2D" type="Node2D" parent="Patterns"]
+script = ExtResource("3_vskyt")
+group_name = "player"
+pattern = ExtResource("4_bk3vc")
+
+[node name="TargetedShooter2D2" type="Node2D" parent="Patterns"]
+script = ExtResource("3_vskyt")
+group_name = "player"
+pattern = ExtResource("5_1vclf")
+
+[node name="TargetedShooter2D3" type="Node2D" parent="Patterns"]
+script = ExtResource("3_vskyt")
+group_name = "player"
+pattern = SubResource("Resource_go1pu")
+
+[node name="TargetedShooter2D4" type="Node2D" parent="Patterns"]
+script = ExtResource("3_vskyt")
+group_name = "player"
+pattern = SubResource("Resource_75xab")
+
+[node name="TargetedShooter2D5" type="Node2D" parent="Patterns"]
+script = ExtResource("3_vskyt")
+group_name = "player"
+pattern = SubResource("Resource_d8yvo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.125, 1.125)
+shape = SubResource("RectangleShape2D_t1jb2")

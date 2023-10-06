@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://csstmm4xitbjy"]
+
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/grid_snap_checkbox.gd" id="1_1y0vt"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/grid_x_setter.gd" id="2_23wvc"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/grid_y_setter.gd" id="3_m1ivr"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/angle_step_setter.gd" id="4_p8m1g"]
+
+[node name="GridSettings" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridSnapCheckbox" type="CheckBox" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Snap to grid"
+script = ExtResource("1_1y0vt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Step X"
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridXValue" type="SpinBox" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1024.0
+value = 32.0
+suffix = "px"
+script = ExtResource("2_23wvc")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+text = "Step Y"
+
+[node name="Control2" type="Control" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridYValue" type="SpinBox" parent="HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1024.0
+value = 32.0
+suffix = "px"
+script = ExtResource("3_m1ivr")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer3"]
+layout_mode = 2
+text = "Step angle"
+
+[node name="Control3" type="Control" parent="HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridAngleValue" type="SpinBox" parent="HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1024.0
+step = 0.01
+value = 22.5
+suffix = "deg"
+script = ExtResource("4_p8m1g")

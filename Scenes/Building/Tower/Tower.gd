@@ -1,4 +1,4 @@
-extends MeshInstance2D
+extends StaticBody2D
 
 var elapsed_time
 var in_range
@@ -18,41 +18,20 @@ var in_range
 	"projectile": "HomingProjectile",
 	"menu" : ""
 }
-"
-Slots:
-	Targeting
-	Turret
-	Item[4]
-"
 
-"""
-
-func _ready():
-	$Min/CollisionShape2D.shape.radius = Tower.Data["targetingRrange"][0]
-	$Max/CollisionShape2D.shape.radius = Tower.Data["targetingRrange"][1]
-
-func _process(_delta):
-	if targeting.size() < Tower.Data["aoe"][0]:
-		for target in in_range:
-			in_range.erase(target)
-			if is_instance_valid(target):
-				targeting.append(target)
-
-
-"""
-func _on_min_area_exited(area):
+func _on_min_area_exited(area): # targetingRrange 0
 	add(area)
 
-func _on_max_area_entered(area):
+func _on_max_area_entered(area): # targetingRrange 1
 	if !area.get_parent().is_in_group("minions"):
 		return
 	in_range.append(area)
 	add(area)
 		
-func _on_min_area_entered(area):
+func _on_min_area_entered(area): # targetingRrange 0
 	del(area)
 
-func _on_max_area_exited(area):
+func _on_max_area_exited(area): # targetingRrange 1
 	del(area)
 
 func add(area):
@@ -75,15 +54,6 @@ func _ready():
 	$Outline.width *= 0.8
 	$Outline.hide()
 
-func instance_scene_from_name(turret_name: String): # testing function
-	var instance = AnimatedSprite2D.new()
-	instance.name = turret_name
-	var sprite_frames=SpriteFrames.new()
-	sprite_frames = load("res://Scenes/Building/Tower/Turrets/"+turret_name+"/"+turret_name+".tres")
-	instance.sprite_frames = sprite_frames
-	add_child(instance)
-	return instance.get_instance_id()
-
 func _process(delta):
 	if !Data.has("projectile"):
 		return
@@ -105,18 +75,3 @@ func fire_projectile(target):
 	instance.position += Vector2(0,60)
 	instance.target = target
 	add_child(instance)
-
-func _on_area_2d_area_entered(_area):
-	pass
-	
-func _on_area_2d_area_exited(_area):
-	pass
-	
-func _on_area_2d_input_event(_viewport, _event, _shape_idx):
-	pass
-	
-func _on_area_2d_mouse_entered():
-	pass
-	
-func _on_area_2d_mouse_exited():
-	pass

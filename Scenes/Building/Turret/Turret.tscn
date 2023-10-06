@@ -1,7 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://bp4rs15tn50dm"]
+[gd_scene load_steps=7 format=3 uid="uid://bp4rs15tn50dm"]
 
-[ext_resource type="SpriteFrames" uid="uid://dioxgg0s5ugdd" path="res://Scenes/Building/Tower/Turrets/T1/T1v3.tres" id="1_0dwyt"]
+[ext_resource type="PackedScene" uid="uid://bt4ojth5m2alx" path="res://Scenes/Projectiles/Projectile.tscn" id="1_dahtl"]
+[ext_resource type="SpriteFrames" uid="uid://c07xdxik2q5fl" path="res://Scenes/Building/Turret/T2/T2.tres" id="1_h4lpi"]
+[ext_resource type="PackedScene" uid="uid://d06p81aopg7re" path="res://Scenes/Targeting/Targeting.tscn" id="1_t4afy"]
+[ext_resource type="Script" path="res://Scenes/Building/Turret/Turret.gd" id="2_hsq2p"]
+[ext_resource type="Script" path="res://Scenes/Projectiles/Type/Simple.gd" id="3_5nhb8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_623ov"]
+radius = 70.0
+height = 180.0
 
 [node name="Turret" type="AnimatedSprite2D"]
-sprite_frames = ExtResource("1_0dwyt")
-frame_progress = 0.362029
+sprite_frames = ExtResource("1_h4lpi")
+frame = 32
+script = ExtResource("2_hsq2p")
+
+[node name="Projectile" parent="." instance=ExtResource("1_dahtl")]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("3_5nhb8")
+projectileSpeed = 500
+
+[node name="Targeting" parent="." instance=ExtResource("1_t4afy")]
+
+[node name="ASPD" type="Timer" parent="."]
+autostart = true
+
+[node name="CD" type="Timer" parent="."]
+one_shot = true
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
+position = Vector2(-15, 5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_623ov")
+
+[connection signal="property_list_changed" from="Targeting" to="." method="_on_targeting_property_list_changed"]
+[connection signal="timeout" from="ASPD" to="." method="_on_aspd_timeout"]

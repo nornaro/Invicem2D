@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt458n22f2bb3"]
+
+[ext_resource type="Texture2D" uid="uid://del7unjcq2ll3" path="res://addons/projectiles_plugin/graphics/dot.svg" id="1_ws5rk"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/elem_display.gd" id="2_kgcmc"]
+[ext_resource type="Texture2D" uid="uid://dkkcgiudmm58u" path="res://addons/projectiles_plugin/graphics/direction.svg" id="3_4lka6"]
+
+[node name="ElemDisplay" type="Sprite2D"]
+texture = ExtResource("1_ws5rk")
+script = ExtResource("2_kgcmc")
+color_normal = Color(1, 1, 1, 0.705882)
+color_focused = Color(0.243137, 0.458824, 0.639216, 1)
+
+[node name="ElemNumber" type="Label" parent="."]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0
+text = "0"
+
+[node name="DetailsDisplay" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_top = 16.0
+offset_right = 61.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 10
+text = "range: 200"
+horizontal_alignment = 1
+
+[node name="DirectionDisplay" type="Sprite2D" parent="."]
+texture = ExtResource("3_4lka6")
+offset = Vector2(18, 0)

@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://1f5dk1ss87fi"]
+[gd_scene load_steps=2 format=3 uid="uid://1f5dk1ss87fi"]
+
+[ext_resource type="Script" path="res://Scenes/Camera/camera.gd" id="1_2pt3t"]
 
 [node name="Camera" type="Camera2D"]
 zoom = Vector2(0.5, 0.5)
+script = ExtResource("1_2pt3t")

@@ -1,0 +1,226 @@
+[gd_scene load_steps=18 format=3 uid="uid://bwpssu54nf3ic"]
+
+[ext_resource type="Theme" uid="uid://n7hdxs1gsmbd" path="res://addons/projectiles_plugin/2d/editor/editor_theme.tres" id="1_7oy31"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/pattern_editor2d.gd" id="2_r0et0"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/rotate_menu.gd" id="3_yfod1"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/simulation_menu.gd" id="4_icg47"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/grid_snap_checkbox.gd" id="5_cifk8"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/grid_x_setter.gd" id="6_npd65"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/grid_y_setter.gd" id="7_vqs0f"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/angle_step_setter.gd" id="8_tgcif"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/grid_mode_checkbox.gd" id="9_ysric"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/subviewport.gd" id="10_voel8"]
+[ext_resource type="Texture2D" uid="uid://bamjm1pbs00xt" path="res://addons/projectiles_plugin/graphics/plus.svg" id="11_f1ly2"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/pattern_elements.gd" id="12_kr2s4"]
+[ext_resource type="PackedScene" uid="uid://bt458n22f2bb3" path="res://addons/projectiles_plugin/2d/editor/elem_display.tscn" id="13_1eha2"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/patterns/pattern_shooter2d.gd" id="14_6ix65"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/custom_camera.gd" id="15_2qmvi"]
+[ext_resource type="PackedScene" uid="uid://ch065vvvvjn7d" path="res://addons/projectiles_plugin/2d/editor/grid.tscn" id="16_2bw0w"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/grid.gd" id="17_f1bjt"]
+
+[node name="PatternEditor2D" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_7oy31")
+script = ExtResource("2_r0et0")
+
+[node name="Toolbar" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="RotateMenu" type="MenuButton" parent="Toolbar"]
+layout_mode = 2
+text = "Rotate
+"
+item_count = 5
+popup/item_0/text = "Outwards"
+popup/item_0/id = 0
+popup/item_1/text = "Inwards"
+popup/item_1/id = 1
+popup/item_2/text = "Parallel"
+popup/item_2/id = 2
+popup/item_3/text = "Focused"
+popup/item_3/id = 3
+popup/item_4/text = "Random"
+popup/item_4/id = 4
+script = ExtResource("3_yfod1")
+
+[node name="SimulationMenu" type="MenuButton" parent="Toolbar"]
+layout_mode = 2
+text = "Simulation
+"
+item_count = 2
+popup/item_0/text = "Run"
+popup/item_0/id = 0
+popup/item_1/text = "Stop"
+popup/item_1/id = 1
+script = ExtResource("4_icg47")
+
+[node name="HSplitContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="CenterContainer" type="MarginContainer" parent="HSplitContainer/ScrollContainer"]
+layout_mode = 2
+theme = ExtResource("1_7oy31")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/ScrollContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Grid"
+horizontal_alignment = 1
+
+[node name="GridSnapCheckbox" type="CheckBox" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "Snap to grid"
+script = ExtResource("5_cifk8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Step X"
+
+[node name="Control" type="Control" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridXValue" type="SpinBox" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1024.0
+value = 32.0
+suffix = "px"
+script = ExtResource("6_npd65")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Step Y"
+
+[node name="Control2" type="Control" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridYValue" type="SpinBox" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1024.0
+value = 32.0
+suffix = "px"
+script = ExtResource("7_vqs0f")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Step angle"
+
+[node name="Control3" type="Control" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridAngleValue" type="SpinBox" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1024.0
+step = 0.01
+value = 22.5
+suffix = "deg"
+script = ExtResource("8_tgcif")
+
+[node name="Label3" type="Label" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Grid mode"
+horizontal_alignment = 1
+
+[node name="GridXCheckbox" type="CheckBox" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Rect X"
+script = ExtResource("9_ysric")
+
+[node name="GridYCheckbox" type="CheckBox" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Rect Y"
+script = ExtResource("9_ysric")
+mode_shift = 1
+
+[node name="GridCircularCheckbox" type="CheckBox" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "Circular"
+script = ExtResource("9_ysric")
+mode_shift = 2
+
+[node name="GridRadialCheckbox" type="CheckBox" parent="HSplitContainer/ScrollContainer/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "Radial"
+script = ExtResource("9_ysric")
+mode_shift = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+stretch = true
+script = ExtResource("10_voel8")
+zoom_min = 0.25
+
+[node name="SubViewport" type="SubViewport" parent="HSplitContainer/SubViewportContainer"]
+disable_3d = true
+handle_input_locally = false
+size = Vector2i(948, 611)
+render_target_update_mode = 4
+
+[node name="PatternDisplay" type="Node2D" parent="HSplitContainer/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+
+[node name="OriginMarker" type="Sprite2D" parent="HSplitContainer/SubViewportContainer/SubViewport/PatternDisplay"]
+texture = ExtResource("11_f1ly2")
+
+[node name="PatternElements" type="Node2D" parent="HSplitContainer/SubViewportContainer/SubViewport/PatternDisplay"]
+unique_name_in_owner = true
+script = ExtResource("12_kr2s4")
+elem_display_scene = ExtResource("13_1eha2")
+
+[node name="PatternShooter" type="Node2D" parent="HSplitContainer/SubViewportContainer/SubViewport/PatternDisplay"]
+unique_name_in_owner = true
+script = ExtResource("14_6ix65")
+
+[node name="CustomCamera" type="Node2D" parent="HSplitContainer/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+position = Vector2(474, 305.5)
+script = ExtResource("15_2qmvi")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HSplitContainer/SubViewportContainer/SubViewport"]
+layer = -1
+
+[node name="Grid" parent="HSplitContainer/SubViewportContainer/SubViewport/CanvasLayer" instance=ExtResource("16_2bw0w")]
+unique_name_in_owner = true
+script = ExtResource("17_f1bjt")
+use_snapping = true
+mode = 12
+angle_step = 22.5
+grid_offset = Vector2(474, 305.5)

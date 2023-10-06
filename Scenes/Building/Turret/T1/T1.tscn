@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://1j647e63s1q4"]
+
+[ext_resource type="Script" path="res://Scenes/Building/Turret/T1/T1.gd" id="1_0ti72"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4wnq"]
+size = Vector2(1, 1)
+
+[node name="Muzzle" type="Node2D"]
+position = Vector2(18, 0)
+rotation = 0.785398
+script = ExtResource("1_0ti72")
+
+[node name="1" type="Area2D" parent="."]
+position = Vector2(-8, -75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1"]
+shape = SubResource("RectangleShape2D_e4wnq")
+
+[node name="2" type="Area2D" parent="."]
+position = Vector2(12, -75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2"]
+shape = SubResource("RectangleShape2D_e4wnq")

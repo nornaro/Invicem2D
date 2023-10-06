@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddsrf5sd6fe2m"]
+
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/grid_mode_checkbox.gd" id="1_fllf3"]
+
+[node name="GridMode" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridXCheckbox" type="CheckBox" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Rect X"
+script = ExtResource("1_fllf3")
+
+[node name="GridYCheckbox" type="CheckBox" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Rect Y"
+script = ExtResource("1_fllf3")
+mode_shift = 1
+
+[node name="GridCircularCheckbox" type="CheckBox" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "Circular"
+script = ExtResource("1_fllf3")
+mode_shift = 2
+
+[node name="GridRadialCheckbox" type="CheckBox" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "Radial"
+script = ExtResource("1_fllf3")
+mode_shift = 3
