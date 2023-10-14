@@ -26,7 +26,6 @@ func _on_max_area_entered(area):
 		target.global_position = targets.find_key(targets.values().max())
 		targeting = [target.position]
 		$Sprite2D.global_position = target.position
-		print(targets.values().max(),target.position)
 		
 func round_to_5s(vec: Vector2) -> Vector2:
 	return Vector2(round(vec.x / 10.0) * 10.0, round(vec.y / 10.0) * 10.0)

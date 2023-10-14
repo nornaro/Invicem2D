@@ -12,19 +12,21 @@ var placement = false
 var drag = false
 var rectangle = Area2D.new()
 var colliding
+@export var showCollision = false
 
-func add_buildings_list(Items):
-	
-	for building in Items["Buildings"]:
+func add_buildings_list(Items):	
+	for building in Items:
 		var instance = Node.new()
 		instance.name = building
 		add_child(instance)
-
-		if building == "Castle":
-			build_castle(building)
-			Items["Buildings"].erase("Castle")
 		
 func _input(event):
+	if event.is_action_released("ShowCollisionToggle"):
+		var buildings = get_tree().get_nodes_in_group("building")
+		showCollision = !showCollision
+		for building in buildings:
+			building.get_parent().get_node("Select/green").visible = showCollision
+			building.get_parent().get_node("Select/red").visible = false
 	if !temp_instance:
 		return
 	var instance = instance_from_id(temp_instance)
@@ -34,6 +36,7 @@ func _input(event):
 		return
 	instance.position = snap(get_global_mouse_position())
 	colliding = get_tree().get_nodes_in_group(str(instance.get_node("Area2D").get_instance_id()))
+	show_collision(instance,colliding)
 	if colliding:
 		instance.modulate = collision_color
 		return
@@ -44,6 +47,22 @@ func _input(event):
 		return
 	change_buildings(%UI.text, false)
 
+func show_collision(instance,colliding):
+	if !showCollision:
+		instance.get_node("Select/green").hide()
+		instance.get_node("Select/red").hide()
+		return
+	instance.get_node("Select/green").show()
+	var buildings = get_tree().get_nodes_in_group("building")
+	if buildings.is_empty():		
+		instance.get_node("Select/red").hide()
+		return
+	instance.get_node("Select/red").show()
+	for building in buildings:
+		building.get_parent().get_node("Select/red").hide()
+	for building in colliding:
+		building.get_parent().get_node("Select/red").show()
+	
 func selection_rectangle():
 	rectangle.add_child(CollisionShape2D.new())
 	rectangle.scale += get_local_mouse_position()	
@@ -71,8 +90,6 @@ func instance_scene_from_name(scene_name: String,parent_scene_name: String):
 	instance.name = scene_name
 	instance.add_to_group(parent_scene_name)
 	instance.modulate = placement_color
-	instance.get_node("Select/red").hide()
-	instance.get_node("Select/green").show()
 	temp_instance = instance.get_instance_id()
 	get_node(parent_scene_name).add_child(instance)
 	return temp_instance
@@ -143,12 +160,11 @@ func clear_collision():
 	var instance
 	if temp_instance:
 		instance = instance_from_id(temp_instance)
-	var id = instance.get_node("Area2D").get_instance_id() #2DO
-	for area in get_tree().get_nodes_in_group(str(id)):
-		area.remove_from_group(str(id))
+	if is_instance_valid(instance):
+		var id = instance.get_node("Area2D").get_instance_id() #2DO
+		for area in get_tree().get_nodes_in_group(str(id)):
+			area.remove_from_group(str(id))
+		instance.queue_free()
+		instance = null		
 	temp_instance = null
 	colliding = []
-	if !is_instance_valid(instance):
-		return
-	instance.queue_free()
-	instance = null

@@ -19,7 +19,6 @@ width = 20.0
 default_color = Color(0, 1, 0, 1)
 
 [node name="Select" parent="." instance=ExtResource("3_t3j57")]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_b5tgk")

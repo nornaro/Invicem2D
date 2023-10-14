@@ -5,7 +5,7 @@ extends Panel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_node("VBoxContainer/Text").set_text("Destroy the building(s)?")
+	get_node("VBoxContainer/VBoxContainer/Text").set_text("[center]\nDestroy the building(s)?[/center]")
 
 func _input(_event):
 	if visible:

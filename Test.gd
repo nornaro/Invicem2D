@@ -7,7 +7,6 @@ func _ready():
 	for i in 4:
 		arr.append(i)
 		arr.erase(4)
-	print(arr)
 	pass # Replace with function body.
 
 

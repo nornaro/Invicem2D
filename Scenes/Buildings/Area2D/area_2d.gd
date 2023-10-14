@@ -6,8 +6,6 @@ var multiselect
 #signal selection_toggled(selection)
 var selected
 signal menu(selected)
-@export var showCollisionToggle = false
-@export var showCollision = false
 var selection_rectangle = CollisionShape2D.new()
 
 func _input(event):
@@ -15,22 +13,6 @@ func _input(event):
 		multiselect = true
 	if event.is_action_released("Ctrl"):
 		multiselect = false
-	if event.is_action_pressed("ShowCollision"):
-		showCollision = true
-	if event.is_action_released("ShowCollision"):
-		showCollision = false	
-	if event.is_action_released("ShowCollisionToggle"):
-		showCollision = !showCollision
-#	if get_tree().get_nodes_in_group("temp"):
-#		if showCollision:
-#			for building in get_tree().get_nodes_in_group(str(get_instance_id())):
-#				building.get_parent().get_node("Select/red").show()
-#				get_parent().get_node("Select/red").show()
-#			for building in get_tree().get_nodes_in_group(str(get_instance_id())):
-#				building.get_parent().get_node("Select/red").show()
-#				get_parent().get_node("Select/red").show()
-#
-#				get_parent().get_node("Select/green").hide()
 
 func set_selected(selection):
 	if selection:

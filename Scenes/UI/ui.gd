@@ -1,4 +1,4 @@
-extends Node
+extends CanvasLayer
 
 @export var fixed = true
 @export var Items = {}
@@ -9,7 +9,9 @@ var pressed = false
 
 func _ready():
 	dir_to_list("res://Scenes/Building/", "Buildings")
-	%Buildings.add_buildings_list(Items)
+	%Buildings.add_buildings_list(Items["Buildings"])
+	%Buildings.build_castle("Castle")
+	Items["Buildings"].erase("Castle")
 	dir_to_list("res://Scenes/Building/Tower/", "Tower")
 	dir_to_list("res://Scenes/Building/Tower/Turrets/", "Turrets")
 	dir_to_list("res://Scenes/Building/Turret/", "Turret")

@@ -13,7 +13,7 @@ config_version=5
 config/name="Invicem2D"
 run/main_scene="res://2d_client.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Invicem2D.png"
 
 [display]
 
@@ -28,6 +28,10 @@ window/stretch/scale=2.0
 [dotnet]
 
 project/assembly_name="Invicem2D"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/astar2d_grid_node/plugin.cfg", "res://addons/projectiles_plugin/plugin.cfg", "res://addons/softbody2d/plugin.cfg")
 
 [input]
 

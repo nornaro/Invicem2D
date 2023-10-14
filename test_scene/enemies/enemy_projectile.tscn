@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://7mudsepl0jv8"]
 
-[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/projectiles/projectile2d.gd" id="1_gku7o"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin_/2d/projectiles/projectile2d.gd" id="1_gku7o"]
 [ext_resource type="Shader" path="res://test_scene/projectile.gdshader" id="2_bkft1"]
-[ext_resource type="Texture2D" uid="uid://d07ly53ak1aak" path="res://icon.svg" id="3_fq175"]
+[ext_resource type="Texture2D" uid="uid://buyn281m2ghwh" path="res://icon.svg" id="3_fq175"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qeo4b"]
 shader = ExtResource("2_bkft1")

@@ -1,5 +1,14 @@
 extends Node
 
+
+"""
+PRIO:
+	1. Separate HUD
+	2. MultiPlayer
+	3. 
+"""
+
+
 """
 00. call down signal up ! - DONE
 01. One scene One thing - DONE

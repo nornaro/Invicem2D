@@ -58,7 +58,7 @@ animations = [{
 [node name="Projectile" type="RigidBody2D"]
 collision_layer = 8
 collision_mask = 8
-mass = 100.0
+mass = 10.0
 script = ExtResource("1_oml5t")
 
 [node name="Area2D" type="Area2D" parent="."]

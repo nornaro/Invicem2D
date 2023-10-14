@@ -1,5 +1,7 @@
 # 2D Projectiles plugin for Godot 4
 
+More materials, e.g. demo project can be found in ![official repository](https://gitlab.com/Fluffeu/godot-projectiles-plugin).
+
 ## Overview
 
 This addon provides the functionallity for simple 2D bullets/projectiles system, similar to ones seen in games such as Enter the Gungeon, The Textorcist, or other "lighter" bullethell games. Bullet patterns can be created/modified with dedicated editor.

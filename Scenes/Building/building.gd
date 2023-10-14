@@ -14,6 +14,7 @@ func _ready():
 	resize_id(size)
 	resize_area(size)
 	resize_outline(size)
+	resize_select(size)
 	if get_parent().name == "Castle":
 		castle_customs(size)
 	name = str(get_instance_id())
@@ -44,7 +45,11 @@ func resize_id(size):
 func resize_area(size):
 	$Area2D.scale.x = size.x*0.8
 	$Area2D.scale.y = size.y*0.7
-
+	
+func resize_select(size):
+	$Select.scale.x = size.x
+	$Select.scale.y = size.y*0.7
+	
 func rotate_area():
 	$Area2D.rotation = deg_to_rad(45)
 	$CollisionShape2D.rotation = deg_to_rad(45)

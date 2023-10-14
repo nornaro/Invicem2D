@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections.Generic;
+using static Godot.GD;
 
 public partial class minion : Godot.RigidBody2D
 {	
@@ -10,15 +11,21 @@ public partial class minion : Godot.RigidBody2D
 		["def"] = 1000,
 		["dodge"] = 0,
 	};
+	
 	private int maxHp;
-
+	private Vector2 initialVelocity;
+	private ProgressBar hpBar;
+	
 	public override void _Ready()
 	{
 		AddToGroup("minions");
 		GravityScale = 0;
 		maxHp = Data["hp"];
+		hpBar = GetNode<ProgressBar>("hpBar"); // Initialize hpBar here
 		GetNode<ProgressBar>("hpBar").MaxValue = Data["hp"];
 		GetNode<ProgressBar>("hpBar").Value = Data["hp"];
+		initialVelocity = LinearVelocity;
+		
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -39,11 +46,28 @@ public partial class minion : Godot.RigidBody2D
 		NotifyPropertyListChanged();
 	}
 
-	public void Hurt()
+	public void Hurt(int mass)
 	{
-		var hpBar = GetNode<ProgressBar>("hpBar");
+		Data["hp"] -= mass;
+		if ((int)Data["hp"] <= 0)
+		{
+			QueueFree();
+			return;
+		}
 		hpBar.Modulate = new Color(1, Mathf.Pow((float)Data["hp"] / maxHp, 2), 0, 0.75f);
+		Print("Hello");
 		hpBar.Value = Data["hp"];
 		NotifyPropertyListChanged();
+		
+	}
+	private void _on_body_entered(Node body)
+	{
+		LinearVelocity = initialVelocity;
+	}
+	private void _on_area_2d_area_entered(Area2D area)
+	{
+		if (IsInGroup("projectiles"))
+			return;
+		LinearVelocity = initialVelocity;
 	}
 }

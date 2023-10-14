@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://5b3v7b6ahib1"]
 
 [ext_resource type="Script" path="res://Scenes/Minions/Minion/minion.cs" id="1_3x0mk"]
-[ext_resource type="Texture2D" uid="uid://pw26yklenbx8" path="res://Scenes/Minions/icon.svg" id="2_scp6m"]
+[ext_resource type="Texture2D" uid="uid://pw26yklenbx8" path="res://Scenes/Minions/icon.svg" id="2_bl338"]
 [ext_resource type="Script" path="res://Scenes/Minions/Minion/Area2D.gd" id="3_u5uqm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7goe2"]
@@ -33,7 +33,7 @@ script = ExtResource("1_3x0mk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.2)
-texture = ExtResource("2_scp6m")
+texture = ExtResource("2_bl338")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_7goe2")
@@ -59,4 +59,6 @@ value = 50.0
 allow_greater = true
 show_percentage = false
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]

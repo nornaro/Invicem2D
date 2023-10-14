@@ -12,6 +12,9 @@ var max_slots = 3
 var timer_ASPD = Timer.new()
 var timer_CD = Timer.new()
 var targeting = []
+var muzzle_positions: Array[Vector2] = []
+var markers = []
+var rotation_coords = {}
 
 func _ready():
 	set_process(true) # if you have processing logic
@@ -22,6 +25,8 @@ func _ready():
 	add_projectiles_node()
 	add_timers()
 	$Targeting.property_list_changed.connect(_on_targeting_property_list_changed)
+	_create_muzzle_markers()
+	_populate_rotation_coords()
 
 func add_timers():
 	timer_ASPD.name = "ASPD"
@@ -48,46 +53,116 @@ func _on_ASPD_timeout():
 	if !$Targeting.targeting[0]:
 		timer_ASPD.stop()
 		return
-	var scene = load("res://Scenes/Projectiles/Projectile.tscn")
-	var instance = scene.instantiate()
-	instance.name = str(instance.get_instance_id())
-	get_node("Projectiles").add_child(instance)
-	
-	var script = "res://Scenes/Projectiles/Type/Homing.gd"
-	var rot = get_turret_rotation_to_face_target(self, $Targeting.targeting[0])
-	FileAccess.file_exists(script)
-	if FileAccess.file_exists(script):
-		instance.set_script(load(script))
-		instance.global_position = global_position+get_muzzle_position(rot)*scale.x
-		instance.target = $Targeting.targeting[0]
-		instance.projectileSpeed = [600, 600]
-		instance._ready()
-	$Sprite.frame = rotation_to_frame(rot)
+	if !Data.has("muzzle"):
+		return
+	for i in Data["muzzle"].size():
+		var scene = load("res://Scenes/Projectiles/Projectile.tscn")
+		var instance = scene.instantiate()
+		instance.name = str(instance.get_instance_id())
+		get_node("MuzzleMarker"+str(i)).add_child(instance)
+		
+		var script = "res://Scenes/Projectiles/Type/Homing.gd"
+		var rot = get_turret_rotation_to_face_target(self, $Targeting.targeting[0])
+		FileAccess.file_exists(script)
+		if FileAccess.file_exists(script):
+			instance.set_script(load(script))
+			instance.target = $Targeting.targeting[0]
+			instance.projectileSpeed = [600, 600]
+			instance._ready()
+		var frame = rotation_to_frame(rot)
+		$Sprite.frame = frame
+		get_node("MuzzleMarker"+str(i)).position = get_muzzle_position_for_frame(frame)[i]
+		#instance.global_position = global_position+get_muzzle_positions_for_frame(frame)[0]*scale.x
+
+func _create_muzzle_markers():
+	for i in Data["muzzle"].size():
+		var marker = Marker2D.new()  # Use your custom Marker2D here
+		marker.name = "MuzzleMarker"+str(i)
+		marker.position = Data["muzzle"][i]
+		marker.modulate = Color.MAGENTA
+		marker.show()
+		marker.gizmo_extents = 100
+		add_child(marker)
+		markers.append(marker)
+
+		var sprite = Sprite2D.new()
+		sprite.texture = load("res://icon.svg")
+		sprite.scale = Vector2(0.05,0.05)
+		marker.add_child(sprite)
+
+func _populate_rotation_coords():
+	var frame_count = Data["rotation_offset"][0]
+	var offset = Vector2(Data["rotation_offset"][1], Data["rotation_offset"][2])
+	var width_div_2 = Data["rotation_offset"][3]
+	var radius = Data["rotation_offset"][4]
+
+	for frame in range(frame_count):
+		var angle = 2 * PI * frame / frame_count
+		var rotated_offset = offset.rotated(angle)
+		var oval_offset = Vector2(width_div_2 * cos(angle), radius * sin(angle))
+		var position_for_frame = []
+		for muzzle in Data["muzzle"]:
+			position_for_frame.append(muzzle + rotated_offset + oval_offset)
+		rotation_coords[frame] = position_for_frame
+
+func get_muzzle_positions_for_frame(frame: int) -> Array:
+	if !rotation_coords.has(frame):
+		return []
+	return rotation_coords[frame]
 
 func rotation_to_frame(rot: float) -> int:
-	# Ensure the rotation is between 0 and 2*PI
 	rot += PI / 2
 	while rot < 0:
 		rot += 2 * PI
 	rot = fmod(rot, 2 * PI)
-
-	# Convert the rotation to a frame index
 	var frame = int(rot / (2 * PI) * 64)
 	return frame
+	
+func get_muzzle_position_for_frame(frame: int) -> Array:
+	frame = correct_allign(frame)
+	var muzzle_positions = []
+	var frame_count = Data["rotation_offset"][0]
+	var offset = Vector2(Data["rotation_offset"][1], Data["rotation_offset"][2])
+	var width_div_2 = Data["rotation_offset"][4]
+	var radius = Data["rotation_offset"][3]
 
-func get_muzzle_position(theta: float) -> Vector2:
-	var h = -15.5
-	var k = 0
-	var a = 90
-	var b = 70
+	var angle = 2 * PI * frame / frame_count
 
-	var x = h + a * cos(theta)
-	var y = k + b * sin(theta)
+	for muzzle in Data["muzzle"]:
+		var rotated_offset = offset.rotated(angle)
+		var oval_offset = Vector2(width_div_2 * cos(angle), radius * sin(angle))
+		muzzle_positions.append((muzzle + rotated_offset + oval_offset))
+	return muzzle_positions
 
-	return Vector2(x, y)
+func correct_allign(frame):
+	if frame >= 32:
+		frame -=32
+	frame +=32
+	return frame
+
+func get_muzzle_position(rad: float) -> Vector2:
+	var x = Data["rotation_offset"][1] + Data["rotation_offset"][3]
+	var y = Data["rotation_offset"][2] + Data["rotation_offset"][4]
+	return global_position+Vector2(x * cos(rad), y * sin(rad))
+#
+#func get_muzzle_position(theta: float) -> Vector2:
+#	var x = -15 + 90 * cos(theta)
+#	var y = 5 + 70 * sin(theta)
+#	return Vector2(x, y)
+
+#func get_muzzle_position(rad: float) -> Vector2:
+#	var x = Data["rotation_offset"][1] + Data["rotation_offset"][3]
+#	var y = Data["rotation_offset"][2] + Data["rotation_offset"][4]
+	
+func get_precomputed_muzzle_position(index: int) -> Vector2:
+	if index >= 0 and index < Data["rotation_offset"][0]:
+		return muzzle_positions[index]
+	else:
+		print("Index out of range")
+		return Vector2(0, 0)
 
 func _on_CD_timeout():
-	print("CD timer triggered!")
+	pass
 
 func add_projectiles_node():
 	var projectiles = Node.new()
@@ -124,82 +199,3 @@ func _on_targeting_property_list_changed():
 func get_turret_rotation_to_face_target(turret: Node2D, target: Node2D) -> float:
 	var dir = target.global_position - turret.global_position
 	return atan2(dir.y, dir.x)
-
-
-
-
-
-
-
-
-"""
-func _process(delta):
-	print("current_targets: ",current_targets)
-	detect_targets()
-
-func detect_targets():
-	_filter_valid_targets()
-	_add_potential_targets()
-	_orient_towards_first_target()
-
-func _filter_valid_targets():
-	var valid_targets = []
-	for target in current_targets:
-		if not target:
-			continue
-		if not is_target_in_range(target):
-			continue
-		if not is_target_in_angle(target):
-			continue
-		valid_targets.append(target)
-	current_targets = valid_targets
-
-func _add_potential_targets():
-	if current_targets.size() >= max_target_count:
-		return
-
-	var space_state = get_world_2d().direct_space_state
-	
-	var query_parameters = PhysicsPointQueryParameters2D.new()
-	query_parameters.position = global_position
-	query_parameters.exclude = [self]
-	query_parameters.collision_mask = 1  # Adjust this based on your game's layer setup for potential targets
-
-	var potential_targets = space_state.intersect_point(query_parameters)
-	for pt in potential_targets:
-		if current_targets.size() >= max_target_count:
-			return
-		var target = pt.collider
-		if target in current_targets:
-			continue
-		if not is_target_in_range(target):
-			continue
-		if not is_target_in_angle(target):
-			continue
-		current_targets.append(target)
-
-func _orient_towards_first_target():
-	if current_targets.is_empty():
-		return
-	var dir = current_targets[0].global_position - global_position
-	rotation = dir.angle()
-
-func is_target_in_range(target):
-	var distance = target.global_position.distance_to(global_position)
-	return distance >= range[0] and distance <= range[1]
-
-func is_target_in_angle(target):
-	var dir = target.global_position - global_position
-	var angle_to_target = rad_to_deg(dir.angle_to(Vector2.RIGHT))
-	var turret_rotation_deg = rad_to_deg(rotation)
-	return angle_to_target >= turret_rotation_deg + angle[0] and angle_to_target <= turret_rotation_deg + angle[1]
-
-func on_target_died(target):
-	if target in current_targets:
-		current_targets.erase(target)
-"""
-
-
-
-
-
