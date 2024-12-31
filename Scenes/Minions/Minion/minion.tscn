@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://5b3v7b6ahib1"]
 
 [ext_resource type="Script" path="res://Scenes/Minions/Minion/minion.cs" id="1_3x0mk"]
-[ext_resource type="Texture2D" uid="uid://pw26yklenbx8" path="res://Scenes/Minions/icon.svg" id="2_bl338"]
+[ext_resource type="Texture2D" uid="uid://dh23r32qftr7q" path="res://Scenes/Minions/icon.svg" id="2_bl338"]
 [ext_resource type="Script" path="res://Scenes/Minions/Minion/Area2D.gd" id="3_u5uqm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7goe2"]
@@ -38,7 +38,7 @@ texture = ExtResource("2_bl338")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_7goe2")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["minions"]]
 collision_layer = 13
 collision_mask = 13
 script = ExtResource("3_u5uqm")

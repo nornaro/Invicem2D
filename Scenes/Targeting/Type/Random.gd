@@ -41,10 +41,13 @@ func get_random_target() -> Object:
 	return targets[randi() % targets.size()]
 		
 func _on_max_area_entered(area):
-	if area.get_parent().is_in_group("minions"):
-		if targeting.size() < Data["max_target_count"]:
-			targeting.append(area)
-		targets.append(area)
+	if !area.get_parent().is_in_group("minions"):
+		return
+	if !area.get_parent().has_meta("owner"):
+		return
+	if targeting.size() < Data["max_target_count"]:
+		targeting.append(area)
+	targets.append(area)
 
 func _on_max_area_exited(area):
 	if area.get_parent().is_in_group("minions"):

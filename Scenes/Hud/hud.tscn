@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://crtx4pfoxksfn"]
+[gd_scene load_steps=3 format=3 uid="uid://crtx4pfoxksfn"]
 
 [ext_resource type="Script" path="res://Scenes/Hud/hud.gd" id="1_j7m1u"]
-[ext_resource type="Script" path="res://Numbers.gd" id="2_rrqny"]
-[ext_resource type="Script" path="res://MobCount.gd" id="3_akqim"]
+[ext_resource type="Script" path="res://Scenes/Hud/Numbers.gd" id="2_rrqny"]
 
 [node name="Hud" type="Node"]
 script = ExtResource("1_j7m1u")
@@ -48,4 +47,3 @@ offset_top = 350.0
 offset_right = -875.0
 offset_bottom = 390.0
 scale = Vector2(1.5, 1.5)
-script = ExtResource("3_akqim")

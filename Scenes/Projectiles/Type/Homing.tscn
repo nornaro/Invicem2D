@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://ben5m8sl8ft4s"]
 
 [ext_resource type="Script" path="res://Scenes/Projectiles/Type/Homing.gd" id="1_oyf6s"]
-[ext_resource type="Texture2D" uid="uid://glx3vuclwcjk" path="res://Scenes/Projectiles/Projectile/fireball.png" id="2_dlv6k"]
+[ext_resource type="Texture2D" uid="uid://c3yw7uhofojum" path="res://Scenes/Projectiles/Projectile/fireball.png" id="2_dlv6k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j6wxg"]
 atlas = ExtResource("2_dlv6k")
@@ -75,5 +75,6 @@ shape = SubResource("CircleShape2D_hbnlc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hbnlc")
+disabled = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

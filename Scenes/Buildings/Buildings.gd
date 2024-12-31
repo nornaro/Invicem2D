@@ -11,7 +11,7 @@ var temp_instance
 var placement = false
 var drag = false
 var rectangle = Area2D.new()
-var colliding
+var collides
 @export var showCollision = false
 
 func add_buildings_list(Items):	
@@ -30,14 +30,17 @@ func _input(event):
 	if !temp_instance:
 		return
 	var instance = instance_from_id(temp_instance)
+	turn_turret(instance.get_node("Sprite"))
 	if event.is_action_pressed("RMB"):
 		clear_collision()
 		%UI.text = ""
 		return
 	instance.position = snap(get_global_mouse_position())
-	colliding = get_tree().get_nodes_in_group(str(instance.get_node("Area2D").get_instance_id()))
-	show_collision(instance,colliding)
-	if colliding:
+	if instance.get_node("Sprite").get_sprite_frames().has_meta("position_offset"):
+		instance.position += instance.get_node("Sprite").get_sprite_frames().get_meta("position_offset")
+	collides = get_tree().get_nodes_in_group(str(instance.get_node("Area2D").get_instance_id()))
+	show_collision(instance,collides)
+	if collides:
 		instance.modulate = collision_color
 		return
 	instance.modulate = placement_color
@@ -47,7 +50,14 @@ func _input(event):
 		return
 	change_buildings(%UI.text, false)
 
-func show_collision(instance,colliding):
+func turn_turret(sp):
+	if sp.get_parent().get_parent().name != "Turret":
+		return
+	sp.set_frame(0)
+	if get_global_mouse_position().y < 0:
+		sp.set_frame(32)
+
+func show_collision(instance,collides):
 	if !showCollision:
 		instance.get_node("Select/green").hide()
 		instance.get_node("Select/red").hide()
@@ -60,7 +70,7 @@ func show_collision(instance,colliding):
 	instance.get_node("Select/red").show()
 	for building in buildings:
 		building.get_parent().get_node("Select/red").hide()
-	for building in colliding:
+	for building in collides:
 		building.get_parent().get_node("Select/red").show()
 	
 func selection_rectangle():
@@ -77,7 +87,7 @@ func is_point_in_mesh_bounds(mesh: MeshInstance2D, point: Vector2) -> bool:
 
 func instance_scene_from_name(scene_name: String,parent_scene_name: String):
 	var old
-	var instance
+	var instance: StaticBody2D
 	if temp_instance:
 		old = instance_from_id(temp_instance)
 		old.remove_from_group("temp")
@@ -87,6 +97,7 @@ func instance_scene_from_name(scene_name: String,parent_scene_name: String):
 	if old:
 		old.get_node("Area2D").add_to_group(str(instance.get_node("Area2D").get_instance_id()))
 	instance.position = snap(get_global_mouse_position())
+	instance.z_index = int(instance.position.y)+get_tree().root.get_node("2DClient/Map").mapsize.y/2
 	instance.name = scene_name
 	instance.add_to_group(parent_scene_name)
 	instance.modulate = placement_color
@@ -167,4 +178,4 @@ func clear_collision():
 		instance.queue_free()
 		instance = null		
 	temp_instance = null
-	colliding = []
+	collides = []

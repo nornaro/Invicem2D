@@ -19,6 +19,7 @@ func _ready():
 		castle_customs(size)
 	name = str(get_instance_id())
 	
+	
 func castle_customs(size):
 	var upscale = 2.5
 	scale = Vector2(100 * upscale / size.x, 100 * upscale / size.y)

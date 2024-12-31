@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dv6xnd2345qap"]
 
-[ext_resource type="Script" path="res://addons/projectiles_plugin_/2d/projectiles/projectile2d.gd" id="1_0psvp"]
-[ext_resource type="Texture2D" uid="uid://glx3vuclwcjk" path="res://Scenes/Projectiles/Projectile/fireball.png" id="2_ybwe4"]
+[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/projectiles/projectile2d.gd" id="1_0psvp"]
+[ext_resource type="Texture2D" uid="uid://c3yw7uhofojum" path="res://Scenes/Projectiles/Projectile/fireball.png" id="2_ybwe4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uxm8j"]
 

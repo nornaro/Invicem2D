@@ -15,7 +15,7 @@ func _physics_process(delta):
 		queue_free()
 		return
 	linear_velocity = ((target.global_position-global_position)*speed).normalized()*speed
-
+	
 func _on_area_2d_area_entered(area):
 	if !area.get_parent().is_in_group("minions"):
 		return

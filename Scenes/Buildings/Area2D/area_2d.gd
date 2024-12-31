@@ -5,7 +5,7 @@ var type
 var multiselect
 #signal selection_toggled(selection)
 var selected
-signal menu(selected)
+signal _menu(selected)
 var selection_rectangle = CollisionShape2D.new()
 
 func _input(event):
@@ -19,9 +19,9 @@ func set_selected(selection):
 		_make_exclusive()
 		add_to_group("selected")
 		get_parent().get_node("Outline").show()
-	else:
-		remove_from_group("selected")
-		get_parent().get_node("Outline").hide()
+		return
+	remove_from_group("selected")
+	get_parent().get_node("Outline").hide()
 	selected = selection
 #	emit_signal("selection_toggled",selected)
 

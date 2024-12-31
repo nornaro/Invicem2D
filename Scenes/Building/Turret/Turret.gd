@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 
 @export var Data = {
 	"aspd":[2,2],
@@ -12,21 +12,23 @@ var max_slots = 3
 var timer_ASPD = Timer.new()
 var timer_CD = Timer.new()
 var targeting = []
-var muzzle_positions: Array[Vector2] = []
 var markers = []
-var rotation_coords = {}
+var rotation_coords = []
 
 func _ready():
 	set_process(true) # if you have processing logic
 	set_physics_process(true) # if you have physics logic
+	set_rotation_coords()
 #	aspd.wait_time = 1/Data["aspd"][0]
 #	cd.wait_time = Data["cooldown"][0]
 	load_item_script("Targeting","Type","Fixed")
 	add_projectiles_node()
 	add_timers()
 	$Targeting.property_list_changed.connect(_on_targeting_property_list_changed)
-	_create_muzzle_markers()
-	_populate_rotation_coords()
+
+
+func _process(delta: float) -> void:
+	$Icon.position = $Muzzle.position + $Muzzle.points[-$Sprite.frame]
 
 func add_timers():
 	timer_ASPD.name = "ASPD"
@@ -59,56 +61,28 @@ func _on_ASPD_timeout():
 		var scene = load("res://Scenes/Projectiles/Projectile.tscn")
 		var instance = scene.instantiate()
 		instance.name = str(instance.get_instance_id())
-		get_node("MuzzleMarker"+str(i)).add_child(instance)
-		
-		var script = "res://Scenes/Projectiles/Type/Homing.gd"
+		#instance.top_level = true
+		var script = "res://Scenes/Projectiles/Type/Linear.gd"
 		var rot = get_turret_rotation_to_face_target(self, $Targeting.targeting[0])
+		var frame = rotation_to_frame(rot)
+		$Sprite.frame = frame
 		FileAccess.file_exists(script)
 		if FileAccess.file_exists(script):
 			instance.set_script(load(script))
 			instance.target = $Targeting.targeting[0]
 			instance.projectileSpeed = [600, 600]
 			instance._ready()
-		var frame = rotation_to_frame(rot)
-		$Sprite.frame = frame
-		get_node("MuzzleMarker"+str(i)).position = get_muzzle_position_for_frame(frame)[i]
-		#instance.global_position = global_position+get_muzzle_positions_for_frame(frame)[0]*scale.x
+		instance.global_position = $Muzzle.global_position + $Muzzle.points[-$Sprite.frame]/2
+		$Projectiles.add_child(instance)
 
-func _create_muzzle_markers():
-	for i in Data["muzzle"].size():
-		var marker = Marker2D.new()  # Use your custom Marker2D here
-		marker.name = "MuzzleMarker"+str(i)
-		marker.position = Data["muzzle"][i]
-		marker.modulate = Color.MAGENTA
-		marker.show()
-		marker.gizmo_extents = 100
-		add_child(marker)
-		markers.append(marker)
-
-		var sprite = Sprite2D.new()
-		sprite.texture = load("res://icon.svg")
-		sprite.scale = Vector2(0.05,0.05)
-		marker.add_child(sprite)
-
-func _populate_rotation_coords():
-	var frame_count = Data["rotation_offset"][0]
-	var offset = Vector2(Data["rotation_offset"][1], Data["rotation_offset"][2])
-	var width_div_2 = Data["rotation_offset"][3]
-	var radius = Data["rotation_offset"][4]
-
-	for frame in range(frame_count):
-		var angle = 2 * PI * frame / frame_count
-		var rotated_offset = offset.rotated(angle)
-		var oval_offset = Vector2(width_div_2 * cos(angle), radius * sin(angle))
-		var position_for_frame = []
-		for muzzle in Data["muzzle"]:
-			position_for_frame.append(muzzle + rotated_offset + oval_offset)
-		rotation_coords[frame] = position_for_frame
-
-func get_muzzle_positions_for_frame(frame: int) -> Array:
-	if !rotation_coords.has(frame):
-		return []
-	return rotation_coords[frame]
+func set_rotation_coords():
+	var sp:AnimatedSprite2D = get_node("Sprite")
+	var scene = load(sp.sprite_frames.resource_path.replace(".tres", ".tscn"))
+	var instance = scene.instantiate()
+	instance.name = "Muzzle"
+	#instance.visible = false
+	add_child(instance)
+	return
 
 func rotation_to_frame(rot: float) -> int:
 	rot += PI / 2
@@ -117,49 +91,12 @@ func rotation_to_frame(rot: float) -> int:
 	rot = fmod(rot, 2 * PI)
 	var frame = int(rot / (2 * PI) * 64)
 	return frame
-	
-func get_muzzle_position_for_frame(frame: int) -> Array:
-	frame = correct_allign(frame)
-	var muzzle_positions = []
-	var frame_count = Data["rotation_offset"][0]
-	var offset = Vector2(Data["rotation_offset"][1], Data["rotation_offset"][2])
-	var width_div_2 = Data["rotation_offset"][4]
-	var radius = Data["rotation_offset"][3]
-
-	var angle = 2 * PI * frame / frame_count
-
-	for muzzle in Data["muzzle"]:
-		var rotated_offset = offset.rotated(angle)
-		var oval_offset = Vector2(width_div_2 * cos(angle), radius * sin(angle))
-		muzzle_positions.append((muzzle + rotated_offset + oval_offset))
-	return muzzle_positions
 
 func correct_allign(frame):
 	if frame >= 32:
 		frame -=32
 	frame +=32
 	return frame
-
-func get_muzzle_position(rad: float) -> Vector2:
-	var x = Data["rotation_offset"][1] + Data["rotation_offset"][3]
-	var y = Data["rotation_offset"][2] + Data["rotation_offset"][4]
-	return global_position+Vector2(x * cos(rad), y * sin(rad))
-#
-#func get_muzzle_position(theta: float) -> Vector2:
-#	var x = -15 + 90 * cos(theta)
-#	var y = 5 + 70 * sin(theta)
-#	return Vector2(x, y)
-
-#func get_muzzle_position(rad: float) -> Vector2:
-#	var x = Data["rotation_offset"][1] + Data["rotation_offset"][3]
-#	var y = Data["rotation_offset"][2] + Data["rotation_offset"][4]
-	
-func get_precomputed_muzzle_position(index: int) -> Vector2:
-	if index >= 0 and index < Data["rotation_offset"][0]:
-		return muzzle_positions[index]
-	else:
-		print("Index out of range")
-		return Vector2(0, 0)
 
 func _on_CD_timeout():
 	pass

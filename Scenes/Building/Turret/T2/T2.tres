@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=66 format=3 uid="uid://c07xdxik2q5fl"]
 
-[ext_resource type="Texture2D" uid="uid://d14dtjft04qax" path="res://Scenes/Building/Turret/T2/T2.png" id="1_b0ucn"]
+[ext_resource type="Texture2D" uid="uid://3maq1o5lrb4u" path="res://Scenes/Building/Turret/T2/T2.png" id="1_b0ucn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8e17o"]
 atlas = ExtResource("1_b0ucn")
@@ -457,3 +457,4 @@ animations = [{
 "name": &"default",
 "speed": 15.0
 }]
+metadata/position_offset = Vector2(0, -15)

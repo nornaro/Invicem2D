@@ -55,7 +55,6 @@ public partial class minion : Godot.RigidBody2D
 			return;
 		}
 		hpBar.Modulate = new Color(1, Mathf.Pow((float)Data["hp"] / maxHp, 2), 0, 0.75f);
-		Print("Hello");
 		hpBar.Value = Data["hp"];
 		NotifyPropertyListChanged();
 		
