@@ -77,7 +77,8 @@ func _on_ASPD_timeout():
 
 func set_rotation_coords():
 	var sp:AnimatedSprite2D = get_node("Sprite")
-	var scene = load(sp.sprite_frames.resource_path.replace(".tres", ".tscn"))
+	var path = sp.sprite_frames.resource_path.replace(".tres", ".tscn")
+	var scene = load(path)
 	var instance = scene.instantiate()
 	instance.name = "Muzzle"
 	#instance.visible = false

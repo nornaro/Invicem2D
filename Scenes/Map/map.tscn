@@ -135,14 +135,14 @@ metadata/_edit_use_anchors_ = true
 
 [node name="MeshInstance2D10" type="MeshInstance2D" parent="."]
 top_level = true
-position = Vector2(-425, 262)
+position = Vector2(-425, 263)
 rotation = 1.5708
 mesh = SubResource("PlaneMesh_k2lll")
 texture = SubResource("GradientTexture2D_ams2i")
 
 [node name="MeshInstance2D11" type="MeshInstance2D" parent="."]
 top_level = true
-position = Vector2(425, -262)
+position = Vector2(425, -263)
 rotation = -1.5708
 mesh = SubResource("PlaneMesh_k2lll")
 texture = SubResource("GradientTexture2D_ams2i")

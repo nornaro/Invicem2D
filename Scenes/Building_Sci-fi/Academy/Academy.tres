@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://bec3ykp1qv8s"]
+
+[ext_resource type="Texture2D" uid="uid://derjm6843wds4" path="res://Scenes/Building_Sci-fi/Academy/Academy.png" id="1_6tfn8"]
+[ext_resource type="Texture2D" uid="uid://c4ido4ye42l6j" path="res://Scenes/Building_Sci-fi/Academy/Academy2.png" id="2_73hr6"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6tfn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_73hr6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

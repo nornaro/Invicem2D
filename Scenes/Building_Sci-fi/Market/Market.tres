@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://bfxyp1s25v57k"]
+
+[ext_resource type="Texture2D" uid="uid://bmhh7qocdggci" path="res://Scenes/Building_Sci-fi/Market/Market1.png" id="1_koum8"]
+[ext_resource type="Texture2D" uid="uid://dp2kxp2t3v0hj" path="res://Scenes/Building_Sci-fi/Market/Market2.png" id="2_wnah8"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_koum8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wnah8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

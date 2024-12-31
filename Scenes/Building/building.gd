@@ -28,7 +28,7 @@ func castle_customs(size):
 	$Outline.hide()
 
 func animated_sprite(filename):
-	var sprite_path = "res://Scenes/Building/"+filename+".tres"
+	var sprite_path = "res://Scenes/Building_Sci-fi/"+filename+".tres"
 	if !FileAccess.file_exists(sprite_path):
 		return
 	$Sprite.sprite_frames = load(sprite_path)

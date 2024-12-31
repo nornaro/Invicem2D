@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://bp4rs15tn50dm"]
+
+[ext_resource type="PackedScene" uid="uid://bt4ojth5m2alx" path="res://Scenes/Projectiles/Projectile.tscn" id="1_dahtl"]
+[ext_resource type="SpriteFrames" uid="uid://c07xdxik2q5fl" path="res://Scenes/Building/Tower/Turrets/T2/T2.tres" id="1_pi2hs"]
+[ext_resource type="PackedScene" uid="uid://d06p81aopg7re" path="res://Scenes/Targeting/Targeting.tscn" id="1_t4afy"]
+[ext_resource type="Script" path="res://Scenes/Building/Turret/Turret.gd" id="2_hsq2p"]
+[ext_resource type="Script" path="res://Scenes/Projectiles/Type/Simple.gd" id="3_5nhb8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_623ov"]
+radius = 40.0
+height = 110.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avin5"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_mt4kj"]
+material = SubResource("StandardMaterial3D_avin5")
+radius = 72.0
+height = 105.0
+
+[sub_resource type="Gradient" id="Gradient_7ng6n"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vrwpy"]
+gradient = SubResource("Gradient_7ng6n")
+
+[node name="Turret" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_pi2hs")
+frame = 63
+script = ExtResource("2_hsq2p")
+metadata/Turret = true
+
+[node name="Projectile" parent="." instance=ExtResource("1_dahtl")]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("3_5nhb8")
+projectileSpeed = 500
+
+[node name="Targeting" parent="." instance=ExtResource("1_t4afy")]
+
+[node name="ASPD" type="Timer" parent="."]
+autostart = true
+
+[node name="CD" type="Timer" parent="."]
+one_shot = true
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
+position = Vector2(3, -12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_623ov")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+modulate = Color(1, 0.0588235, 0.941176, 1)
+position = Vector2(40, 40)
+scale = Vector2(10, 10)
+gizmo_extents = 1.0
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(-15, 3)
+mesh = SubResource("SphereMesh_mt4kj")
+texture = SubResource("GradientTexture1D_vrwpy")
+
+[connection signal="property_list_changed" from="Targeting" to="." method="_on_targeting_property_list_changed"]
+[connection signal="timeout" from="ASPD" to="." method="_on_aspd_timeout"]

@@ -6,11 +6,15 @@ extends CanvasLayer
 var build = false
 var text = ""
 var pressed = false
+@onready var buildings = %Buildings
+@onready var style = $HealthBar/Style
+
 
 func _ready():
-	dir_to_list("res://Scenes/Building/", "Buildings")
-	%Buildings.add_buildings_list(Items["Buildings"])
-	%Buildings.build_castle("Castle")
+	#dir_to_list("res://Scenes/Building" + style.get_item_text(style.selected) , "Buildings")
+	dir_to_list("res://Scenes/Building", "Buildings")
+	buildings.add_buildings_list(Items["Buildings"])
+	buildings.build_castle("Castle")
 	Items["Buildings"].erase("Castle")
 	dir_to_list("res://Scenes/Building/Tower/", "Tower")
 	dir_to_list("res://Scenes/Building/Tower/Turrets/", "Turrets")
@@ -19,7 +23,7 @@ func _ready():
 
 func _input(event):
 	if Input.is_key_pressed(KEY_ESCAPE):
-		%Buildings.clear_collision()
+		buildings.clear_collision()
 		clear()
 	if pressed:
 		if event.is_action_released(pressed):
@@ -39,7 +43,7 @@ func _input(event):
 	if event.is_action_pressed("LMB"):
 		pressed = "LMB"
 		build = true
-		%Buildings.change_buildings(text, false)
+		buildings.change_buildings(text, false)
 		return
 #		if !active():
 #			menu("Buildings")
@@ -69,7 +73,7 @@ func _on_list_item_selected(index):
 	if text == "Turret":
 		menu("Turret")
 		return
-	%Buildings.change_buildings(text, true)
+	buildings.change_buildings(text, true)
 
 func dir_to_list(dir, dirname):
 	var directory = DirAccess.open(dir)
@@ -100,7 +104,7 @@ func menu(list):
 
 func add_json_list(list):
 	for item in Items[list]:
-		if !%Buildings.get_node_or_null(item):
+		if !buildings.get_node_or_null(item):
 			continue
 		var path = "res://Scenes/Building/" + item + "/" + item + ".json"
 		var file = FileAccess.open(path, FileAccess.READ).get_as_text()
@@ -110,3 +114,10 @@ func add_json_list(list):
 		if !Items.has(item):
 			Items[item] = []
 		Items[item].append(json)
+
+		
+func _on_menu_bar_mouse_exited() -> void:
+	$MenuBar.hide()
+
+func _on_button_pressed() -> void:
+	$MenuBar.visible = !$MenuBar.visible
