@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm6b3p0rwy6x2"]
+
+[ext_resource type="Texture2D" uid="uid://cmoadextlwr4x" path="res://Scenes/Home/Home.png" id="1_kuk08"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tpbkn"]
+texture = ExtResource("1_kuk08")
+
+[node name="Panel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tpbkn")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 479.0
+offset_right = 946.0
+offset_bottom = 510.0
+text = "Start"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 328.0
+offset_right = 432.0
+offset_bottom = 359.0
+text = "Exit"

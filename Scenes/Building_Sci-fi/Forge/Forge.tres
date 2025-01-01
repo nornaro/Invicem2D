@@ -1,12 +1,12 @@
 [gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://23kf6rbawp6t"]
 
-[ext_resource type="Texture2D" uid="uid://c4emgdpdfwvvd" path="res://Scenes/Building_Sci-fi/Forge/Forge.png" id="1_xj4cj"]
+[ext_resource type="Texture2D" uid="uid://c4emgdpdfwvvd" path="res://Scenes/Building_Sci-fi/Forge/Forge.png" id="1_oon2l"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_xj4cj")
+"texture": ExtResource("1_oon2l")
 }],
 "loop": true,
 "name": &"default",

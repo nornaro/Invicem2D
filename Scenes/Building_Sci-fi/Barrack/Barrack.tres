@@ -1,18 +1,18 @@
 [gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://dv2553mpp4y3m"]
 
 [ext_resource type="Texture2D" uid="uid://bxy43jnyeb3nf" path="res://Scenes/Building_Sci-fi/Barrack/Barrack.png" id="1_bmk05"]
-[ext_resource type="Texture2D" uid="uid://m1fol2bjif7r" path="res://Scenes/Building_Sci-fi/Barrack/Barrack2.png" id="2_gui1u"]
+[ext_resource type="Texture2D" uid="uid://m1fol2bjif7r" path="res://Scenes/Building_Sci-fi/Barrack/Barrack2.png" id="1_eglo2"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_bmk05")
+"texture": ExtResource("1_eglo2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_gui1u")
+"texture": ExtResource("1_bmk05")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]

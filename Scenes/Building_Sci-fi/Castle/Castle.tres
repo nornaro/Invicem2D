@@ -1,12 +1,12 @@
 [gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://kggue0ptdok4"]
 
-[ext_resource type="Texture2D" uid="uid://damghc5o54cr8" path="res://Scenes/Building_Sci-fi/Castle/Castle.png" id="1_tgcqa"]
+[ext_resource type="Texture2D" uid="uid://csudvx0jujwbu" path="res://Scenes/Building_Sci-fi/Castle/Castle2.png" id="1_8gt14"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_tgcqa")
+"texture": ExtResource("1_8gt14")
 }],
 "loop": true,
 "name": &"default",

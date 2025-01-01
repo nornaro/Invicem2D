@@ -6,19 +6,20 @@ extends CanvasLayer
 var build = false
 var text = ""
 var pressed = false
-@onready var buildings = %Buildings
-@onready var style = $HealthBar/Style
-
+@onready var buildings: Node
+var stylefolder: String
 
 func _ready():
-	#dir_to_list("res://Scenes/Building" + style.get_item_text(style.selected) , "Buildings")
-	dir_to_list("res://Scenes/Building", "Buildings")
+	var root = get_tree().root.get_children()[0]
+	buildings = root.get_node("Buildings")
+	stylefolder = "res://Scenes/Building_" + root.style + "/"
+	dir_to_list(stylefolder, "Buildings")
 	buildings.add_buildings_list(Items["Buildings"])
 	buildings.build_castle("Castle")
 	Items["Buildings"].erase("Castle")
-	dir_to_list("res://Scenes/Building/Tower/", "Tower")
-	dir_to_list("res://Scenes/Building/Tower/Turrets/", "Turrets")
-	dir_to_list("res://Scenes/Building/Turret/", "Turret")
+	dir_to_list(stylefolder + "Tower/", "Tower")
+	dir_to_list(stylefolder + "Tower/Turrets/", "Turrets")
+	dir_to_list(stylefolder + "Turret/", "Turret")
 	add_json_list("Buildings")
 
 func _input(event):
@@ -106,7 +107,7 @@ func add_json_list(list):
 	for item in Items[list]:
 		if !buildings.get_node_or_null(item):
 			continue
-		var path = "res://Scenes/Building/" + item + "/" + item + ".json"
+		var path = stylefolder + item + "/" + item + ".json"
 		var file = FileAccess.open(path, FileAccess.READ).get_as_text()
 		var json = JSON.parse_string(file)
 		if !json.has("menu"):

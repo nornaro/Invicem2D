@@ -45,10 +45,10 @@ script = ExtResource("3_xheqc")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -250.0
-offset_right = 250.0
+offset_left = -480.0
 offset_bottom = 10.0
 grow_horizontal = 2
+scale = Vector2(2, 2)
 mouse_filter = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_dq6f6")
 theme_override_styles/fill = SubResource("StyleBoxFlat_o5xb7")
@@ -60,6 +60,7 @@ script = ExtResource("3_gom3w")
 
 [node name="Style" type="OptionButton" parent="HealthBar"]
 self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 1.0
 offset_right = 71.0
 offset_bottom = 33.0
@@ -75,6 +76,7 @@ popup/item_1/text = "Fantasy"
 popup/item_1/id = 1
 
 [node name="Main" type="OptionButton" parent="HealthBar"]
+layout_mode = 0
 offset_left = 1.0
 offset_right = 71.0
 offset_bottom = 33.0

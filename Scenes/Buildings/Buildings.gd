@@ -13,6 +13,7 @@ var drag = false
 var rectangle = Area2D.new()
 var collides
 @export var showCollision = false
+@onready var UI: Node
 
 func add_buildings_list(Items):	
 	for building in Items:
@@ -21,6 +22,7 @@ func add_buildings_list(Items):
 		add_child(instance)
 		
 func _input(event):
+	UI = get_tree().root.get_children()[0].get_node("UI")
 	if event.is_action_released("ShowCollisionToggle"):
 		var buildings = get_tree().get_nodes_in_group("building")
 		showCollision = !showCollision
@@ -33,7 +35,7 @@ func _input(event):
 	turn_turret(instance.get_node("Sprite"))
 	if event.is_action_pressed("RMB"):
 		clear_collision()
-		%UI.text = ""
+		UI.text = ""
 		return
 	instance.position = snap(get_global_mouse_position())
 	if instance.get_node("Sprite").get_sprite_frames().has_meta("position_offset"):
@@ -44,11 +46,11 @@ func _input(event):
 		instance.modulate = collision_color
 		return
 	instance.modulate = placement_color
-	if !%UI.text:
+	if !UI.text:
 		return
-	if !%UI.build:
+	if !UI.build:
 		return
-	change_buildings(%UI.text, false)
+	change_buildings(UI.text, false)
 
 func turn_turret(sp):
 	if sp.get_parent().get_parent().name != "Turret":
@@ -111,7 +113,7 @@ func build_castle(scene_name):
 	instance.name = str(instance.get_instance_id())
 	get_node(scene_name).add_child(instance)
 	instance.modulate = normal_color
-	instance.get_node("Sprite").offset.y -= 100
+	instance.get_node("Sprite").offset.y -= 400
 
 	var script = "res://Scenes/Building/"+scene_name+"/"+scene_name+".gd"
 	FileAccess.file_exists(script)
@@ -162,9 +164,9 @@ func change_buildings(text, change):
 	instance_scene_from_name(text, building_logic(text))
 	
 func building_logic(text):
-	if %UI.Items["Buildings"].has(text):
+	if UI.Items["Buildings"].has(text):
 		return text
-	if %UI.Items["Turret"].has(text):
+	if UI.Items["Turret"].has(text):
 		return "Turret"
 		
 func clear_collision():

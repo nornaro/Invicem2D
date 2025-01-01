@@ -1,12 +1,12 @@
 [gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://bdfye4letqayj"]
 
-[ext_resource type="Texture2D" uid="uid://cpcl6d4vhrnr" path="res://Scenes/Building_Sci-fi/Fort/Fort.png" id="1_7brd8"]
+[ext_resource type="Texture2D" uid="uid://cpcl6d4vhrnr" path="res://Scenes/Building_Sci-fi/Fort/Fort.png" id="1_o5nim"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_7brd8")
+"texture": ExtResource("1_o5nim")
 }],
 "loop": true,
 "name": &"default",

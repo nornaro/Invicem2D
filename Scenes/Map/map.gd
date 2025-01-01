@@ -3,6 +3,7 @@ extends Node2D
 var mapsize: Vector2 
 
 func _ready():
+	z_index = -1
 	mapsize = $Ground/CollisionShape2D.shape.size
 	var disable: Array[Vector2i] = []
 	disable.append(Vector2i(1,2))

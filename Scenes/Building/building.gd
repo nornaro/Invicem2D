@@ -2,8 +2,11 @@ extends StaticBody2D
 
 @export var Data = {}
 @export var type = ""
+@onready var root: Node
+
 
 func _ready():
+	root = get_tree().root.get_children()[0]
 	var typeA = get_parent().name
 	var typeB = get_parent().name
 	if typeA == "Turret":
@@ -28,11 +31,13 @@ func castle_customs(size):
 	$Outline.hide()
 
 func animated_sprite(filename):
-	var sprite_path = "res://Scenes/Building_Sci-fi/"+filename+".tres"
+	var sprite_path = "res://Scenes/Building_" + root.style + "/"+filename+".tres"
 	if !FileAccess.file_exists(sprite_path):
 		return
 	$Sprite.sprite_frames = load(sprite_path)
-	var texture = $Sprite.sprite_frames.get_frame_texture("default", 0)
+	var frame = randi_range(0,$Sprite.sprite_frames.get_frame_count("default")-1)
+	$Sprite.frame = frame
+	var texture = $Sprite.sprite_frames.get_frame_texture("default", frame)
 	var size = texture.get_size()
 	return size
 

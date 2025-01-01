@@ -2,12 +2,16 @@ extends Camera2D
 
 # Configurable zoom speed and limits.
 var zoom_speed: float = 0.1
-var min_zoom: float = 0.5
+var min_zoom: float = 0.6
 var max_zoom: float = 2.0
 
 # Variables to handle middle-click panning
 var dragging: bool = false
 var drag_start_pos: Vector2
+
+func _ready() -> void:
+	make_current()
+	zoom = Vector2(min_zoom, min_zoom)
 
 func _input(event):
 	if event is InputEventMouseButton:
