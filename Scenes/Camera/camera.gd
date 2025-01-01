@@ -1,6 +1,5 @@
 extends Camera2D
 
-# Configurable zoom speed and limits.
 var zoom_speed: float = 0.1
 var min_zoom: float = 0.6
 var max_zoom: float = 2.0
