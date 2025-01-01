@@ -11,6 +11,8 @@ public partial class minion : Godot.RigidBody2D
 		["def"] = 1000,
 		["dodge"] = 0,
 	};
+	[Export]
+	public string Skin = "";
 	
 	private int maxHp;
 	private Vector2 initialVelocity;

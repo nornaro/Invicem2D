@@ -13,7 +13,6 @@ func _ready():
 		(
 			target.global_position-global_position
 		) * speed + target.get_parent().linear_velocity*200).normalized()*speed
-	#print(target.get_parent().linear_velocity)
 
 #func _physics_process(delta):
 	#if !is_instance_valid(target):

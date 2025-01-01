@@ -12,5 +12,4 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	print("asdf")
 	visible = !visible # Replace with function body.

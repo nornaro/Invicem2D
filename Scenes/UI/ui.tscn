@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/HealhBar/HealthBar.gd" id="3_gom3w"]
 [ext_resource type="Script" path="res://Scenes/UI/Numbers.gd" id="3_xheqc"]
 [ext_resource type="SpriteFrames" uid="uid://du1wxwfq0jtbo" path="res://Scenes/UI/icons8-gear.gif" id="3_yheyh"]
-[ext_resource type="Script" path="res://Scenes/UI/main.gd" id="4_eryjc"]
+[ext_resource type="Script" path="res://Scenes/Main/main.gd" id="4_eryjc"]
 [ext_resource type="Script" path="res://Scenes/UI/Confirm.gd" id="5_rq4vg"]
 [ext_resource type="Script" path="res://Scenes/UI/animated_sprite_2d.gd" id="6_xkir2"]
 

@@ -6,13 +6,12 @@ extends CanvasLayer
 var build = false
 var text = ""
 var pressed = false
-@onready var buildings: Node
+@onready var client: Node = $".."
+@onready var buildings: Node = $"../Buildings"
 var stylefolder: String
 
 func _ready():
-	var root = get_tree().root.get_children()[0]
-	buildings = root.get_node("Buildings")
-	stylefolder = "res://Scenes/Building_" + root.style + "/"
+	stylefolder = "res://Scenes/Building/" + Global.style + "/"
 	dir_to_list(stylefolder, "Buildings")
 	buildings.add_buildings_list(Items["Buildings"])
 	buildings.build_castle("Castle")

@@ -8,15 +8,15 @@ var speed = 0
 func _ready():
 	add_to_group("projectiles")
 	lua.bind_libraries(["base"])
-	var err: LuaError = lua.do_file("res://Scenes/Building/Tower/Targeting/Homing.lua")
+	var err: LuaError = lua.do_file("res://Scenes/Building" + Global.style + "//Tower/Targeting/Homing.lua")
 	
 	if err is LuaError:
-		print("ERROR %d: %s" % [err.type, err.message])
+		push_warning("ERROR %d: %s" % [err.type, err.message])
 
 func _process(delta):
 	var ret = lua.call_function("shoot_logic", [delta, speed, projectileSpeed])
 	if ret is LuaError:
-		print("ERROR %d: %s" % [ret.type, ret.message])
+		push_warning("ERROR %d: %s" % [ret.type, ret.message])
 		return
 	speed = ret
 	if is_instance_valid(target):
@@ -27,7 +27,7 @@ func _process(delta):
 func hit(area):
 	var hp = lua.call_function("hit_logic", [area, mass])
 	if hp is LuaError:
-		print("ERROR %d: %s" % [hp.type, hp.message])
+		push_warning("ERROR %d: %s" % [hp.type, hp.message])
 		return
 	if hp <= 0:
 		area.get_parent().queue_free()

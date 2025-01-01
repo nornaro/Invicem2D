@@ -22,7 +22,7 @@ func add_buildings_list(Items):
 		add_child(instance)
 		
 func _input(event):
-	UI = get_tree().root.get_children()[0].get_node("UI")
+	UI = $"../UI"
 	if event.is_action_released("ShowCollisionToggle"):
 		var buildings = get_tree().get_nodes_in_group("building")
 		showCollision = !showCollision
@@ -93,13 +93,13 @@ func instance_scene_from_name(scene_name: String,parent_scene_name: String):
 	if temp_instance:
 		old = instance_from_id(temp_instance)
 		old.remove_from_group("temp")
-	var scene = load("res://Scenes/Building/building.tscn")
+	var scene = load("res://Scenes/Building/" + Global.style + "/building.tscn")
 	instance = scene.instantiate()
 	instance.add_to_group("temp")
 	if old:
 		old.get_node("Area2D").add_to_group(str(instance.get_node("Area2D").get_instance_id()))
 	instance.position = snap(get_global_mouse_position())
-	instance.z_index = int(instance.position.y)+get_tree().root.get_node("2DClient/Map").mapsize.y/2
+	instance.z_index = int(instance.position.y)+get_tree().root.get_node("Main/Client/Map").mapsize.y/2
 	instance.name = scene_name
 	instance.add_to_group(parent_scene_name)
 	instance.modulate = placement_color
@@ -108,14 +108,14 @@ func instance_scene_from_name(scene_name: String,parent_scene_name: String):
 	return temp_instance
 
 func build_castle(scene_name):
-	var scene = load("res://Scenes/Building/building.tscn")
+	var scene = load("res://Scenes/Building/" + Global.style + "/building.tscn")
 	var instance = scene.instantiate()
 	instance.name = str(instance.get_instance_id())
 	get_node(scene_name).add_child(instance)
 	instance.modulate = normal_color
 	instance.get_node("Sprite").offset.y -= 400
 
-	var script = "res://Scenes/Building/"+scene_name+"/"+scene_name+".gd"
+	var script = "res://Scenes/Building/" + Global.style + "/"+scene_name+"/"+scene_name+".gd"
 	FileAccess.file_exists(script)
 	if FileAccess.file_exists(script):
 		instance.set_script(load(script))
@@ -126,11 +126,11 @@ func load_script_from_name(id,scene_name: String,parent_scene_name: String):
 		return
 	var instance = instance_from_id(temp_instance)
 	instance = instance_from_id(id)
-	var script = "res://Scenes/Building/"+parent_scene_name+"/"+parent_scene_name+".gd"
+	var script = "res://Scenes/Building/" + Global.style + "/"+parent_scene_name+"/"+parent_scene_name+".gd"
 	FileAccess.file_exists(script)
 	if FileAccess.file_exists(script):
 		instance.set_script(load(script))
-		script = "res://Scenes/Building/"+parent_scene_name+"/"+scene_name+"/"+scene_name+".gd"
+		script = "res://Scenes/Building/" + Global.style + "/"+parent_scene_name+"/"+scene_name+"/"+scene_name+".gd"
 		if FileAccess.file_exists(script):
 			var external = load(script).new()
 			instance.Data.merge(external.Data)
@@ -164,6 +164,7 @@ func change_buildings(text, change):
 	instance_scene_from_name(text, building_logic(text))
 	
 func building_logic(text):
+	UI = $"../UI"
 	if UI.Items["Buildings"].has(text):
 		return text
 	if UI.Items["Turret"].has(text):

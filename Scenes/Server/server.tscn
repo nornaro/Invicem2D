@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnjb4xp671w8p"]
+
+[ext_resource type="Script" path="res://Scenes/Server/server.gd" id="1_vc3b0"]
+
+[node name="Server" type="MultiplayerSpawner"]
+_spawnable_scenes = PackedStringArray("res://Scenes/Client/2d_client.tscn")
+spawn_path = NodePath(".")
+script = ExtResource("1_vc3b0")

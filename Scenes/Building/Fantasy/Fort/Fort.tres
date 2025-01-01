@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://bdfye4letqayj"]
+
+[ext_resource type="Texture2D" uid="uid://cpcl6d4vhrnr" path="res://Scenes/Building/Fantasy/Fort/Fort.png" id="1_uyv6f"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uyv6f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

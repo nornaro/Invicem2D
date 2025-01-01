@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://be4mtsn26pln1"]
+
+[ext_resource type="Texture2D" uid="uid://kue6m2x5h80p" path="res://Scenes/Building/Fantasy/Tower/Tower.png" id="1_nien0"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nien0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

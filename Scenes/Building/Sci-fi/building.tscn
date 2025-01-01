@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://be5vgoanyxh12"]
+
+[ext_resource type="Script" path="res://Scenes/Building/Fantasy/building.gd" id="1_t4iwd"]
+[ext_resource type="PackedScene" uid="uid://b365gc0lijb6r" path="res://Scenes/Buildings/Area2D/area_2d.tscn" id="1_wfd6y"]
+[ext_resource type="PackedScene" uid="uid://bydkjmor6dd4g" path="res://Scenes/Buildings/Select/select.tscn" id="3_t3j57"]
+[ext_resource type="Texture2D" uid="uid://dh23r32qftr7q" path="res://Scenes/Minions/icon.svg" id="4_gc5s8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5tgk"]
+size = Vector2(1, 1)
+
+[node name="Building" type="StaticBody2D" groups=["BuildingMesh"]]
+script = ExtResource("1_t4iwd")
+
+[node name="Area2D" parent="." instance=ExtResource("1_wfd6y")]
+
+[node name="Outline" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(-1, -1, 1, -1, 1, 1, -1, 1, -1, -1)
+width = 20.0
+default_color = Color(0, 1, 0, 1)
+
+[node name="Select" parent="." instance=ExtResource("3_t3j57")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b5tgk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+
+[node name="ID" type="RichTextLabel" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_gc5s8")
+
+[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="Area2D" method="_on_area_exited"]
+[connection signal="input_event" from="Area2D" to="Area2D" method="_on_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="Area2D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="Area2D" method="_on_mouse_exited"]
+
+[editable path="Area2D"]
+[editable path="Select"]

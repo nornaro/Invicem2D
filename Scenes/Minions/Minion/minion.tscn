@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://5b3v7b6ahib1"]
+[gd_scene load_steps=10 format=3 uid="uid://5b3v7b6ahib1"]
 
 [ext_resource type="Script" path="res://Scenes/Minions/Minion/minion.cs" id="1_3x0mk"]
 [ext_resource type="Texture2D" uid="uid://dh23r32qftr7q" path="res://Scenes/Minions/icon.svg" id="2_bl338"]
@@ -25,6 +25,20 @@ border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krg58"]
 bg_color = Color(0, 1, 0, 0.392157)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dn47t"]
+properties/0/path = NodePath(".:Data")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Sprite2D:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Area2D/CollisionShape2D:scale")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:Skin")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [node name="Minion" type="RigidBody2D" groups=["minions"]]
 gravity_scale = 0.0
@@ -58,6 +72,9 @@ step = 1.0
 value = 50.0
 allow_greater = true
 show_percentage = false
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_dn47t")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

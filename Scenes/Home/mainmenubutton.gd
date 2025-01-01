@@ -4,7 +4,7 @@ extends Button
 func _on_pressed() -> void:
 	match name:
 		"Start":
-			get_tree().root.get_children()[0].start()
+			get_tree().call_group("Client","start")
 			get_parent().hide()
 		"Exit":
 			get_tree().quit()
