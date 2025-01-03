@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds57nc6h7eej5"]
+[gd_scene load_steps=5 format=3 uid="uid://ds57nc6h7eej5"]
 
 [ext_resource type="Script" path="res://Docs/Bugs.gd" id="2_lg1kx"]
+[ext_resource type="Script" path="res://Scenes/Main/readme.gd" id="3_lukef"]
 [ext_resource type="Script" path="res://Docs/2DO.gd" id="3_tggs8"]
 [ext_resource type="Script" path="res://Scenes/Main/select.gd" id="4_d8has"]
 
@@ -11,6 +12,9 @@ script = ExtResource("2_lg1kx")
 
 [node name="2DO" type="Node" parent="."]
 script = ExtResource("3_tggs8")
+
+[node name="Readme" type="Node" parent="."]
+script = ExtResource("3_lukef")
 
 [node name="Select" type="ItemList" parent="."]
 anchors_preset = 8

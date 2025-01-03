@@ -10,7 +10,7 @@ func _ready():
 	$Top.set_disabled_points(disable)
 
 func _on_out_area_entered(area):
-	var body =area.get_parent()
+	var body = area.get_parent()
 	if !body.is_in_group("minions"):
 		return
 	body.global_position.x = $In.global_position.x

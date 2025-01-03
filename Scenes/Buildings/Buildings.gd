@@ -6,7 +6,7 @@ var overlapping
 # 2DO Placement grid?
 var normal_color: Color = Color(1, 1, 1, 1) # original color
 var placement_color: Color = Color(1, 1, 1, 0.5) # original color
-var collision_color: Color = Color(1, 0.5, 0.5, 0.5) # reddish color
+var collision_color: Color = Color(1, 0.5, 0.5, 0.5) # redish color
 var temp_instance
 var placement = false
 var drag = false
@@ -14,7 +14,8 @@ var rectangle = Area2D.new()
 var collides
 @export var showCollision = false
 @onready var UI: Node
-
+@onready var scene = preload("res://Scenes/Building/building.tscn")
+	
 func add_buildings_list(Items):	
 	for building in Items:
 		var instance = Node.new()
@@ -93,7 +94,6 @@ func instance_scene_from_name(scene_name: String,parent_scene_name: String):
 	if temp_instance:
 		old = instance_from_id(temp_instance)
 		old.remove_from_group("temp")
-	var scene = load("res://Scenes/Building/" + Global.style + "/building.tscn")
 	instance = scene.instantiate()
 	instance.add_to_group("temp")
 	if old:
@@ -108,14 +108,13 @@ func instance_scene_from_name(scene_name: String,parent_scene_name: String):
 	return temp_instance
 
 func build_castle(scene_name):
-	var scene = load("res://Scenes/Building/" + Global.style + "/building.tscn")
 	var instance = scene.instantiate()
 	instance.name = str(instance.get_instance_id())
 	get_node(scene_name).add_child(instance)
 	instance.modulate = normal_color
 	instance.get_node("Sprite").offset.y -= 400
 
-	var script = "res://Scenes/Building/" + Global.style + "/"+scene_name+"/"+scene_name+".gd"
+	var script = "res://Scenes/Building/" + scene_name+"/"+scene_name+".gd"
 	FileAccess.file_exists(script)
 	if FileAccess.file_exists(script):
 		instance.set_script(load(script))
@@ -126,11 +125,11 @@ func load_script_from_name(id,scene_name: String,parent_scene_name: String):
 		return
 	var instance = instance_from_id(temp_instance)
 	instance = instance_from_id(id)
-	var script = "res://Scenes/Building/" + Global.style + "/"+parent_scene_name+"/"+parent_scene_name+".gd"
+	var script = "res://Scenes/Building/" + parent_scene_name+"/"+parent_scene_name+".gd"
 	FileAccess.file_exists(script)
 	if FileAccess.file_exists(script):
 		instance.set_script(load(script))
-		script = "res://Scenes/Building/" + Global.style + "/"+parent_scene_name+"/"+scene_name+"/"+scene_name+".gd"
+		script = "res://Scenes/Building/" + parent_scene_name+"/"+scene_name+"/"+scene_name+".gd"
 		if FileAccess.file_exists(script):
 			var external = load(script).new()
 			instance.Data.merge(external.Data)

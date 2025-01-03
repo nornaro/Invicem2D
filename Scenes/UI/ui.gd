@@ -11,7 +11,7 @@ var pressed = false
 var stylefolder: String
 
 func _ready():
-	stylefolder = "res://Scenes/Building/" + Global.style + "/"
+	stylefolder = "res://Scenes/Building/"
 	dir_to_list(stylefolder, "Buildings")
 	buildings.add_buildings_list(Items["Buildings"])
 	buildings.build_castle("Castle")

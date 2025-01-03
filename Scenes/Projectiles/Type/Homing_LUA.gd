@@ -8,7 +8,7 @@ var speed = 0
 func _ready():
 	add_to_group("projectiles")
 	lua.bind_libraries(["base"])
-	var err: LuaError = lua.do_file("res://Scenes/Building" + Global.style + "//Tower/Targeting/Homing.lua")
+	var err: LuaError = lua.do_file("res://Scenes/Building/Tower/Targeting/Homing.lua")
 	
 	if err is LuaError:
 		push_warning("ERROR %d: %s" % [err.type, err.message])

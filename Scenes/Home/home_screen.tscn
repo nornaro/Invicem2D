@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/Home/home_screen.gd" id="1_ajl7f"]
 [ext_resource type="Texture2D" uid="uid://cmoadextlwr4x" path="res://Scenes/Home/Home.png" id="1_y2i7d"]
 [ext_resource type="Script" path="res://Scenes/Home/mainmenubutton.gd" id="3_ort1d"]
-[ext_resource type="Texture2D" uid="uid://damghc5o54cr8" path="res://Scenes/Building/Fantasy/Castle/Castle.png" id="4_s7oxe"]
-[ext_resource type="Texture2D" uid="uid://csudvx0jujwbu" path="res://Scenes/Building/Sci-fi/Castle/Castle2.png" id="5_j6q11"]
+[ext_resource type="Texture2D" uid="uid://br64ywg0a0yxw" path="res://Scenes/Building/Castle/Styles/Fantasy/Castle.png" id="4_s7oxe"]
+[ext_resource type="Texture2D" uid="uid://dpxn15csk35ec" path="res://Scenes/Building/Castle/Styles/Sci-fi/Castle2.png" id="5_j6q11"]
 [ext_resource type="Script" path="res://Scenes/Home/main_circle.gd" id="6_2ec54"]
 [ext_resource type="Script" path="res://Scenes/Home/style.gd" id="6_c6w5i"]
 

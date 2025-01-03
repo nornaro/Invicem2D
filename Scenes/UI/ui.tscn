@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctyric4lpymab"]
+[gd_scene load_steps=11 format=3 uid="uid://ctyric4lpymab"]
 
 [ext_resource type="Script" path="res://Scenes/UI/ui.gd" id="1_2xbke"]
 [ext_resource type="Script" path="res://Scenes/HealhBar/HealthBar.gd" id="3_gom3w"]
 [ext_resource type="Script" path="res://Scenes/UI/Numbers.gd" id="3_xheqc"]
 [ext_resource type="SpriteFrames" uid="uid://du1wxwfq0jtbo" path="res://Scenes/UI/icons8-gear.gif" id="3_yheyh"]
+[ext_resource type="Script" path="res://Scenes/UI/style.gd" id="4_a2yal"]
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="4_eryjc"]
 [ext_resource type="Script" path="res://Scenes/UI/Confirm.gd" id="5_rq4vg"]
 [ext_resource type="Script" path="res://Scenes/UI/animated_sprite_2d.gd" id="6_xkir2"]
@@ -74,6 +75,7 @@ popup/item_0/text = "Sci-fi"
 popup/item_0/id = 0
 popup/item_1/text = "Fantasy"
 popup/item_1/id = 1
+script = ExtResource("4_a2yal")
 
 [node name="Main" type="OptionButton" parent="HealthBar"]
 layout_mode = 0
@@ -198,6 +200,7 @@ layout_mode = 2
 text = "Cancel"
 
 [connection signal="item_selected" from="List" to="." method="_on_list_item_selected"]
+[connection signal="item_selected" from="HealthBar/Style" to="HealthBar/Style" method="_on_item_selected"]
 [connection signal="item_selected" from="HealthBar/Main" to="HealthBar/Main" method="_on_option_button_item_selected"]
 [connection signal="mouse_entered" from="HealthBar/Main" to="HealthBar/Main/Gear" method="_on_option_button_mouse_entered"]
 [connection signal="mouse_exited" from="HealthBar/Main" to="HealthBar/Main/Gear" method="_on_option_button_mouse_exited"]
