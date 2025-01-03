@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ds57nc6h7eej5"]
 
 [ext_resource type="Script" path="res://Docs/Bugs.gd" id="2_lg1kx"]
-[ext_resource type="Script" path="res://Scenes/Main/readme.gd" id="3_lukef"]
+[ext_resource type="Script" path="res://Docs/readme.gd" id="3_lukef"]
 [ext_resource type="Script" path="res://Docs/2DO.gd" id="3_tggs8"]
 [ext_resource type="Script" path="res://Scenes/Main/select.gd" id="4_d8has"]
 

@@ -24,6 +24,8 @@ func add_buildings_list(Items):
 		
 func _input(event):
 	UI = $"../UI"
+	if !is_instance_valid($"../UI"):
+		return
 	if event.is_action_released("ShowCollisionToggle"):
 		var buildings = get_tree().get_nodes_in_group("building")
 		showCollision = !showCollision
@@ -112,7 +114,7 @@ func build_castle(scene_name):
 	instance.name = str(instance.get_instance_id())
 	get_node(scene_name).add_child(instance)
 	instance.modulate = normal_color
-	instance.get_node("Sprite").offset.y -= 400
+	instance.get_node("Sprite").offset.y -= 100
 
 	var script = "res://Scenes/Building/" + scene_name+"/"+scene_name+".gd"
 	FileAccess.file_exists(script)
@@ -163,7 +165,6 @@ func change_buildings(text, change):
 	instance_scene_from_name(text, building_logic(text))
 	
 func building_logic(text):
-	UI = $"../UI"
 	if UI.Items["Buildings"].has(text):
 		return text
 	if UI.Items["Turret"].has(text):
