@@ -9,6 +9,12 @@ extends Node
 
 @export var server_ip : String = "127.0.0.1"  # IP address of the server
 @export var server_port : int = 9999  # Port to connect to
+@export var player_id: int
+#@export var player_id := 1:
+	#set(id):
+		#player_id = id
+		#%MultiplayerSynchronizer.set_multiplayer_authority(id, true)
+		#GlobalMultiplayerSynchronizer.set_multiplayer_authority(id, true)
 
 var peer : ENetMultiplayerPeer
 

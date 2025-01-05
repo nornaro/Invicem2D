@@ -13,11 +13,15 @@ config_version=5
 config/name="Invicem2D"
 run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+boot_splash/image="res://Invicem2D.png"
 config/icon="res://Invicem2D.png"
 
 [autoload]
 
 Global="*res://Scenes/global.gd"
+NetworkMgr="*res://Scenes/Multiplayer/network_mgr.gd"
+GlobalMultiplayerSynchronizer="*res://Scenes/Multiplayer/multiplayer_synchronizer.gd"
+Autoload="*res://Scenes/Multiplayer/autoload.gd"
 
 [display]
 
@@ -33,7 +37,7 @@ project/assembly_name="Invicem2D"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/BurstParticles2D/plugin.cfg", "res://addons/Fire Bullets/plugin.cfg", "res://addons/astar2d_grid_node/plugin.cfg", "res://addons/projectiles_plugin/plugin.cfg", "res://addons/softbody2d/plugin.cfg")
+enabled=PackedStringArray("res://addons/BurstParticles2D/plugin.cfg", "res://addons/Fire Bullets/plugin.cfg", "res://addons/astar2d_grid_node/plugin.cfg", "res://addons/projectiles_plugin/plugin.cfg", "res://addons/softbody2d/plugin.cfg", "res://addons/websocket/plugin.cfg")
 
 [global_group]
 
