@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://duahqxjl5ik7d"]
+
+[ext_resource type="Script" path="res://Scenes/HomeScreen/HomeButtons/main_circle.gd" id="1_6sd78"]
+
+[node name="MainCircle" type="GridContainer" groups=["MainCircle"]]
+visible = false
+top_level = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1310.0
+offset_top = -750.0
+offset_right = -610.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.0
+columns = 2
+script = ExtResource("1_6sd78")

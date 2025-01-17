@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ds57nc6h7eej5"]
+[gd_scene load_steps=5 format=3 uid="uid://ds57nc6h7eej5"]
 
 [ext_resource type="Script" path="res://Docs/Bugs.gd" id="2_lg1kx"]
 [ext_resource type="Script" path="res://Docs/readme.gd" id="3_lukef"]
 [ext_resource type="Script" path="res://Docs/2DO.gd" id="3_tggs8"]
-[ext_resource type="Script" path="res://Scenes/Main/select.gd" id="4_d8has"]
 [ext_resource type="PackedScene" uid="uid://d0bjhea2tawvk" path="res://Scenes/Multiplayer/network.tscn" id="5_473yq"]
 
 [node name="Main" type="Node"]
@@ -17,27 +16,5 @@ script = ExtResource("3_tggs8")
 [node name="Readme" type="Node" parent="."]
 script = ExtResource("3_lukef")
 
-[node name="Select" type="ItemList" parent="."]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -105.0
-offset_top = -93.0
-offset_right = -35.0
-offset_bottom = -31.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(3, 3)
-auto_height = true
-item_count = 2
-item_0/text = "Server"
-item_1/text = "Client"
-script = ExtResource("4_d8has")
-
 [node name="Network" parent="." instance=ExtResource("5_473yq")]
-unique_name_in_owner = true
-
-[connection signal="item_selected" from="Select" to="Select" method="_on_item_selected"]
+visible = false

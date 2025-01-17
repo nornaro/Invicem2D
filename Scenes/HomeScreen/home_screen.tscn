@@ -1,0 +1,415 @@
+[gd_scene load_steps=33 format=3 uid="uid://t41phsm2wrag"]
+
+[ext_resource type="Script" path="res://Scenes/HomeScreen/home_screen.gd" id="1_ajl7f"]
+[ext_resource type="Texture2D" uid="uid://daseoyoa5oftu" path="res://Scenes/HomeScreen/Home.png" id="1_y2i7d"]
+[ext_resource type="PackedScene" uid="uid://dhearbilncssa" path="res://Scenes/Main/gpu_particles_2d.tscn" id="4_5yl82"]
+[ext_resource type="Texture2D" uid="uid://dl4lt25afp51k" path="res://addons/kenney_particle_pack/flame_04.png" id="5_l35pp"]
+[ext_resource type="Script" path="res://Scenes/HomeScreen/HomeButtons/home_button.gd" id="6_c6w5i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ab77t"]
+texture = ExtResource("1_y2i7d")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ha3ui"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_410l8"]
+material = SubResource("ShaderMaterial_ha3ui")
+radius = 110.0
+height = 130.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x4bwu"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_02jyj"]
+material = SubResource("ShaderMaterial_x4bwu")
+radius = 100.0
+height = 130.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwjn1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_4l12t"]
+material = SubResource("ShaderMaterial_mwjn1")
+radius = 120.0
+height = 200.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_47me8"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_qkddb"]
+material = SubResource("ShaderMaterial_47me8")
+radius = 120.0
+height = 200.0
+
+[sub_resource type="Curve" id="Curve_6fx1a"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.262032, 0.506867), 0.0, 0.0, 0, 0, Vector2(0.754011, 0.489863), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_xnc3c"]
+curve = SubResource("Curve_6fx1a")
+
+[sub_resource type="Curve" id="Curve_im025"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.253119, -117.489), 0.0, 0.0, 0, 0, Vector2(0.764706, 350.818), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_1rbtw"]
+curve = SubResource("Curve_im025")
+
+[sub_resource type="Curve" id="Curve_7ry65"]
+max_value = 200.0
+_data = [Vector2(0.454545, 0), 0.0, 0.0, 0, 0, Vector2(1, 200), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3wba4"]
+curve = SubResource("Curve_7ry65")
+
+[sub_resource type="Gradient" id="Gradient_uapky"]
+colors = PackedColorArray(0, 1, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ck0xb"]
+gradient = SubResource("Gradient_uapky")
+
+[sub_resource type="Gradient" id="Gradient_7mghd"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rggw4"]
+gradient = SubResource("Gradient_7mghd")
+
+[sub_resource type="Curve" id="Curve_0y2i8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5637, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kdnbg"]
+curve = SubResource("Curve_0y2i8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g6gow"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 100.0
+angle_min = -45.0
+angle_max = 45.0
+angle_curve = SubResource("CurveTexture_1rbtw")
+gravity = Vector3(0, -98, 0)
+color = Color(0.988235, 0.321569, 0.988235, 1)
+color_ramp = SubResource("GradientTexture1D_rggw4")
+color_initial_ramp = SubResource("GradientTexture1D_ck0xb")
+alpha_curve = SubResource("CurveTexture_xnc3c")
+anim_speed_curve = SubResource("CurveTexture_3wba4")
+turbulence_noise_scale = 1.0
+turbulence_influence_over_life = SubResource("CurveTexture_kdnbg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5yhyo"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ib800"]
+material = SubResource("ShaderMaterial_5yhyo")
+radius = 105.0
+height = 130.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ewyv"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_2j0xa"]
+material = SubResource("ShaderMaterial_3ewyv")
+radius = 105.0
+height = 130.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cyf54"]
+
+[node name="Home Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1920.0
+offset_top = -1000.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ajl7f")
+
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ab77t")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(0.5, 0.5)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+top_level = true
+
+[node name="0" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1696.0
+offset_top = 203.0
+offset_right = 1916.0
+offset_bottom = 406.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "0"
+flat = true
+script = ExtResource("6_c6w5i")
+
+[node name="Bubble" type="MeshInstance2D" parent="0"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.294118)
+position = Vector2(110.5, 102)
+mesh = SubResource("SphereMesh_410l8")
+
+[node name="GPUParticles2D" parent="0/Bubble" instance=ExtResource("4_5yl82")]
+visible = true
+
+[node name="1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2239.0
+offset_top = 320.0
+offset_right = 2459.0
+offset_bottom = 523.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "1"
+flat = true
+script = ExtResource("6_c6w5i")
+
+[node name="Bubble" type="MeshInstance2D" parent="1"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.294118)
+position = Vector2(116, 102)
+mesh = SubResource("SphereMesh_410l8")
+
+[node name="GPUParticles2D" parent="1/Bubble" instance=ExtResource("4_5yl82")]
+visible = true
+
+[node name="2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2489.0
+offset_top = 672.0
+offset_right = 2709.0
+offset_bottom = 875.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "2"
+flat = true
+script = ExtResource("6_c6w5i")
+
+[node name="Bubble" type="MeshInstance2D" parent="2"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.294118)
+position = Vector2(116, 102)
+mesh = SubResource("SphereMesh_02jyj")
+
+[node name="GPUParticles2D" parent="2/Bubble" instance=ExtResource("4_5yl82")]
+visible = true
+
+[node name="3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2485.0
+offset_top = 1083.0
+offset_right = 2705.0
+offset_bottom = 1286.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "3"
+flat = true
+script = ExtResource("6_c6w5i")
+
+[node name="Bubble" type="MeshInstance2D" parent="3"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.294118)
+position = Vector2(116, 102)
+mesh = SubResource("SphereMesh_410l8")
+
+[node name="GPUParticles2D" parent="3/Bubble" instance=ExtResource("4_5yl82")]
+visible = true
+
+[node name="4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2241.0
+offset_top = 1430.0
+offset_right = 2474.0
+offset_bottom = 1635.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "4"
+flat = true
+script = ExtResource("6_c6w5i")
+
+[node name="Bubble" type="MeshInstance2D" parent="4"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.294118)
+position = Vector2(116, 102)
+mesh = SubResource("SphereMesh_4l12t")
+
+[node name="GPUParticles2D" parent="4/Bubble" instance=ExtResource("4_5yl82")]
+visible = true
+
+[node name="5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1698.0
+offset_top = 1625.0
+offset_right = 1918.0
+offset_bottom = 1828.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "5"
+flat = true
+script = ExtResource("6_c6w5i")
+
+[node name="Bubble" type="MeshInstance2D" parent="5"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.294118)
+position = Vector2(116, 102)
+mesh = SubResource("SphereMesh_410l8")
+
+[node name="GPUParticles2D" parent="5/Bubble" instance=ExtResource("4_5yl82")]
+visible = true
+
+[node name="6" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1145.0
+offset_top = 1425.0
+offset_right = 1382.0
+offset_bottom = 1628.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "6"
+flat = true
+script = ExtResource("6_c6w5i")
+
+[node name="Bubble" type="MeshInstance2D" parent="6"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.294118)
+position = Vector2(116, 102)
+mesh = SubResource("SphereMesh_qkddb")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="6/Bubble"]
+position = Vector2(1.5, 10)
+amount = 20
+sub_emitter = NodePath(".")
+process_material = SubResource("ParticleProcessMaterial_g6gow")
+texture = ExtResource("5_l35pp")
+lifetime = 5.0
+speed_scale = 0.5
+explosiveness = 0.1
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 5.0
+trail_sections = 10
+trail_section_subdivisions = 10
+
+[node name="7" type="Button" parent="."]
+layout_mode = 0
+offset_left = 878.0
+offset_top = 1083.0
+offset_right = 1115.0
+offset_bottom = 1286.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "7"
+flat = true
+script = ExtResource("6_c6w5i")
+
+[node name="Bubble" type="MeshInstance2D" parent="7"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.294118)
+position = Vector2(116, 102)
+mesh = SubResource("SphereMesh_ib800")
+
+[node name="GPUParticles2D" parent="7/Bubble" instance=ExtResource("4_5yl82")]
+
+[node name="8" type="Button" parent="."]
+layout_mode = 0
+offset_left = 880.0
+offset_top = 679.0
+offset_right = 1117.0
+offset_bottom = 882.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "8"
+flat = true
+script = ExtResource("6_c6w5i")
+
+[node name="Bubble" type="MeshInstance2D" parent="8"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.294118)
+position = Vector2(116, 102)
+mesh = SubResource("SphereMesh_2j0xa")
+
+[node name="GPUParticles2D" parent="8/Bubble" instance=ExtResource("4_5yl82")]
+visible = true
+
+[node name="9" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1136.0
+offset_top = 319.0
+offset_right = 1356.0
+offset_bottom = 522.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "9"
+flat = true
+script = ExtResource("6_c6w5i")
+
+[node name="Bubble" type="MeshInstance2D" parent="9"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.294118)
+position = Vector2(116, 102)
+mesh = SubResource("SphereMesh_410l8")
+
+[node name="GPUParticles2D" parent="9/Bubble" instance=ExtResource("4_5yl82")]
+visible = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cyf54")
+
+[connection signal="mouse_entered" from="0" to="0" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="0" to="0" method="_on_mouse_exited"]
+[connection signal="pressed" from="0" to="0" method="_on_pressed"]
+[connection signal="mouse_entered" from="1" to="1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="1" to="1" method="_on_mouse_exited"]
+[connection signal="pressed" from="1" to="1" method="_on_pressed"]
+[connection signal="mouse_entered" from="2" to="2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="2" to="2" method="_on_mouse_exited"]
+[connection signal="pressed" from="2" to="2" method="_on_pressed"]
+[connection signal="mouse_entered" from="3" to="3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="3" to="3" method="_on_mouse_exited"]
+[connection signal="pressed" from="3" to="3" method="_on_pressed"]
+[connection signal="mouse_entered" from="4" to="4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="4" to="4" method="_on_mouse_exited"]
+[connection signal="pressed" from="4" to="4" method="_on_pressed"]
+[connection signal="mouse_entered" from="5" to="5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="5" to="5" method="_on_mouse_exited"]
+[connection signal="pressed" from="5" to="5" method="_on_pressed"]
+[connection signal="mouse_entered" from="6" to="6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="6" to="6" method="_on_mouse_exited"]
+[connection signal="pressed" from="6" to="6" method="_on_pressed"]
+[connection signal="mouse_entered" from="7" to="7" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="7" to="7" method="_on_mouse_exited"]
+[connection signal="pressed" from="7" to="7" method="_on_pressed"]
+[connection signal="mouse_entered" from="8" to="8" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="8" to="8" method="_on_mouse_exited"]
+[connection signal="pressed" from="8" to="8" method="_on_pressed"]
+[connection signal="mouse_entered" from="9" to="9" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="9" to="9" method="_on_mouse_exited"]
+[connection signal="pressed" from="9" to="9" method="_on_pressed"]

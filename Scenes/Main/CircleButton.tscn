@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://3ipapmsr02wr"]
+
+[ext_resource type="Texture2D" uid="uid://c8lsvbq8jqnkl" path="res://Scenes/Building/Castle/Styles/Fantasy/Castle.png" id="1_e27ua"]
+[ext_resource type="Script" path="res://Scenes/HomeScreen/HomeButtons/home_button.gd" id="2_e1xyj"]
+
+[node name="Limit" type="TextureButton" groups=["Style"]]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("1_e27ua")
+texture_pressed = ExtResource("1_e27ua")
+texture_hover = ExtResource("1_e27ua")
+texture_disabled = ExtResource("1_e27ua")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_e1xyj")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

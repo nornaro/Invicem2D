@@ -13,7 +13,7 @@ func _on_host_pressed() -> void:
 			NetworkMgr._gds_join_pressed()
 		4:
 			NetworkMgr._eos_join_pressed()
-	%Network.hide()
+	hide()
 
 
 func _on_join_pressed() -> void:
@@ -28,7 +28,7 @@ func _on_join_pressed() -> void:
 			NetworkMgr._gds_join_pressed()
 		4:
 			NetworkMgr._eos_join_pressed()
-	%Network.hide()
+	hide()
 
 
 func _on_tab_bar_tab_changed(_tab: int) -> void:
