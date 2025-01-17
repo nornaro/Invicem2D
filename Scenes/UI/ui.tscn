@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scenes/UI/ui.gd" id="1_2xbke"]
 [ext_resource type="Script" path="res://Scenes/HealhBar/HealthBar.gd" id="3_gom3w"]
 [ext_resource type="Script" path="res://Scenes/UI/Numbers.gd" id="3_xheqc"]
-[ext_resource type="SpriteFrames" uid="uid://du1wxwfq0jtbo" path="res://Scenes/UI/icons8-gear.gif" id="3_yheyh"]
+[ext_resource type="SpriteFrames" uid="uid://3snbmbyrrooe" path="res://Scenes/UI/icons8-gear.gif" id="3_yheyh"]
 [ext_resource type="Script" path="res://Scenes/UI/style.gd" id="4_a2yal"]
-[ext_resource type="Script" path="res://Scenes/Main/main.gd" id="4_eryjc"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="4_eryjc"]
 [ext_resource type="Script" path="res://Scenes/UI/Confirm.gd" id="5_rq4vg"]
 [ext_resource type="Script" path="res://Scenes/UI/animated_sprite_2d.gd" id="6_xkir2"]
 

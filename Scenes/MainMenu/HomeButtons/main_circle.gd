@@ -3,18 +3,25 @@ extends GridContainer
 
 @onready var home_btton = preload("home_button.gd")
 var button_count = 0
+var sc
 
 func _ready() -> void:
 	position = $"../../Marker2D".position
 	size = Vector2(700,500)
 	position -= size/2
-
+		
+#func load_sc(data) -> void:
+	#var script_base_dir = get_script().resource_path.get_base_dir() + "/" + data[0] + "_" + data[1] + "/"
+	#if FileAccess.file_exists(script_base_dir+"script.gd"):
+		#sc = load(script_base_dir+"script.gd")
+		#sc._ready()
+		
 func load_buttons(data: Array):
 	# Construct the relative path
 	var path = data[0] + "_" + data[1] + "/"
 	var script_base_dir = get_script().resource_path.get_base_dir() + "/"
 	var global_path = script_base_dir + path
-
+		
 	# Open the directory
 	var base_dir = DirAccess.open(global_path)
 	if not base_dir:

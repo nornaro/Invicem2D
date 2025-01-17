@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://du5pq3swotrs1"]
 
-[ext_resource type="Script" path="res://Scenes/Main/round_timer.gd" id="1_5qtgq"]
+[ext_resource type="Script" path="res://Scenes/Timers/round_timer.gd" id="1_wgfm3"]
 
 [node name="RoundTimer" type="Timer"]
 autostart = true
-script = ExtResource("1_5qtgq")
+script = ExtResource("1_wgfm3")
 
 [connection signal="timeout" from="." to="." method="_on_timeout"]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=33 format=3 uid="uid://t41phsm2wrag"]
 
-[ext_resource type="Script" path="res://Scenes/HomeScreen/home_screen.gd" id="1_ajl7f"]
-[ext_resource type="Texture2D" uid="uid://daseoyoa5oftu" path="res://Scenes/HomeScreen/Home.png" id="1_y2i7d"]
-[ext_resource type="PackedScene" uid="uid://dhearbilncssa" path="res://Scenes/Main/gpu_particles_2d.tscn" id="4_5yl82"]
+[ext_resource type="Script" path="res://Scenes/MainMenu/home_screen.gd" id="1_ajl7f"]
+[ext_resource type="Texture2D" uid="uid://daseoyoa5oftu" path="res://Scenes/MainMenu/Home.png" id="1_y2i7d"]
+[ext_resource type="PackedScene" uid="uid://dhearbilncssa" path="res://Scenes/GameMenu/gpu_particles_2d.tscn" id="4_5yl82"]
 [ext_resource type="Texture2D" uid="uid://dl4lt25afp51k" path="res://addons/kenney_particle_pack/flame_04.png" id="5_l35pp"]
-[ext_resource type="Script" path="res://Scenes/HomeScreen/HomeButtons/home_button.gd" id="6_c6w5i"]
+[ext_resource type="Script" path="res://Scenes/MainMenu/HomeButtons/home_button.gd" id="6_c6w5i"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ab77t"]
 texture = ExtResource("1_y2i7d")
@@ -372,7 +372,6 @@ flat = true
 script = ExtResource("6_c6w5i")
 
 [node name="Bubble" type="MeshInstance2D" parent="9"]
-visible = false
 self_modulate = Color(1, 1, 1, 0.294118)
 position = Vector2(116, 102)
 mesh = SubResource("SphereMesh_410l8")
@@ -381,6 +380,7 @@ mesh = SubResource("SphereMesh_410l8")
 visible = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_cyf54")
 
 [connection signal="mouse_entered" from="0" to="0" method="_on_mouse_entered"]

@@ -1,11 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://ds57nc6h7eej5"]
 
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_fvccw"]
 [ext_resource type="Script" path="res://Docs/Bugs.gd" id="2_lg1kx"]
 [ext_resource type="Script" path="res://Docs/readme.gd" id="3_lukef"]
 [ext_resource type="Script" path="res://Docs/2DO.gd" id="3_tggs8"]
-[ext_resource type="PackedScene" uid="uid://d0bjhea2tawvk" path="res://Scenes/Multiplayer/network.tscn" id="5_473yq"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_fvccw")
 
 [node name="Bugs" type="Node" parent="."]
 script = ExtResource("2_lg1kx")
@@ -15,6 +16,3 @@ script = ExtResource("3_tggs8")
 
 [node name="Readme" type="Node" parent="."]
 script = ExtResource("3_lukef")
-
-[node name="Network" parent="." instance=ExtResource("5_473yq")]
-visible = false
