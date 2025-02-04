@@ -7,6 +7,7 @@ var border = 10
 
 func _input(event):
 	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().call_group("Outline", "hide")
 		for node in get_tree().get_nodes_in_group("selected"):
 			node.set_selected(false)
 	if get_tree().get_nodes_in_group("temp"):

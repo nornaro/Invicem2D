@@ -12,6 +12,7 @@ func _input(_event):
 		if Input.is_key_pressed(KEY_ENTER):
 			_on_confirm_pressed()
 		if Input.is_key_pressed(KEY_ESCAPE):
+			get_tree().call_group("Outline", "hide")
 			hide()
 		return
 	if Input.is_key_pressed(KEY_DELETE):

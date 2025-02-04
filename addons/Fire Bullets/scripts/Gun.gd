@@ -198,10 +198,3 @@ func _draw():
 			draw_line(Vector2(Spawn_Point.x,Spawn_Point.y-15),Vector2(Spawn_Point.x,Spawn_Point.y+15),spawn_point_color,spawn_point_line_width)
 #	if Shooting_Line_Debug == true and !Engine.is_editor_hint():
 #		draw_line(Spawn_Point,get_local_mouse_position(),shooting_line_color,shooting_line_width)
-
-
-
-
-
-
-

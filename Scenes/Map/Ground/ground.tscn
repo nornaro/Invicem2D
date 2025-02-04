@@ -1,12 +1,12 @@
 [gd_scene load_steps=16 format=3 uid="uid://cbm6uy5irqlad"]
 
 [ext_resource type="TileSet" uid="uid://c1rq4nl3uf44o" path="res://Scenes/Map/map2.tres" id="1_hjo0l"]
-[ext_resource type="Texture2D" uid="uid://bu3o6jccngnaj" path="res://Scenes/Map/Ground/openart-image_b5DSGxA0_1735698634067_raw.jpg" id="2_cuqbm"]
-[ext_resource type="Texture2D" uid="uid://cn5efwtaytjli" path="res://Scenes/Map/Ground/openart-image_e0oqeNyy_1735698657831_raw.jpg" id="3_ab1i7"]
-[ext_resource type="Texture2D" uid="uid://dg4m7wcfgldm7" path="res://Scenes/Map/Ground/Road.jpg" id="3_yts8o"]
-[ext_resource type="Texture2D" uid="uid://qn15jii4i4wc" path="res://Scenes/Map/Ground/openart-image_f562CrPh_1735698697166_raw.jpg" id="4_cqknc"]
-[ext_resource type="Texture2D" uid="uid://df884ikkixu8y" path="res://Scenes/Map/Ground/openart-image_hzlXfRuY_1735697612014_raw.jpg" id="5_30ne2"]
-[ext_resource type="Texture2D" uid="uid://dm4nlmlgdifhn" path="res://Scenes/Map/Ground/openart-image_0vRPpgx3_1735697555395_raw.jpg" id="6_hmlen"]
+[ext_resource type="Texture2D" uid="uid://c68n7e5ftthbf" path="res://Scenes/Map/Ground/openart-image_b5DSGxA0_1735698634067_raw.jpg" id="2_cuqbm"]
+[ext_resource type="Texture2D" uid="uid://cgck467svlkkn" path="res://Scenes/Map/Ground/openart-image_e0oqeNyy_1735698657831_raw.jpg" id="3_ab1i7"]
+[ext_resource type="Texture2D" uid="uid://dl0x8wblcy6if" path="res://Scenes/Map/Ground/Road.jpg" id="3_yts8o"]
+[ext_resource type="Texture2D" uid="uid://bpgvdorhinjyo" path="res://Scenes/Map/Ground/openart-image_f562CrPh_1735698697166_raw.jpg" id="4_cqknc"]
+[ext_resource type="Texture2D" uid="uid://d2gs4up1k2ruk" path="res://Scenes/Map/Ground/openart-image_hzlXfRuY_1735697612014_raw.jpg" id="5_30ne2"]
+[ext_resource type="Texture2D" uid="uid://cyl3utsg3q03f" path="res://Scenes/Map/Ground/openart-image_0vRPpgx3_1735697555395_raw.jpg" id="6_hmlen"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k46gt"]
 size = Vector2(1650, 965)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cidx2d5wiam6y"]
 
-[ext_resource type="Script" path="res://Scenes/Buildings/Buildings.gd" id="1_spheu"]
+[ext_resource type="Script" uid="uid://ducwa8n0psiye" path="res://Scenes/Buildings/Buildings.gd" id="1_spheu"]
 
 [node name="Buildings" type="Node2D"]
 z_index = 10

@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://5b3v7b6ahib1"]
 
-[ext_resource type="Script" path="res://Scenes/Minions/Minion/minion.cs" id="1_3x0mk"]
-[ext_resource type="Texture2D" uid="uid://dh23r32qftr7q" path="res://Scenes/Minions/icon.svg" id="2_bl338"]
-[ext_resource type="Script" path="res://Scenes/Minions/Minion/Area2D.gd" id="3_u5uqm"]
+[ext_resource type="Script" uid="uid://dur4d3pyb716n" path="res://Scenes/Minions/Minion/minion.gd" id="1_xsgkh"]
+[ext_resource type="Texture2D" uid="uid://okbtvewmjy05" path="res://Scenes/Minions/icon.svg" id="2_bl338"]
+[ext_resource type="Script" uid="uid://da2j13dlftb2n" path="res://Scenes/Minions/Minion/Area2D.gd" id="3_u5uqm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7goe2"]
 radius = 4.0
@@ -43,7 +43,7 @@ properties/3/replication_mode = 1
 [node name="Minion" type="RigidBody2D" groups=["minions"]]
 gravity_scale = 0.0
 linear_damp_mode = 1
-script = ExtResource("1_3x0mk")
+script = ExtResource("1_xsgkh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.2)

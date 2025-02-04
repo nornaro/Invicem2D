@@ -7,7 +7,7 @@ var sc
 
 func _ready() -> void:
 	position = $"../../Marker2D".position
-	size = Vector2(700,500)
+	size = Vector2(get_viewport().get_visible_rect().size.x/5,get_viewport().get_visible_rect().size.y/4)
 	position -= size/2
 		
 #func load_sc(data) -> void:
@@ -25,7 +25,7 @@ func load_buttons(data: Array):
 	# Open the directory
 	var base_dir = DirAccess.open(global_path)
 	if not base_dir:
-		print("Error: Directory not found:", global_path)
+		push_error("Error: Directory not found:", global_path)
 		return
 
 	for button in base_dir.get_directories():
@@ -38,14 +38,16 @@ func load_buttons(data: Array):
 		var buttontextures = DirAccess.get_files_at(global_path + button + "/" + styles)
 		for texture in ["normal","pressed","hover","disabled","focused","click_mask"]:
 			var texture_path = global_path + button + "/" + styles + pick_random_texture(buttontextures, texture)
-			instance.set("texture_" + texture, load(texture_path) as Texture2D)
+			if FileAccess.file_exists(texture_path):
+				instance.set("texture_" + texture, load(texture_path) as Texture2D)
 		instance.name = button
 		instance.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		instance.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		instance.ignore_texture_size = true
 		instance.stretch_mode = TextureButton.STRETCH_SCALE
 		var script_path = global_path + button + "/script.gd"
-		instance.set_script(load(script_path))
+		if FileAccess.file_exists(script_path):
+			instance.set_script(load(script_path))
 		button_count += 1
 		add_child(instance)
 		if button_count <= 2:

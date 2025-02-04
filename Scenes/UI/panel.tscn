@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=3 uid="uid://bq6obs6f5somh"]
+
+[ext_resource type="Script" uid="uid://vryns3vvacdp" path="res://Scenes/UI/panel.gd" id="1_tw6yc"]
+[ext_resource type="Script" uid="uid://bt53ylijqhuqo" path="res://Scenes/UI/info_panels.gd" id="2_ddvuy"]
+[ext_resource type="Script" path="res://Scenes/UI/image_panel.gd" id="2_xoyw5"]
+[ext_resource type="Script" uid="uid://cbywxgejs1sdl" path="res://Scenes/UI/inventory_slots.gd" id="3_xoyw5"]
+[ext_resource type="Script" uid="uid://dysl2ulvm2sht" path="res://Scenes/UI/property_menu.gd" id="4_t5r24"]
+[ext_resource type="Script" uid="uid://cqjsld3e6ki7k" path="res://Scenes/UI/upgrades_panel.gd" id="5_piq27"]
+
+[sub_resource type="Gradient" id="Gradient_h6tq4"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.4)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t7te2"]
+gradient = SubResource("Gradient_h6tq4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_56q1t"]
+texture = SubResource("GradientTexture1D_t7te2")
+
+[node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(0, 150)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -150.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_56q1t")
+script = ExtResource("1_tw6yc")
+
+[node name="ImagePanel" type="Panel" parent="." groups=["BuildingProperties"]]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 145.0
+offset_bottom = 145.0
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("2_xoyw5")
+
+[node name="InfoPanels" type="GridContainer" parent="." groups=["BuildingProperties"]]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+offset_left = 150.0
+offset_top = 5.0
+offset_right = 1755.0
+offset_bottom = 145.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+script = ExtResource("2_ddvuy")
+
+[node name="InventorySlots" type="GridContainer" parent="." groups=["BuildingProperties"]]
+custom_minimum_size = Vector2(35, 140)
+layout_mode = 2
+offset_left = 1760.0
+offset_top = 5.0
+offset_right = 1795.0
+offset_bottom = 145.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+script = ExtResource("3_xoyw5")
+
+[node name="PropertyMenu" type="GridContainer" parent="." groups=["BuildingProperties"]]
+custom_minimum_size = Vector2(115, 20)
+layout_mode = 2
+offset_left = 1801.0
+offset_top = 5.0
+offset_right = 1916.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 4
+script = ExtResource("4_t5r24")
+
+[node name="UpgradesPanel" type="GridContainer" parent="." groups=["BuildingProperties"]]
+custom_minimum_size = Vector2(110, 110)
+layout_mode = 2
+offset_left = 1800.0
+offset_top = 30.0
+offset_right = 1915.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 3
+script = ExtResource("5_piq27")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -23,6 +23,7 @@ func _ready():
 
 func _input(event):
 	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().call_group("Outline", "hide")
 		buildings.clear_collision()
 		clear()
 	if pressed:
@@ -35,6 +36,8 @@ func _input(event):
 		pressed = "RMB"
 		for building in get_tree().get_nodes_in_group("selected"):
 			menu(building.get_parent().get_parent().name)
+		get_tree().call_group("Outline", "hide")
+		get_tree().call_group("selected", "set_selected", false)
 			
 	if event.is_action_pressed("Build"):
 		pressed = "Build"
@@ -49,10 +52,18 @@ func _input(event):
 #			menu("Buildings")
 			
 	for i in range(10):
+		if !event is InputEventKey:
+			return
+		if !event.pressed:
+			return
 		if i > $List.item_count:
 			return
+		if event.is_action_pressed("Ctrl"):
+			return
+		if event.is_action_pressed("Shift"):
+			return
 		if Input.is_action_pressed(str(i)):
-			pressed = str(i)			
+			pressed = str(i)
 			_on_list_item_selected(i)
 
 func clear():

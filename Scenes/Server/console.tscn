@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccqdvgiafo4tg"]
+
+[ext_resource type="Script" uid="uid://b4y30pq2ew8r2" path="res://Scenes/Server/console.gd" id="1_k2tdm"]
+
+[sub_resource type="SystemFont" id="SystemFont_urhdb"]
+subpixel_positioning = 0
+
+[sub_resource type="Theme" id="Theme_urhdb"]
+default_font = SubResource("SystemFont_urhdb")
+default_font_size = 11
+
+[node name="Console" type="TextEdit"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_urhdb")
+theme_override_colors/background_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.588235, 0.588235, 0.588235, 1)
+theme_override_font_sizes/font_size = 0
+editable = false
+wrap_mode = 1
+indent_wrapped_lines = true
+scroll_smooth = true
+script = ExtResource("1_k2tdm")
+
+[node name="HScrollBar" type="HScrollBar" parent="."]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VScrollBar" type="VScrollBar" parent="."]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+grow_horizontal = 0
+grow_vertical = 2

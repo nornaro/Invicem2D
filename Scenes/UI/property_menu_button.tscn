@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://clgul6er4jo82"]
+
+[ext_resource type="Script" uid="uid://cgaprji65lruv" path="res://Scenes/UI/property_menu_list.gd" id="1_sknlv"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vy225"]
+
+[node name="PropertyMenuButton" type="TextureButton"]
+modulate = Color(1, 0.376471, 0.764706, 1)
+self_modulate = Color(0, 1, 1, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "Targeting"
+mouse_filter = 1
+action_mode = 0
+keep_pressed_outside = true
+texture_normal = SubResource("PlaceholderTexture2D_vy225")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("1_sknlv")

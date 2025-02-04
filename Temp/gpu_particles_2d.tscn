@@ -18,5 +18,5 @@ anim_offset_max = 1.0
 [node name="GPUParticles2D" type="GPUParticles2D"]
 material = SubResource("CanvasItemMaterial_gjx3m")
 amount = 1
-process_material = SubResource("ParticleProcessMaterial_jdkcs")
 fixed_fps = 15
+process_material = SubResource("ParticleProcessMaterial_jdkcs")

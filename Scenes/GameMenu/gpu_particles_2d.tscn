@@ -10,8 +10,7 @@ point_count = 4
 curve = SubResource("Curve_6fx1a")
 
 [sub_resource type="Curve" id="Curve_im025"]
-min_value = -360.0
-max_value = 360.0
+_limits = [-360.0, 360.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.253119, -117.489), 0.0, 0.0, 0, 0, Vector2(0.764706, 350.818), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 4
 
@@ -19,7 +18,7 @@ point_count = 4
 curve = SubResource("Curve_im025")
 
 [sub_resource type="Curve" id="Curve_7ry65"]
-max_value = 200.0
+_limits = [0.0, 200.0, 0.0, 1.0]
 _data = [Vector2(0.454545, 0), 0.0, 0.0, 0, 0, Vector2(1, 200), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -65,7 +64,6 @@ visible = false
 position = Vector2(1.5, -20)
 amount = 20
 sub_emitter = NodePath(".")
-process_material = SubResource("ParticleProcessMaterial_g6gow")
 texture = ExtResource("1_r2yo1")
 lifetime = 5.0
 speed_scale = 0.5
@@ -75,3 +73,4 @@ trail_enabled = true
 trail_lifetime = 5.0
 trail_sections = 10
 trail_section_subdivisions = 10
+process_material = SubResource("ParticleProcessMaterial_g6gow")

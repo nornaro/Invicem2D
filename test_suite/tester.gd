@@ -10,7 +10,7 @@ func _ready():
 	while not dirs.is_empty():
 		var d = dirs.pop_front()
 		_expand(d, dirs)
-	print("Running %d tests:\n%s" % [tests.size(), tests])
+	print_debug("Running %d tests:\n%s" % [tests.size(), tests])
 
 func _process(delta):
 	frame_time += delta
@@ -34,7 +34,7 @@ func _check_end():
 		current = null
 
 func _end_tests():
-	print("======= TESTS END")
+	print_debug("======= TESTS END")
 	set_process(false)
 	set_physics_process(false)
 	await get_tree().create_timer(1.0).timeout
@@ -43,7 +43,7 @@ func _end_tests():
 func _expand(p_name, r_dirs):
 	var dir = DirAccess.open("res://")
 	if dir.change_dir(p_name) != OK:
-		print("Unable to chdir into: %s" % p_name)
+		print_debug("Unable to chdir into: %s" % p_name)
 		return
 	dir.list_dir_begin()
 	var f = dir.get_next()

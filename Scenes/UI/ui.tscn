@@ -1,13 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctyric4lpymab"]
+[gd_scene load_steps=14 format=3 uid="uid://ctyric4lpymab"]
 
-[ext_resource type="Script" path="res://Scenes/UI/ui.gd" id="1_2xbke"]
-[ext_resource type="Script" path="res://Scenes/HealhBar/HealthBar.gd" id="3_gom3w"]
-[ext_resource type="Script" path="res://Scenes/UI/Numbers.gd" id="3_xheqc"]
+[ext_resource type="Script" uid="uid://cowf2ns7h6dgv" path="res://Scenes/UI/ui.gd" id="1_2xbke"]
+[ext_resource type="PackedScene" uid="uid://bq6obs6f5somh" path="res://Scenes/UI/panel.tscn" id="2_pmm6b"]
+[ext_resource type="Script" uid="uid://c7huaqfr8wo23" path="res://Scenes/HealhBar/HealthBar.gd" id="3_gom3w"]
+[ext_resource type="Script" uid="uid://d3244g1sc5tol" path="res://Scenes/UI/Numbers.gd" id="3_xheqc"]
 [ext_resource type="SpriteFrames" uid="uid://3snbmbyrrooe" path="res://Scenes/UI/icons8-gear.gif" id="3_yheyh"]
-[ext_resource type="Script" path="res://Scenes/UI/style.gd" id="4_a2yal"]
-[ext_resource type="Script" path="res://Scenes/main.gd" id="4_eryjc"]
-[ext_resource type="Script" path="res://Scenes/UI/Confirm.gd" id="5_rq4vg"]
-[ext_resource type="Script" path="res://Scenes/UI/animated_sprite_2d.gd" id="6_xkir2"]
+[ext_resource type="Script" uid="uid://bgnau5o8ebki8" path="res://Scenes/UI/style.gd" id="4_a2yal"]
+[ext_resource type="Script" uid="uid://hmc1kpabukmg" path="res://Scenes/UI/menu_gear.gd" id="5_jfwrg"]
+[ext_resource type="Script" uid="uid://csmck50egdxlp" path="res://Scenes/UI/Confirm.gd" id="5_rq4vg"]
+[ext_resource type="Script" uid="uid://cq737vj40xv3c" path="res://Scenes/UI/animated_sprite_2d.gd" id="6_xkir2"]
+[ext_resource type="Script" uid="uid://bushhfe162vjh" path="res://Scenes/UI/defeat.gd" id="9_s3gqk"]
+[ext_resource type="Script" uid="uid://dhwebox8xgonf" path="res://Scenes/UI/exit.gd" id="10_pmm6b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dq6f6"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -60,6 +63,7 @@ show_percentage = false
 script = ExtResource("3_gom3w")
 
 [node name="Style" type="OptionButton" parent="HealthBar"]
+unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 1.0
@@ -77,7 +81,7 @@ popup/item_1/text = "Fantasy"
 popup/item_1/id = 1
 script = ExtResource("4_a2yal")
 
-[node name="Main" type="OptionButton" parent="HealthBar"]
+[node name="MenuGear" type="OptionButton" parent="HealthBar"]
 layout_mode = 0
 offset_left = 1.0
 offset_right = 71.0
@@ -91,9 +95,9 @@ popup/item_0/text = "Style"
 popup/item_0/id = 0
 popup/item_1/text = "Exit"
 popup/item_1/id = 1
-script = ExtResource("4_eryjc")
+script = ExtResource("5_jfwrg")
 
-[node name="Gear" type="AnimatedSprite2D" parent="HealthBar/Main"]
+[node name="Gear" type="AnimatedSprite2D" parent="HealthBar/MenuGear"]
 position = Vector2(21.6675, 16.6667)
 scale = Vector2(1, 0.666667)
 sprite_frames = ExtResource("3_yheyh")
@@ -163,6 +167,7 @@ offset_right = 100.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("9_s3gqk")
 
 [node name="Panel" type="Panel" parent="Defeat"]
 custom_minimum_size = Vector2(200, 100)
@@ -199,9 +204,64 @@ text = "Confirm"
 layout_mode = 2
 text = "Cancel"
 
+[node name="Exit" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_pmm6b")
+
+[node name="Panel" type="Panel" parent="Exit"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Exit"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Exit/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+alignment = 1
+
+[node name="Text" type="RichTextLabel" parent="Exit/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][b][color=#a00000]Exit[/color][/b][/center]"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Exit/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Confirm" type="Button" parent="Exit/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Confirm"
+
+[node name="Cancel" type="Button" parent="Exit/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="Panel" parent="." instance=ExtResource("2_pmm6b")]
+z_index = 100
+
 [connection signal="item_selected" from="List" to="." method="_on_list_item_selected"]
 [connection signal="item_selected" from="HealthBar/Style" to="HealthBar/Style" method="_on_item_selected"]
-[connection signal="item_selected" from="HealthBar/Main" to="HealthBar/Main" method="_on_option_button_item_selected"]
-[connection signal="mouse_entered" from="HealthBar/Main" to="HealthBar/Main/Gear" method="_on_option_button_mouse_entered"]
-[connection signal="mouse_exited" from="HealthBar/Main" to="HealthBar/Main/Gear" method="_on_option_button_mouse_exited"]
+[connection signal="mouse_entered" from="HealthBar/MenuGear" to="HealthBar/MenuGear/Gear" method="_on_option_button_mouse_entered"]
+[connection signal="mouse_exited" from="HealthBar/MenuGear" to="HealthBar/MenuGear/Gear" method="_on_option_button_mouse_exited"]
 [connection signal="pressed" from="Destroy/VBoxContainer/HBoxContainer/Confirm" to="Destroy" method="_on_confirm_pressed"]
+[connection signal="pressed" from="Exit/VBoxContainer/HBoxContainer/Confirm" to="Exit" method="_on_confirm_pressed"]
+[connection signal="pressed" from="Exit/VBoxContainer/HBoxContainer/Cancel" to="Exit" method="_on_cancel_pressed"]

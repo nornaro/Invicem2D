@@ -1,11 +1,11 @@
 [gd_scene load_steps=36 format=3 uid="uid://duqam6ffexoc8"]
 
-[ext_resource type="Script" path="res://addons/BurstParticles2D/BurstParticleGroup2D.gd" id="1_2eimh"]
-[ext_resource type="Script" path="res://addons/BurstParticles2D/BurstParticles2D.gd" id="2_1fdf8"]
-[ext_resource type="Texture2D" uid="uid://vwe34itxqa37" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb_soft.png" id="3_nvlv6"]
-[ext_resource type="Texture2D" uid="uid://ovw18l4dc1fv" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb.png" id="4_0gb2t"]
-[ext_resource type="Texture2D" uid="uid://d2lceccxwhwet" path="res://addons/BurstParticles2D/BurstParticles2D-demo/ring.png" id="5_5twkj"]
-[ext_resource type="Texture2D" uid="uid://dc67f1jdiu0tu" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb2.png" id="6_isgq0"]
+[ext_resource type="Script" uid="uid://b832h4gn6lm5l" path="res://addons/BurstParticles2D/BurstParticleGroup2D.gd" id="1_2eimh"]
+[ext_resource type="Script" uid="uid://ey7menk6bdo8" path="res://addons/BurstParticles2D/BurstParticles2D.gd" id="2_1fdf8"]
+[ext_resource type="Texture2D" uid="uid://ww07nt8rmi1v" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb_soft.png" id="3_nvlv6"]
+[ext_resource type="Texture2D" uid="uid://bku4qojjn4e4q" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb.png" id="4_0gb2t"]
+[ext_resource type="Texture2D" uid="uid://lbrgphvsjqtl" path="res://addons/BurstParticles2D/BurstParticles2D-demo/ring.png" id="5_5twkj"]
+[ext_resource type="Texture2D" uid="uid://j5isyn7gya8w" path="res://addons/BurstParticles2D/BurstParticles2D-demo/orb2.png" id="6_isgq0"]
 
 [sub_resource type="Gradient" id="Gradient_c7k7f"]
 interpolation_mode = 2
@@ -32,7 +32,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_whlsl"]
-max_value = 101.15
+_limits = [0.0, 101.15, 0.0, 1.0]
 _data = [Vector2(0, 5.51727), 0.0, 45.1636, 0, 0, Vector2(0.076087, 6.43681), 0.0, 0.0, 0, 0, Vector2(0.168478, 59.7705), 136.968, 136.968, 0, 0, Vector2(1, 101.15), 0.0, 0.0, 0, 0]
 point_count = 4
 
@@ -57,23 +57,22 @@ _data = [Vector2(0, 0), 0.0, 5.53918, 0, 0, Vector2(0.161403, 0.681818), 1.29545
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_1idm5"]
-min_value = -2.0
-max_value = 2.0
+_limits = [-2.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 1.31818), 0.0, -13.8901, 0, 0, Vector2(0.14386, -0.618182), -5.27959, -5.27959, 0, 0, Vector2(1, -2), -0.901185, 0.146141, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_8b58o"]
-max_value = 9.0
+_limits = [0.0, 9.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 9.4843, 0, 0, Vector2(0.0421053, 4.5), -6.66234, -6.66234, 0, 0, Vector2(1, 1.88182), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_45g3t"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 4.5), 0.0, 0.0, 0, 0, Vector2(0.733333, 1.09091), 0.0, 0.0, 0, 0, Vector2(1, 1.05455), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_hxrsk"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.235088, 0.727273), 0.0, 0.0, 0, 0, Vector2(1, 0.909091), -0.344242, -1.20485, 0, 0]
 point_count = 3
 
@@ -90,7 +89,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.454545), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_2k0nn"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 2.40909), 0.0, 0.0, 0, 0, Vector2(0.733333, 1.09091), 0.0, 0.0, 0, 0, Vector2(1, 1.05455), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -103,13 +102,12 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.57193, 0.4), 0.0, 0.0, 0, 0, V
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_p482y"]
-min_value = -2.0
-max_value = 2.0
+_limits = [-2.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 1.31818), 0.0, -13.8901, 0, 0, Vector2(1, -2), -0.901185, 0.146141, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_b4wgj"]
-max_value = 79.36
+_limits = [0.0, 79.36, 0.0, 1.0]
 _data = [Vector2(0, 1.90909), 0.0, 45.1636, 0, 0, Vector2(0.296196, 14.4291), 56.8918, 56.8918, 0, 0, Vector2(1, 26.6938), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -122,7 +120,7 @@ _data = [Vector2(0, 1), 0.0, 0.0597402, 0, 0, Vector2(1, 0), -0.904178, 0.0, 0, 
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_l505w"]
-max_value = 24.89
+_limits = [0.0, 24.89, 0.0, 1.0]
 _data = [Vector2(0, 1.90909), 0.0, 45.1636, 0, 0, Vector2(0.105978, 7.76364), 5.85455, 5.85455, 0, 0, Vector2(1, 14), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -131,7 +129,7 @@ _data = [Vector2(0.00271739, 0.590909), 0.0, -3.91896, 0, 0, Vector2(0.0407609, 
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_u1fep"]
-max_value = 5.89
+_limits = [0.0, 5.89, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, -1.37475, 0, 0, Vector2(0.127717, 0.749636), 5.86949, 0.0, 1, 0, Vector2(0.201087, 4.39073), 6.56824, 6.56824, 0, 0, Vector2(1, 5.89), 0.0, 0.0, 0, 0]
 point_count = 4
 

@@ -3,6 +3,7 @@ extends TextureButton
 
 func _ready() -> void:
 	add_to_group("Style")
+	connect("pressed", _on_pressed)
 
 func _on_pressed() -> void:
 	Global.style = name

@@ -3,9 +3,7 @@ extends Area2D
 var id
 var type
 var multiselect
-#signal selection_toggled(selection)
 var selected
-signal _menu(selected)
 var selection_rectangle = CollisionShape2D.new()
 
 func _input(event):
@@ -14,13 +12,30 @@ func _input(event):
 	if event.is_action_released("Ctrl"):
 		multiselect = false
 
+func set_data(data: Dictionary) -> void:
+	var parent = get_parent()
+	parent.Data.Properties.merge(data,true)
+	if data.has("Targeting"):
+		parent.set_targeting()
+		
+func upgrade(data: String,pair: String) -> void:
+	var parent = get_parent()
+	var sum = parent.Data.Upgrades[data] + parent.Data.Upgrades[pair]
+	if sum >= 50:
+		return
+	parent.Data.Upgrades[data] += 1
+
 func set_selected(selection):
 	if selection:
 		_make_exclusive()
 		add_to_group("selected")
+		get_tree().call_group("BuildingProperties","fill")
 		get_parent().get_node("Outline").show()
 		return
 	remove_from_group("selected")
+	get_tree().call_group("BuildingProperties","clear")
+	if get_tree().get_node_count_in_group("selected"):
+		get_tree().call_group("BuildingProperties","fill")
 	get_parent().get_node("Outline").hide()
 	selected = selection
 #	emit_signal("selection_toggled",selected)

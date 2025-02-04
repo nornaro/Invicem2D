@@ -1,9 +1,7 @@
-extends Node
+extends Camera2D
 
-@onready var main_menu = preload("res://Scenes/MainMenu/home_screen.tscn") #A
-@onready var network = preload("res://Scenes/Multiplayer/network.tscn") #A
+@onready var main_menu = preload("res://Scenes/MainMenu/home_screen.tscn")
 
 func _ready() -> void:
 	add_child(main_menu.instantiate())
-	add_child(network.instantiate())
-	$Network.
+ 

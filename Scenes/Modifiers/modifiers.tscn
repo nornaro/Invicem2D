@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d16ghilyqtubs"]
+
+[ext_resource type="Script" uid="uid://cfv37cexu8f26" path="res://Scenes/Modifiers/modifiers.gd" id="1_mdt0l"]
+
+[node name="Modifiers" type="Timer"]
+one_shot = true
+autostart = true
+ignore_time_scale = true
+script = ExtResource("1_mdt0l")

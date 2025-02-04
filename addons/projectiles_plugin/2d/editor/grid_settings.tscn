@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://csstmm4xitbjy"]
 
-[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/grid_snap_checkbox.gd" id="1_1y0vt"]
-[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/grid_x_setter.gd" id="2_23wvc"]
-[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/grid_y_setter.gd" id="3_m1ivr"]
-[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/angle_step_setter.gd" id="4_p8m1g"]
+[ext_resource type="Script" uid="uid://ckgim32dk0bp4" path="res://addons/projectiles_plugin/2d/editor/grid_snap_checkbox.gd" id="1_1y0vt"]
+[ext_resource type="Script" uid="uid://b1j2s012khbgd" path="res://addons/projectiles_plugin/2d/editor/grid_x_setter.gd" id="2_23wvc"]
+[ext_resource type="Script" uid="uid://b3h4pwq7dq0mx" path="res://addons/projectiles_plugin/2d/editor/grid_y_setter.gd" id="3_m1ivr"]
+[ext_resource type="Script" uid="uid://bg73cd7i7rxhh" path="res://addons/projectiles_plugin/2d/editor/angle_step_setter.gd" id="4_p8m1g"]
 
 [node name="GridSettings" type="VBoxContainer"]
 anchors_preset = 15

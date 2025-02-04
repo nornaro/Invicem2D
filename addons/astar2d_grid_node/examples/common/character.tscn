@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b4rhajhjs8u8w"]
 
-[ext_resource type="Script" path="res://addons/astar2d_grid_node/examples/common/character.gd" id="1_tuh5x"]
-[ext_resource type="Texture2D" uid="uid://duyfuxemy15et" path="res://addons/astar2d_grid_node/examples/common/atlas.png" id="2_30sdm"]
+[ext_resource type="Script" uid="uid://rd8n2e3ha4ej" path="res://addons/astar2d_grid_node/examples/common/character.gd" id="1_tuh5x"]
+[ext_resource type="Texture2D" uid="uid://7f763cnmfect" path="res://addons/astar2d_grid_node/examples/common/atlas.png" id="2_30sdm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sh7ve"]
 atlas = ExtResource("2_30sdm")
@@ -47,8 +47,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m43ik"]
 _data = {
-"Idle": SubResource("Animation_6rc1m"),
-"Walk": SubResource("Animation_y38a7")
+&"Idle": SubResource("Animation_6rc1m"),
+&"Walk": SubResource("Animation_y38a7")
 }
 
 [node name="Character" type="CharacterBody2D"]
@@ -65,5 +65,5 @@ shape = SubResource("CircleShape2D_pfb8r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_m43ik")
+&"": SubResource("AnimationLibrary_m43ik")
 }

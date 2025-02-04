@@ -1,6 +1,11 @@
 extends Node
 
-@export var Data = {}
+@export var Data = {
+	"Info": {},
+	"Properties": {},
+	"Inventory": {},
+	"Upgrades":{},
+}
 
 func _ready():
 	pass

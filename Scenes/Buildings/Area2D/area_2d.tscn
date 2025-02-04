@@ -1,12 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b365gc0lijb6r"]
+[gd_scene load_steps=2 format=3 uid="uid://b365gc0lijb6r"]
 
-[ext_resource type="Script" path="res://Scenes/Buildings/Area2D/area_2d.gd" id="1_fhnxi"]
+[ext_resource type="Script" uid="uid://bgmsoje2ymtvx" path="res://Scenes/Buildings/Area2D/area_2d.gd" id="1_fhnxi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5tgk"]
-size = Vector2(1, 1)
-
-[node name="Area2D" type="Area2D" groups=["building"]]
+[node name="Area" type="Area2D" groups=["building"]]
 script = ExtResource("1_fhnxi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_b5tgk")
+[node name="Shape" type="CollisionShape2D" parent="."]

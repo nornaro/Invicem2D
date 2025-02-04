@@ -1,7 +1,7 @@
 extends Node
 
 func _ready() -> void:
-	self.connect("pressed", _on_pressed)
+	connect("pressed", _on_pressed)
 	
 	
 func _on_pressed() -> void:

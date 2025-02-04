@@ -1,8 +1,8 @@
 extends Camera2D
 
 var zoom_speed: float = 0.1
-var min_zoom: float = 0.6
-var max_zoom: float = 2.0
+var min_zoom: float = 0.8
+var max_zoom: float = 2
 
 # Variables to handle middle-click panning
 var dragging: bool = false

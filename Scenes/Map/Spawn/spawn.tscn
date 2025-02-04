@@ -6,6 +6,7 @@ size = Vector2(1, 2)
 [node name="Spawn" type="Area2D"]
 position = Vector2(-150, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Positions" type="CollisionShape2D" parent="." groups=["Spawn"]]
+position = Vector2(-150, 0)
 scale = Vector2(8, 80)
 shape = SubResource("RectangleShape2D_ruswv")

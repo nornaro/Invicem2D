@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bt458n22f2bb3"]
 
-[ext_resource type="Texture2D" uid="uid://del7unjcq2ll3" path="res://addons/projectiles_plugin/graphics/dot.svg" id="1_ws5rk"]
-[ext_resource type="Script" path="res://addons/projectiles_plugin/2d/editor/elem_display.gd" id="2_kgcmc"]
-[ext_resource type="Texture2D" uid="uid://dkkcgiudmm58u" path="res://addons/projectiles_plugin/graphics/direction.svg" id="3_4lka6"]
+[ext_resource type="Texture2D" uid="uid://caldpsr5bej2u" path="res://addons/projectiles_plugin/graphics/dot.svg" id="1_ws5rk"]
+[ext_resource type="Script" uid="uid://ctasx1fmn8t0q" path="res://addons/projectiles_plugin/2d/editor/elem_display.gd" id="2_kgcmc"]
+[ext_resource type="Texture2D" uid="uid://c2yxfw1h8u2mh" path="res://addons/projectiles_plugin/graphics/direction.svg" id="3_4lka6"]
 
 [node name="ElemDisplay" type="Sprite2D"]
 texture = ExtResource("1_ws5rk")

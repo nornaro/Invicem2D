@@ -1,18 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://bydkjmor6dd4g"]
+[gd_scene load_steps=4 format=3 uid="uid://bydkjmor6dd4g"]
 
-[ext_resource type="Texture2D" uid="uid://b0hta7spwre0h" path="res://Scenes/Buildings/Select/green.png" id="2_ccw11"]
-[ext_resource type="Texture2D" uid="uid://cjp7wq8wdji1h" path="res://Scenes/Buildings/Select/red.png" id="3_1bjwy"]
+[sub_resource type="Curve" id="Curve_y1msb"]
+
+[sub_resource type="Gradient" id="Gradient_b4rhk"]
+colors = PackedColorArray(0, 1, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_vhxtt"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
 
 [node name="Select" type="Node2D"]
 
-[node name="green" type="Sprite2D" parent="."]
-visible = false
-rotation = 3.14159
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_ccw11")
+[node name="green" type="Line2D" parent="."]
+points = PackedVector2Array(10, 0, 10, 10, 0, 10, 0, 0)
+width = 5.0
+width_curve = SubResource("Curve_y1msb")
+default_color = Color(0, 0.490196, 0, 1)
+gradient = SubResource("Gradient_b4rhk")
+joint_mode = 1
 
-[node name="red" type="Sprite2D" parent="."]
-visible = false
-rotation = 3.14159
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_1bjwy")
+[node name="red" type="Line2D" parent="."]
+points = PackedVector2Array(10, 0, 10, 10, 0, 10, 0, 0)
+width = 5.0
+width_curve = SubResource("Curve_y1msb")
+default_color = Color(1, 0, 0, 1)
+gradient = SubResource("Gradient_vhxtt")
+joint_mode = 1
