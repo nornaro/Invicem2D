@@ -1,8 +1,8 @@
 [gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://dv2553mpp4y3m"]
 
-[ext_resource type="Texture2D" uid="uid://c3iqmxtcl0r2k" path="res://Scenes/Building/Barrack/Styles/Fantasy/Barrack.png" id="1_61qv0"]
-[ext_resource type="Texture2D" uid="uid://dhcpxxqbf8idm" path="res://Scenes/Building/Barrack/Styles/Sci-fi/Barrack1.png" id="2_r3oam"]
-[ext_resource type="Texture2D" uid="uid://cckrrssx8ypkg" path="res://Scenes/Building/Barrack/Styles/Sci-fi/Barrack2.png" id="3_sl4ey"]
+[ext_resource type="Texture2D" uid="uid://bntqgrg85ch45" path="res://Scenes/Building/Barrack/Styles/Fantasy/Barrack.png" id="1_61qv0"]
+[ext_resource type="Texture2D" uid="uid://cpxlq1ytt1hly" path="res://Scenes/Building/Barrack/Styles/Sci-fi/Barrack1.png" id="2_r3oam"]
+[ext_resource type="Texture2D" uid="uid://c3vshvchllkpc" path="res://Scenes/Building/Barrack/Styles/Sci-fi/Barrack2.png" id="3_sl4ey"]
 
 [resource]
 animations = [{

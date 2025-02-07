@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ds57nc6h7eej5"]
+[gd_scene load_steps=8 format=3 uid="uid://ds57nc6h7eej5"]
 
 [ext_resource type="Script" uid="uid://dpybx6sa4juvj" path="res://Scenes/main.gd" id="1_fvccw"]
 [ext_resource type="Script" uid="uid://boilt1hwandwc" path="res://Docs/Bugs.gd" id="2_lg1kx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ber18ajiqandq" path="res://Docs/2DO.gd" id="3_tggs8"]
 [ext_resource type="Script" uid="uid://csturuooqdhlg" path="res://Scenes/sec_steps.gd" id="5_kry3j"]
 [ext_resource type="Script" uid="uid://fwg07imldc3k" path="res://Docs/modifiers.gd" id="6_21xkr"]
+[ext_resource type="Script" uid="uid://byvwrl58i5gg1" path="res://Docs/kafra.gd" id="7_6bp64"]
 
 [node name="Main" type="Camera2D" groups=["Main"]]
 anchor_mode = 0
@@ -25,3 +26,6 @@ script = ExtResource("5_kry3j")
 
 [node name="Modifiers" type="Node" parent="."]
 script = ExtResource("6_21xkr")
+
+[node name="Kafra" type="Node" parent="."]
+script = ExtResource("7_6bp64")

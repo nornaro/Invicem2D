@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://kaut7jny4y0q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k33b4"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.784314)
+
+[node name="MinionData" type="GridContainer"]
+custom_minimum_size = Vector2(300, 150)
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 2
+
+[node name="HeadShot" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
+
+[node name="Description" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_k33b4")
+text = "Rest"
+scroll_active = false
+horizontal_alignment = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctyric4lpymab"]
+[gd_scene load_steps=15 format=3 uid="uid://ctyric4lpymab"]
 
 [ext_resource type="Script" uid="uid://cowf2ns7h6dgv" path="res://Scenes/UI/ui.gd" id="1_2xbke"]
 [ext_resource type="PackedScene" uid="uid://bq6obs6f5somh" path="res://Scenes/UI/panel.tscn" id="2_pmm6b"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cq737vj40xv3c" path="res://Scenes/UI/animated_sprite_2d.gd" id="6_xkir2"]
 [ext_resource type="Script" uid="uid://bushhfe162vjh" path="res://Scenes/UI/defeat.gd" id="9_s3gqk"]
 [ext_resource type="Script" uid="uid://dhwebox8xgonf" path="res://Scenes/UI/exit.gd" id="10_pmm6b"]
+[ext_resource type="PackedScene" uid="uid://d34mxo1ld0ik5" path="res://Scenes/UI/picker.tscn" id="12_vy225"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dq6f6"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -257,6 +258,9 @@ text = "Cancel"
 
 [node name="Panel" parent="." instance=ExtResource("2_pmm6b")]
 z_index = 100
+
+[node name="Kafra" parent="." instance=ExtResource("12_vy225")]
+visible = false
 
 [connection signal="item_selected" from="List" to="." method="_on_list_item_selected"]
 [connection signal="item_selected" from="HealthBar/Style" to="HealthBar/Style" method="_on_item_selected"]

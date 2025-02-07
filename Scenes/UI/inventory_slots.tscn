@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn6v8r655ofp5"]
+
+[ext_resource type="Script" uid="uid://cbywxgejs1sdl" path="res://Scenes/UI/inventory_slots.gd" id="1_4oyua"]
+
+[node name="InventorySlots" type="GridContainer" groups=["BuildingProperties"]]
+custom_minimum_size = Vector2(35, 140)
+offset_left = 1720.0
+offset_top = 5.0
+offset_right = 1755.0
+offset_bottom = 145.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+script = ExtResource("1_4oyua")

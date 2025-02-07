@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdwywmi3rc6ej"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2hj5"]
+bg_color = Color(0.0942919, 0.677952, 0.72695, 1)
+
+[node name="KafraItem" type="HSplitContainer"]
+custom_minimum_size = Vector2(0, 150)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+split_offset = -100
+dragging_enabled = false
+dragger_visibility = 1
+
+[node name="Image" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Descrip" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_b2hj5")

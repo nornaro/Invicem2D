@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://b7h5vydgdai04"]
+
+[ext_resource type="Texture2D" uid="uid://okbtvewmjy05" path="res://Scenes/Minions/icon.svg" id="1_63nsy"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_63nsy")
+}],
+"loop": true,
+"name": &"Blinking",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_63nsy")
+}],
+"loop": true,
+"name": &"Dying",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_63nsy")
+}],
+"loop": true,
+"name": &"Hurt",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_63nsy")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_63nsy")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 15.0
+}]

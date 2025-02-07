@@ -49,10 +49,6 @@ func _physics_process(delta):
 	if global_position.y > t.y and out:
 		queue_free()
 
-	#print("free: ",global_position.y,"   ", t.y)
-	#print("out: ",out)
-	#print("threshold: ",global_position.y > y - threshold and out)
-
 func _on_area_2d_area_entered(area):
 	if !area.get_parent().is_in_group("minions"):
 		return

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cbw1h45r5nyl4"]
+
+[node name="MinionInventory" type="GridContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 5
+metadata/_tab_index = 0

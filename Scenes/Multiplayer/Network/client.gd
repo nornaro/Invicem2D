@@ -1,6 +1,6 @@
 extends Node
 
-@onready var minion = preload("res://Scenes/Minions/Minion/minion.tscn")
+@onready var minion = preload("res://Scenes/Minions/minion.tscn")
 
 #
 #func data(data: Dictionary):

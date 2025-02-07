@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dk20dudsdn2er"]
+
+[node name="Text" type="RichTextLabel"]
+bbcode_enabled = true
+scroll_active = false

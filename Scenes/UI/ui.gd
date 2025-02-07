@@ -16,9 +16,9 @@ func _ready():
 	buildings.add_buildings_list(Items["Buildings"])
 	buildings.build_castle("Castle")
 	Items["Buildings"].erase("Castle")
-	dir_to_list(stylefolder + "Tower/", "Tower")
-	dir_to_list(stylefolder + "Tower/Turrets/", "Turrets")
-	dir_to_list(stylefolder + "Turret/", "Turret")
+	#dir_to_list(stylefolder + "Tower/", "Tower")
+	#dir_to_list(stylefolder + "Tower/Turrets/", "Turrets")
+	dir_to_list(stylefolder + "Turret/Type/", "Turret")
 	add_json_list("Buildings")
 
 func _input(event):

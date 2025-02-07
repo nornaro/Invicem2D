@@ -1,0 +1,383 @@
+[gd_resource type="SpriteFrames" load_steps=88 format=3]
+
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_000.png" id="1_qjoh7"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_001.png" id="2_8wmne"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_002.png" id="3_ov813"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_003.png" id="4_jucvq"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_004.png" id="5_8faqj"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_005.png" id="6_ag7m1"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_006.png" id="7_32g0k"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_007.png" id="8_udd6g"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_008.png" id="9_ftmof"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_009.png" id="10_5tpt4"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_010.png" id="11_70bu7"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_011.png" id="12_pbgbt"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_012.png" id="13_4wrrl"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_013.png" id="14_crls8"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_014.png" id="15_8wc4t"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_015.png" id="16_y85o2"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_016.png" id="17_r0sdj"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Blinking/0_Fallen_Angels_Idle Blinking_017.png" id="18_rsry2"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Dying/0_Fallen_Angels_Dying_000.png" id="19_y85o2"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Dying/0_Fallen_Angels_Dying_001.png" id="20_r0sdj"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Dying/0_Fallen_Angels_Dying_002.png" id="21_rsry2"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Dying/0_Fallen_Angels_Dying_003.png" id="22_xkb1k"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Dying/0_Fallen_Angels_Dying_004.png" id="23_cwhwv"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Dying/0_Fallen_Angels_Dying_005.png" id="24_67yih"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Dying/0_Fallen_Angels_Dying_006.png" id="25_ygqtj"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Dying/0_Fallen_Angels_Dying_007.png" id="26_33v37"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Dying/0_Fallen_Angels_Dying_008.png" id="27_ajokk"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Dying/0_Fallen_Angels_Dying_009.png" id="28_gtpi6"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Dying/0_Fallen_Angels_Dying_010.png" id="29_to1jm"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Dying/0_Fallen_Angels_Dying_011.png" id="30_lyuek"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Dying/0_Fallen_Angels_Dying_012.png" id="31_ptwpf"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Dying/0_Fallen_Angels_Dying_013.png" id="32_04j40"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Dying/0_Fallen_Angels_Dying_014.png" id="33_g5cll"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Hurt/0_Fallen_Angels_Hurt_000.png" id="34_ptwpf"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Hurt/0_Fallen_Angels_Hurt_001.png" id="35_04j40"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Hurt/0_Fallen_Angels_Hurt_002.png" id="36_g5cll"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Hurt/0_Fallen_Angels_Hurt_003.png" id="37_43y0l"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Hurt/0_Fallen_Angels_Hurt_004.png" id="38_4jabp"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Hurt/0_Fallen_Angels_Hurt_005.png" id="39_vokar"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Hurt/0_Fallen_Angels_Hurt_006.png" id="40_8ahsl"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Hurt/0_Fallen_Angels_Hurt_007.png" id="41_vlwso"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Hurt/0_Fallen_Angels_Hurt_008.png" id="42_md4dh"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Hurt/0_Fallen_Angels_Hurt_009.png" id="43_gkq21"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Hurt/0_Fallen_Angels_Hurt_010.png" id="44_0elkj"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Hurt/0_Fallen_Angels_Hurt_011.png" id="45_3ba8c"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_000.png" id="46_30wwg"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_001.png" id="47_gdjc1"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_002.png" id="48_4q8gp"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_003.png" id="49_7hfbc"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_004.png" id="50_3jckn"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_005.png" id="51_70jh5"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_006.png" id="52_ejb6n"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_007.png" id="53_n5dio"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_008.png" id="54_fgb4u"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_009.png" id="55_gltrq"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_010.png" id="56_x5ivf"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_011.png" id="57_o1aea"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_012.png" id="58_bs32y"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_013.png" id="59_m2nqr"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_014.png" id="60_xmkoo"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_015.png" id="61_7o0k7"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_016.png" id="62_l0ems"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Idle/0_Fallen_Angels_Idle_017.png" id="63_eje16"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_000.png" id="64_kn76j"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_001.png" id="65_ts7v0"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_002.png" id="66_vsmrk"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_003.png" id="67_f4efj"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_004.png" id="68_t0kmj"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_005.png" id="69_l6njk"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_006.png" id="70_d138e"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_007.png" id="71_uwnmi"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_008.png" id="72_xpprb"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_009.png" id="73_6306e"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_010.png" id="74_w8fk7"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_011.png" id="75_u6jlt"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_012.png" id="76_djkch"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_013.png" id="77_fmr5w"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_014.png" id="78_sdh25"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_015.png" id="79_nrck5"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_016.png" id="80_us651"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_017.png" id="81_m1674"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_018.png" id="82_swm5l"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_019.png" id="83_2fni1"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_020.png" id="84_6t80j"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_021.png" id="85_xv2fd"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_022.png" id="86_h3nn0"]
+[ext_resource type="Texture2D" path="res://Scenes/Minions/Chibi/Fallen_1/PNG Sequences/Walking/0_Fallen_Angels_Walking_023.png" id="87_gnp8w"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qjoh7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8wmne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ov813")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jucvq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8faqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ag7m1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_32g0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_udd6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ftmof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5tpt4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_70bu7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_pbgbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_4wrrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_crls8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_8wc4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_y85o2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_r0sdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_rsry2")
+}],
+"loop": true,
+"name": &"Blinking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_y85o2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_r0sdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_rsry2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_xkb1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_cwhwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_67yih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ygqtj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_33v37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ajokk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_gtpi6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_to1jm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_lyuek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_ptwpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_04j40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_g5cll")
+}],
+"loop": true,
+"name": &"Dying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_ptwpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_04j40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_g5cll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_43y0l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_4jabp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_vokar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_8ahsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_vlwso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_md4dh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_gkq21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_0elkj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_3ba8c")
+}],
+"loop": true,
+"name": &"Hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("46_30wwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_gdjc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_4q8gp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_7hfbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_3jckn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_70jh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_ejb6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_n5dio")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_fgb4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_gltrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_x5ivf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_o1aea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_bs32y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_m2nqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_xmkoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_7o0k7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_l0ems")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_eje16")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("64_kn76j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_ts7v0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_vsmrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_f4efj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_t0kmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_l6njk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_d138e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_uwnmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_xpprb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_6306e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_w8fk7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_u6jlt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_djkch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_fmr5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_sdh25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_nrck5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_us651")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_m1674")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_swm5l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_2fni1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_6t80j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_xv2fd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_h3nn0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_gnp8w")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

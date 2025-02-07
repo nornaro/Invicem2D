@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://46js3jynavty"]
+
+[ext_resource type="Script" uid="uid://dysl2ulvm2sht" path="res://Scenes/UI/property_menu.gd" id="1_6llu6"]
+
+[node name="PropertyMenu" type="GridContainer" groups=["BuildingProperties"]]
+custom_minimum_size = Vector2(115, 20)
+offset_left = 1760.0
+offset_top = 5.0
+offset_right = 1915.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 4
+script = ExtResource("1_6llu6")

@@ -7,6 +7,8 @@ extends Node
 	"Upgrades":{},
 }
 
+## Research items for common and all buildings
+
 func _ready():
 	pass
 	

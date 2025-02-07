@@ -1,11 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4jui0e62j4cw"]
+[gd_scene load_steps=2 format=3 uid="uid://b4jui0e62j4cw"]
 
 [ext_resource type="Script" uid="uid://i1k6xps1vpfv" path="res://Scenes/UI/info_panel.gd" id="1_221im"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ny3ap"]
-
-[node name="InfoPanel" type="Panel"]
-self_modulate = Color(1, 1, 1, 0)
+[node name="InfoPanel" type="GridContainer"]
+offset_right = 1.0
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_ny3ap")
+size_flags_vertical = 3
+columns = 3
 script = ExtResource("1_221im")
+
+[node name="1" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_active = false
+
+[node name="2" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_active = false
+
+[node name="3" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_active = false

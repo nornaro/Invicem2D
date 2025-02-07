@@ -7,16 +7,18 @@ extends Node
 	"Upgrades":{},
 }
 
+## Create items for Turrets
+
 func _ready():
 	pass
 
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(_area):
 	pass
 	
-func _on_area_2d_area_exited(area):
+func _on_area_2d_area_exited(_area):
 	pass
 	
-func _on_area_2d_input_event(_viewport, event, _shape_idx):
+func _on_area_2d_input_event(_viewport, _event, _shape_idx):
 	pass
 	
 func _on_area_2d_mouse_entered():

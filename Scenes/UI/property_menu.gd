@@ -1,41 +1,56 @@
 extends GridContainer
 
-var root = "res://Scenes/Projectiles/"
+var root = "res://Scenes/Building/"
 var scene = preload("res://Scenes/UI/item_list.tscn")
 var button = preload("res://Scenes/UI/property_menu_button.tscn")
+var icon_path = "res://Scenes/UI/Icon/"
 
 func _ready() -> void:
 	for i in range(4):
 		var instance = button.instantiate()
 		instance.name = str(i+1)
 		add_child(instance)
+	clear()
 
 func fill() -> void:
 	clear()
-	var data: Dictionary = get_tree().get_first_node_in_group("selected").get_parent().Data.Properties
+	var source = get_tree().get_first_node_in_group("selected")
+	var data: Dictionary = source.get_parent().Data[name]
 	var keys: Array = data.keys()
 	for i in range(data.size()):
 		var node = get_node(str(i+1))  # Get the node based on the calculated index
 		node.tooltip_text = keys[i]
-		var itemlist = scene.instantiate()
-		var list = DirAccess.get_files_at(root + keys[i])
-		var ic = 0
-		for item in list:
-			if item.contains("uid"):
-				continue
-			if !item.contains(".gd"):
-				continue
-			if item.contains("_"):
-				item = item.split("_")[1]
-			item = item.split(".")[0]
-			itemlist.add_item(item)
-			if data[keys[i]] == item:
-				itemlist.select(ic)
-			ic += 1
-		node.add_child(itemlist)
+		node.connect("pressed",list)
+		set_icon(node,keys[i])
+		list(source,node,data,keys[i])
+		
+func set_icon(node,icon):
+	if FileAccess.file_exists(icon_path+icon+".png"):
+		node.texture_normal = load(icon_path+icon+".png")
+		return
+	node.texture_normal = load(icon_path+name+".png")
+	
+func list(source,node,data,key):
+	var itemlist:ItemList = scene.instantiate()
+	var path = root + source.get_parent().get_parent().name + "/Menu/" + key
+	var list = DirAccess.get_files_at(path)
+	if !list:
+		return
+	for item:String in list:
+		if !item.ends_with("gd"):
+			continue
+		item = item.split(".")[0]
+		if item.contains("_"):
+			item = item.split("_")[1]
+		itemlist.add_item(item)
+		if data[key] == item:
+			itemlist.item_count-1
+			itemlist.select(itemlist.item_count-1)
+	node.add_child(itemlist)
 
 func clear() -> void:
 	for child in get_children():
-		child.tooltip_text = ""
+		child.tooltip_text = name
+		set_icon(child,"")
 		for grandchild in child.get_children():
 			grandchild.queue_free()

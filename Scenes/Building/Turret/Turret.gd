@@ -7,33 +7,34 @@ extends Node2D
 @export var Data = {
 	"muzzle": [Vector2.ZERO],
 	"max_target_count": 3,
+	"Skin": "",
 	"Properties": {
 		"Power": "Normal",
-		"Projectile": "FireBall",
 		"Targeting": "Fixed",
 		"Trajectory": "Piercing",
+		"Element": "Normal",
 	},
 	"Info": {},
-	"Inventory": {},
-	"Upgrades":{
-		"AttackSpeed": 1,
-		"ProjectileSpeed": 1,
-		
-		"Damage": 1,
-		"Penetration": 1,
-		
-		"TargetingSpeed": 1,
-		
-		"Multishot": 1,
-		"Flak": 0,
-		
-		"Splash": 0,
-		
-		"MinRange": 1,
-		"MaxRange": 1,
-		
-		"Efficiency": 1,
+	"Equip": {
+		"Projectile": "Basic FireBall Projectile Module",
+		"Frame": "Basic Support Frame Module",
+		"Core": "Basic Drained Core Module",
+		"Efficiency": "Basic Low Efficiency Module",
 	},
+	"Inventory": {},
+	"Upgrades":{ ## some are ammo properties
+		#Speed					#DMG->Ammo?			#Range			#Etc:AoE
+		"AttackSpeed": 1, 		"Damage": 1, 		"MinRange": 1,	"Multishot": 0,
+		"ProjectileSpeed": 1, 	"Penetration": 1, 	"MaxRange": 1,	"Flak": 0,
+		"TargetingSpeed": 1, 	"Crit": 1, 			"Spread": 0,	"Splah": 0,
+	},
+	#"Upgrades":{í
+		#"Speed": Vector3(1,1,1), # 1 # AttackSpeed/ProjectileSpeed/TargetingSpeed
+		#"Damage": Vector3(1,1,1), # 3 # Damage/Penetration/Crit
+		#"AoE": Vector3(1,1,1), # 1 # Multishot/Flak/Splash		
+		#"Range": Vector3(1,1,1), # 9 # Min/Max/Spread
+		#"Efficiency": 1, # 1 #
+	#},
 }
 
 var max_slots = 4
@@ -55,7 +56,7 @@ func _ready():
 	$Targeting.property_list_changed.connect(_on_targeting_property_list_changed)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$Icon.position = $Muzzle.position + $Muzzle.points[-$Sprite.frame]
 
 func add_timers():

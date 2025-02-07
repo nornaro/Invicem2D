@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq6obs6f5somh"]
+[gd_scene load_steps=12 format=3 uid="uid://bq6obs6f5somh"]
 
 [ext_resource type="Script" uid="uid://vryns3vvacdp" path="res://Scenes/UI/panel.gd" id="1_tw6yc"]
 [ext_resource type="Script" uid="uid://bt53ylijqhuqo" path="res://Scenes/UI/info_panels.gd" id="2_ddvuy"]
-[ext_resource type="Script" path="res://Scenes/UI/image_panel.gd" id="2_xoyw5"]
+[ext_resource type="Script" uid="uid://cawjgotsybayp" path="res://Scenes/UI/image_panel.gd" id="2_xoyw5"]
 [ext_resource type="Script" uid="uid://cbywxgejs1sdl" path="res://Scenes/UI/inventory_slots.gd" id="3_xoyw5"]
+[ext_resource type="Script" uid="uid://b5jikgdcclm68" path="res://Scenes/UI/equip_slots.gd" id="4_piq27"]
 [ext_resource type="Script" uid="uid://dysl2ulvm2sht" path="res://Scenes/UI/property_menu.gd" id="4_t5r24"]
 [ext_resource type="Script" uid="uid://cqjsld3e6ki7k" path="res://Scenes/UI/upgrades_panel.gd" id="5_piq27"]
+[ext_resource type="Script" uid="uid://7ktofijcediu" path="res://Scenes/UI/equip_upgrades_panel.gd" id="8_piq27"]
 
 [sub_resource type="Gradient" id="Gradient_h6tq4"]
 offsets = PackedFloat32Array(0)
@@ -31,9 +33,9 @@ mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_56q1t")
 script = ExtResource("1_tw6yc")
 
-[node name="ImagePanel" type="Panel" parent="." groups=["BuildingProperties"]]
+[node name="Image" type="Panel" parent="." groups=["BuildingProperties"]]
 custom_minimum_size = Vector2(140, 140)
-layout_mode = 2
+layout_mode = 0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 145.0
@@ -42,62 +44,104 @@ size_flags_vertical = 4
 mouse_filter = 2
 script = ExtResource("2_xoyw5")
 
-[node name="InfoPanels" type="GridContainer" parent="." groups=["BuildingProperties"]]
+[node name="Info" type="GridContainer" parent="." groups=["BuildingProperties"]]
 custom_minimum_size = Vector2(0, 140)
-layout_mode = 2
+layout_mode = 0
 offset_left = 150.0
 offset_top = 5.0
-offset_right = 1755.0
+offset_right = 1675.0
 offset_bottom = 145.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 mouse_filter = 2
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
+columns = 3
 script = ExtResource("2_ddvuy")
 
-[node name="InventorySlots" type="GridContainer" parent="." groups=["BuildingProperties"]]
+[node name="Equip" type="GridContainer" parent="." groups=["BuildingProperties"]]
 custom_minimum_size = Vector2(35, 140)
-layout_mode = 2
-offset_left = 1760.0
+layout_mode = 0
+offset_left = 1680.0
 offset_top = 5.0
-offset_right = 1795.0
+offset_right = 1715.0
 offset_bottom = 145.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+tooltip_text = "Equip Slots"
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+script = ExtResource("4_piq27")
+
+[node name="Inventory" type="GridContainer" parent="." groups=["BuildingProperties"]]
+custom_minimum_size = Vector2(35, 140)
+layout_mode = 0
+offset_left = 1720.0
+offset_top = 5.0
+offset_right = 1755.0
+offset_bottom = 145.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "Inventory Slots"
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 script = ExtResource("3_xoyw5")
 
-[node name="PropertyMenu" type="GridContainer" parent="." groups=["BuildingProperties"]]
+[node name="Properties" type="GridContainer" parent="." groups=["BuildingProperties"]]
 custom_minimum_size = Vector2(115, 20)
-layout_mode = 2
-offset_left = 1801.0
+layout_mode = 0
+offset_left = 1760.0
 offset_top = 5.0
-offset_right = 1916.0
+offset_right = 1915.0
 offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
 size_flags_vertical = 6
+tooltip_text = "Property Menu"
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 4
 script = ExtResource("4_t5r24")
 
-[node name="UpgradesPanel" type="GridContainer" parent="." groups=["BuildingProperties"]]
+[node name="Upgrades" type="GridContainer" parent="." groups=["BuildingProperties"]]
 custom_minimum_size = Vector2(110, 110)
-layout_mode = 2
-offset_left = 1800.0
+layout_mode = 0
+offset_left = 1760.0
 offset_top = 30.0
 offset_right = 1915.0
 offset_bottom = 145.0
-grow_horizontal = 2
-grow_vertical = 2
 size_flags_vertical = 4
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
-columns = 3
+columns = 4
 script = ExtResource("5_piq27")
+
+[node name="EquipProperty" type="GridContainer" parent="." groups=["EquipProperties"]]
+visible = false
+custom_minimum_size = Vector2(115, 20)
+layout_mode = 0
+offset_left = 1760.0
+offset_top = 5.0
+offset_right = 1915.0
+offset_bottom = 25.0
+size_flags_vertical = 6
+tooltip_text = "Property Menu"
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 4
+script = ExtResource("4_t5r24")
+
+[node name="EquipUpgrades" type="GridContainer" parent="." groups=["EquipProperties"]]
+visible = false
+custom_minimum_size = Vector2(110, 110)
+layout_mode = 0
+offset_left = 1760.0
+offset_top = 30.0
+offset_right = 1915.0
+offset_bottom = 145.0
+size_flags_vertical = 4
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 4
+script = ExtResource("8_piq27")
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

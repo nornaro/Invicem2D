@@ -5,7 +5,7 @@ var network: Node
 
 func _ready():
 	network = get_tree().get_first_node_in_group("Network")
-	z_index = -1
+	z_index = -4096
 	mapsize = $Ground/CollisionShape2D.shape.size
 	var disable: Array[Vector2i] = []
 	disable.append(Vector2i(1,2))
@@ -23,5 +23,5 @@ func _on_out_area_entered(area):
 		return
 	#send request to server, server reads body.Data
 	body.global_position.x = $In.global_position.x
-	body.get_node("Area2D").set_meta("owner",1)
+	body.get_node("Area").set_meta("owner",1)
 	body.set_meta("owner",1)

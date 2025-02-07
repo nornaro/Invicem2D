@@ -7,7 +7,7 @@ func _ready():
 	var typeA = get_parent().name
 	var typeB = get_parent().name
 	if typeA == "Turret":
-		typeB = name+"/"+name
+		typeB = "Type/"+name+"/"+name
 	type = name
 	var size = animated_sprite(typeA+"/"+typeB)
 	$Sprite.scale = Vector2(100,100)/size

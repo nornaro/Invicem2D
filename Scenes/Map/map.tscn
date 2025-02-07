@@ -84,6 +84,7 @@ size = Vector2(2000, 750)
 orientation = 2
 
 [node name="Map" type="Node2D"]
+z_index = -4096
 script = ExtResource("1_0bqwf")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
@@ -109,6 +110,10 @@ mesh = SubResource("PlaneMesh_qo1ir")
 texture = SubResource("GradientTexture2D_iuac6")
 
 [node name="Spawn" parent="." instance=ExtResource("3_sk368")]
+position = Vector2(-300, 0)
+
+[node name="Positions" parent="Spawn" index="0"]
+position = Vector2(0, 0)
 
 [node name="In" parent="." groups=["In"] instance=ExtResource("4_65k1d")]
 visible = false

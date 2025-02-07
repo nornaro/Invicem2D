@@ -18,10 +18,9 @@ func set_data(data: Dictionary) -> void:
 	if data.has("Targeting"):
 		parent.set_targeting()
 		
-func upgrade(data: String,pair: String) -> void:
+func upgrade(data: String) -> void:
 	var parent = get_parent()
-	var sum = parent.Data.Upgrades[data] + parent.Data.Upgrades[pair]
-	if sum >= 50:
+	if parent.Data.Upgrades[data] >= 16:
 		return
 	parent.Data.Upgrades[data] += 1
 

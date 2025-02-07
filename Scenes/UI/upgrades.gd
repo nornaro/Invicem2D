@@ -5,12 +5,11 @@ extends TextureButton
 
 
 func _ready() -> void:
-	connect("gui_input",on_pressed)
-	
-func on_pressed(event) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		match event.button_index:
-			MOUSE_BUTTON_RIGHT:
-				get_tree().call_group("selected","upgrade",right,left)
-			MOUSE_BUTTON_LEFT:
-				get_tree().call_group("selected","upgrade",left,right)
+	connect("pressed",_on_pressed)
+
+func _on_pressed() -> void:
+	var node = get_tree().get_first_node_in_group("selected")
+	if !node:
+		return
+	get_tree().call_group("selected","upgrade", tooltip_text)
+	var value = node.get_parent().Data.Upgrades[tooltip_text]

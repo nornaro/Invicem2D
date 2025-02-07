@@ -14,7 +14,11 @@ extends Node
 
 func _ready() -> void:
 	get_tree().call_group("Main","add_child", timer.instantiate())
-	add_child(minions.instantiate())
+	var instance = minions.instantiate()
+	instance.connect("done",load_next)
+	add_child(instance)
+	
+func load_next() -> void:
 	add_child(map.instantiate())
 	add_child(buildings.instantiate())
 	add_child(ui.instantiate())

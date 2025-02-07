@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn68u8sgiv7x1"]
+
+[ext_resource type="Script" uid="uid://dfdqnuo6t50jm" path="res://Scenes/UI/equip_slot.gd" id="1_07gta"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s3gqk"]
+
+[node name="EquipSlot" type="TextureButton"]
+self_modulate = Color(1, 1, 0, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+texture_normal = SubResource("PlaceholderTexture2D_s3gqk")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("1_07gta")
