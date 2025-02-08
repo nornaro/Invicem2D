@@ -127,7 +127,6 @@ tooltip_text = "Property Menu"
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 4
-script = ExtResource("4_t5r24")
 
 [node name="EquipUpgrades" type="GridContainer" parent="." groups=["EquipProperties"]]
 visible = false

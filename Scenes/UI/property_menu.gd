@@ -28,6 +28,9 @@ func set_icon(node,icon):
 	if FileAccess.file_exists(icon_path+icon+".png"):
 		node.texture_normal = load(icon_path+icon+".png")
 		return
+	if FileAccess.file_exists(icon_path+name+".png"):
+		node.texture_normal = load(icon_path+name+".png")
+		return
 	node.texture_normal = ImageTexture.new(	)
 	
 func list(source,node,data,key):
