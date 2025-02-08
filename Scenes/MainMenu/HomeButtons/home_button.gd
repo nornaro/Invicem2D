@@ -22,9 +22,12 @@ func _on_mouse_exited() -> void:
 
 
 func _on_pressed() -> void:
+	print(DirAccess.get_directories_at("res://"))
+	print($MainCircle)
 	get_tree().call_group("MainCircle","hide")
 	if $MainCircle:
 		$MainCircle.show()
+	print($MainCircle.visible)
 	#get_tree().call_group(name,"main")
 
 func load_buttons(data: Array) -> void:

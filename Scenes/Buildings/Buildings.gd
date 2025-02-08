@@ -1,6 +1,8 @@
 extends Node2D
 
 var overlapping
+
+
 @export var Data = {}
 
 # 2DO Placement grid?
@@ -120,7 +122,7 @@ func instance_scene_from_name(scene_name: String,parent_scene_name: String):
 		old.get_node("Area").add_to_group(str(instance.get_node("Area").get_instance_id()))
 	instance.position = snap(get_global_mouse_position())
 	var client = get_tree().get_first_node_in_group("Client")
-	instance.z_index = int(instance.position.y)+client.get_node("Map").mapsize.y/2
+	instance.z_index = int(instance.position.y)+client.get_node("Map").mapsize.y/2 - 2000
 	instance.name = scene_name
 	instance.add_to_group(parent_scene_name)
 	instance.modulate = placement_color

@@ -12,4 +12,4 @@ func _on_pressed() -> void:
 	if !node:
 		return
 	get_tree().call_group("selected","upgrade", tooltip_text)
-	var value = node.get_parent().Data.Upgrades[tooltip_text]
+	#var value = node.get_parent().Data.Upgrades[tooltip_text]

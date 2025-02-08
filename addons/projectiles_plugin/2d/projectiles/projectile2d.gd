@@ -68,4 +68,3 @@ func _physics_process(delta: float) -> void:
 	if rot:
 		move_delta = move_delta.rotated(deg_to_rad(travel_angle))
 	position += move_delta
-

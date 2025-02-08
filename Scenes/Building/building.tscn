@@ -35,6 +35,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Icon" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_gc5s8")
 

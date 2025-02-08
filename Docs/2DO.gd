@@ -16,6 +16,7 @@ PRIO:
 """
 - save templates as file (YAML?)
 - transform logic (like unit movement, projectiles, targeting) to c#
+- sync enemy turrets, setting and upgrade for viewing data, skill to show enemy map maybe?
 - Function list:
 	#-	Targeting
 		#-	fixed
@@ -39,16 +40,18 @@ PRIO:
 	-	Item slots
 	-	Upgrades
 		- Turret
-			- multishot: shoots smaller projectiles, that have smaller damage, always double the projectile count, 50% the damage, increase +5% for 3 LVLs, this becomes 8 * 56,25 = 450% dmg
-			- spread: slightly deviate from target with range, can be lowered to pinpoint
+			#- multishot: shoots smaller projectiles, that have smaller damage, always double the projectile count, 50% the damage, increase +5% for 3 LVLs, this becomes 8 * 56,25 = 450% dmg
+			#- spread: slightly deviate from target with range, can be lowered to pinpoint
 			- flak: lower both aspd dmg significantly, but shoot shitton of fragments
 		- projectile: 
 			- multitarget: same as before, but shoots at different targets, baries aspd instead of dmg
 		- barrack:
 			-
 		- minion:
-			- size gives nothing yet
-			- there are no crits yet
+			#- size gives things
+			#- crit
+			#- crit resist
+			#- crit chance
 	- Innate: 
 		- turret:
 			- targeting land/air/both
@@ -58,7 +61,7 @@ PRIO:
 			- "LootDrop": 0, # 5 # 5% less chance to drop item, or -1 item level -> Combine 16 to gain Lootless
 			- "Stealth": 0, # 9 # onhit or periodic -> Combine 16 to gain pemanent
 			- "CCResist": 0, # 12 # Reduce the efficiency or chance of all CC -> Combine 16 to gain immun
-			- "CritResist": 0, # 13 # Reduce the efficiency or frequency of Crit, at max lvl gain immun
+			#- "CritResist": 0, # 13 # Reduce the efficiency or frequency of Crit, at max lvl gain immun
 			- "LessBounty": 0, # 14 # Reduce the ammount of bounty the other player gets -> Combine 16 to gain Lootless
 			- "Divide": 0, # 16 # Multiplying after time, Mass Production Spawns multiple of the unit, but with less HP, Fragmentation splits into multiple smaller with % of original hp at low health
 			- "Revive": 0, # 17 # Revives at % of the HP once, or HP has to be recuced to 0 multiple times, or Shatter and splits into n pieces with portion of the HP m times

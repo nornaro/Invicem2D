@@ -1,13 +1,6 @@
 extends StaticBody2D
 
-#@export var Data = {
-	#"temp" = false,
-	#"max_health" = 1000,
-	#"base_health" = 100,
-	#"min_health" = 1,
-	#"health" = 0,
-	#"Upgrades" = {},
-#}
+
 
 @export var Data = {
 	"temp": false,

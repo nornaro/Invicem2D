@@ -10,6 +10,10 @@ func _enter_tree() -> void:
 	collision.shape.radius = 10
 	collision.disabled = !collide
 	add_child(collision)
+	var sprite:AnimatedSprite2D = $"../AnimatedSprite2D"
+	for meta in sprite.sprite_frames.get_meta_list():
+		get_parent().Data[meta] = sprite.sprite_frames.get_meta(meta)
+	
 
 func set_free():
 	freedom = true

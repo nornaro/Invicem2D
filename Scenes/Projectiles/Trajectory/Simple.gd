@@ -13,6 +13,7 @@ func _ready():
 	var speed = 50 * (Data.Upgrades.ProjectileSpeed + 10)
 	var target_dir = (target.global_position - global_position).normalized()
 	linear_velocity = target_dir * speed
+	linear_velocity = 0.01 * Vector2(randf_range(-(20-Data.Spread),20-Data.Spread),randf_range(-(20-Data.Spread),20-Data.Spread))
 
 func _on_area_2d_area_entered(area):
 	if !area.get_parent().is_in_group("minions"):

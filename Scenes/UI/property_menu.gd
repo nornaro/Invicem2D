@@ -28,15 +28,15 @@ func set_icon(node,icon):
 	if FileAccess.file_exists(icon_path+icon+".png"):
 		node.texture_normal = load(icon_path+icon+".png")
 		return
-	node.texture_normal = load(icon_path+name+".png")
+	node.texture_normal = ImageTexture.new(	)
 	
 func list(source,node,data,key):
 	var itemlist:ItemList = scene.instantiate()
 	var path = root + source.get_parent().get_parent().name + "/Menu/" + key
-	var list = DirAccess.get_files_at(path)
+	var menu_list = DirAccess.get_files_at(path)
 	if !list:
 		return
-	for item:String in list:
+	for item:String in menu_list:
 		if !item.ends_with("gd"):
 			continue
 		item = item.split(".")[0]
@@ -44,7 +44,6 @@ func list(source,node,data,key):
 			item = item.split("_")[1]
 		itemlist.add_item(item)
 		if data[key] == item:
-			itemlist.item_count-1
 			itemlist.select(itemlist.item_count-1)
 	node.add_child(itemlist)
 

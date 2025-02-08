@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+
+
 @export var Data = {}
 var regen = 0
 
@@ -19,23 +21,26 @@ func _ready():
 		Data["max_sh"] = Data.Shield
 		hpBar.max_value=Data.max_hp
 		shBar.max_value=Data.max_sh
-		hpBar.value = Data.max_hp
+		hpBar.value = ceil(Data.max_hp * (1+Data.Size /10))
+		Data.Defense = ceil(Data.Defense * (1+Data.Size /10))
+		Data.Speed -= floor(Data.Size / 4)
 		shBar.value = Data.max_sh
-	linear_velocity = Vector2(-Data.Speed-5,0)*10
+	linear_velocity = Vector2(-Data.Speed-5,0)*5
 	var global = Global.Data.Minions
 	var type = Data.Minion[0]
 	var minion = Data.Minion[1]
 	var sprite = global[type][minion].keys().pick_random()
 	if global[type][minion][sprite].has_meta("scale"):
 		Sprite.scale = Vector2(1,1) * global[type][minion][sprite].get_meta("scale")
+	Sprite.speed_scale = 1+Data.Speed
 	Sprite.sprite_frames = global[type][minion][sprite]
 	Sprite.play("Walking")
-	Sprite.scale *= Data.Size
-	$Area.scale *= Data.Size
+	sh.scale *= (1+Data.Size)/2.0
+	Sprite.scale *= (1+Data.Size)/2.0
+	$Area.scale *= (1+Data.Size)/2.0
 
 func _physics_process(delta):
 	z_index = int(position.y)
-	#scale *= Data.Size # force scale
 	if get_tree().get_node_count_in_group("true"):
 		return
 	shield(delta)
@@ -44,11 +49,11 @@ func _physics_process(delta):
 	notify_property_list_changed()
 
 func regeneration(delta) -> void:
-	regen += delta * Data.Regeneration
+	regen += delta
 	if regen >= 1:
 		regen -= 1
-		Data.HP += 1
-		print("+1")
+		Data.HP += Data.max_hp/100 * Data.Regeneration
+		update_hpbar()
 
 func correct_rotation(delta) -> void:
 	if rotation != 0:
@@ -59,20 +64,19 @@ func correct_rotation(delta) -> void:
 		if abs(rotation) < delta:
 			rotation = 0
 	
-func hurt(damage,pen):
-	damage = calc_damage(damage,pen)
+func hurt(data):
+	var damage = calc_damage(data)
 	if !damage:
 		notify_property_list_changed()
 		return
 	Data.HP -= damage
-	hpBar.value = Data.HP
+	update_hpbar()
 	if hpBar.value == 0:
+		linear_velocity = Vector2.ZERO
 		$Area.queue_free()
 		Sprite.play("Dying")
 		Sprite.connect("animation_looped",queue_free)
 		return
-	var new_color = Color(1, pow(Data.HP / Data.max_hp, 2), 0, 0.75)
-	hpBar.modulate = new_color
 	notify_property_list_changed()
 
 func shield(delta) -> void:
@@ -84,8 +88,15 @@ func shield(delta) -> void:
 	sh.show()
 	if sh.modulate.a > 0.2:
 		sh.modulate.a -= delta * 10
-
-func calc_damage(damage,pen):
+#data.Damage*data.base_damage,data.Penetration,data.Crit,data.crit_multi
+func calc_damage(data):
+	var damage = data.Damage*data.base_damage
+	var crit = 0
+	if Data.has("CritResit"):
+		crit = data.Crit - Data.CritResit
+	if randi_range(0,100) < crit * data.crit_chance:
+		damage *= 1 + ceil(crit / data.crit_multi)
+		print(damage)
 	if Data.Shield > 0:
 		Data.Shield = clamp(Data.Shield - damage, 0, Data.Shield)
 		shBar.value = Data.Shield
@@ -93,4 +104,9 @@ func calc_damage(damage,pen):
 			sh.modulate.a = 1
 		return clamp(damage - Data.Shield, 0, damage)
 	shBar.value = 0
-	return damage / max(1.0, 1.0 + Data.Defense - pen)
+	return data.Damage / max(1.0, 1.0 + Data.Defense - data.Penetration)
+
+func update_hpbar():
+	hpBar.value = Data.HP
+	var new_color = Color(1, pow(Data.HP / Data.max_hp, 2), 0, 0.75)
+	hpBar.modulate = new_color

@@ -41,8 +41,8 @@ func fill_3(data):
 			tab += 1  # Switch to the next tab
 			text = ""  # Clear text for the next chunk
 			line_count = 0  # Reset the line count
-		else:
-			text += "\n"  # Add newline if it's not the last chunk
+			continue
+		text += "\n"  # Add newline if it's not the last chunk
 
 	# If there are any leftover lines after the loop ends, process them
 	if text != "":
@@ -56,8 +56,8 @@ func _process(delta: float) -> void:
 func clear() -> void:
 	for child in get_children():
 		child.tooltip_text = name
-		get_node(str(1)).text
-		get_node(str(2)).text
-		get_node(str(3)).text
+		get_node(str(1)).text = ""
+		get_node(str(2)).text = ""
+		get_node(str(3)).text = ""
 		#for grandchild in child.get_children():
 			#grandchild.queue_free()

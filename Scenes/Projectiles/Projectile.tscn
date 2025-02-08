@@ -1,59 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bt4ojth5m2alx"]
+[gd_scene load_steps=4 format=3 uid="uid://bt4ojth5m2alx"]
 
-[ext_resource type="Texture2D" uid="uid://dld43io17pytv" path="res://Scenes/Projectiles/Projectile/fireball.png" id="1_5kc8e"]
+[ext_resource type="SpriteFrames" uid="uid://8ml40qssjb68" path="res://Scenes/Projectiles/Projectile.tres" id="2_qupxw"]
 [ext_resource type="Script" uid="uid://cre3oyyy5non8" path="res://Scenes/Projectiles/fade.gd" id="2_w6hr7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_36cfe"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0sn1w"]
-atlas = ExtResource("1_5kc8e")
-region = Rect2(0, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uxkc5"]
-atlas = ExtResource("1_5kc8e")
-region = Rect2(512, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xat33"]
-atlas = ExtResource("1_5kc8e")
-region = Rect2(1024, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ox8t"]
-atlas = ExtResource("1_5kc8e")
-region = Rect2(1536, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h25a1"]
-atlas = ExtResource("1_5kc8e")
-region = Rect2(2048, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b141g"]
-atlas = ExtResource("1_5kc8e")
-region = Rect2(2560, 0, 512, 512)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ueqwp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0sn1w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uxkc5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xat33")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ox8t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h25a1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b141g")
-}],
-"loop": true,
-"name": &"default",
-"speed": 15.0
-}]
 
 [node name="Projectile" type="RigidBody2D" groups=["projectile"]]
 collision_layer = 8
@@ -72,7 +22,7 @@ disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
-sprite_frames = SubResource("SpriteFrames_ueqwp")
+sprite_frames = ExtResource("2_qupxw")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

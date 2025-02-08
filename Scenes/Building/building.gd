@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+
+
 @export var Data = {}
 @export var type = ""
 

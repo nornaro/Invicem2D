@@ -4,7 +4,7 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_physical_key_pressed(KEY_K):
 		visible = !visible
 		
-func equip(window,tab,data,source,category):
+func equip(window,tab,data,_source,category):
 	for child in get_children():
 		if child.name != window:
 			child.hide()

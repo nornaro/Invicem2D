@@ -14,9 +14,13 @@ func _ready():
 		return
 	direction = (target.global_position - global_position).normalized()
 	
-	var speed = 50 * (Data.Upgrades.ProjectileSpeed + 10)
+	var speed = 50 * (Data.ProjectileSpeed + 10)
 	var angle_offset = 1/speed
 	linear_velocity = direction.rotated(angle_offset) * speed
+	var spreadbase = 17	
+	var spread = 5 * Vector2(randf_range(-(spreadbase-Data.Spread),spreadbase-Data.Spread),randf_range(-(spreadbase-Data.Spread),spreadbase-Data.Spread))
+	print(spread)
+	linear_velocity += spread
 
 func _physics_process(delta):
 	pass
@@ -24,5 +28,5 @@ func _physics_process(delta):
 func _on_area_2d_area_entered(area):
 	if !area.get_parent().is_in_group("minions"):
 		return
-	queue_free()
-	area.get_parent().hurt(Data.Upgrades.Damage,Data.Upgrades.Penetration)
+	#queue_free()
+	area.get_parent().hurt(Data.Damage,Data.Penetration)

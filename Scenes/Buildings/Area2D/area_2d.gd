@@ -19,10 +19,13 @@ func set_data(data: Dictionary) -> void:
 		parent.set_targeting()
 		
 func upgrade(data: String) -> void:
+	var value = 1
+	if Input.is_key_pressed(KEY_CTRL):
+		value = 16
 	var parent = get_parent()
 	if parent.Data.Upgrades[data] >= 16:
 		return
-	parent.Data.Upgrades[data] += 1
+	parent.Data.Upgrades[data] = clamp(parent.Data.Upgrades[data]+value ,parent.Data.Upgrades[data], 16)
 
 func set_selected(selection):
 	if selection:

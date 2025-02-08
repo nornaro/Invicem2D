@@ -2,6 +2,7 @@ extends StaticBody2D
 
 @onready var minion = preload("res://Scenes/Minions/minion.tscn")
 
+
 @export var Data = {
 	"Properties": {
 		"Power": "Normal", # Can put a barrack to overdrive for higher cost, it can disable, hurt or destroy barrack
@@ -60,6 +61,7 @@ func spawn():
 	var instance = minion.instantiate()
 	instance.global_position = Vector2(spawnin.global_position.x,randi_range(-spawnin.scale.y,spawnin.scale.y))
 	instance.name = str(instance.get_instance_id())
+	instance.Data["Spawn"] = Data.Upgrades
 	instance.Data.merge(Data.Upgrades)
 	instance.Data.merge(Data.Properties)
 	instance.Data.merge(Data.Equip)

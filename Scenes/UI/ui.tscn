@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctyric4lpymab"]
+[gd_scene load_steps=20 format=3 uid="uid://ctyric4lpymab"]
 
 [ext_resource type="Script" uid="uid://cowf2ns7h6dgv" path="res://Scenes/UI/ui.gd" id="1_2xbke"]
 [ext_resource type="PackedScene" uid="uid://bq6obs6f5somh" path="res://Scenes/UI/panel.tscn" id="2_pmm6b"]
@@ -12,6 +12,10 @@
 [ext_resource type="Script" uid="uid://bushhfe162vjh" path="res://Scenes/UI/defeat.gd" id="9_s3gqk"]
 [ext_resource type="Script" uid="uid://dhwebox8xgonf" path="res://Scenes/UI/exit.gd" id="10_pmm6b"]
 [ext_resource type="PackedScene" uid="uid://d34mxo1ld0ik5" path="res://Scenes/UI/picker.tscn" id="12_vy225"]
+[ext_resource type="Texture2D" uid="uid://nrfl1gqk8hl1" path="res://Scenes/UI/Icon/Minions.png" id="13_fy0us"]
+[ext_resource type="Texture2D" uid="uid://c4kibnanhccmq" path="res://Scenes/UI/Icon/Power.png" id="14_h6tq4"]
+[ext_resource type="Texture2D" uid="uid://cjrjlxoangse" path="res://Scenes/UI/Icon/Money.png" id="14_t7te2"]
+[ext_resource type="Script" uid="uid://c7kkatl5wvl5y" path="res://Scenes/UI/player_name.gd" id="16_56q1t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dq6f6"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -23,6 +27,8 @@ border_color = Color(1, 1, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5xb7"]
 bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56q1t"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_2xbke")
@@ -261,6 +267,256 @@ z_index = 100
 
 [node name="Kafra" parent="." instance=ExtResource("12_vy225")]
 visible = false
+
+[node name="Currecny" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(150, 30)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -473.0
+offset_bottom = 30.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Minions" type="Panel" parent="Currecny"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Currecny/Minions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Icon" type="TextureRect" parent="Currecny/Minions/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("13_fy0us")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Name" type="RichTextLabel" parent="Currecny/Minions/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Minions"
+scroll_active = false
+vertical_alignment = 1
+justification_flags = 131
+
+[node name="Value" type="RichTextLabel" parent="Currecny/Minions/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Power" type="Panel" parent="Currecny"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Currecny/Power"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Icon" type="TextureRect" parent="Currecny/Power/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("14_h6tq4")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Name" type="RichTextLabel" parent="Currecny/Power/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Power"
+scroll_active = false
+vertical_alignment = 1
+justification_flags = 131
+
+[node name="Value" type="RichTextLabel" parent="Currecny/Power/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Zeny" type="Panel" parent="Currecny"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Currecny/Zeny"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Icon" type="TextureRect" parent="Currecny/Zeny/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("14_t7te2")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Name" type="RichTextLabel" parent="Currecny/Zeny/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Zeny"
+scroll_active = false
+vertical_alignment = 1
+justification_flags = 131
+
+[node name="Value" type="RichTextLabel" parent="Currecny/Zeny/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Leaderboard" type="TabContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(300, 30)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -305.0
+offset_top = 39.0
+offset_right = -5.0
+offset_bottom = 531.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tab_alignment = 2
+current_tab = 0
+tab_focus_mode = 1
+deselect_enabled = true
+
+[node name="Leaderboard" type="HBoxContainer" parent="Leaderboard"]
+self_modulate = Color(1, 1, 1, 0.5)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
+metadata/_tab_index = 0
+
+[node name="Name" type="RichTextLabel" parent="Leaderboard/Leaderboard"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "123123123123123"
+fit_content = true
+autowrap_mode = 0
+justification_flags = 131
+
+[node name="HP" type="RichTextLabel" parent="Leaderboard/Leaderboard"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "120"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+justification_flags = 131
+
+[node name="Score" type="RichTextLabel" parent="Leaderboard/Leaderboard"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "123123123"
+fit_content = true
+horizontal_alignment = 2
+justification_flags = 131
+
+[node name="PlayerName" type="RichTextLabel" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 205.0
+offset_right = -1600.0
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_vertical = 3
+tooltip_text = "Rught click to change name"
+bbcode_enabled = true
+text = "Change name"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 131
+script = ExtResource("16_56q1t")
+
+[node name="EditName" type="Panel" parent="."]
+visible = false
+offset_left = 79.0
+offset_top = 45.0
+offset_right = 1057.0
+offset_bottom = 106.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_56q1t")
+
+[node name="NameEdit" type="TextEdit" parent="EditName"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -452.0
+offset_top = 25.0
+offset_right = 487.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+placeholder_text = "Type here"
+caret_blink = true
+
+[node name="ColorRect" type="ColorPickerButton" parent="EditName"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 25.0
+offset_right = 36.0
+offset_bottom = 60.0
+focus_mode = 0
+
+[node name="B" type="Button" parent="EditName"]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 9.0
+offset_right = 22.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+theme_override_colors/font_color = Color(0.0687983, 0.0687983, 0.0687983, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+toggle_mode = true
+text = "B"
+flat = true
+
+[node name="U" type="Button" parent="EditName"]
+layout_mode = 1
+offset_left = 14.0
+offset_top = 9.0
+offset_right = 33.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+theme_override_colors/font_color = Color(0.0687983, 0.0687983, 0.0687983, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+toggle_mode = true
+text = "_"
+flat = true
 
 [connection signal="item_selected" from="List" to="." method="_on_list_item_selected"]
 [connection signal="item_selected" from="HealthBar/Style" to="HealthBar/Style" method="_on_item_selected"]

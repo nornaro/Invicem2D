@@ -1,7 +1,56 @@
-[gd_resource type="CanvasItemMaterial" format=3 uid="uid://bwql5yqnwnv6u"]
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://8ml40qssjb68"]
+
+[ext_resource type="Texture2D" uid="uid://dld43io17pytv" path="res://Scenes/Projectiles/Projectile/fireball.png" id="1_75dur"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sn1w"]
+atlas = ExtResource("1_75dur")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxkc5"]
+atlas = ExtResource("1_75dur")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xat33"]
+atlas = ExtResource("1_75dur")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ox8t"]
+atlas = ExtResource("1_75dur")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h25a1"]
+atlas = ExtResource("1_75dur")
+region = Rect2(2048, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b141g"]
+atlas = ExtResource("1_75dur")
+region = Rect2(2560, 0, 512, 512)
 
 [resource]
-particles_animation = true
-particles_anim_h_frames = 6
-particles_anim_v_frames = 1
-particles_anim_loop = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sn1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxkc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xat33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ox8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h25a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b141g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+metadata/base_damage = 10
+metadata/crit_chance = 5
+metadata/crit_multi = 5

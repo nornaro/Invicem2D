@@ -4,9 +4,12 @@ extends Node2D
 @onready var projectiles_scene = preload("res://Scenes/Projectiles/Projectiles.tscn")
 @onready var projectile_scene = preload("res://Scenes/Projectiles/Projectile.tscn")
 
+
+
 @export var Data = {
 	"muzzle": [Vector2.ZERO],
 	"max_target_count": 3,
+	"spreadbase": 15,
 	"Skin": "",
 	"Properties": {
 		"Power": "Normal",
@@ -24,9 +27,9 @@ extends Node2D
 	"Inventory": {},
 	"Upgrades":{ ## some are ammo properties
 		#Speed					#DMG->Ammo?			#Range			#Etc:AoE
-		"AttackSpeed": 1, 		"Damage": 1, 		"MinRange": 1,	"Multishot": 0,
+		"AttackSpeed": 1, 		"Damage": 1, 		"MinRange": 1,	"Multishot": 1,
 		"ProjectileSpeed": 1, 	"Penetration": 1, 	"MaxRange": 1,	"Flak": 0,
-		"TargetingSpeed": 1, 	"Crit": 1, 			"Spread": 0,	"Splah": 0,
+		"TargetingSpeed": 1, 	"Crit": 0, 			"Spread": 0,	"Splah": 0,
 	},
 	#"Upgrades":{í
 		#"Speed": Vector3(1,1,1), # 1 # AttackSpeed/ProjectileSpeed/TargetingSpeed
@@ -57,7 +60,8 @@ func _ready():
 
 
 func _process(_delta: float) -> void:
-	$Icon.position = $Muzzle.position + $Muzzle.points[-$Sprite.frame]
+	if get_node_or_null("Muzzle"):
+		$Icon.position = $Muzzle.position + $Muzzle.points[-$Sprite.frame]
 
 func add_timers():
 	timer_ASPD.name = "ASPD"
@@ -86,29 +90,60 @@ func _on_ASPD_timeout():
 		return
 	if !Data.has("muzzle"):
 		return
-	for i in Data.muzzle.size():
+	var multi = calculate_multishot()
+	var spread_range = Data.spreadbase-Data.Upgrades.Spread
+	spread_range /= 2
+	var spread = 5 * Vector2(
+		randf_range(-spread_range,spread_range),
+		randf_range(-spread_range,spread_range)
+	)
+	var target = $Targeting.targeting[0]
+	var rot = get_turret_rotation_to_face_target(self, target)
+	var frame = rotation_to_frame(rot)
+	$Sprite.frame = frame
+	for i in range(Data.muzzle.size() + multi[0]):
+		spawn_projectile(multi[0],multi[1],spread,target)
+		await get_tree().create_timer(0.001).timeout
+		
+func calculate_multishot() -> Array:
+	var count = 1.0
+	var damage = 100.0
+	var m = [1,5,9,13]
+	for i in range(Data.Upgrades.Multishot):
+		if m.has(i):
+			damage /=2
+			count += 1
+			continue
+		damage += 5
+	return [count,damage/100]
+
+func spawn_projectile(count,damage,spread,target) -> void:
 		var instance = projectile_scene.instantiate()
 		instance.name = str(instance.get_instance_id())
-		#instance.top_level = true
 		var script = "res://Scenes/Projectiles/Trajectory/" + Data.Properties.Trajectory + ".gd"
-		var rot = get_turret_rotation_to_face_target(self, $Targeting.targeting[0])
-		var frame = rotation_to_frame(rot)
-		$Sprite.frame = frame
 		FileAccess.file_exists(script)
 		if FileAccess.file_exists(script):
 			instance.set_script(load(script))
-			instance.target = $Targeting.targeting[0]
-			instance.Data.merge(Data)
+			instance.target = target
+			instance.Data["Spawn"] = Data.Upgrades
+			instance.Data.merge(Data.Properties)
+			instance.Data.merge(Data.Upgrades)
+			instance.Data.Spread = spread
+			instance.Data.Damage *= damage
+			instance.Data["Size"] = count
 			instance._ready()
-		instance.global_position = $Muzzle.global_position + $Muzzle.points[-$Sprite.frame]/2
+		instance.global_position = $Icon.global_position# + $Muzzle.points[-$Sprite.frame]/2
 		$Projectiles.add_child(instance)
+	
 
 func set_rotation_coords():
 	var sp:AnimatedSprite2D = get_node("Sprite")
 	var scene = load(sp.sprite_frames.resource_path.replace(".tres", ".tscn"))
-	var instance = scene.instantiate()
+	var instance:Line2D = scene.instantiate()
 	instance.name = "Muzzle"
-	#instance.visible = false
+	for point in instance.points:
+		point += Vector2(-25,-50)
+	#instance.hide()
 	add_child(instance)
 	return
 
