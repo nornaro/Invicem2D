@@ -40,8 +40,6 @@ func add_player(id):
 	var player_instance = player.instantiate()
 	player_instance.name = str(id)
 	server_node.add_child(player_instance)
-	#print(server_node)
-	#print(player_instance)
 
 # rpc declaration must match server script, but definition can be different.
 @rpc("any_peer", "call_remote", "reliable")
