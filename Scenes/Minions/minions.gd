@@ -15,11 +15,11 @@ func _ready():
 	load_minions()  # Make sure to call load_minions when the node is ready
 
 func load_minions():
-	var types = DirAccess.get_directories_at(base_path)
+	var types = Global.RL.get_directories_at(base_path)
 	
 	for type in types:
 		minions[type] = {}
-		for minion in DirAccess.get_directories_at(base_path + type):
+		for minion in Global.RL.get_directories_at(base_path + type):
 			counter += 1
 			var minion_parts = minion.split("_")  # Only split once
 			if not minions[type].has(minion_parts[0]):

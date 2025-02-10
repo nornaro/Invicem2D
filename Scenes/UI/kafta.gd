@@ -4,7 +4,7 @@ extends TabContainer
 
 #func _ready() -> void:
 	#var instance
-	#var tabs = DirAccess.get_directories_at("res://Scenes/Building/")
+	#var tabs = Global.RL.get_directories_at("res://Scenes/Building/")
 	#for tab in tabs:
 		#instance = kafratab.instantiate()
 		#instance.name = tab

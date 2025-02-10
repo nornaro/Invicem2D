@@ -138,9 +138,9 @@ func build_castle(scene_name):
 	instance.get_node("Sprite").offset.y -= 100
 
 	var script = "res://Scenes/Building/" + scene_name+"/"+scene_name+".gd"
-	FileAccess.file_exists(script)
-	if FileAccess.file_exists(script):
-		instance.set_script(load(script))
+	Global.RL.file_exists(script)
+	if Global.RL.file_exists(script):
+		instance.set_script(Global.RL.load(script))
 		instance._ready()
 
 func load_script_from_name(id,scene_name: String,parent_scene_name: String):
@@ -149,12 +149,12 @@ func load_script_from_name(id,scene_name: String,parent_scene_name: String):
 	var instance = instance_from_id(temp_instance)
 	instance = instance_from_id(id)
 	var script = "res://Scenes/Building/" + parent_scene_name+"/"+parent_scene_name+".gd"
-	FileAccess.file_exists(script)
-	if FileAccess.file_exists(script):
-		instance.set_script(load(script))
+	Global.RL.file_exists(script)
+	if Global.RL.file_exists(script):
+		instance.set_script(Global.RL.load(script))
 		script = "res://Scenes/Building/" + parent_scene_name+"/"+scene_name+"/"+scene_name+".gd"
-		if FileAccess.file_exists(script):
-			var external = load(script).new()
+		if Global.RL.file_exists(script):
+			var external = Global.RL.load(script).new()
 			instance.Data.merge(external.Data)
 		instance._ready()
 	return temp_instance

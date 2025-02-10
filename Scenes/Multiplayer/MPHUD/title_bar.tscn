@@ -1,0 +1,70 @@
+[gd_scene load_steps=2 format=3 uid="uid://b32pcls5t40ch"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7v4l0"]
+bg_color = Color(0.0475577, 0.0475577, 0.0475576, 1)
+
+[node name="TitleBar" type="Panel"]
+custom_minimum_size = Vector2(1600, 40)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7v4l0")
+
+[node name="Name" type="Button" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(1225, 40)
+layout_mode = 2
+offset_right = 1225.0
+offset_bottom = 40.0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "UID
+IP:PORT
+OWNER"
+mouse_filter = 1
+text = "Server"
+flat = true
+
+[node name="Join code" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+offset_left = 1235.0
+offset_right = 1435.0
+offset_bottom = 40.0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "UID
+IP:PORT
+OWNER"
+mouse_filter = 1
+text = "Join code"
+flat = true
+
+[node name="Players" type="Button" parent="."]
+custom_minimum_size = Vector2(70, 40)
+layout_mode = 2
+offset_left = 1445.0
+offset_right = 1518.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "LIST"
+mouse_filter = 1
+text = "Players"
+flat = true
+
+[node name="Latency" type="Button" parent="."]
+custom_minimum_size = Vector2(50, 40)
+layout_mode = 2
+offset_left = 1528.0
+offset_right = 1600.0
+offset_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "LIST"
+mouse_filter = 1
+text = "Latency"
+flat = true

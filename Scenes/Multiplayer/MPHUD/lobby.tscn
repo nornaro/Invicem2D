@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5gu2vvct8dr6"]
+
+[ext_resource type="Script" uid="uid://csoxvgd1w5uwn" path="res://Scenes/Multiplayer/MPHUD/lobby.gd" id="1_ry8wc"]
+
+[node name="Lobby" type="HBoxContainer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+script = ExtResource("1_ry8wc")
+
+[node name="Lobbyinfo" type="ItemList" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+focus_mode = 0
+allow_search = false
+item_count = 1
+
+[node name="LobbyName" type="ItemList" parent="."]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+focus_mode = 0
+
+[node name="LobbyPlayers" type="ItemList" parent="."]
+clip_contents = false
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+focus_mode = 0
+
+[node name="LobbyId" type="ItemList" parent="."]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+focus_mode = 0
+
+[node name="LobbyLatency" type="ItemList" parent="."]
+clip_contents = false
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
+focus_mode = 0
+
+[node name="Update" type="Timer" parent="."]
+autostart = true
+ignore_time_scale = true
+
+[connection signal="timeout" from="Update" to="." method="_on_update_timeout"]

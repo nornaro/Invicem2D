@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://q7rafbkh87kr" path="res://Scenes/UI/kafta.gd" id="1_704u1"]
 [ext_resource type="Script" uid="uid://c446t4wmho48g" path="res://Scenes/UI/picker.gd" id="1_arcwy"]
-[ext_resource type="PackedScene" uid="uid://cbw1h45r5nyl4" path="res://Scenes/UI/minion_inventory.tscn" id="3_fvwoe"]
+[ext_resource type="PackedScene" uid="uid://cbw1h45r5nyl4" path="res://Scenes/Multiplayer/MPHUD/minion_inventory.tscn" id="3_fvwoe"]
 
 [node name="Picker" type="Panel" groups=["Picker"]]
 custom_minimum_size = Vector2(1500, 750)
@@ -29,28 +29,49 @@ grow_vertical = 2
 current_tab = 0
 script = ExtResource("1_704u1")
 
-[node name="Minion" parent="Tabs" instance=ExtResource("3_fvwoe")]
+[node name="Minion" type="ScrollContainer" parent="Tabs"]
 layout_mode = 2
+metadata/_tab_index = 0
 
-[node name="Core" parent="Tabs" instance=ExtResource("3_fvwoe")]
+[node name="Minion" parent="Tabs/Minion" instance=ExtResource("3_fvwoe")]
+layout_mode = 2
+columns = 4
+
+[node name="Core" type="ScrollContainer" parent="Tabs"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Efficiency" parent="Tabs" instance=ExtResource("3_fvwoe")]
+[node name="Core" parent="Tabs/Core" instance=ExtResource("3_fvwoe")]
+layout_mode = 2
+columns = 4
+
+[node name="Efficiency" type="ScrollContainer" parent="Tabs"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="Item" parent="Tabs" instance=ExtResource("3_fvwoe")]
+[node name="Efficiency" parent="Tabs/Efficiency" instance=ExtResource("3_fvwoe")]
+layout_mode = 2
+columns = 4
+
+[node name="Item" type="ScrollContainer" parent="Tabs"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="Dummy" parent="Tabs" instance=ExtResource("3_fvwoe")]
+[node name="Item" parent="Tabs/Item" instance=ExtResource("3_fvwoe")]
+layout_mode = 2
+columns = 4
+
+[node name="Dummy" type="ScrollContainer" parent="Tabs"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 4
+
+[node name="Dummy" parent="Tabs/Dummy" instance=ExtResource("3_fvwoe")]
+layout_mode = 2
+columns = 4
 
 [node name="TabBar" type="TabBar" parent="."]
 layout_mode = 0

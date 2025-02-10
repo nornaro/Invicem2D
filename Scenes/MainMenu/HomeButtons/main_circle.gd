@@ -6,14 +6,17 @@ var button_count = 0
 var sc
 
 func _ready() -> void:
-	position = $"../../Marker2D".position
+	var node = get_node_or_null("../../Marker2D")
+	if !node:
+		return
+	position = node.position
 	size = Vector2(get_viewport().get_visible_rect().size.x/5,get_viewport().get_visible_rect().size.y/4)
 	position -= size/2
 		
 #func load_sc(data) -> void:
 	#var script_base_dir = get_script().resource_path.get_base_dir() + "/" + data[0] + "_" + data[1] + "/"
-	#if FileAccess.file_exists(script_base_dir+"script.gd"):
-		#sc = load(script_base_dir+"script.gd")
+	#if Global.RL.file_exists(script_base_dir+"script.gd"):
+		#sc = Global.RL.load(script_base_dir+"script.gd")
 		#sc._ready()
 		
 func load_buttons(data: Array):
@@ -23,31 +26,28 @@ func load_buttons(data: Array):
 	var global_path = script_base_dir + path
 		
 	# Open the directory
-	var base_dir = DirAccess.open(global_path)
-	if not base_dir:
-		push_error("Error: Directory not found:", global_path)
-		return
+	var base_dir = Global.RL.get_directories_at(global_path)
 
-	for button in base_dir.get_directories():
+	for button in base_dir:
 		var styles = ""
-		if base_dir.dir_exists(button+"/Styles"):
+		if Global.RL.dir_exists(global_path+button+"/Styles"):
 			styles = "Styles/" + Global.style + "/"
 			
 			# Create a TextureButton instance
 		var instance = TextureButton.new()
-		var buttontextures = DirAccess.get_files_at(global_path + button + "/" + styles)
+		var buttontextures = Global.RL.get_files_at(global_path + button + "/" + styles)
 		for texture in ["normal","pressed","hover","disabled","focused","click_mask"]:
 			var texture_path = global_path + button + "/" + styles + pick_random_texture(buttontextures, texture)
-			if FileAccess.file_exists(texture_path):
-				instance.set("texture_" + texture, load(texture_path) as Texture2D)
+			if Global.RL.file_exists(texture_path):
+				instance.set("texture_" + texture, Global.RL.load(texture_path) as Texture2D)
 		instance.name = button
 		instance.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		instance.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		instance.ignore_texture_size = true
 		instance.stretch_mode = TextureButton.STRETCH_SCALE
 		var script_path = global_path + button + "/script.gd"
-		if FileAccess.file_exists(script_path):
-			instance.set_script(load(script_path))
+		if Global.RL.file_exists(script_path):
+			instance.set_script(Global.RL.load(script_path))
 		button_count += 1
 		add_child(instance)
 		if button_count <= 2:

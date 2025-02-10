@@ -121,9 +121,8 @@ func spawn_projectile(count,damage,spread,target) -> void:
 		var instance = projectile_scene.instantiate()
 		instance.name = str(instance.get_instance_id())
 		var script = "res://Scenes/Projectiles/Trajectory/" + Data.Properties.Trajectory + ".gd"
-		FileAccess.file_exists(script)
-		if FileAccess.file_exists(script):
-			instance.set_script(load(script))
+		if Global.RL.file_exists(script):
+			instance.set_script(Global.RL.load(script))
 			instance.target = target
 			instance.Data["Spawn"] = Data.Upgrades
 			instance.Data.merge(Data.Properties)
@@ -138,7 +137,7 @@ func spawn_projectile(count,damage,spread,target) -> void:
 
 func set_rotation_coords():
 	var sp:AnimatedSprite2D = get_node("Sprite")
-	var scene = load(sp.sprite_frames.resource_path.replace(".tres", ".tscn"))
+	var scene = Global.RL.load(sp.sprite_frames.resource_path.replace(".tres", ".tscn"))
 	var instance:Line2D = scene.instantiate()
 	instance.name = "Muzzle"
 	for point in instance.points:
@@ -150,9 +149,9 @@ func set_rotation_coords():
 
 func set_targeting():
 	var script = "res://Scenes/Projectiles/Targeting/"+Data.Properties.Targeting+".gd"
-	FileAccess.file_exists(script)
-	if FileAccess.file_exists(script):
-		$Targeting.set_script(load(script))
+	Global.RL.file_exists(script)
+	if Global.RL.file_exists(script):
+		$Targeting.set_script(Global.RL.load(script))
 		$Targeting._ready()
 
 func rotation_to_frame(rot: float) -> int:
@@ -184,15 +183,15 @@ func get_item_from_slot(slot_index):
 	return Data[slot_index]
 
 #func load_item_script(slot,modify,item):
-	#var scene = load("res://Scenes/"+slot+"/"+slot+".tscn")
+	#var scene = Global.RL.load("res://Scenes/"+slot+"/"+slot+".tscn")
 	#var instance = scene.instantiate()
 	#Data[slot] = instance
 ##	instance.name = str(instance.get_instance_id())
 	#add_child(instance)
 	#var script = "res://Scenes/"+slot+"/"+modify+"/"+item+".gd"
-	#FileAccess.file_exists(script)
-	#if FileAccess.file_exists(script):
-		#instance.set_script(load(script))
+	#Global.RL.file_exists(script)
+	#if Global.RL.file_exists(script):
+		#instance.set_script(Global.RL.load(script))
 		#instance._ready()
 		#Data.merge(instance.Data)
 

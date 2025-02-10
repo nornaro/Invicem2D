@@ -18,25 +18,25 @@ func fill() -> void:
 	var data: Dictionary = source.get_parent().Data[name]
 	var keys: Array = data.keys()
 	for i in range(data.size()):
-		var node = get_node(str(i+1))  # Get the node based on the calculated index
+		var node = get_node(str(i+1))
 		node.tooltip_text = keys[i]
 		node.connect("pressed",list)
 		set_icon(node,keys[i])
 		list(source,node,data,keys[i])
 		
 func set_icon(node,icon):
-	if FileAccess.file_exists(icon_path+icon+".png"):
-		node.texture_normal = load(icon_path+icon+".png")
+	if Global.RL.file_exists(icon_path+icon+".png"):
+		node.texture_normal = Global.RL.load(icon_path+icon+".png")
 		return
-	if FileAccess.file_exists(icon_path+name+".png"):
-		node.texture_normal = load(icon_path+name+".png")
+	if Global.RL.file_exists(icon_path+name+".png"):
+		node.texture_normal = Global.RL.load(icon_path+name+".png")
 		return
 	node.texture_normal = ImageTexture.new(	)
 	
 func list(source,node,data,key):
 	var itemlist:ItemList = scene.instantiate()
 	var path = root + source.get_parent().get_parent().name + "/Menu/" + key
-	var menu_list = DirAccess.get_files_at(path)
+	var menu_list = Global.RL.get_files_at(path)
 	if !list:
 		return
 	for item:String in menu_list:

@@ -6,52 +6,44 @@
 [ext_resource type="Texture2D" uid="uid://drgfd6hidllij" path="res://Scenes/Multiplayer/MPHUD/Icons/Nakama.png" id="4_yrhr7"]
 [ext_resource type="Texture2D" uid="uid://pambvh63m1o4" path="res://Scenes/Multiplayer/MPHUD/Icons/GDSync.png" id="5_7v3yp"]
 [ext_resource type="Texture2D" uid="uid://ci1vdlffkh0l7" path="res://Scenes/Multiplayer/MPHUD/Icons/EOSG.png" id="6_rtfh4"]
+[ext_resource type="Script" uid="uid://ml32sxxxhqm4" path="res://Scenes/Multiplayer/MPHUD/network_type.gd" id="7_pnjyg"]
 [ext_resource type="Script" uid="uid://bdmpj60vca0tf" path="res://Scenes/Multiplayer/host.gd" id="8_ttryd"]
 [ext_resource type="Script" uid="uid://ck3ga2ab57mmj" path="res://Scenes/Multiplayer/join.gd" id="9_f4ja4"]
 [ext_resource type="Script" uid="uid://dk340raasgcv0" path="res://Scenes/Multiplayer/search.gd" id="10_tyone"]
 [ext_resource type="Script" uid="uid://ddj0pg64e3p0b" path="res://Scenes/Multiplayer/MPHUD/back.gd" id="11_tsjd1"]
+[ext_resource type="Script" uid="uid://csoxvgd1w5uwn" path="res://Scenes/Multiplayer/MPHUD/lobby.gd" id="12_emtdj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4wgv"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_f1egc"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5vdtm"]
-noise = SubResource("FastNoiseLite_f1egc")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0u28"]
-texture = SubResource("NoiseTexture2D_5vdtm")
-modulate_color = Color(1, 1, 1, 0.0980392)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7v4l0"]
+bg_color = Color(0.0475577, 0.0475577, 0.0475576, 1)
 
 [node name="MPHUD" type="Panel" groups=["MPHUD", "MainCircle"]]
-visible = false
 light_mask = 2
 visibility_layer = 2
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -900.0
+offset_top = -500.0
+offset_right = 900.0
+offset_bottom = 500.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 script = ExtResource("1_bw4dg")
 
-[node name="LobbyWindow" type="HSplitContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-split_offset = 300
-
-[node name="LobbyControl" type="VBoxContainer" parent="LobbyWindow"]
+[node name="LobbyControl" type="VBoxContainer" parent="."]
 layout_mode = 2
+offset_right = 288.0
+offset_bottom = 1000.0
 
-[node name="Top" type="VBoxContainer" parent="LobbyWindow/LobbyControl"]
+[node name="Top" type="VBoxContainer" parent="LobbyControl"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="NetworkType" type="TabBar" parent="LobbyWindow/LobbyControl/Top"]
+[node name="NetworkType" type="TabBar" parent="LobbyControl/Top"]
 unique_name_in_owner = true
 layout_mode = 2
 current_tab = 0
@@ -66,18 +58,19 @@ tab_3/icon = ExtResource("5_7v3yp")
 tab_3/disabled = true
 tab_4/icon = ExtResource("6_rtfh4")
 tab_4/disabled = true
+script = ExtResource("7_pnjyg")
 
-[node name="Menu" type="HBoxContainer" parent="LobbyWindow/LobbyControl/Top"]
+[node name="Menu" type="HBoxContainer" parent="LobbyControl/Top"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Panel" type="Panel" parent="LobbyWindow/LobbyControl/Top/Menu"]
+[node name="Panel" type="Panel" parent="LobbyControl/Top/Menu"]
 self_modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MainArea" type="VBoxContainer" parent="LobbyWindow/LobbyControl/Top/Menu/Panel"]
+[node name="MainArea" type="VBoxContainer" parent="LobbyControl/Top/Menu/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -91,7 +84,7 @@ offset_bottom = 21.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Name" type="RichTextLabel" parent="LobbyWindow/LobbyControl/Top/Menu/Panel/MainArea"]
+[node name="Name" type="RichTextLabel" parent="LobbyControl/Top/Menu/Panel/MainArea"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 bbcode_enabled = true
@@ -99,17 +92,17 @@ text = "Name"
 fit_content = true
 scroll_active = false
 
-[node name="Host" type="Button" parent="LobbyWindow/LobbyControl/Top/Menu/Panel/MainArea"]
+[node name="Host" type="Button" parent="LobbyControl/Top/Menu/Panel/MainArea"]
 layout_mode = 2
 text = "Host"
 script = ExtResource("8_ttryd")
 
-[node name="Join" type="Button" parent="LobbyWindow/LobbyControl/Top/Menu/Panel/MainArea"]
+[node name="Join" type="Button" parent="LobbyControl/Top/Menu/Panel/MainArea"]
 layout_mode = 2
 text = "Join"
 script = ExtResource("9_f4ja4")
 
-[node name="Search" type="TextEdit" parent="LobbyWindow/LobbyControl/Top/Menu/Panel/MainArea"]
+[node name="Search" type="TextEdit" parent="LobbyControl/Top/Menu/Panel/MainArea"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -118,7 +111,11 @@ context_menu_enabled = false
 scroll_fit_content_height = true
 script = ExtResource("10_tyone")
 
-[node name="WindowControlArea" type="VBoxContainer" parent="LobbyWindow/LobbyControl/Top/Menu/Panel"]
+[node name="IP" type="TextEdit" parent="LobbyControl/Top/Menu/Panel/MainArea"]
+custom_minimum_size = Vector2(150, 35)
+layout_mode = 2
+
+[node name="WindowControlArea" type="VBoxContainer" parent="LobbyControl/Top/Menu/Panel"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 1
 anchors_preset = 7
@@ -133,80 +130,113 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 2
 
-[node name="Hide" type="Button" parent="LobbyWindow/LobbyControl/Top/Menu/Panel/WindowControlArea"]
+[node name="Hide" type="Button" parent="LobbyControl/Top/Menu/Panel/WindowControlArea"]
 layout_mode = 2
 text = "Hide"
 script = ExtResource("11_tsjd1")
 
-[node name="Separator" type="Panel" parent="LobbyWindow/LobbyControl/Top/Menu/Panel/WindowControlArea"]
+[node name="Separator" type="Panel" parent="LobbyControl/Top/Menu/Panel/WindowControlArea"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_l4wgv")
 
-[node name="Bot" type="Panel" parent="LobbyWindow/LobbyControl"]
+[node name="Bot" type="Panel" parent="LobbyControl"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_l4wgv")
 
-[node name="LobbyList" type="VBoxContainer" parent="LobbyWindow"]
+[node name="TitleBar" type="Panel" parent="."]
+custom_minimum_size = Vector2(1500, 40)
 layout_mode = 2
-theme_override_constants/separation = 60
+offset_left = 300.0
+offset_right = 1800.0
+offset_bottom = 40.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7v4l0")
 
-[node name="Panel2" type="Panel" parent="LobbyWindow/LobbyList"]
+[node name="Name" type="Button" parent="TitleBar"]
+clip_contents = true
+custom_minimum_size = Vector2(1150, 40)
 layout_mode = 2
-
-[node name="LobbyPanel" type="Panel" parent="LobbyWindow/LobbyList"]
-layout_mode = 2
+offset_right = 1150.0
+offset_bottom = 40.0
+grow_vertical = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_t0u28")
+tooltip_text = "UID
+IP:PORT
+OWNER"
+mouse_filter = 1
+text = "Server"
+flat = true
 
-[node name="Lobby" type="HBoxContainer" parent="LobbyWindow/LobbyList/LobbyPanel"]
-unique_name_in_owner = true
+[node name="Join code" type="Button" parent="TitleBar"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+offset_left = 1150.0
+offset_right = 1350.0
+offset_bottom = 40.0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "UID
+IP:PORT
+OWNER"
+mouse_filter = 1
+text = "Join code"
+flat = true
+
+[node name="Players" type="Button" parent="TitleBar"]
+custom_minimum_size = Vector2(70, 40)
+layout_mode = 2
+offset_left = 1350.0
+offset_right = 1425.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "LIST"
+mouse_filter = 1
+text = "Players"
+flat = true
+
+[node name="Latency" type="Button" parent="TitleBar"]
+custom_minimum_size = Vector2(75, 40)
+layout_mode = 2
+offset_left = 1425.0
+offset_right = 1500.0
+offset_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "LIST"
+mouse_filter = 1
+text = "Latency"
+flat = true
+
+[node name="LobbyPanel" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(1450, 0)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 20
+offset_left = -1500.0
+offset_top = -955.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
 
-[node name="Lobbyinfo" type="ItemList" parent="LobbyWindow/LobbyList/LobbyPanel/Lobby"]
-custom_minimum_size = Vector2(200, 0)
+[node name="Lobby" type="GridContainer" parent="LobbyPanel"]
+custom_minimum_size = Vector2(0, 900)
 layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 5
-focus_mode = 0
-allow_search = false
+size_flags_horizontal = 3
+script = ExtResource("12_emtdj")
 
-[node name="LobbyName" type="ItemList" parent="LobbyWindow/LobbyList/LobbyPanel/Lobby"]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 5
-focus_mode = 0
+[node name="Update" type="Timer" parent="LobbyPanel"]
+autostart = true
+ignore_time_scale = true
 
-[node name="LobbyPlayers" type="ItemList" parent="LobbyWindow/LobbyList/LobbyPanel/Lobby"]
-clip_contents = false
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 5
-focus_mode = 0
-
-[node name="LobbyId" type="ItemList" parent="LobbyWindow/LobbyList/LobbyPanel/Lobby"]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 5
-focus_mode = 0
-
-[node name="LobbyLatency" type="ItemList" parent="LobbyWindow/LobbyList/LobbyPanel/Lobby"]
-clip_contents = false
-custom_minimum_size = Vector2(70, 0)
-layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 5
-focus_mode = 0
-
-[node name="Panel" type="Panel" parent="LobbyWindow/LobbyList"]
-layout_mode = 2
+[connection signal="timeout" from="LobbyPanel/Update" to="LobbyPanel/Lobby" method="_on_update_timeout"]

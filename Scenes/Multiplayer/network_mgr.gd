@@ -89,7 +89,7 @@ var peer: PacketPeer
 #
 ##client
 #func _on_join_button_pressed() -> void:
-	#player = load("res://Scenes/Client/2d_client.tscn")
+	#player = Global.RL.load("res://Scenes/Client/2d_client.tscn")
 	#peer.create_client(ip, port)
 	#multiplayer.connected_to_server.connect(load_game)
 	#multiplayer.server_disconnected.connect(connection_lost)

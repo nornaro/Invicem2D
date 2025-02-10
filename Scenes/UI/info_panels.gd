@@ -18,9 +18,9 @@ func fill() -> void:
 	fill_2(data)
 	fill_3(data)
 	
-func	 fill_1(data):
+func fill_1(_data):
 	pass
-func fill_2(data):
+func fill_2(_data):
 	pass
 	
 func fill_3(data):
@@ -49,7 +49,7 @@ func fill_3(data):
 		get_node(str(3) + "/" + str(tab)).text = text
 		get_node(str(3) + "/" + str(tab)).tooltip_text = "Upgrades"
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	fill()
 
 

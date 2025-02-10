@@ -10,6 +10,11 @@ home
 PRIO:
 	#1. Separate HUD
 	#2. MultiPlayer
+	Leaderboard
+	Items, Modules, Inventory
+	Resource usage
+	New building ()
+	Networking (UDP, WS, Steam,Epic, Jam, GDS,...)
 """
 
 
@@ -31,7 +36,7 @@ PRIO:
 		#-	Homing ATK
 		#-	Area ATK
 		#-	Calculated ATK
-	-	Splash
+	-	Splash Item
 		-	Simple AoE
 		-	Range from impact AoE
 		-	body blockable from impact
@@ -52,7 +57,7 @@ PRIO:
 			#- crit
 			#- crit resist
 			#- crit chance
-	- Innate: 
+	- Innate:
 		- turret:
 			- targeting land/air/both
 		- minion:

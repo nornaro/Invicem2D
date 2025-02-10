@@ -11,3 +11,7 @@ var Currecny: Dictionary = {
 	"Power": 100,
 	"Zeny": 100,
 }
+
+var RL = ResLoad.new()
+
+var servers = {}

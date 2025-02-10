@@ -28,7 +28,7 @@ func _ready():
 
 func animated_sprite(filename):
 	var sprite_path = "res://Scenes/Building/" + filename + ".tres"
-	if !FileAccess.file_exists(sprite_path):
+	if !Global.RL.file_exists(sprite_path):
 		return
 	$Sprite.set_meta("sprite_path",sprite_path)
 	$Sprite.set_random()

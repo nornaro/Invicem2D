@@ -29,3 +29,5 @@ script = ExtResource("6_21xkr")
 
 [node name="Kafra" type="Node" parent="."]
 script = ExtResource("7_6bp64")
+
+[node name="Server" type="Node" parent="." groups=["Server"]]

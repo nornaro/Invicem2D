@@ -7,25 +7,29 @@ var regen = 0
 
 @onready var Sprite = $Sprite
 @onready var hpBar = $hpBar
-@onready var shBar = $shBar
+@onready var shBar = $Shield/Bar
 @onready var sh = $Shield
+@onready var h2 = $Shield/Hit2
+@onready var depleted = $Shield/Depleted
 
 func _ready():
 	add_to_group("minions")
 	gravity_scale = 0
 	
 	if !Data.has("max_hp"):
-		Data.HP *= Data.HP * 100.0
+		Data.HP *= 100.0
+		Data.HP = ceil(Data.HP * (1+Data.Size /10))
 		Data["max_hp"] = Data.HP
 		Data.Shield = int(Data.Shield * Data.max_hp / 10)
 		Data["max_sh"] = Data.Shield
 		hpBar.max_value=Data.max_hp
 		shBar.max_value=Data.max_sh
-		hpBar.value = ceil(Data.max_hp * (1+Data.Size /10))
+		hpBar.value = Data.max_hp
 		Data.Defense = ceil(Data.Defense * (1+Data.Size /10))
+		Data.Speed += 5 - floor(Data.Size / 4)
 		Data.Speed -= floor(Data.Size / 4)
 		shBar.value = Data.max_sh
-	linear_velocity = Vector2(-Data.Speed-5,0)*5
+	linear_velocity = Vector2(-Data.Speed * 5, 0)
 	var global = Global.Data.Minions
 	var type = Data.Minion[0]
 	var minion = Data.Minion[1]
@@ -34,10 +38,10 @@ func _ready():
 		Sprite.scale = Vector2(1,1) * global[type][minion][sprite].get_meta("scale")
 	Sprite.speed_scale = 1+Data.Speed
 	Sprite.sprite_frames = global[type][minion][sprite]
-	Sprite.play("Walking")
 	sh.scale *= (1+Data.Size)/2.0
 	Sprite.scale *= (1+Data.Size)/2.0
 	$Area.scale *= (1+Data.Size)/2.0
+	Sprite.play("Walking")
 
 func _physics_process(delta):
 	z_index = int(position.y)
@@ -86,8 +90,8 @@ func shield(delta) -> void:
 		return
 	shBar.show()
 	sh.show()
-	if sh.modulate.a > 0.2:
-		sh.modulate.a -= delta * 10
+	if h2.modulate.a > 0.0:
+		h2.modulate.a -= delta
 #data.Damage*data.base_damage,data.Penetration,data.Crit,data.crit_multi
 func calc_damage(data):
 	var damage = data.Damage*data.base_damage
@@ -101,10 +105,17 @@ func calc_damage(data):
 		Data.Shield = clamp(Data.Shield - damage, 0, Data.Shield)
 		shBar.value = Data.Shield
 		if shBar.value > 0:
-			sh.modulate.a = 1
+			#h1.modulate.a = 1
+			h2.modulate.a = 1
+			h2.play("default")
 		return clamp(damage - Data.Shield, 0, damage)
+	depleted.connect("animation_finished",hide_shield)
+	depleted.play("default")	
 	shBar.value = 0
 	return data.Damage / max(1.0, 1.0 + Data.Defense - data.Penetration)
+
+func hide_shield():
+	sh.hide()
 
 func update_hpbar():
 	hpBar.value = Data.HP

@@ -87,17 +87,18 @@ func _on_list_item_selected(index):
 	buildings.change_buildings(text, true)
 
 func dir_to_list(dir, dirname):
-	var directory = DirAccess.open(dir)
+	var directory = Global.RL.get_directories_at(dir)
 	if !directory:
 		return
-	Items[dirname] = buildings_list(directory)
+	Items[dirname] = directory
 
-func buildings_list(directory):
-	directory.list_dir_begin()
-	var list = []
-	for building in directory.get_directories():
-		list.append(building)
-	return list
+
+#func buildings_list(directory):
+	#directory.list_dir_begin()
+	#var list = []
+	#for building in directory.get_directories():
+		#list.append(building)
+	#return list
 
 func menu(list):
 	if !Items.has(list):
@@ -118,8 +119,8 @@ func add_json_list(list):
 		if !buildings.get_node_or_null(item):
 			continue
 		var path = stylefolder + item + "/" + item + ".json"
-		var file = FileAccess.open(path, FileAccess.READ).get_as_text()
-		var json = JSON.parse_string(file)
+		var file:JSON = Global.RL.load(path)
+		var json = file.get_data()
 		if !json.has("menu"):
 			continue
 		if !Items.has(item):

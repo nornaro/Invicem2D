@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://d3244g1sc5tol" path="res://Scenes/UI/Numbers.gd" id="3_xheqc"]
 [ext_resource type="SpriteFrames" uid="uid://3snbmbyrrooe" path="res://Scenes/UI/icons8-gear.gif" id="3_yheyh"]
 [ext_resource type="Script" uid="uid://bgnau5o8ebki8" path="res://Scenes/UI/style.gd" id="4_a2yal"]
-[ext_resource type="Script" uid="uid://hmc1kpabukmg" path="res://Scenes/UI/menu_gear.gd" id="5_jfwrg"]
+[ext_resource type="Script" uid="uid://hmc1kpabukmg" path="res://Scenes/Multiplayer/MPHUD/menu_gear.gd" id="5_jfwrg"]
 [ext_resource type="Script" uid="uid://csmck50egdxlp" path="res://Scenes/UI/Confirm.gd" id="5_rq4vg"]
 [ext_resource type="Script" uid="uid://cq737vj40xv3c" path="res://Scenes/UI/animated_sprite_2d.gd" id="6_xkir2"]
 [ext_resource type="Script" uid="uid://bushhfe162vjh" path="res://Scenes/UI/defeat.gd" id="9_s3gqk"]

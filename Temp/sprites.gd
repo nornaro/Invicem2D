@@ -11,12 +11,12 @@ func _ready():
 	return
 	# Automatically start the animation processing when the scene is ready (after F6)
 	print("Starting animation process...")
-	sprites = DirAccess.get_directories_at(folder_base_path)
+	sprites = Global.RL.get_directories_at(folder_base_path)
 	for sprite in sprites:
 		process_animations(sprite)
 
 func process_animations(sprite):
-	var base_resource : SpriteFrames = load(base_resource_path)
+	var base_resource : SpriteFrames = Global.RL.load(base_resource_path)
 	
 	if base_resource == null:
 		print("Failed to load base resource (0.tres).")
@@ -38,7 +38,7 @@ func process_animations(sprite):
 		# Add the PNG files to the spriteframes
 		var frames = []
 		for file in files:
-			var texture = load(file)
+			var texture = Global.RL.load(file)
 			if texture is Texture:
 				frames.append(texture)
 		
@@ -58,7 +58,7 @@ func process_animations(sprite):
 
 # Helper function to get files in the folder
 func get_files_in_directory(directory_path: String) -> Array:
-	var dir = DirAccess.get_files_at(directory_path)
+	var dir = Global.RL.get_files_at(directory_path)
 	var files: Array
 	for file in dir:
 		if file.ends_with(".png"):

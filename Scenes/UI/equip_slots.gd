@@ -20,10 +20,10 @@ func fill() -> void:
 		set_icon(node,keys[i])
 
 func set_icon(node,icon):
-	if FileAccess.file_exists(icon_path+icon+".png"):
-		node.texture_normal = load(icon_path+icon+".png")
+	if Global.RL.file_exists(icon_path+icon+".png"):
+		node.texture_normal = Global.RL.load(icon_path+icon+".png")
 		return
-	node.texture_normal = load(icon_path+name+".png")
+	node.texture_normal = Global.RL.load(icon_path+name+".png")
 			
 
 func clear() -> void:
