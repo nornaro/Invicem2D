@@ -406,6 +406,7 @@ speed_scale = 15.0
 flip_h = true
 
 [node name="Shield" type="AnimatedSprite2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(0, -1)
 scale = Vector2(0.06, 0.06)
@@ -436,13 +437,13 @@ sprite_frames = SubResource("SpriteFrames_upoy4")
 offset = Vector2(3, -25)
 
 [node name="Hit1" type="AnimatedSprite2D" parent="Shield"]
+visible = false
 scale = Vector2(1.2, 1.2)
 sprite_frames = SubResource("SpriteFrames_2ohbs")
 offset = Vector2(-5, -20)
 
 [node name="Depleted" type="AnimatedSprite2D" parent="Shield"]
 modulate = Color(1, 1, 1, 0)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_jllvc")
 frame = 9
 frame_progress = 1.0

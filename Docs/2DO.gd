@@ -15,6 +15,7 @@ PRIO:
 	Resource usage
 	New building ()
 	Networking (UDP, WS, Steam,Epic, Jam, GDS,...)
+	when hosting, start the console with parameter instead of changing the current instance
 """
 
 

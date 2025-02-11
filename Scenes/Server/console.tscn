@@ -9,20 +9,15 @@ subpixel_positioning = 0
 default_font = SubResource("SystemFont_urhdb")
 default_font_size = 11
 
-[node name="Console" type="TextEdit"]
+[node name="Console" type="RichTextLabel" groups=["Console"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = SubResource("Theme_urhdb")
-theme_override_colors/background_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0.588235, 0.588235, 0.588235, 1)
-theme_override_font_sizes/font_size = 0
-editable = false
-wrap_mode = 1
-indent_wrapped_lines = true
-scroll_smooth = true
 script = ExtResource("1_k2tdm")
 
 [node name="HScrollBar" type="HScrollBar" parent="."]

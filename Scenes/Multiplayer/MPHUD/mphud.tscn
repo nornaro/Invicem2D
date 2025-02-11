@@ -1,11 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://bp18rk6u47rpe"]
+[gd_scene load_steps=19 format=3 uid="uid://bp18rk6u47rpe"]
 
 [ext_resource type="Script" uid="uid://dq54ywl2p58gl" path="res://Scenes/Multiplayer/MPHUD/mphud.gd" id="1_bw4dg"]
 [ext_resource type="Texture2D" uid="uid://7h6ow58neeq" path="res://Scenes/Multiplayer/MPHUD/Icons/godot.png" id="2_mhrge"]
 [ext_resource type="Texture2D" uid="uid://dqmtsfnswekmn" path="res://Scenes/Multiplayer/MPHUD/Icons/Steam.png" id="3_5q074"]
+[ext_resource type="Texture2D" uid="uid://dkroegw5x2djc" path="res://Scenes/Multiplayer/MPHUD/Icons/websocket.png" id="3_xyki0"]
 [ext_resource type="Texture2D" uid="uid://drgfd6hidllij" path="res://Scenes/Multiplayer/MPHUD/Icons/Nakama.png" id="4_yrhr7"]
 [ext_resource type="Texture2D" uid="uid://pambvh63m1o4" path="res://Scenes/Multiplayer/MPHUD/Icons/GDSync.png" id="5_7v3yp"]
-[ext_resource type="Texture2D" uid="uid://ci1vdlffkh0l7" path="res://Scenes/Multiplayer/MPHUD/Icons/EOSG.png" id="6_rtfh4"]
+[ext_resource type="Texture2D" uid="uid://ci1vdlffkh0l7" path="res://Scenes/Multiplayer/MPHUD/Icons/epic.png" id="6_rtfh4"]
 [ext_resource type="Texture2D" uid="uid://qb7wvwuj5en8" path="res://Scenes/Multiplayer/MPHUD/Icons/W4.png" id="7_2pc1p"]
 [ext_resource type="Script" uid="uid://ml32sxxxhqm4" path="res://Scenes/Multiplayer/MPHUD/network_type.gd" id="7_pnjyg"]
 [ext_resource type="Script" uid="uid://bdmpj60vca0tf" path="res://Scenes/Multiplayer/host.gd" id="8_ttryd"]
@@ -52,20 +53,30 @@ layout_mode = 2
 current_tab = 0
 tab_alignment = 1
 tab_count = 10
+tab_0/tooltip = "ENet"
 tab_0/icon = ExtResource("2_mhrge")
-tab_1/icon = ExtResource("3_5q074")
-tab_2/icon = ExtResource("4_yrhr7")
-tab_2/disabled = true
-tab_3/icon = ExtResource("5_7v3yp")
+tab_1/tooltip = "Websocket"
+tab_1/icon = ExtResource("3_xyki0")
+tab_2/tooltip = "Steam"
+tab_2/icon = ExtResource("3_5q074")
+tab_3/tooltip = "Nakama"
+tab_3/icon = ExtResource("4_yrhr7")
 tab_3/disabled = true
-tab_4/icon = ExtResource("6_rtfh4")
+tab_4/tooltip = "GDSync"
+tab_4/icon = ExtResource("5_7v3yp")
 tab_4/disabled = true
-tab_5/icon = ExtResource("7_2pc1p")
+tab_5/tooltip = "Epic"
+tab_5/icon = ExtResource("6_rtfh4")
 tab_5/disabled = true
-tab_6/icon = ExtResource("8_xyki0")
+tab_6/tooltip = "W4"
+tab_6/icon = ExtResource("7_2pc1p")
 tab_6/disabled = true
-tab_7/icon = ExtResource("9_2pc1p")
+tab_7/tooltip = "Jam"
+tab_7/icon = ExtResource("8_xyki0")
 tab_7/disabled = true
+tab_8/tooltip = "Hight"
+tab_8/icon = ExtResource("9_2pc1p")
+tab_8/disabled = true
 script = ExtResource("7_pnjyg")
 
 [node name="Menu" type="HBoxContainer" parent="LobbyControl/Top"]

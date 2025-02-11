@@ -19,21 +19,22 @@ func _on_pressed() -> void:
 	get_tree().call_group("Server","free")
 	get_tree().call_group("Main","add_child", server)
 	get_tree().call_group("Main","add_child", console)
+	server.set_script(Global.RL.load("res://Scenes/Server/Host/"+%NetworkType.get_tab_tooltip(%NetworkType.current_tab).to_lower()+".gd"))
 
-	match %NetworkType.current_tab:
-		0:
-			server.set_script(Global.RL.load("res://Scenes/Server/Host/enet.gd"))
-		1:
-			server.set_script(Global.RL.load("res://Scenes/Server/Host/steam.gd"))
-		2:
-			server.set_script(Global.RL.load("res://Scenes/Server/Host/nakama.gd"))
-		3:
-			server.set_script(Global.RL.load("res://Scenes/Server/Host/gds.gd"))
-		4:
-			server.set_script(Global.RL.load("res://Scenes/Server/Host/eos.gd"))
-		5: 
-			server.set_script(Global.RL.load("res://Scenes/Server/Host/jam.gd"))
-
+	#match %NetworkType.current_tab:
+		#0:
+			#server.set_script(Global.RL.load("res://Scenes/Server/Host/enet.gd"))
+		#1:
+			#server.set_script(Global.RL.load("res://Scenes/Server/Host/steam.gd"))
+		#2:
+			#server.set_script(Global.RL.load("res://Scenes/Server/Host/nakama.gd"))
+		#3:
+			#server.set_script(Global.RL.load("res://Scenes/Server/Host/gds.gd"))
+		#4:
+			#server.set_script(Global.RL.load("res://Scenes/Server/Host/eos.gd"))
+		#5: 
+			#server.set_script(Global.RL.load("res://Scenes/Server/Host/jam.gd"))
+	server.set_process(true)
 	server.host()
 	get_tree().call_group("MPHUD","hide")
 	get_tree().call_group("Home","queue_free")

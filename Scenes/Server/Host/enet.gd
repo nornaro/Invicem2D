@@ -1,7 +1,6 @@
 extends Node
 
 var player: PackedScene = preload("res://Scenes/Server/client.tscn")
-var server: NetworkMgr = NetworkMgr.new()
 var port: int = 6666
 var server_node = Node
 
@@ -13,13 +12,10 @@ var uid: String
 func host() -> void:
 	server_node = get_tree().get_first_node_in_group("Server")
 	uid = Marshalls.utf8_to_base64(str(Time.get_ticks_msec()) + str(randf()))
-	#var crypto = Crypto.new()
-	# Generate new RSA key.
 	uid = CryptoKey.generate_scene_unique_id()
 	var peer = ENetMultiplayerPeer.new()
-	#while(is_port_free(peer)):
-		#continue
 	peer.create_server(port)
+	peer.set_bind_ip("192.168.1.2")
 	multiplayer.multiplayer_peer = peer
 	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(remove_player)
@@ -64,10 +60,11 @@ func _process(delta: float) -> void:
 	var lobby = {
 		"UID": uid,
 		"Port":port,
-		"LobbyName": "ENetTest",
-		"LobbyPlayers": Global.clients,
-		"LobbyId": multiplayer.get_unique_id(),
-		"LobbyLatency": Time.get_ticks_msec(),
+		"Name": "ENetTest",
+		"Game": Global.game,
+		"Players": Global.clients,
+		"Id": multiplayer.get_unique_id(),
+		"Latency": Time.get_ticks_msec(),
 	}
 	
 	udp_peer.put_packet(JSON.stringify(lobby).to_utf8_buffer())

@@ -24,7 +24,7 @@ func spawn(data: Dictionary):
 	var instance = minion.instantiate()
 	instance.Data = data
 	instance.add_to_group("minions")
-	instance.get_node("Area2D").set_meta("owner",data.id)
+	instance.get_node("Area").set_meta("owner",data.id)
 	instance.position = Vector2(spawnin.position.x,data.gposy)
 	instance.name = str(instance.get_instance_id())
 	minions.add_child(instance)

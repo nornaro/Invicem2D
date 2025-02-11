@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://86d0ulumruay"]
-
-[ext_resource type="Script" uid="uid://c07s6srih0jfl" path="res://Scenes/Multiplayer/network_mgr.gd" id="1_3uuei"]
-
-[node name="NetworkMgr" type="Node" groups=["Multi"]]
-script = ExtResource("1_3uuei")

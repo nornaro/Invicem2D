@@ -1,10 +1,13 @@
-[gd_scene format=3 uid="uid://dxekw4u3rtl6n"]
+[gd_scene load_steps=2 format=3 uid="uid://dxekw4u3rtl6n"]
+
+[ext_resource type="Script" uid="uid://bm1bwiggia8ex" path="res://Scenes/Multiplayer/MPHUD/server_select.gd" id="1_6ckxm"]
 
 [node name="ServerSelect" type="Button"]
 custom_minimum_size = Vector2(0, 40)
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_constants/h_separation = 10
+script = ExtResource("1_6ckxm")
 
 [node name="Name" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(1150, 40)
@@ -68,3 +71,5 @@ bbcode_enabled = true
 text = "Server"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="." to="." method="set_join_data"]

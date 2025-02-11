@@ -1,10 +1,13 @@
-[gd_scene format=3 uid="uid://cg4bvtevroaa5"]
+[gd_scene load_steps=2 format=3 uid="uid://cg4bvtevroaa5"]
+
+[ext_resource type="Script" uid="uid://couxjslnutjc2" path="res://server_select.gd" id="1_8uxl5"]
 
 [node name="ServerSelect" type="Button"]
 custom_minimum_size = Vector2(0, 40)
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_constants/h_separation = 10
+script = ExtResource("1_8uxl5")
 
 [node name="Name" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(1150, 40)

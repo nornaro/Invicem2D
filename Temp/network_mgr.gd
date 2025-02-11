@@ -1,7 +1,6 @@
 extends Node
 #class_name NetworkMgr
-#
-#const GAME_ID = "xcNhLTRbBH"
+
 #
 #var port = 12345
 #var ip = '127.0.0.1'
