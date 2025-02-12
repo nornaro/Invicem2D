@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bp18rk6u47rpe"]
+[gd_scene load_steps=20 format=3 uid="uid://bp18rk6u47rpe"]
 
 [ext_resource type="Script" uid="uid://dq54ywl2p58gl" path="res://Scenes/Multiplayer/MPHUD/mphud.gd" id="1_bw4dg"]
 [ext_resource type="Texture2D" uid="uid://7h6ow58neeq" path="res://Scenes/Multiplayer/MPHUD/Icons/godot.png" id="2_mhrge"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dikgpyhebb3jl" path="res://Scenes/Multiplayer/MPHUD/Icons/HIGHT.png" id="9_2pc1p"]
 [ext_resource type="Script" uid="uid://ck3ga2ab57mmj" path="res://Scenes/Multiplayer/join.gd" id="9_f4ja4"]
 [ext_resource type="Script" uid="uid://dk340raasgcv0" path="res://Scenes/Multiplayer/search.gd" id="10_tyone"]
+[ext_resource type="Texture2D" uid="uid://bv3c064i022pu" path="res://Scenes/Multiplayer/MPHUD/Icons/colyseus.png" id="11_ked6n"]
 [ext_resource type="Script" uid="uid://ddj0pg64e3p0b" path="res://Scenes/Multiplayer/MPHUD/back.gd" id="11_tsjd1"]
 [ext_resource type="Script" uid="uid://csoxvgd1w5uwn" path="res://Scenes/Multiplayer/MPHUD/lobby.gd" id="12_emtdj"]
 
@@ -77,6 +78,8 @@ tab_7/disabled = true
 tab_8/tooltip = "Hight"
 tab_8/icon = ExtResource("9_2pc1p")
 tab_8/disabled = true
+tab_9/tooltip = "Colyseus"
+tab_9/icon = ExtResource("11_ked6n")
 script = ExtResource("7_pnjyg")
 
 [node name="Menu" type="HBoxContainer" parent="LobbyControl/Top"]

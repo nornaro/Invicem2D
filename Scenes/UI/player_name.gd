@@ -17,7 +17,7 @@ func _change_name_clicked(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("RMB"):
 		en.show()
 		ne.grab_focus()
-		
+			
 func _change_name() -> void:
 	text = ne.text
 
@@ -37,7 +37,7 @@ func _change_name_color(color: Color) -> void:
 		return
 	text = "[color=#" + str(color.to_html(false)) + "]" + text + "[/color]"
 	ne.text = text
-
+	
 func _change_name_u(toggle: bool) -> void:
 	if text.contains("[u]"):
 		if toggle:

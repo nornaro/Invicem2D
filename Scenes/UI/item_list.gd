@@ -6,10 +6,6 @@ func _enter_tree() -> void:
 	connect("item_clicked",on_item_clicked)
 	if name != "ItemList":
 		return
-	#var submenu = menu.instantiate()
-	#submenu.position = position
-	#submenu.name = "submenu"
-	#submenu.connect("item_clicked",submenu)
 
 func on_item_clicked(index: int, _at_position: Vector2, _mouse_button_index: int) -> void:
 	if name == "submenu":
