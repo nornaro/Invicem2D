@@ -1,17 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cbm6uy5irqlad"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://ck0guv84bl1nc"]
 
-[ext_resource type="Texture2D" uid="uid://c68n7e5ftthbf" path="res://Scenes/Map/Ground/openart-image_b5DSGxA0_1735698634067_raw.jpg" id="2_cuqbm"]
-[ext_resource type="Texture2D" uid="uid://cgck467svlkkn" path="res://Scenes/Map/Ground/openart-image_e0oqeNyy_1735698657831_raw.jpg" id="3_ab1i7"]
-[ext_resource type="Texture2D" uid="uid://dl0x8wblcy6if" path="res://Scenes/Map/Ground/Road.jpg" id="3_yts8o"]
-[ext_resource type="Texture2D" uid="uid://bpgvdorhinjyo" path="res://Scenes/Map/Ground/openart-image_f562CrPh_1735698697166_raw.jpg" id="4_cqknc"]
-[ext_resource type="Texture2D" uid="uid://d2gs4up1k2ruk" path="res://Scenes/Map/Ground/openart-image_hzlXfRuY_1735697612014_raw.jpg" id="5_30ne2"]
-[ext_resource type="Texture2D" uid="uid://cyl3utsg3q03f" path="res://Scenes/Map/Ground/openart-image_0vRPpgx3_1735697555395_raw.jpg" id="6_hmlen"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_famww"]
+load_path = "res://.godot/imported/openart-image_b5DSGxA0_1735698634067_raw.jpg-c6732f27b65c84957001a188e80763e9.ctex"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k46gt"]
-size = Vector2(1650, 965)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yuubc"]
-texture = ExtResource("2_cuqbm")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e3020"]
+texture = SubResource("CompressedTexture2D_famww")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -4109,8 +4102,11 @@ texture = ExtResource("2_cuqbm")
 62:63/0 = 0
 63:63/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ht3vc"]
-texture = ExtResource("3_ab1i7")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ujgj0"]
+load_path = "res://.godot/imported/openart-image_e0oqeNyy_1735698657831_raw.jpg-65cb9c6caf128b25b53d9cee32689163.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_02c43"]
+texture = SubResource("CompressedTexture2D_ujgj0")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -8208,8 +8204,11 @@ texture = ExtResource("3_ab1i7")
 62:63/0 = 0
 63:63/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bwfg2"]
-texture = ExtResource("4_cqknc")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_peyie"]
+load_path = "res://.godot/imported/openart-image_f562CrPh_1735698697166_raw.jpg-4ee90793fb902dfa32351c4b71016aea.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x7jcc"]
+texture = SubResource("CompressedTexture2D_peyie")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -12367,8 +12366,11 @@ texture = ExtResource("4_cqknc")
 62:63/0 = 0
 63:63/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kwdxs"]
-texture = ExtResource("5_30ne2")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3j5wi"]
+load_path = "res://.godot/imported/openart-image_hzlXfRuY_1735697612014_raw.jpg-f6226dcf3bf13667d0f7ca3220960cd5.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e8l5q"]
+texture = SubResource("CompressedTexture2D_3j5wi")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -16466,8 +16468,11 @@ texture = ExtResource("5_30ne2")
 62:63/0 = 0
 63:63/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2424i"]
-texture = ExtResource("6_hmlen")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p2fuk"]
+load_path = "res://.godot/imported/openart-image_0vRPpgx3_1735697555395_raw.jpg-cbe6119f65f8f6691f94f35931f9c333.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2yonb"]
+texture = SubResource("CompressedTexture2D_p2fuk")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -20565,7 +20570,7 @@ texture = ExtResource("6_hmlen")
 62:63/0 = 0
 63:63/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_4jw7h"]
+[resource]
 tile_shape = 1
 tile_size = Vector2i(32, 32)
 terrain_set_0/mode = 0
@@ -20573,147 +20578,8 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.18359, 0.18359, 0.18359, 1)
 terrain_set_0/terrain_1/name = "Terrain 1"
 terrain_set_0/terrain_1/color = Color(0.569882, 0.569882, 0, 1)
-sources/0 = SubResource("TileSetAtlasSource_yuubc")
-sources/1 = SubResource("TileSetAtlasSource_ht3vc")
-sources/2 = SubResource("TileSetAtlasSource_bwfg2")
-sources/3 = SubResource("TileSetAtlasSource_kwdxs")
-sources/4 = SubResource("TileSetAtlasSource_2424i")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_j5cvp"]
-size = Vector2(1000, 400)
-subdivide_width = 10
-subdivide_depth = 10
-orientation = 2
-
-[node name="Ground" type="Area2D"]
-collision_layer = 2147483649
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("RectangleShape2D_k46gt")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_4jw7h")
-
-[node name="Road-" type="Sprite2D" parent="."]
-position = Vector2(-923, 0)
-rotation = 1.5708
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
-
-[node name="Road0" type="Sprite2D" parent="."]
-position = Vector2(-718, 0)
-rotation = 1.5708
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
-
-[node name="Road1" type="Sprite2D" parent="."]
-position = Vector2(-513, 0)
-rotation = 1.5708
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
-
-[node name="Road2" type="Sprite2D" parent="."]
-position = Vector2(-308, 0)
-rotation = 1.5708
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
-
-[node name="Road3" type="Sprite2D" parent="."]
-position = Vector2(-103, 0)
-rotation = 1.5708
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
-
-[node name="Road4" type="Sprite2D" parent="."]
-position = Vector2(103, 0)
-rotation = 1.5708
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
-
-[node name="Road5" type="Sprite2D" parent="."]
-position = Vector2(308, 0)
-rotation = 1.5708
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
-
-[node name="Road6" type="Sprite2D" parent="."]
-position = Vector2(513, 0)
-rotation = 1.5708
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
-
-[node name="Road7" type="Sprite2D" parent="."]
-position = Vector2(718, 0)
-rotation = 1.5708
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
-
-[node name="Road+" type="Sprite2D" parent="."]
-position = Vector2(923, 0)
-rotation = 1.5708
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
-
-[node name="Road+2" type="Sprite2D" parent="."]
-position = Vector2(1129, 0)
-rotation = 1.5708
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
-
-[node name="Road+3" type="Sprite2D" parent="."]
-position = Vector2(1334, 0)
-rotation = 1.5708
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
-
-[node name="Road+4" type="Sprite2D" parent="."]
-position = Vector2(1539, 0)
-rotation = 1.5708
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
-
-[node name="Road+5" type="Sprite2D" parent="."]
-position = Vector2(1744, 0)
-rotation = 1.5708
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
-
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-position = Vector2(-500, 300)
-rotation = 3.14159
-mesh = SubResource("PlaneMesh_j5cvp")
-texture = ExtResource("2_cuqbm")
-
-[node name="MeshInstance2D3" type="MeshInstance2D" parent="."]
-position = Vector2(500, 300)
-rotation = 3.14159
-scale = Vector2(-1, 1)
-mesh = SubResource("PlaneMesh_j5cvp")
-texture = ExtResource("2_cuqbm")
-
-[node name="MeshInstance2D6" type="MeshInstance2D" parent="."]
-position = Vector2(1500, 300)
-rotation = -3.14159
-mesh = SubResource("PlaneMesh_j5cvp")
-texture = ExtResource("2_cuqbm")
-
-[node name="MeshInstance2D7" type="MeshInstance2D" parent="."]
-position = Vector2(1500, -300)
-scale = Vector2(-1, 1)
-mesh = SubResource("PlaneMesh_j5cvp")
-texture = ExtResource("2_cuqbm")
-
-[node name="MeshInstance2D4" type="MeshInstance2D" parent="."]
-position = Vector2(-500, -300)
-rotation = 3.14159
-scale = Vector2(1, -1)
-mesh = SubResource("PlaneMesh_j5cvp")
-texture = ExtResource("2_cuqbm")
-
-[node name="MeshInstance2D5" type="MeshInstance2D" parent="."]
-position = Vector2(500, -300)
-rotation = 3.14159
-scale = Vector2(-1, -1)
-mesh = SubResource("PlaneMesh_j5cvp")
-texture = ExtResource("2_cuqbm")
+sources/0 = SubResource("TileSetAtlasSource_e3020")
+sources/1 = SubResource("TileSetAtlasSource_02c43")
+sources/2 = SubResource("TileSetAtlasSource_x7jcc")
+sources/3 = SubResource("TileSetAtlasSource_e8l5q")
+sources/4 = SubResource("TileSetAtlasSource_2yonb")

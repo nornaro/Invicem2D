@@ -133,8 +133,8 @@ context_menu_enabled = false
 scroll_fit_content_height = true
 script = ExtResource("10_tyone")
 
-[node name="IP" type="TextEdit" parent="LobbyControl/Top/Menu/Panel/MainArea"]
-custom_minimum_size = Vector2(150, 35)
+[node name="Join_data" type="TextEdit" parent="LobbyControl/Top/Menu/Panel/MainArea" groups=["Join_data"]]
+custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
 
 [node name="WindowControlArea" type="VBoxContainer" parent="LobbyControl/Top/Menu/Panel"]

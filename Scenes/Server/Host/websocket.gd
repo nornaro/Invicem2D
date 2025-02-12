@@ -29,3 +29,6 @@ func _on_data(id):
 
 func _process(delta):
 	_server.poll()
+
+func host():
+	pass

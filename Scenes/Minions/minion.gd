@@ -20,11 +20,11 @@ func _ready():
 		Data.HP *= 100.0
 		Data.HP = ceil(Data.HP * (1+Data.Size /10))
 		Data["max_hp"] = Data.HP
+		hpBar.max_value=Data.max_hp
 		Data.Shield = int(Data.Shield * Data.max_hp / 10)
 		Data["max_sh"] = Data.Shield
-		hpBar.max_value=Data.max_hp
 		shBar.max_value=Data.max_sh
-		hpBar.value = Data.max_hp
+		hpBar.value = Data.max_sh
 		Data.Defense = ceil(Data.Defense * (1+Data.Size /10))
 		Data.Speed += 5 - floor(Data.Size / 4)
 		Data.Speed -= floor(Data.Size / 4)

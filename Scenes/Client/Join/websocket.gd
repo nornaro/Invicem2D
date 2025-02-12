@@ -24,3 +24,9 @@ func _process(_delta):
 		set_process(false) # Stop processing.
 	if state == WebSocketPeer.STATE_CLOSING:
 		pass
+		
+func lobby():
+	pass
+
+func join():
+	pass
