@@ -16,12 +16,10 @@ func lobby() -> void:
 func join() -> void:
 	server_node = get_tree().get_first_node_in_group("Server")
 	var peer = ENetMultiplayerPeer.new()
-	var join_data
-	#if !Global.join_data:
-		##peer.create_client("",6666)
-		#peer.create_client(join_data[0],join_data[1])
-	if !join_data:
-		return
+	var join_data = ["localhost",6666]
+	if !Global.join_data:
+		#peer.create_client("",6666)
+		peer.create_client(join_data[0],join_data[1])
 	if Global.join_data:
 		join_data = Global.join_data.split(":")
 		var _err = peer.create_client(str(join_data[0]),int(join_data[1]))
