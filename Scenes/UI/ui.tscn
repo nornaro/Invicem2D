@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bq6obs6f5somh" path="res://Scenes/UI/panel.tscn" id="2_pmm6b"]
 [ext_resource type="Script" uid="uid://c7huaqfr8wo23" path="res://Scenes/HealhBar/HealthBar.gd" id="3_gom3w"]
 [ext_resource type="Script" uid="uid://d3244g1sc5tol" path="res://Scenes/UI/Numbers.gd" id="3_xheqc"]
-[ext_resource type="SpriteFrames" uid="uid://3snbmbyrrooe" path="res://Scenes/UI/icons8-gear.gif" id="3_yheyh"]
+[ext_resource type="SpriteFrames" uid="uid://v1gsbglnjjwd" path="res://Scenes/UI/icons8-gear.gif" id="3_yheyh"]
 [ext_resource type="Script" uid="uid://bgnau5o8ebki8" path="res://Scenes/UI/style.gd" id="4_a2yal"]
 [ext_resource type="Script" uid="uid://hmc1kpabukmg" path="res://Scenes/Multiplayer/MPHUD/menu_gear.gd" id="5_jfwrg"]
 [ext_resource type="Script" uid="uid://csmck50egdxlp" path="res://Scenes/UI/Confirm.gd" id="5_rq4vg"]
@@ -12,9 +12,9 @@
 [ext_resource type="Script" uid="uid://bushhfe162vjh" path="res://Scenes/UI/defeat.gd" id="9_s3gqk"]
 [ext_resource type="Script" uid="uid://dhwebox8xgonf" path="res://Scenes/UI/exit.gd" id="10_pmm6b"]
 [ext_resource type="PackedScene" uid="uid://d34mxo1ld0ik5" path="res://Scenes/UI/picker.tscn" id="12_vy225"]
-[ext_resource type="Texture2D" uid="uid://nrfl1gqk8hl1" path="res://Scenes/UI/Icon/Minions.png" id="13_fy0us"]
-[ext_resource type="Texture2D" uid="uid://c4kibnanhccmq" path="res://Scenes/UI/Icon/Power.png" id="14_h6tq4"]
-[ext_resource type="Texture2D" uid="uid://cjrjlxoangse" path="res://Scenes/UI/Icon/Money.png" id="14_t7te2"]
+[ext_resource type="Texture2D" uid="uid://brw3g1aaw2run" path="res://Scenes/UI/Icon/Minions.png" id="13_fy0us"]
+[ext_resource type="Texture2D" uid="uid://6groxfytt8n8" path="res://Scenes/UI/Icon/Power.png" id="14_h6tq4"]
+[ext_resource type="Texture2D" uid="uid://17hmttpi7pih" path="res://Scenes/UI/Icon/Money.png" id="14_t7te2"]
 [ext_resource type="Script" uid="uid://c7kkatl5wvl5y" path="res://Scenes/UI/player_name.gd" id="16_56q1t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dq6f6"]
@@ -97,11 +97,13 @@ scale = Vector2(0.2, 0.3)
 focus_mode = 0
 flat = true
 fit_to_longest_item = false
-item_count = 2
+item_count = 3
 popup/item_0/text = "Style"
 popup/item_0/id = 0
 popup/item_1/text = "Exit"
 popup/item_1/id = 1
+popup/item_2/text = "Reload"
+popup/item_2/id = 2
 script = ExtResource("5_jfwrg")
 
 [node name="Gear" type="AnimatedSprite2D" parent="HealthBar/MenuGear"]

@@ -1,8 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://cc1m2a1obsyn4"]
 
-[ext_resource type="Script" path="res://godotsteam_sync_example/fpc/EditorModule.gd" id="3_v3ckk"]
-[ext_resource type="Script" path="res://godotsteam_sync_example/fpc/debug.gd" id="3_x1wcc"]
-[ext_resource type="Script" path="res://addons/godot_steam_sync/Network/RadomeSteamSync/SyncNode/TransformSync3D.gd" id="4_ch187"]
+[ext_resource type="Script" uid="uid://cyacdowksxflv" path="res://godotsteam_sync_example/fpc/EditorModule.gd" id="3_v3ckk"]
+[ext_resource type="Script" uid="uid://dcrhnr4dgt2an" path="res://godotsteam_sync_example/fpc/debug.gd" id="3_x1wcc"]
 
 [sub_resource type="GDScript" id="GDScript_r0lhh"]
 script/source = "
@@ -561,8 +560,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5e5t5"]
 _data = {
-"RESET": SubResource("Animation_j8cx7"),
-"crouch": SubResource("Animation_5ec5e")
+&"RESET": SubResource("Animation_j8cx7"),
+&"crouch": SubResource("Animation_5ec5e")
 }
 
 [sub_resource type="Animation" id="Animation_gh776"]
@@ -648,9 +647,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o0unb"]
 _data = {
-"RESET": SubResource("Animation_gh776"),
-"sprint": SubResource("Animation_8ku67"),
-"walk": SubResource("Animation_lrqmv")
+&"RESET": SubResource("Animation_gh776"),
+&"sprint": SubResource("Animation_8ku67"),
+&"walk": SubResource("Animation_lrqmv")
 }
 
 [sub_resource type="Animation" id="Animation_fvvjq"]
@@ -754,10 +753,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qeg5r"]
 _data = {
-"RESET": SubResource("Animation_fvvjq"),
-"jump": SubResource("Animation_s07ye"),
-"land_left": SubResource("Animation_l1rph"),
-"land_right": SubResource("Animation_vsknp")
+&"RESET": SubResource("Animation_fvvjq"),
+&"jump": SubResource("Animation_s07ye"),
+&"land_left": SubResource("Animation_l1rph"),
+&"land_right": SubResource("Animation_vsknp")
 }
 
 [sub_resource type="Theme" id="Theme_wdf0f"]
@@ -767,6 +766,9 @@ MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k4wwl"]
+
+[sub_resource type="Resource" id="Resource_epwhr"]
+metadata/__load_path__ = "res://addons/godot_steam_sync/Network/RadomeSteamSync/SyncNode/TransformSync3D.gd"
 
 [node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH")]
 collision_layer = 2
@@ -850,5 +852,5 @@ target_position = Vector3(0, 0.5, 0)
 script = ExtResource("3_v3ckk")
 
 [node name="TransformSync3D" type="Node" parent="." node_paths=PackedStringArray("object_player")]
-script = ExtResource("4_ch187")
+script = SubResource("Resource_epwhr")
 object_player = NodePath("..")

@@ -51,11 +51,11 @@ func _on_lobby_joined(lobby: int, _permissions: int, _locked: bool, response: in
 			9:  FAIL_REASON = "This lobby is community locked."
 			10: FAIL_REASON = "A user in the lobby has blocked you from joining."
 			11: FAIL_REASON = "A user you have blocked is in the lobby."
-		print(FAIL_REASON)
+		push_error(FAIL_REASON)
 		return
 	var id = Steam.getLobbyOwner(lobby)
 	if id != Steam.getSteamID():
-		print("Connecting client to socket...")
+		push_warning("Connecting client to socket...")
 		connect_socket(id)
 
 func connect_socket(_steam_id: int):

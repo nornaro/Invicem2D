@@ -1,7 +1,7 @@
 extends TabContainer
 
-@onready var databox = preload("res://Scenes/UI/minion_data.tscn")
-@onready var inventory = preload("res://Scenes/UI/minion_inventory.tscn")
+@onready var databox = preload("res://Scenes/Multiplayer/MPHUD/minion_data.tscn")
+@onready var inventory = preload("res://Scenes/Multiplayer/MPHUD/minion_inventory.tscn")
 
 func _ready() -> void:
 	var data = Global.Data

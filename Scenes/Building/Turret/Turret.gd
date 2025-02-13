@@ -65,7 +65,7 @@ func _process(_delta: float) -> void:
 
 func add_timers():
 	timer_ASPD.name = "ASPD"
-	timer_ASPD.wait_time = 1/Data.Upgrades.AttackSpeed  # For example, 1 second
+	timer_ASPD.wait_time = 1/sqrt(Data.Upgrades.AttackSpeed)  # For example, 1 second
 	timer_ASPD.one_shot = false
 	timer_ASPD.connect("timeout", _on_ASPD_timeout)
 	add_child(timer_ASPD)
@@ -108,7 +108,7 @@ func _on_ASPD_timeout():
 func calculate_multishot() -> Array:
 	var count = 1.0
 	var damage = 100.0
-	var m = [1,5,9,13]
+	var m = [1,7,13]
 	for i in range(Data.Upgrades.Multishot):
 		if m.has(i):
 			damage /=2

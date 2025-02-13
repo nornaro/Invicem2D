@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cpre7763tyiqu"]
 
 [ext_resource type="Script" uid="uid://b7meh46pk2vq6" path="res://addons/astar2d_grid_node/examples/common/obstacle_tree.gd" id="1_ifjc7"]
-[ext_resource type="Texture2D" uid="uid://7f763cnmfect" path="res://addons/astar2d_grid_node/examples/common/atlas.png" id="1_syuxs"]
+[ext_resource type="Texture2D" uid="uid://cfly0kcaedth1" path="res://addons/astar2d_grid_node/examples/common/atlas.png" id="1_syuxs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tnl3n"]
 atlas = ExtResource("1_syuxs")

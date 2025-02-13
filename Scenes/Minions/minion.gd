@@ -41,11 +41,11 @@ func _ready():
 	Sprite.scale *= (1+Data.Size)/2.0
 	hpBar.scale.x *= (1+Data.Size)/2.0
 	shBar.scale.x *= (1+Data.Size)/2.0
-	print(Sprite.scale.x)
 	hpBar.position += Vector2(-Data.Size*3,-Data.Size*3)
 	shBar.position += Vector2(-Data.Size*3,-Data.Size*3)
 	$Area.scale *= (1+Data.Size)/2.0
 	Sprite.play("Walking")
+	depleted.connect("animation_finished",hide_shield)
 
 func _physics_process(delta):
 	z_index = int(position.y)
@@ -107,7 +107,6 @@ func calc_damage(data):
 		crit = data.Crit - Data.CritResit
 	if randi_range(0,100) < crit * data.crit_chance:
 		damage *= 1 + ceil(crit / data.crit_multi)
-		print(damage)
 	if Data.Shield > 0:
 		Data.Shield = clamp(Data.Shield - damage, 0, Data.Shield)
 		shBar.value = Data.Shield
@@ -116,7 +115,6 @@ func calc_damage(data):
 			h2.modulate.a = 1
 			h2.play("default")
 		return clamp(damage - Data.Shield, 0, damage)
-	depleted.connect("animation_finished",hide_shield)
 	depleted.play("default")	
 	shBar.value = 0
 	return data.Damage / max(1.0, 1.0 + Data.Defense - data.Penetration)
@@ -126,5 +124,5 @@ func hide_shield():
 
 func update_hpbar():
 	hpBar.value = Data.HP
-	var new_color = Color(1, pow(Data.HP / Data.max_hp, 2), 0, 0.75)
+	var new_color = Color(1, pow(Data.HP / Data.max_hp, 2), pow(Data.HP / Data.max_hp, 2)/2, 0.75)
 	hpBar.modulate = new_color

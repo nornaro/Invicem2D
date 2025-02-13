@@ -9,6 +9,7 @@ func _ready() -> void:
 	for i in range(4):
 		var instance = button.instantiate()
 		instance.name = str(i+1)
+		instance.connect("pressed",list)
 		add_child(instance)
 	clear()
 
@@ -20,7 +21,6 @@ func fill() -> void:
 	for i in range(data.size()):
 		var node = get_node(str(i+1))
 		node.tooltip_text = keys[i]
-		node.connect("pressed",list)
 		set_icon(node,keys[i])
 		list(source,node,data,keys[i])
 		

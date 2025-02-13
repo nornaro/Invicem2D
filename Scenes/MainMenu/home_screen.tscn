@@ -1,9 +1,9 @@
 [gd_scene load_steps=33 format=3 uid="uid://t41phsm2wrag"]
 
 [ext_resource type="Script" uid="uid://vdo17lpudky1" path="res://Scenes/MainMenu/home_screen.gd" id="1_ajl7f"]
-[ext_resource type="Texture2D" uid="uid://daseoyoa5oftu" path="res://Scenes/MainMenu/Home.png" id="1_y2i7d"]
+[ext_resource type="Texture2D" uid="uid://ci06vyagrceav" path="res://Scenes/MainMenu/Home.png" id="1_y2i7d"]
 [ext_resource type="PackedScene" uid="uid://dhearbilncssa" path="res://Scenes/GameMenu/gpu_particles_2d.tscn" id="4_5yl82"]
-[ext_resource type="Texture2D" uid="uid://dl4lt25afp51k" path="res://addons/kenney_particle_pack/flame_04.png" id="5_l35pp"]
+[ext_resource type="Texture2D" uid="uid://cehnidxybqa5v" path="res://addons/kenney_particle_pack/flame_04.png" id="5_l35pp"]
 [ext_resource type="Script" uid="uid://ct4q6dqrmvs8d" path="res://Scenes/MainMenu/HomeButtons/home_button.gd" id="6_c6w5i"]
 [ext_resource type="PackedScene" uid="uid://bp18rk6u47rpe" path="res://Scenes/Multiplayer/MPHUD/mphud.tscn" id="6_h1k81"]
 

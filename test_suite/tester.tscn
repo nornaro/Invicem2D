@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://bglgahpqv1ojs"]
 
-[ext_resource type="Script" path="res://tester.gd" id="1"]
+[sub_resource type="Resource" id="Resource_uktj1"]
+metadata/__load_path__ = "res://tester.gd"
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -9,4 +10,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1")
+script = SubResource("Resource_uktj1")

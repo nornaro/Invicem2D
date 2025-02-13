@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://dhi5myb4u2mij"]
+[gd_scene load_steps=16 format=3 uid="uid://dhi5myb4u2mij"]
 
-[ext_resource type="Script" path="res://addons/godot_steam_sync/Network/RadomeSteamSync/NetworkPlayerSpawner.gd" id="1_a26tm"]
-[ext_resource type="Script" path="res://addons/godot_steam_sync/Network/RadomeSteamSync/SyncNode/RigidBodySync3D.gd" id="2_io2do"]
+[sub_resource type="Resource" id="Resource_rvy3n"]
+metadata/__load_path__ = "res://addons/godot_steam_sync/Network/RadomeSteamSync/NetworkPlayerSpawner.gd"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ilft6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -34,10 +34,22 @@ albedo_color = Color(0.415686, 1, 1, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ktxia"]
 
+[sub_resource type="Resource" id="Resource_w0lw5"]
+metadata/__load_path__ = "res://addons/godot_steam_sync/Network/RadomeSteamSync/SyncNode/RigidBodySync3D.gd"
+
+[sub_resource type="Resource" id="Resource_16p30"]
+metadata/__load_path__ = "res://addons/godot_steam_sync/Network/RadomeSteamSync/SyncNode/RigidBodySync3D.gd"
+
+[sub_resource type="Resource" id="Resource_q7kso"]
+metadata/__load_path__ = "res://addons/godot_steam_sync/Network/RadomeSteamSync/SyncNode/RigidBodySync3D.gd"
+
+[sub_resource type="Resource" id="Resource_sgnt1"]
+metadata/__load_path__ = "res://addons/godot_steam_sync/Network/RadomeSteamSync/SyncNode/RigidBodySync3D.gd"
+
 [node name="Test" type="Node"]
 
 [node name="NetworkPlayerSpawner" type="Node" parent="." node_paths=PackedStringArray("spawn_pos", "players_parent_node")]
-script = ExtResource("1_a26tm")
+script = SubResource("Resource_rvy3n")
 spawn_pos = NodePath("../SpawnPos")
 players_parent_node = NodePath("../Players")
 
@@ -122,7 +134,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cdfuw")
 shape = SubResource("SphereShape3D_ktxia")
 
 [node name="RigidBodySync3D" type="Node" parent="Physics/RigidBody3D"]
-script = ExtResource("2_io2do")
+script = SubResource("Resource_w0lw5")
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="Physics"]
 physics_interpolation_mode = 1
@@ -139,7 +151,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cdfuw")
 shape = SubResource("SphereShape3D_ktxia")
 
 [node name="RigidBodySync3D" type="Node" parent="Physics/RigidBody3D2"]
-script = ExtResource("2_io2do")
+script = SubResource("Resource_16p30")
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="Physics"]
 physics_interpolation_mode = 1
@@ -156,7 +168,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cdfuw")
 shape = SubResource("SphereShape3D_ktxia")
 
 [node name="RigidBodySync3D" type="Node" parent="Physics/RigidBody3D3"]
-script = ExtResource("2_io2do")
+script = SubResource("Resource_q7kso")
 
 [node name="RigidBody3D4" type="RigidBody3D" parent="Physics"]
 physics_interpolation_mode = 1
@@ -173,4 +185,4 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cdfuw")
 shape = SubResource("SphereShape3D_ktxia")
 
 [node name="RigidBodySync3D" type="Node" parent="Physics/RigidBody3D4"]
-script = ExtResource("2_io2do")
+script = SubResource("Resource_sgnt1")

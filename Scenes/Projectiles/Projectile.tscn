@@ -21,6 +21,7 @@ shape = SubResource("CircleShape2D_36cfe")
 disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 scale = Vector2(0.05, 0.05)
 sprite_frames = ExtResource("2_qupxw")
 

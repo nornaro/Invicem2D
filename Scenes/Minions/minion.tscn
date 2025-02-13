@@ -1,11 +1,11 @@
 [gd_scene load_steps=60 format=3 uid="uid://5b3v7b6ahib1"]
 
 [ext_resource type="Script" uid="uid://dur4d3pyb716n" path="res://Scenes/Minions/minion.gd" id="1_xsgkh"]
-[ext_resource type="SpriteFrames" path="res://Scenes/Minions/Chibi/Fallen_3.tres" id="3_8v04g"]
+[ext_resource type="SpriteFrames" uid="uid://cn0gtx28tbird" path="res://Scenes/Minions/Chibi/Fallen_3.tres" id="3_8v04g"]
 [ext_resource type="Script" uid="uid://da2j13dlftb2n" path="res://Scenes/Minions/Area2D.gd" id="3_u5uqm"]
-[ext_resource type="Texture2D" uid="uid://cdwmod2owjpuj" path="res://Scenes/Shield/pipo-btleffect208h_480.png" id="4_t3dqa"]
-[ext_resource type="Texture2D" uid="uid://cynkp1xrjfqnm" path="res://Scenes/Shield/pipo-btleffect206h_480.png" id="5_s68jy"]
-[ext_resource type="Texture2D" uid="uid://cc747atwm4yjq" path="res://Scenes/Shield/pipo-btleffect206_480.png" id="6_o6qx1"]
+[ext_resource type="Texture2D" uid="uid://ceny62aeietv3" path="res://Scenes/Shield/pipo-btleffect208h_480.png" id="4_t3dqa"]
+[ext_resource type="Texture2D" uid="uid://238snm4ejvhy" path="res://Scenes/Shield/pipo-btleffect206h_480.png" id="5_s68jy"]
+[ext_resource type="Texture2D" uid="uid://bhyqbfabcqmj1" path="res://Scenes/Shield/pipo-btleffect206_480.png" id="6_o6qx1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7goe2"]
 radius = 4.0
@@ -365,13 +365,15 @@ bg_color = Color(0, 1, 0, 0.392157)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcnvf"]
 bg_color = Color(0, 1, 1, 0)
 border_width_left = 2
+border_width_top = 2
 border_width_right = 2
+border_width_bottom = 2
 border_color = Color(0, 0, 1, 1)
 border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m3o7"]
-bg_color = Color(0, 0.6, 0.984314, 0.588235)
-border_color = Color(0, 0, 1, 1)
+bg_color = Color(0, 0.454902, 0.784314, 0.784314)
+border_blend = true
 
 [node name="Minion" type="RigidBody2D" groups=["minions"]]
 collision_mask = 0
@@ -437,7 +439,7 @@ mouse_filter = 2
 theme = SubResource("Theme_1g8mw")
 theme_override_styles/background = SubResource("StyleBoxFlat_8v04g")
 theme_override_styles/fill = SubResource("StyleBoxFlat_krg58")
-step = 1.0
+step = 0.1
 value = 100.0
 allow_greater = true
 show_percentage = false
@@ -457,7 +459,7 @@ mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_pcnvf")
 theme_override_styles/fill = SubResource("StyleBoxFlat_4m3o7")
 max_value = 0.0
-step = 1.0
+step = 0.1
 rounded = true
 allow_greater = true
 show_percentage = false

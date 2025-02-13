@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://3ipapmsr02wr"]
 
-[ext_resource type="Texture2D" uid="uid://c8lsvbq8jqnkl" path="res://Scenes/Building/Castle/Styles/Fantasy/Castle.png" id="1_e27ua"]
+[ext_resource type="Texture2D" uid="uid://nxq4f25gh6oq" path="res://Scenes/Building/Castle/Styles/Fantasy/Castle.png" id="1_e27ua"]
 [ext_resource type="Script" uid="uid://ct4q6dqrmvs8d" path="res://Scenes/MainMenu/HomeButtons/home_button.gd" id="2_e1xyj"]
 
 [node name="Limit" type="TextureButton" groups=["Style"]]

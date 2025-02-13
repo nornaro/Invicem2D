@@ -9,4 +9,6 @@ func _item_selected(index: int) -> void:
 			%Style.show_popup()
 		"Exit":
 			%Exit.show()
+		"Reload":
+			get_tree().reload_current_scene()
 	_select_int(-1)

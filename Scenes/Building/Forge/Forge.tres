@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://23kf6rbawp6t"]
 
-[ext_resource type="Texture2D" uid="uid://cm4iaq7p0qcjh" path="res://Scenes/Building/Forge/Styles/Fantasy/Forge.png" id="1_bnayq"]
-[ext_resource type="Texture2D" uid="uid://cg4d17vh0bryd" path="res://Scenes/Building/Forge/Styles/Sci-fi/Forge.png" id="1_ybj6o"]
+[ext_resource type="Texture2D" uid="uid://n4jkql1cohhq" path="res://Scenes/Building/Forge/Styles/Fantasy/Forge.png" id="1_bnayq"]
+[ext_resource type="Texture2D" uid="uid://dun4xgtb34uol" path="res://Scenes/Building/Forge/Styles/Sci-fi/Forge.png" id="1_ybj6o"]
 
 [resource]
 animations = [{
