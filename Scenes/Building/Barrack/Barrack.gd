@@ -59,7 +59,7 @@ func spawn():
 	if Data.Equip.Minion[1] == "Select":
 		return
 	var instance = minion.instantiate()
-	instance.global_position = Vector2(spawnin.global_position.x,randi_range(-spawnin.scale.y,spawnin.scale.y))
+	instance.global_position = Vector2(spawnin.global_position.x,randi_range(-spawnin.scale.y,spawnin.scale.y))/2
 	instance.name = str(instance.get_instance_id())
 	instance.Data["Spawn"] = Data.Upgrades
 	instance.Data.merge(Data.Upgrades)

@@ -7,7 +7,7 @@ var regen = 0
 
 @onready var Sprite = $Sprite
 @onready var hpBar = $hpBar
-@onready var shBar = $Shield/Bar
+@onready var shBar = $shBar
 @onready var sh = $Shield
 @onready var h2 = $Shield/Hit2
 @onready var depleted = $Shield/Depleted
@@ -15,20 +15,19 @@ var regen = 0
 func _ready():
 	add_to_group("minions")
 	gravity_scale = 0
-	
-	if !Data.has("max_hp"):
-		Data.HP *= 100.0
-		Data.HP = ceil(Data.HP * (1+Data.Size /10))
-		Data["max_hp"] = Data.HP
-		hpBar.max_value=Data.max_hp
-		Data.Shield = int(Data.Shield * Data.max_hp / 10)
-		Data["max_sh"] = Data.Shield
-		shBar.max_value=Data.max_sh
-		hpBar.value = Data.max_sh
-		Data.Defense = ceil(Data.Defense * (1+Data.Size /10))
-		Data.Speed += 5 - floor(Data.Size / 4)
-		Data.Speed -= floor(Data.Size / 4)
-		shBar.value = Data.max_sh
+	Data["name"]= name
+	Data.HP *= 100.0
+	Data.HP = ceil(Data.HP * (1+Data.Size /10))
+	Data["max_hp"] = Data.HP
+	hpBar.max_value=Data.max_hp
+	Data.Shield = int(Data.Shield * Data.max_hp / 10)
+	Data["max_sh"] = Data.Shield
+	shBar.max_value=Data.max_sh
+	hpBar.value = Data.max_sh
+	Data.Defense = ceil(Data.Defense * (1+Data.Size /10))
+	Data.Speed += 5 - floor(Data.Size / 4)
+	Data.Speed -= floor(Data.Size / 4)
+	shBar.value = Data.max_sh
 	linear_velocity = Vector2(-Data.Speed * 5, 0)
 	var global = Global.Data.Minions
 	var type = Data.Minion[0]
@@ -40,6 +39,11 @@ func _ready():
 	Sprite.sprite_frames = global[type][minion][sprite]
 	sh.scale *= (1+Data.Size)/2.0
 	Sprite.scale *= (1+Data.Size)/2.0
+	hpBar.scale.x *= (1+Data.Size)/2.0
+	shBar.scale.x *= (1+Data.Size)/2.0
+	print(Sprite.scale.x)
+	hpBar.position += Vector2(-Data.Size*3,-Data.Size*3)
+	shBar.position += Vector2(-Data.Size*3,-Data.Size*3)
 	$Area.scale *= (1+Data.Size)/2.0
 	Sprite.play("Walking")
 
@@ -79,9 +83,12 @@ func hurt(data):
 		linear_velocity = Vector2.ZERO
 		$Area.queue_free()
 		Sprite.play("Dying")
-		Sprite.connect("animation_looped",queue_free)
+		Sprite.connect("animation_looped",die)
 		return
 	notify_property_list_changed()
+
+func die():
+	queue_free()
 
 func shield(delta) -> void:
 	if shBar.value == 0:

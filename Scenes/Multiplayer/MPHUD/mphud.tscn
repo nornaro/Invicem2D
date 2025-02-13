@@ -1,20 +1,20 @@
 [gd_scene load_steps=20 format=3 uid="uid://bp18rk6u47rpe"]
 
 [ext_resource type="Script" uid="uid://dq54ywl2p58gl" path="res://Scenes/Multiplayer/MPHUD/mphud.gd" id="1_bw4dg"]
-[ext_resource type="Texture2D" uid="uid://7h6ow58neeq" path="res://Scenes/Multiplayer/MPHUD/Icons/godot.png" id="2_mhrge"]
-[ext_resource type="Texture2D" uid="uid://dqmtsfnswekmn" path="res://Scenes/Multiplayer/MPHUD/Icons/Steam.png" id="3_5q074"]
-[ext_resource type="Texture2D" uid="uid://dkroegw5x2djc" path="res://Scenes/Multiplayer/MPHUD/Icons/websocket.png" id="3_xyki0"]
-[ext_resource type="Texture2D" uid="uid://drgfd6hidllij" path="res://Scenes/Multiplayer/MPHUD/Icons/Nakama.png" id="4_yrhr7"]
-[ext_resource type="Texture2D" uid="uid://pambvh63m1o4" path="res://Scenes/Multiplayer/MPHUD/Icons/GDSync.png" id="5_7v3yp"]
-[ext_resource type="Texture2D" uid="uid://ci1vdlffkh0l7" path="res://Scenes/Multiplayer/MPHUD/Icons/epic.png" id="6_rtfh4"]
-[ext_resource type="Texture2D" uid="uid://qb7wvwuj5en8" path="res://Scenes/Multiplayer/MPHUD/Icons/W4.png" id="7_2pc1p"]
+[ext_resource type="Texture2D" uid="uid://camglaiag3mty" path="res://Scenes/Multiplayer/MPHUD/Icons/godot.png" id="2_mhrge"]
+[ext_resource type="Texture2D" uid="uid://s1res2k6pjtq" path="res://Scenes/Multiplayer/MPHUD/Icons/Steam.png" id="3_5q074"]
+[ext_resource type="Texture2D" uid="uid://4h8xass2tflw" path="res://Scenes/Multiplayer/MPHUD/Icons/websocket.png" id="3_xyki0"]
+[ext_resource type="Texture2D" uid="uid://dmnduonvyyxgr" path="res://Scenes/Multiplayer/MPHUD/Icons/Nakama.png" id="4_yrhr7"]
+[ext_resource type="Texture2D" uid="uid://dufwoq3nl68ku" path="res://Scenes/Multiplayer/MPHUD/Icons/GDSync.png" id="5_7v3yp"]
+[ext_resource type="Texture2D" uid="uid://cp0dhlhse8t8n" path="res://Scenes/Multiplayer/MPHUD/Icons/epic.png" id="6_rtfh4"]
+[ext_resource type="Texture2D" uid="uid://dky0fo78d2kqd" path="res://Scenes/Multiplayer/MPHUD/Icons/W4.png" id="7_2pc1p"]
 [ext_resource type="Script" uid="uid://ml32sxxxhqm4" path="res://Scenes/Multiplayer/MPHUD/network_type.gd" id="7_pnjyg"]
 [ext_resource type="Script" uid="uid://bdmpj60vca0tf" path="res://Scenes/Multiplayer/host.gd" id="8_ttryd"]
-[ext_resource type="Texture2D" uid="uid://8swarvr67ldq" path="res://Scenes/Multiplayer/MPHUD/Icons/Jam.png" id="8_xyki0"]
-[ext_resource type="Texture2D" uid="uid://dikgpyhebb3jl" path="res://Scenes/Multiplayer/MPHUD/Icons/HIGHT.png" id="9_2pc1p"]
+[ext_resource type="Texture2D" uid="uid://ceskdkor0o1u3" path="res://Scenes/Multiplayer/MPHUD/Icons/Jam.png" id="8_xyki0"]
+[ext_resource type="Texture2D" uid="uid://vg4prhsnh87l" path="res://Scenes/Multiplayer/MPHUD/Icons/HIGHT.png" id="9_2pc1p"]
 [ext_resource type="Script" uid="uid://ck3ga2ab57mmj" path="res://Scenes/Multiplayer/join.gd" id="9_f4ja4"]
 [ext_resource type="Script" uid="uid://dk340raasgcv0" path="res://Scenes/Multiplayer/search.gd" id="10_tyone"]
-[ext_resource type="Texture2D" uid="uid://bv3c064i022pu" path="res://Scenes/Multiplayer/MPHUD/Icons/colyseus.png" id="11_ked6n"]
+[ext_resource type="Texture2D" uid="uid://dodweerlxs423" path="res://Scenes/Multiplayer/MPHUD/Icons/colyseus.png" id="11_ked6n"]
 [ext_resource type="Script" uid="uid://ddj0pg64e3p0b" path="res://Scenes/Multiplayer/MPHUD/back.gd" id="11_tsjd1"]
 [ext_resource type="Script" uid="uid://csoxvgd1w5uwn" path="res://Scenes/Multiplayer/MPHUD/lobby.gd" id="12_emtdj"]
 
@@ -136,6 +136,8 @@ script = ExtResource("10_tyone")
 [node name="Join_data" type="TextEdit" parent="LobbyControl/Top/Menu/Panel/MainArea" groups=["Join_data"]]
 custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
+drag_and_drop_selection_enabled = false
+scroll_past_end_of_file = true
 
 [node name="WindowControlArea" type="VBoxContainer" parent="LobbyControl/Top/Menu/Panel"]
 custom_minimum_size = Vector2(150, 0)

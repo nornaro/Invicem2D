@@ -1,11 +1,11 @@
-[gd_scene load_steps=61 format=3 uid="uid://5b3v7b6ahib1"]
+[gd_scene load_steps=60 format=3 uid="uid://5b3v7b6ahib1"]
 
 [ext_resource type="Script" uid="uid://dur4d3pyb716n" path="res://Scenes/Minions/minion.gd" id="1_xsgkh"]
 [ext_resource type="SpriteFrames" path="res://Scenes/Minions/Chibi/Fallen_3.tres" id="3_8v04g"]
 [ext_resource type="Script" uid="uid://da2j13dlftb2n" path="res://Scenes/Minions/Area2D.gd" id="3_u5uqm"]
-[ext_resource type="Texture2D" uid="uid://bs07vmqcs5pcg" path="res://Scenes/Shield/pipo-btleffect208h_480.png" id="4_t3dqa"]
-[ext_resource type="Texture2D" uid="uid://4wt0t3qwy3oe" path="res://Scenes/Shield/pipo-btleffect206h_480.png" id="5_s68jy"]
-[ext_resource type="Texture2D" uid="uid://bg7vjucdld1jg" path="res://Scenes/Shield/pipo-btleffect206_480.png" id="6_o6qx1"]
+[ext_resource type="Texture2D" uid="uid://cdwmod2owjpuj" path="res://Scenes/Shield/pipo-btleffect208h_480.png" id="4_t3dqa"]
+[ext_resource type="Texture2D" uid="uid://cynkp1xrjfqnm" path="res://Scenes/Shield/pipo-btleffect206h_480.png" id="5_s68jy"]
+[ext_resource type="Texture2D" uid="uid://cc747atwm4yjq" path="res://Scenes/Shield/pipo-btleffect206_480.png" id="6_o6qx1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7goe2"]
 radius = 4.0
@@ -43,20 +43,6 @@ animations = [{
 "name": &"default",
 "speed": 2.0
 }]
-
-[sub_resource type="Theme" id="Theme_6v80j"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcnvf"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0.415686, 1, 1)
-border_blend = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m3o7"]
-bg_color = Color(0, 0.568627, 0.568627, 0.74902)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwlt0"]
 atlas = ExtResource("5_s68jy")
@@ -376,15 +362,25 @@ border_blend = true
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krg58"]
 bg_color = Color(0, 1, 0, 0.392157)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcnvf"]
+bg_color = Color(0, 1, 1, 0)
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0, 0, 1, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m3o7"]
+bg_color = Color(0, 0.6, 0.984314, 0.588235)
+border_color = Color(0, 0, 1, 1)
+
 [node name="Minion" type="RigidBody2D" groups=["minions"]]
+collision_mask = 0
 gravity_scale = 0.0
 linear_damp_mode = 1
 script = ExtResource("1_xsgkh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_7goe2")
-disabled = true
 
 [node name="Area" type="Area2D" parent="." groups=["minions"]]
 collision_layer = 13
@@ -413,24 +409,6 @@ scale = Vector2(0.06, 0.06)
 sprite_frames = SubResource("SpriteFrames_dwes0")
 frame_progress = 0.201145
 
-[node name="Bar" type="ProgressBar" parent="Shield"]
-anchors_preset = -1
-anchor_right = 0.391667
-anchor_bottom = 0.1625
-offset_left = -100.0
-offset_top = -250.0
-offset_right = -88.0
-offset_bottom = -245.0
-mouse_filter = 2
-theme = SubResource("Theme_6v80j")
-theme_override_styles/background = SubResource("StyleBoxFlat_pcnvf")
-theme_override_styles/fill = SubResource("StyleBoxFlat_4m3o7")
-step = 1.0
-value = 100.0
-allow_greater = true
-show_percentage = false
-metadata/_edit_use_anchors_ = true
-
 [node name="Hit2" type="AnimatedSprite2D" parent="Shield"]
 scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_upoy4")
@@ -450,16 +428,37 @@ frame_progress = 1.0
 offset = Vector2(3, -25)
 
 [node name="hpBar" type="ProgressBar" parent="."]
+show_behind_parent = true
 offset_left = -6.0
-offset_top = -18.0
+offset_top = -13.0
 offset_right = 6.0
-offset_bottom = -13.0
+offset_bottom = -8.0
 mouse_filter = 2
 theme = SubResource("Theme_1g8mw")
 theme_override_styles/background = SubResource("StyleBoxFlat_8v04g")
 theme_override_styles/fill = SubResource("StyleBoxFlat_krg58")
 step = 1.0
 value = 100.0
+allow_greater = true
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="shBar" type="ProgressBar" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -13.0
+offset_right = 6.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_pcnvf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4m3o7")
+max_value = 0.0
+step = 1.0
+rounded = true
 allow_greater = true
 show_percentage = false
 metadata/_edit_use_anchors_ = true

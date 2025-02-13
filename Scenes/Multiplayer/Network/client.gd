@@ -18,7 +18,9 @@ func receive_response(response: Dictionary):
 func spawn(data: Dictionary):
 	var spawnin = get_tree().get_first_node_in_group("In")
 	var minions = get_tree().get_first_node_in_group("Minions")
-	
+	var old_minion = minions.get_node(str(data.name))
+	minions.remove_child(old_minion)
+	old_minion.queue_free()
 	if is_in_group("temp"):
 		return
 	var instance = minion.instantiate()
@@ -26,5 +28,5 @@ func spawn(data: Dictionary):
 	instance.add_to_group("minions")
 	instance.get_node("Area").set_meta("owner",data.id)
 	instance.position = Vector2(spawnin.position.x,data.gposy)
-	instance.name = str(instance.get_instance_id())
+	instance.name = str(data.name)#str(instance.get_instance_id())
 	minions.add_child(instance)
