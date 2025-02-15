@@ -7,7 +7,7 @@ var Data: Dictionary = {}
 
 func _ready():
 	gravity_scale = 1  # Enable physics gravity
-	add_to_group("projectiles")
+	add_to_group("projectile")
 
 	if !is_instance_valid(target):
 		queue_free()

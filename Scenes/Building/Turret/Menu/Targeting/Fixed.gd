@@ -13,19 +13,21 @@ func cal_max(max_range: float, offset: float = 10, multiplier: float = 20) -> fl
 func _init():
 	set_physics_process(true)
 	parent = get_parent()
-###unprocess
-func _physics_process(delta): # redo as groups
+
+func set_area(min:int,max:int): # redo as groups
 	$min/range.shape.radius = cal_min(parent.Data.Upgrades.MinRange, parent.Data.Upgrades.MaxRange)
 	$max/range.shape.radius = cal_max(parent.Data.Upgrades.MaxRange)
+
+func target() -> void:
 
 	if !targets:
 		return
 	var invalid_targets = []
 
-	for target in targets:
-		if is_instance_valid(target):
+	for t in targets:
+		if is_instance_valid(t):
 			continue
-		invalid_targets.append(target)
+		invalid_targets.append(t)
 
 	# Remove invalid items after iteration
 	for target in invalid_targets:

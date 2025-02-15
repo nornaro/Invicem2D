@@ -6,7 +6,7 @@ var Data: Dictionary = {}
 func _ready():
 	set_physics_process(true)
 	gravity_scale = 0
-	add_to_group("projectiles")
+	add_to_group("projectile")
 ###unprocess
 func _physics_process(delta):
 	if !is_instance_valid(target):

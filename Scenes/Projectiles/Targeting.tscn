@@ -8,8 +8,3 @@ script = ExtResource("1_kmiw0")
 [node name="min" type="Area2D" parent="."]
 
 [node name="max" type="Area2D" parent="."]
-
-[connection signal="area_entered" from="min" to="." method="_on_min_area_entered"]
-[connection signal="area_exited" from="min" to="." method="_on_min_area_exited"]
-[connection signal="area_entered" from="max" to="." method="_on_max_area_entered"]
-[connection signal="area_exited" from="max" to="." method="_on_max_area_exited"]

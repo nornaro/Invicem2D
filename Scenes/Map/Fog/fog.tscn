@@ -1,0 +1,119 @@
+[gd_scene load_steps=12 format=3 uid="uid://bl7fsct6364pn"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k2lll"]
+size = Vector2(525, 850)
+orientation = 2
+
+[sub_resource type="Gradient" id="Gradient_hgl52"]
+offsets = PackedFloat32Array(0.764901, 1)
+colors = PackedColorArray(0.196078, 0.196078, 0.196078, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ams2i"]
+gradient = SubResource("Gradient_hgl52")
+fill = 2
+fill_from = Vector2(0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_w6qxr"]
+size = Vector2(525, 1700)
+orientation = 2
+
+[sub_resource type="Gradient" id="Gradient_eqg5f"]
+offsets = PackedFloat32Array(0.764901, 1)
+colors = PackedColorArray(0.196078, 0.196078, 0.196078, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nxbs3"]
+gradient = SubResource("Gradient_eqg5f")
+fill = 2
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_56g4k"]
+gradient = SubResource("Gradient_eqg5f")
+fill = 2
+fill_to = Vector2(1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8mbnc"]
+size = Vector2(2000, 750)
+orientation = 2
+
+[sub_resource type="Gradient" id="Gradient_hwrr3"]
+offsets = PackedFloat32Array()
+colors = PackedColorArray()
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iuac6"]
+gradient = SubResource("Gradient_hwrr3")
+fill = 2
+fill_to = Vector2(1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qo1ir"]
+size = Vector2(2550, 500)
+orientation = 2
+
+[node name="Fog" type="Node2D"]
+
+[node name="MeshInstance2D10" type="MeshInstance2D" parent="."]
+top_level = true
+z_index = 4096
+position = Vector2(-425, 263)
+rotation = 1.5708
+mesh = SubResource("PlaneMesh_k2lll")
+texture = SubResource("GradientTexture2D_ams2i")
+
+[node name="MeshInstance2D11" type="MeshInstance2D" parent="."]
+top_level = true
+z_index = 4096
+position = Vector2(850, -263)
+rotation = -1.5708
+mesh = SubResource("PlaneMesh_w6qxr")
+texture = SubResource("GradientTexture2D_ams2i")
+
+[node name="MeshInstance2D12" type="MeshInstance2D" parent="."]
+top_level = true
+z_index = 4096
+position = Vector2(-425, -262)
+rotation = 1.5708
+mesh = SubResource("PlaneMesh_k2lll")
+texture = SubResource("GradientTexture2D_nxbs3")
+
+[node name="MeshInstance2D13" type="MeshInstance2D" parent="."]
+top_level = true
+z_index = 4096
+position = Vector2(850, 262)
+rotation = 1.5708
+mesh = SubResource("PlaneMesh_w6qxr")
+texture = SubResource("GradientTexture2D_56g4k")
+
+[node name="MeshInstance2D16" type="MeshInstance2D" parent="."]
+show_behind_parent = true
+top_level = true
+z_index = 4096
+position = Vector2(-1758.97, -0.00193296)
+rotation = 1.5708
+scale = Vector2(1, 2.42392)
+mesh = SubResource("PlaneMesh_8mbnc")
+texture = SubResource("GradientTexture2D_iuac6")
+
+[node name="MeshInstance2D19" type="MeshInstance2D" parent="."]
+show_behind_parent = true
+top_level = true
+z_index = 4096
+position = Vector2(2075, 0)
+rotation = 1.5708
+mesh = SubResource("PlaneMesh_8mbnc")
+texture = SubResource("GradientTexture2D_iuac6")
+
+[node name="MeshInstance2D17" type="MeshInstance2D" parent="."]
+show_behind_parent = true
+top_level = true
+z_index = 4096
+position = Vector2(425, 775)
+mesh = SubResource("PlaneMesh_qo1ir")
+texture = SubResource("GradientTexture2D_iuac6")
+
+[node name="MeshInstance2D18" type="MeshInstance2D" parent="."]
+show_behind_parent = true
+top_level = true
+z_index = 4096
+position = Vector2(425, -775)
+mesh = SubResource("PlaneMesh_qo1ir")
+texture = SubResource("GradientTexture2D_iuac6")

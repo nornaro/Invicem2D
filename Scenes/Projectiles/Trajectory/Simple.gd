@@ -6,7 +6,7 @@ var velocity
 
 func _ready():
 	gravity_scale = 0
-	add_to_group("projectiles")
+	add_to_group("projectile")
 	if !is_instance_valid(target):
 		queue_free()
 		return

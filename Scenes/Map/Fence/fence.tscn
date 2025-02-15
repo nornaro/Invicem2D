@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://daj6ie22424ki"]
+
+[ext_resource type="Script" uid="uid://chnopoa3tctyr" path="res://Scenes/Map/fence.gd" id="1_us2b2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oydqy"]
+size = Vector2(2816, 10)
+
+[node name="Fence" type="RigidBody2D"]
+freeze = true
+script = ExtResource("1_us2b2")
+
+[node name="Bot" type="CollisionShape2D" parent="."]
+position = Vector2(475, 94)
+shape = SubResource("RectangleShape2D_oydqy")
+
+[node name="Top" type="CollisionShape2D" parent="."]
+position = Vector2(475, -95)
+shape = SubResource("RectangleShape2D_oydqy")

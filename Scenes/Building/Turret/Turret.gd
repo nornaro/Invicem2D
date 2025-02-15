@@ -44,9 +44,9 @@ var is_targeting: bool = false
 var max_slots:int = 4
 var timer_ASPD:Timer = Timer.new()
 var timer_CD:Timer = Timer.new()
-var targeting: Array = []
 var markers: Array = []
 var rotation_coords: Array = []
+var shoot: bool = false
 
 func _ready() -> void:
 	set_physics_process(true)
@@ -57,60 +57,51 @@ func _ready() -> void:
 	add_child(projectiles_scene.instantiate())
 	var aspd_timer:Timer = get_tree().get_first_node_in_group("ASPD")
 	aspd_timer.connect("timeout",_on_ASPD_timeout)
-	#add_timers()
-	#$Targeting.property_list_changed.connect(_on_targeting_property_list_changed)
-
-#func add_timers() -> void:
-	#timer_ASPD.name = "ASPD"
-	#timer_ASPD.wait_time = 1/sqrt(Data.Upgrades.AttackSpeed)  # For example, 1 second
-	#timer_ASPD.one_shot = false
-	#timer_ASPD.connect("timeout", _on_ASPD_timeout)
-	#add_child(timer_ASPD)
-#
-	## Setup the CD timer (one-shot)
-	#timer_CD.name = "CD"
-	#timer_CD.wait_time = 3.0  # For example, 3 seconds
-	#timer_CD.one_shot = true
-	#timer_CD.connect("timeout", _on_CD_timeout)
-	#add_child(timer_CD)
+	set_targeting()
+	set_maxrange()
 
 func _on_ASPD_timeout() -> void:
 	if !is_targeting:
 		return
-	if aspd_counter == (17-Data.Upgrades.AttackSpeed):
-		aspd_counter = 0
-		shoot()
-		return
-	aspd_counter += 1
-	shoot()
-	
-func shoot() -> void:
-	#if get_node_or_null("Muzzle"):
-		#$Icon.position = $Muzzle.position + $Muzzle.points[-$Sprite.frame]
-	#var _timer:float = float(1.0/Data.Upgrades.AttackSpeed)
-	#timer_ASPD.wait_time = timer
-	if !Data.Properties.has("Trajectory"):
-		return
-	if $Targeting.targeting.is_empty():
-		return
 	if !Data.has("muzzle"):
 		return
-	var multi: Array = calculate_multishot()
+	var targeting = $Targeting.targeting
+	if targeting.is_empty():
+		aspd_counter = 0
+		return
+	var target: Node2D = $Targeting.targeting[0]
+	if !Data.Properties.has("Trajectory"):
+		return
 	var spread_range: int = Data.spreadbase-Data.Upgrades.Spread
-	spread_range /= 2
+	spread_range /= 20
 	var spread: Vector2 = 5 * Vector2(
 		randf_range(-spread_range,spread_range),
 		randf_range(-spread_range,spread_range)
 	)
-	var target: Node2D = $Targeting.targeting[0]
-	var rot: float = get_turret_rotation_to_face_target(self, target)
-	var frame:int = rotation_to_frame(rot)
-	$Sprite.frame = frame
-	for i: int in range(Data.muzzle.size() + multi[0]):
-		if !target:
-			return
-		spawn_projectile(multi[0],multi[1],spread,target)
-		await get_tree().create_timer(0.01).timeout
+	var aspd = 20-Data.Upgrades.AttackSpeed
+	var multi: Array = calculate_multishot()
+	if shoot:
+		for i: int in range(Data.muzzle.size() + multi[0]):
+			if !target:
+				return
+			spawn_projectile(multi[0],multi[1],spread,target)
+		shoot = false
+		return
+	if aspd_counter < aspd:
+		aspd_counter += 1
+		return
+	aspd_counter = 0
+	var rot: float = get_turret_rotation_to_face_target(target.global_position - global_position)
+	$Sprite.frame = rotation_to_frame(rot)
+	shoot = true
+	return
+	
+#func shoot() -> void:
+	#if $Targeting.targeting.is_empty():
+		#return
+	#if !is_instance_valid(target):
+		#return
+		
 		
 func calculate_multishot() -> Array:
 	var count: float = 1.0
@@ -143,7 +134,7 @@ func spawn_projectile(count:int,damage:int,spread:Vector2,target:Node) -> void:
 
 func set_rotation_coords() -> void:
 	var sp:AnimatedSprite2D = get_node("Sprite")
-	var scene = Global.RL.load(sp.sprite_frames.resource_path.replace(".tres", ".tscn"))
+	var scene:PackedScene = Global.RL.load(sp.sprite_frames.resource_path.replace(".tres", ".tscn"))
 	var instance:Line2D = scene.instantiate()
 	instance.name = "Muzzle"
 	for point in instance.points:
@@ -151,6 +142,16 @@ func set_rotation_coords() -> void:
 	#instance.hide()
 	add_child(instance)
 	return
+
+func set_minrange() -> void:
+	if !$Targeting.has_method("set_range"):
+		return
+	$Targeting.set_range()
+	
+func set_maxrange() -> void:
+	if !$Targeting.has_method("set_range"):
+		return
+	$Targeting.set_range()
 
 func set_targeting() -> void:
 	var script = "res://Scenes/Projectiles/Targeting/"+Data.Properties.Targeting+".gd"
@@ -168,11 +169,11 @@ func rotation_to_frame(rot: float) -> int:
 	var frame = int(rot / (2 * PI) * 64)
 	return frame
 
-func correct_allign(frame: int) -> int:
-	if frame >= 32:
-		frame -=32
-	frame +=32
-	return frame
+#func correct_allign(frame: int) -> int:
+	#if frame >= 32:
+		#frame -=32
+	#frame +=32
+	#return frame
 
 func _on_CD_timeout() -> void:
 	pass
@@ -201,9 +202,5 @@ func get_item_from_slot(slot_index: int) -> Dictionary:
 		#instance._ready()
 		#Data.merge(instance.Data)
 
-#func _on_targeting_property_list_changed() -> void:
-	#timer_ASPD.start()
-
-func get_turret_rotation_to_face_target(turret: Node2D, target: Node2D) -> float:
-	var dir = target.global_position - turret.global_position
+func get_turret_rotation_to_face_target(dir) -> float:
 	return atan2(dir.y, dir.x)

@@ -1,17 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq13xgootxplk"]
-
-[ext_resource type="Texture2D" uid="uid://dbioiveh7tlep" path="res://Scenes/Map/inout.png" id="1_h8ox7"]
+[gd_scene load_steps=2 format=3 uid="uid://cq13xgootxplk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ruswv"]
 size = Vector2(1, 2)
 
 [node name="In" type="Area2D"]
 position = Vector2(820, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 1
-scale = Vector2(2.5, 200)
-texture = ExtResource("1_h8ox7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1, 100)

@@ -25,6 +25,8 @@ func upgrade(data: String) -> void:
 	if parent.Data.Upgrades[data] >= 16:
 		return
 	parent.Data.Upgrades[data] = clamp(parent.Data.Upgrades[data]+value ,parent.Data.Upgrades[data], 16)
+	if parent.has_method("set_" + data.to_lower()):
+		parent.call("set_" + data.to_lower())
 
 func set_selected(selection:bool) -> void:
 	if selection:

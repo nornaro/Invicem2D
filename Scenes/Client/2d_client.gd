@@ -20,8 +20,8 @@ func _ready() -> void:
 	add_child(instance)
 	
 func _load_next() -> void:
-	for thread:Thread in Global.threads:
-		thread.start()
+	#for thread:Thread in Global.threads:
+		#thread.start()
 	add_child(aspd_timer.instantiate())
 	add_child(map.instantiate())
 	add_child(buildings.instantiate())

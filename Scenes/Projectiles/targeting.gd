@@ -1,6 +1,5 @@
 extends Node2D
-
-
+	
 func _enter_tree() -> void:
 	var min_range:CollisionShape2D = CollisionShape2D.new()
 	min_range.name = "range"

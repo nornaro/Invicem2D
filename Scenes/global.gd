@@ -20,11 +20,11 @@ var Currecny: Dictionary = {
 }
 
 var RL:ResLoad = ResLoad.new()
-var threads:Dictionary = {
-	"minion":Thread.new(),
-	"projectile":Thread.new(),
-	"building":Thread.new(),
-}
+#var threads:Dictionary = {
+	#"minion":Thread.new(),
+	#"projectile":Thread.new(),
+	#"building":Thread.new(),
+#}
 var servers:Dictionary = {}
 var join_data:String
 var server_id:String =""

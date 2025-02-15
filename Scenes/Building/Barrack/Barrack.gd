@@ -19,10 +19,10 @@ extends StaticBody2D
 	},
 	"Inventory": {},
 	"Upgrades" : {
-		"Speed": 1, # 1 # Movement speed
+		"Speed": 16, # 1 # Movement speed
 		"HP": 1, # 2 # Maximum health
 		"Defense": 0, # 3 # Reduce dmg recieved by fix amount, or %
-		"Size": 1, # 4 # Increase Size&HP or reduce Size&HP and hitbox with it, % or amount
+		"Size": 16, # 4 # Increase Size&HP or reduce Size&HP and hitbox with it, % or amount
 		"Shield": 0, # 5 # n hit or %HP barrier
 		"Regeneration": 0, # 6 # As time passes, constant % or amount HP regen, or % regained on hit, or increase Size&HP, or regain % HP at % HP if not executed
 		"Movement": 0, # 7 # ground vs aííir

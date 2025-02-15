@@ -1,12 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://c4ma53dgi0oje"]
+[gd_scene load_steps=17 format=3 uid="uid://c4ma53dgi0oje"]
 
-[ext_resource type="Script" uid="uid://mn612ovgeogq" path="res://Scenes/Map/map.gd" id="1_0bqwf"]
 [ext_resource type="PackedScene" uid="uid://cbm6uy5irqlad" path="res://Scenes/Map/Ground/ground.tscn" id="2_m0gtq"]
 [ext_resource type="PackedScene" uid="uid://buq6q3rkgcyaa" path="res://Scenes/Map/Spawn/spawn.tscn" id="3_sk368"]
 [ext_resource type="PackedScene" uid="uid://cq13xgootxplk" path="res://Scenes/Map/In/in.tscn" id="4_65k1d"]
 [ext_resource type="PackedScene" uid="uid://iwp2p55pke5x" path="res://Scenes/Map/Out/out.tscn" id="5_oy5h8"]
+[ext_resource type="PackedScene" uid="uid://daj6ie22424ki" path="res://Scenes/Map/Fence/fence.tscn" id="6_eu35m"]
+[ext_resource type="PackedScene" uid="uid://bl7fsct6364pn" path="res://Scenes/Map/Fog/fog.tscn" id="7_eu35m"]
 [ext_resource type="PackedScene" uid="uid://c34xvf4i48axf" path="res://Scenes/Map/Selection/selection_rectangle.tscn" id="7_v3nu7"]
-[ext_resource type="PackedScene" uid="uid://b2qsbye225y0r" path="res://Scenes/Map/Road/road.tscn" id="9_qu23i"]
 
 [sub_resource type="Gradient" id="Gradient_xklc3"]
 
@@ -42,52 +42,8 @@ gradient = SubResource("Gradient_hwrr3")
 fill = 2
 fill_to = Vector2(1, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_k2lll"]
-size = Vector2(525, 850)
-orientation = 2
-
-[sub_resource type="Gradient" id="Gradient_hgl52"]
-offsets = PackedFloat32Array(0.764901, 1)
-colors = PackedColorArray(0.196078, 0.196078, 0.196078, 0, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ams2i"]
-gradient = SubResource("Gradient_hgl52")
-fill = 2
-fill_from = Vector2(0, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_w6qxr"]
-size = Vector2(525, 1700)
-orientation = 2
-
-[sub_resource type="Gradient" id="Gradient_eqg5f"]
-offsets = PackedFloat32Array(0.764901, 1)
-colors = PackedColorArray(0.196078, 0.196078, 0.196078, 0, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nxbs3"]
-gradient = SubResource("Gradient_eqg5f")
-fill = 2
-fill_from = Vector2(1, 1)
-fill_to = Vector2(0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_56g4k"]
-gradient = SubResource("Gradient_eqg5f")
-fill = 2
-fill_to = Vector2(1, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_8twsw"]
-size = Vector2(2000, 750)
-orientation = 2
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_8mbnc"]
-size = Vector2(2000, 750)
-orientation = 2
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oydqy"]
-size = Vector2(2816, 10)
-
-[node name="Map" type="Node2D"]
+[node name="Map" type="Node2D" groups=["Map"]]
 z_index = -4096
-script = ExtResource("1_0bqwf")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 visible = false
@@ -109,10 +65,15 @@ mesh = SubResource("PlaneMesh_qo1ir")
 texture = SubResource("GradientTexture2D_iuac6")
 
 [node name="Spawn" parent="." instance=ExtResource("3_sk368")]
-position = Vector2(-350, 0)
+position = Vector2(-349, 0)
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
 
 [node name="Positions" parent="Spawn" index="0"]
 position = Vector2(0, 0)
+disabled = true
 
 [node name="In" parent="." groups=["In"] instance=ExtResource("4_65k1d")]
 position = Vector2(1704, 0)
@@ -133,102 +94,12 @@ position = Vector2(-800, 130)
 [node name="Fill" parent="SelectionRectangle" index="1"]
 metadata/_edit_use_anchors_ = true
 
-[node name="MeshInstance2D10" type="MeshInstance2D" parent="."]
-top_level = true
-z_index = 4096
-position = Vector2(-425, 263)
-rotation = 1.5708
-mesh = SubResource("PlaneMesh_k2lll")
-texture = SubResource("GradientTexture2D_ams2i")
+[node name="Fence" parent="." instance=ExtResource("6_eu35m")]
 
-[node name="MeshInstance2D11" type="MeshInstance2D" parent="."]
-top_level = true
-z_index = 4096
-position = Vector2(850, -263)
-rotation = -1.5708
-mesh = SubResource("PlaneMesh_w6qxr")
-texture = SubResource("GradientTexture2D_ams2i")
-
-[node name="MeshInstance2D12" type="MeshInstance2D" parent="."]
-top_level = true
-z_index = 4096
-position = Vector2(-425, -262)
-rotation = 1.5708
-mesh = SubResource("PlaneMesh_k2lll")
-texture = SubResource("GradientTexture2D_nxbs3")
-
-[node name="MeshInstance2D13" type="MeshInstance2D" parent="."]
-top_level = true
-z_index = 4096
-position = Vector2(850, 262)
-rotation = 1.5708
-mesh = SubResource("PlaneMesh_w6qxr")
-texture = SubResource("GradientTexture2D_56g4k")
-
-[node name="MeshInstance2D14" type="MeshInstance2D" parent="."]
-visible = false
-show_behind_parent = true
-top_level = true
-position = Vector2(1225, 0)
-rotation = 1.5708
-mesh = SubResource("PlaneMesh_8twsw")
-texture = SubResource("GradientTexture2D_iuac6")
-
-[node name="MeshInstance2D16" type="MeshInstance2D" parent="."]
-show_behind_parent = true
-top_level = true
-z_index = 4096
-position = Vector2(-1758.97, -0.00193296)
-rotation = 1.5708
-scale = Vector2(1, 2.42392)
-mesh = SubResource("PlaneMesh_8mbnc")
-texture = SubResource("GradientTexture2D_iuac6")
-
-[node name="MeshInstance2D19" type="MeshInstance2D" parent="."]
-show_behind_parent = true
-top_level = true
-z_index = 4096
-position = Vector2(2075, 0)
-rotation = 1.5708
-mesh = SubResource("PlaneMesh_8mbnc")
-texture = SubResource("GradientTexture2D_iuac6")
-
-[node name="MeshInstance2D17" type="MeshInstance2D" parent="."]
-show_behind_parent = true
-top_level = true
-z_index = 4096
-position = Vector2(425, 775)
-mesh = SubResource("PlaneMesh_qo1ir")
-texture = SubResource("GradientTexture2D_iuac6")
-
-[node name="MeshInstance2D18" type="MeshInstance2D" parent="."]
-show_behind_parent = true
-top_level = true
-z_index = 4096
-position = Vector2(425, -775)
-mesh = SubResource("PlaneMesh_qo1ir")
-texture = SubResource("GradientTexture2D_iuac6")
-
-[node name="Road" parent="." instance=ExtResource("9_qu23i")]
-
-[node name="CollisionShape2D" parent="Road" index="0"]
-position = Vector2(468.5, 0)
-
-[node name="Fence" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fence"]
-position = Vector2(475, 94)
-shape = SubResource("RectangleShape2D_oydqy")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Fence"]
-position = Vector2(475, -95)
-shape = SubResource("RectangleShape2D_oydqy")
-
-[connection signal="area_entered" from="Out" to="." method="_on_out_area_entered"]
+[node name="Fog" parent="." instance=ExtResource("7_eu35m")]
 
 [editable path="Ground"]
 [editable path="Spawn"]
 [editable path="In"]
 [editable path="Out"]
 [editable path="SelectionRectangle"]
-[editable path="Road"]

@@ -5,6 +5,10 @@ var dragging: bool = false
 var selected:bool = false
 var border:int = 10
 
+func _ready() -> void:
+	connect("area_entered",_on_area_entered)
+	connect("area_exited",_on_area_exited)
+
 func _input(event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().call_group("Outline", "hide")
@@ -30,7 +34,7 @@ func _input(event: InputEvent) -> void:
 		if size.length() < 100:
 			return
 		$CollisionShape2D.show()
-		var collision_shape:CollisionShape2D = $CollisionShape2D # Set position and size
+		var collision_shape:CollisionShape2D = $CollisionShape2D
 		collision_shape.position = top_left + size * 0.5
 		collision_shape.shape.extents = size * 0.5
 		$Fill.show()

@@ -1,8 +1,10 @@
 extends Node2D
 # First In First Served
 var parent: Node
-var targets: Array = []
-var targeting: Array = []
+var in_targeting_range: Array
+
+var targets: Array[Node] = []
+var targeting: Array[Node] = []
 
 func cal_min(min_range: float, max_range: float, offset: float = 5 , multiplier: float = 20) -> float:
 	return (max_range - min_range + offset) * multiplier
@@ -13,58 +15,63 @@ func cal_max(max_range: float, offset: float = 10, multiplier: float = 20) -> fl
 func _ready() -> void:
 	set_physics_process(true)
 	parent = get_parent()
-###unprocess
-func _physics_process(delta): # redo as groups
-	$min/range.shape.radius = clamp(cal_min(parent.Data.Upgrades.MinRange, parent.Data.Upgrades.MaxRange),0.01,parent.Data.Upgrades.MaxRange)
-	$max/range.shape.radius = cal_max(parent.Data.Upgrades.MaxRange)
+	$max.connect("area_entered",_on_max_area_entered)
+	$max.connect("area_exited",_on_max_area_exited)
+	$min.connect("area_entered",_on_min_area_entered)
+	$min.connect("area_exited",_on_min_area_exited)
 
-	#if !targets:
-		#return
-	var invalid_targets = []
+func set_range() -> void:
+	var range:Array = [parent.Data.Upgrades.MinRange,parent.Data.Upgrades.MaxRange]
+	$min/range.shape.radius = clamp(cal_min(range[0], range[1]),0.01,range[1])
+	$max/range.shape.radius = cal_max(range[1])
 
-	for target: Node in targets:
-		if target.is_in_group("minions"):
-			continue
-		invalid_targets.append(target)
-
-	# Remove invalid items after iteration
-	for target in invalid_targets:
-		targets.erase(target)
-		targeting.erase(target)
-
-	# Check if targeting capacity is reached
-	if parent.Data["max_target_count"] <= targeting.size():
+func retarget() -> void:
+	var free = parent.Data["max_target_count"] - targeting.size()
+	if !free:
 		return
-	
-	if targets.is_empty():
+	if in_targeting_range.size():
 		return
-	# Add a valid target to targeting
-	var next_target: Node = targets.pick_random()
-	if next_target not in targeting:
+	for i:int in free:
+		var next_target: Node = in_targeting_range.pick_random()
+		in_targeting_range.erase(next_target)
 		targeting.append(next_target)
 
-
-func _on_max_area_entered(area) -> void:
-	if !area.get_parent().is_in_group("minions"):
+func _on_max_area_entered(area: Area2D) -> void:
+	if !area.is_in_group("minions"):
 		return
 	if !area.has_meta("owner"):
 		return
-	if targeting.size() < parent.Data["max_target_count"]:
-		targeting.append(area)
-	targets.append(area)
-	notify_property_list_changed()
-
-func _on_max_area_exited(area) -> void:
-	targeting.erase(area)
-	targets.erase(area)
+	in_targeting_range.append(area)
+	area.connect("dead",death)
+	retarget()
 	
-func _on_min_area_entered(area) -> void:
+func _on_min_area_entered(area: Area2D) -> void:
+	if !area.is_in_group("minions"):
+		return
 	targeting.erase(area)
-	targets.erase(area)
+	in_targeting_range.erase(area)
+	area.disconnect("dead",death)
+	retarget()
 
-func _on_min_area_exited(area) -> void:
-	if !area.get_parent().is_in_group("minions"):
+func _on_max_area_exited(area: Area2D) -> void:
+	if !area.is_in_group("minions"):
+		return
+	targeting.erase(area)
+	in_targeting_range.erase(area)
+	area.disconnect("dead",death)
+	retarget()
+
+func _on_min_area_exited(area: Area2D) -> void:
+	if !area.is_in_group("minions"):
 		return
 	if !area.has_meta("owner"):
 		return
-	targets.append(area)
+	in_targeting_range.append(area)
+	area.connect("dead",death)
+	retarget()
+	
+func death(area:Area2D) -> void:
+	targeting.erase(area)
+	in_targeting_range.erase(area)
+	retarget()
+	

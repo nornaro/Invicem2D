@@ -17,7 +17,13 @@ var collides:Array
 @export var showCollision:bool = false
 @onready var UI: Node
 @onready var scene:PackedScene = preload("res://Scenes/Building/building.tscn")
-	
+var mapsize:Vector2 = Vector2.ZERO
+
+func _ready() -> void:
+	var map = get_tree().get_first_node_in_group("Map")
+	if map:
+		mapsize = map.get_node("Ground/CollisionShape2D").shape.size
+
 func add_buildings_list(Items:Array) -> void:
 	for building:String in Items:
 		var instance:Node = Node.new()
@@ -122,7 +128,7 @@ func instance_scene_from_name(scene_name: String,parent_scene_name: String) -> i
 		old.get_node("Area").add_to_group(str(instance.get_node("Area").get_instance_id()))
 	instance.position = snap(get_global_mouse_position())
 	var client:Node = get_tree().get_first_node_in_group("Client")
-	instance.z_index = int(instance.position.y)+client.get_node("Map").mapsize.y/2 - 2000
+	instance.z_index = int(instance.position.y) + mapsize.y/2 - 2000
 	instance.name = scene_name
 	instance.add_to_group(parent_scene_name)
 	instance.modulate = placement_color
