@@ -3,16 +3,16 @@ extends Node2D
 var mapsize: Vector2 
 var network: Node
 
-func _ready():
+func _ready() -> void:
 	network = get_tree().get_first_node_in_group("Network")
 	z_index = -4096
 	mapsize = $Ground/CollisionShape2D.shape.size
 	var disable: Array[Vector2i] = []
 	disable.append(Vector2i(1,2))
-	$Top.set_disabled_points(disable)
+	#$Top.set_disabled_points(disable)
 
-func _on_out_area_entered(area):
-	var body = area.get_parent()
+func _on_out_area_entered(area:Area2D) -> void:
+	var body:Node = area.get_parent()
 	if !body.is_in_group("minions"):
 		return
 	body.Data["id"] = multiplayer.get_unique_id()

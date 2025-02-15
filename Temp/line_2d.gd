@@ -1,7 +1,6 @@
 extends Line2D
 
 func _ready():
-	print(points)
 	# Step 1: Find the center of the points
 	var center = Vector2()
 	for point in points:
@@ -20,4 +19,3 @@ func _ready():
 		var translated_point = point + Vector2(-15, -50)
 		translated_points.append(translated_point)
 	points = translated_points
-	print(points)

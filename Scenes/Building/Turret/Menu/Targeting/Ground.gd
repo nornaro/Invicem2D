@@ -18,7 +18,7 @@ func cal_max(max_range: float, offset: float = 5, multiplier: float = 10) -> flo
 	return (max_range + offset) * multiplier
 
 func _ready():
-	set_process(true)
+	set_physics_process(true)
 	$min/range.shape.radius = cal_min(Data.Upgrades.MinRange, Data.Upgrades.MaxRange)
 	$max/range.shape.radius = cal_max(Data.Upgrades.MaxRange)
 	if get_parent() is Node2D:

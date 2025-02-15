@@ -1,10 +1,10 @@
 extends RichTextLabel
 
-@onready var en = $"../EditName"
-@onready var ne = $"../EditName/NameEdit"
-@onready var cr = $"../EditName/ColorRect"
-@onready var u = $"../EditName/U"
-@onready var b = $"../EditName/B"
+@onready var en: Node = $"../EditName"
+@onready var ne: Node = $"../EditName/NameEdit"
+@onready var cr: Node = $"../EditName/ColorRect"
+@onready var u: Node = $"../EditName/U"
+@onready var b: Node = $"../EditName/B"
 
 func _ready() -> void:
 	connect("gui_input",_change_name_clicked)
@@ -20,15 +20,16 @@ func _change_name_clicked(_event: InputEvent) -> void:
 			
 func _change_name() -> void:
 	text = ne.text
+	get_tree().get_first_node_in_group("Network").set_player_name(text, Global.id)
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_text_newline"):
 		en.hide()
 
 func _change_name_color(color: Color) -> void:
-	var text_parts = ne.text.replace("]","|||").replace("[","|||").split("|||")
-	var colortext
-	for part in text_parts:
+	var text_parts: Array = ne.text.replace("]","|||").replace("[","|||").split("|||")
+	var colortext: String
+	for part: String in text_parts:
 		if part.contains("color="):
 			colortext = part
 	if colortext:

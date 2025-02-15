@@ -1,10 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://ctyric4lpymab"]
+[gd_scene load_steps=21 format=3 uid="uid://ctyric4lpymab"]
 
 [ext_resource type="Script" uid="uid://cowf2ns7h6dgv" path="res://Scenes/UI/ui.gd" id="1_2xbke"]
 [ext_resource type="PackedScene" uid="uid://bq6obs6f5somh" path="res://Scenes/UI/panel.tscn" id="2_pmm6b"]
 [ext_resource type="Script" uid="uid://c7huaqfr8wo23" path="res://Scenes/HealhBar/HealthBar.gd" id="3_gom3w"]
 [ext_resource type="Script" uid="uid://d3244g1sc5tol" path="res://Scenes/UI/Numbers.gd" id="3_xheqc"]
-[ext_resource type="SpriteFrames" uid="uid://v1gsbglnjjwd" path="res://Scenes/UI/icons8-gear.gif" id="3_yheyh"]
+[ext_resource type="SpriteFrames" uid="uid://67fgu6vd6tyj" path="res://Scenes/UI/icons8-gear.gif" id="3_yheyh"]
 [ext_resource type="Script" uid="uid://bgnau5o8ebki8" path="res://Scenes/UI/style.gd" id="4_a2yal"]
 [ext_resource type="Script" uid="uid://hmc1kpabukmg" path="res://Scenes/Multiplayer/MPHUD/menu_gear.gd" id="5_jfwrg"]
 [ext_resource type="Script" uid="uid://csmck50egdxlp" path="res://Scenes/UI/Confirm.gd" id="5_rq4vg"]
@@ -12,10 +12,11 @@
 [ext_resource type="Script" uid="uid://bushhfe162vjh" path="res://Scenes/UI/defeat.gd" id="9_s3gqk"]
 [ext_resource type="Script" uid="uid://dhwebox8xgonf" path="res://Scenes/UI/exit.gd" id="10_pmm6b"]
 [ext_resource type="PackedScene" uid="uid://d34mxo1ld0ik5" path="res://Scenes/UI/picker.tscn" id="12_vy225"]
-[ext_resource type="Texture2D" uid="uid://brw3g1aaw2run" path="res://Scenes/UI/Icon/Minions.png" id="13_fy0us"]
-[ext_resource type="Texture2D" uid="uid://6groxfytt8n8" path="res://Scenes/UI/Icon/Power.png" id="14_h6tq4"]
-[ext_resource type="Texture2D" uid="uid://17hmttpi7pih" path="res://Scenes/UI/Icon/Money.png" id="14_t7te2"]
+[ext_resource type="Texture2D" uid="uid://brssducs7hvo7" path="res://Scenes/UI/Icon/Minions.png" id="13_fy0us"]
+[ext_resource type="Texture2D" uid="uid://wliquk77be4b" path="res://Scenes/UI/Icon/Power.png" id="14_h6tq4"]
+[ext_resource type="Texture2D" uid="uid://dt0hmghsodug8" path="res://Scenes/UI/Icon/Money.png" id="14_t7te2"]
 [ext_resource type="Script" uid="uid://c7kkatl5wvl5y" path="res://Scenes/UI/player_name.gd" id="16_56q1t"]
+[ext_resource type="PackedScene" uid="uid://cuixthaxle0q0" path="res://leaderboard.tscn" id="16_fevae"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dq6f6"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -389,60 +390,7 @@ text = "100"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Leaderboard" type="TabContainer" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(300, 30)
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -305.0
-offset_top = 39.0
-offset_right = -5.0
-offset_bottom = 531.0
-grow_horizontal = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-tab_alignment = 2
-current_tab = 0
-tab_focus_mode = 1
-deselect_enabled = true
-
-[node name="Leaderboard" type="HBoxContainer" parent="Leaderboard"]
-self_modulate = Color(1, 1, 1, 0.5)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-theme_override_constants/separation = 0
-alignment = 1
-metadata/_tab_index = 0
-
-[node name="Name" type="RichTextLabel" parent="Leaderboard/Leaderboard"]
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "123123123123123"
-fit_content = true
-autowrap_mode = 0
-justification_flags = 131
-
-[node name="HP" type="RichTextLabel" parent="Leaderboard/Leaderboard"]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-size_flags_horizontal = 6
-text = "120"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-justification_flags = 131
-
-[node name="Score" type="RichTextLabel" parent="Leaderboard/Leaderboard"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "123123123"
-fit_content = true
-horizontal_alignment = 2
-justification_flags = 131
+[node name="Leaderboard" parent="." instance=ExtResource("16_fevae")]
 
 [node name="PlayerName" type="RichTextLabel" parent="."]
 anchors_preset = 10

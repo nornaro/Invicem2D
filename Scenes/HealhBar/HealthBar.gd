@@ -1,12 +1,12 @@
 extends ProgressBar
 
-var style_box = StyleBoxFlat.new()
+var style_box:StyleBoxFlat = StyleBoxFlat.new()
 
-func _ready():
+func _ready() -> void:
 	self.add_theme_color_override("theme_override_style/fill",Color(1,0,0,0.5))
 
-func colorpicker(percentage):
-	var rate
+func colorpicker(percentage: float) -> Color:
+	var rate: float
 	if percentage <= 0.2:
 		rate = percentage / 0.2
 		return Color(rate, 0, 0, 0.5)
@@ -20,7 +20,7 @@ func colorpicker(percentage):
 	return Color(rate, 1, rate, 0.5)
 
 
-func value_change(health):
+func value_change(health: int) -> void:
 	value = health
 	style_box.bg_color = colorpicker(value/max_value)
 	add_theme_stylebox_override("fill", style_box)

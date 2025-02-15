@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp4rs15tn50dm"]
+[gd_scene load_steps=3 format=3 uid="uid://bp4rs15tn50dm"]
 
 [ext_resource type="SpriteFrames" uid="uid://c07xdxik2q5fl" path="res://Scenes/Building/Turret/Type/T2/T2.tres" id="1_5cgxu"]
-[ext_resource type="PackedScene" uid="uid://d06p81aopg7re" path="res://Scenes/Projectiles/Targeting.tscn" id="1_t4afy"]
 [ext_resource type="Script" uid="uid://bxu8g4x1qmdfx" path="res://Scenes/Building/Turret/Turret.gd" id="2_hsq2p"]
-[ext_resource type="PackedScene" uid="uid://csdp3ol03ydma" path="res://Temp/line_2d.tscn" id="4_5cgxu"]
 
 [node name="Turret" type="AnimatedSprite2D"]
 sprite_frames = ExtResource("1_5cgxu")
@@ -14,13 +12,4 @@ metadata/Turret = true
 
 [node name="Trajectory" type="Node2D" parent="."]
 
-[node name="Targeting" parent="." instance=ExtResource("1_t4afy")]
-
-[node name="Line2D" parent="Targeting" instance=ExtResource("4_5cgxu")]
-position = Vector2(-15, -50)
-
 [node name="Projectiles" type="Node" parent="."]
-
-[connection signal="property_list_changed" from="Targeting" to="." method="_on_targeting_property_list_changed"]
-
-[editable path="Targeting"]

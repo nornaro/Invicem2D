@@ -12,10 +12,10 @@ func cal_max(max_range: float, offset: float = 5, multiplier: float = 10) -> flo
 	return (max_range + offset) * multiplier
 
 func _ready():
-	set_process(true)
+	set_physics_process(true)
 	parent = get_parent()
-
-func _process(delta):
+###unprocess
+func _physics_process(delta: float) -> void:
 	$min/range.shape.radius = cal_min(parent.Data.Upgrades.MinRange, parent.Data.Upgrades.MaxRange)
 	$max/range.shape.radius = cal_max(parent.Data.Upgrades.MaxRange)
 	retarget()

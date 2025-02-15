@@ -2,10 +2,10 @@ extends Area2D
 
 var start_position: Vector2 = Vector2.ZERO
 var dragging: bool = false
-var selected
-var border = 10
+var selected:bool = false
+var border:int = 10
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().call_group("Outline", "hide")
 		for node in get_tree().get_nodes_in_group("selected"):
@@ -24,13 +24,13 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		if !dragging:
 			return
-		var end_position = get_global_mouse_position()
-		var top_left = get_min_vector(start_position, end_position)
-		var size = get_size_vector(start_position, end_position)
+		var end_position:Vector2 = get_global_mouse_position()
+		var top_left:Vector2 = get_min_vector(start_position, end_position)
+		var size:Vector2 = get_size_vector(start_position, end_position)
 		if size.length() < 100:
 			return
 		$CollisionShape2D.show()
-		var collision_shape = $CollisionShape2D # Set position and size
+		var collision_shape:CollisionShape2D = $CollisionShape2D # Set position and size
 		collision_shape.position = top_left + size * 0.5
 		collision_shape.shape.extents = size * 0.5
 		$Fill.show()
@@ -43,13 +43,13 @@ func get_min_vector(v1: Vector2, v2: Vector2) -> Vector2:
 func get_size_vector(v1: Vector2, v2: Vector2) -> Vector2:
 	return Vector2(abs(v1.x - v2.x), abs(v1.y - v2.y))
 
-func _on_area_entered(area):
+func _on_area_entered(area:Area2D) -> void:
 	if !area.is_in_group("building"):
 		return
 	area.multiselect = true
 	area.set_selected(!area.selected)
 
-func _on_area_exited(area):
+func _on_area_exited(area:Area2D) -> void:
 	if !area.is_in_group("building"):
 		return
 	if !dragging:

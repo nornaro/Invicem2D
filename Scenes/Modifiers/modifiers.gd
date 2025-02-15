@@ -2,7 +2,7 @@ extends Timer
 
 
 
-@export var Data = {}
+@export var Data: Dictionary = {}
 var parent: Node
 
 func _ready() -> void:

@@ -13,6 +13,8 @@ config_version=5
 config/name="Invicem2D"
 run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+run/low_processor_mode=true
+run/low_processor_mode_sleep_usec=0
 boot_splash/image="res://Scenes/MainMenu/Home.png"
 config/icon="res://Invicem2D.png"
 
@@ -20,13 +22,19 @@ config/icon="res://Invicem2D.png"
 
 Global="*res://Scenes/global.gd"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1000
+window/size/mode=2
 window/size/initial_position_type=3
 window/size/extend_to_title=true
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [dotnet]
 
@@ -34,7 +42,7 @@ project/assembly_name="Invicem2D"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/astar2d_grid_node/plugin.cfg")
+enabled=PackedStringArray("res://addons/gd_profiler/plugin.cfg")
 
 [global_group]
 
@@ -149,21 +157,16 @@ MWU={
 ]
 }
 
-[layer_names]
-
-2d_physics/layer_32="Moise"
-
-[memory]
-
-limits/message_queue/max_size_mb=3200
-
 [physics]
 
 2d/run_on_separate_thread=true
+common/physics_ticks_per_second=30
+2d/physics_engine="Rapier2D"
+2d/solver/solver_iterations=8
+common/physics_interpolation=true
 
 [rendering]
 
-rendering_device/staging_buffer/block_size_kb=2560
-rendering_device/staging_buffer/max_size_mb=1280
-rendering_device/pipeline_cache/save_chunk_size_mb=30.0
-textures/vram_compression/import_etc2_astc=true
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
+textures/default_filters/anisotropic_filtering_level=0

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://iseo66on550f"]
+
+[node name="LeaderboardPlayer" type="HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.5)
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
+metadata/_tab_index = 0
+
+[node name="Name" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(160, 23)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+fit_content = true
+autowrap_mode = 0
+justification_flags = 131
+
+[node name="HP" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(40, 23)
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+justification_flags = 131
+
+[node name="Score" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(100, 23)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+fit_content = true
+horizontal_alignment = 2
+justification_flags = 131

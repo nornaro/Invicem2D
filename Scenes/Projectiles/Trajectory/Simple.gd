@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var Data = {}
+var Data: Dictionary = {}
 var target = null
 var velocity
 

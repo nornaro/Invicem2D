@@ -21,8 +21,8 @@ func host() -> void:
 	server_node = get_tree().get_first_node_in_group("Server")
 	uid = CryptoKey.generate_scene_unique_id()
 	Steam.lobby_created.connect(_on_lobby_created.bind())
-	multiplayer.peer_connected.connect(add_player)
-	multiplayer.peer_disconnected.connect(remove_player)
+	multiplayer.peer_connected.connect(_connected)
+	multiplayer.peer_disconnected.connect(_disconnected)
 	Steam.createLobby(Steam.LOBBY_TYPE_PUBLIC, 128)
 	set_process(true)
 
@@ -42,6 +42,12 @@ func initialize_steam():
 	if is_owned == false:
 		print("User does not own game!")
 
+func _connected(id) -> void:
+	add_player(id)
+	
+func _disconnected(id) -> void:
+	remove_player(id)
+
 func _on_lobby_created(connect: int, lobby_id):
 	print("On lobby created")
 	if connect == 1:
@@ -59,8 +65,8 @@ func _create_host():
 	var error = multiplayer_peer.create_host(6666)
 	if error == OK:
 		multiplayer.set_multiplayer_peer(multiplayer_peer)
-	else:
-		print("Error creating host: %s" % str(error))
+		return
+	print("Error creating host: %s" % str(error))
 
 func _process(delta: float) -> void:
 	Steam.run_callbacks()
@@ -76,8 +82,10 @@ func add_player(id):
 	var player_instance = player.instantiate()
 	player_instance.name = str(id)
 	server_node.add_child(player_instance, true)
-	Global.clients.append(id)
-	Global.clienthp[id] = 100
+	Global.clients[id] = {}
+	Global.clients[id]["hp"] = 100
+	Global.clients[id]["score"] = 0
+	Global.clients[id]["name"] = ""
 
 @rpc("any_peer")
 func remove_player(id):

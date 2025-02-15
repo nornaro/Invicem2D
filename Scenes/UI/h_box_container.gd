@@ -5,7 +5,6 @@ extends Control
 	#connect("mouse_exited",dim)
 	#
 #func undim() -> void:
-	#print("asd")
 	#mouse_filter = Control.MOUSE_FILTER_STOP
 	#add_theme_color_override("theme_override_style/fill",Color(0,0,0,0.5))
 	#
@@ -18,7 +17,6 @@ extends Control
 
 
 #func _on_mouse_entered() -> void:
-	#print("asd")
 	#mouse_filter = Control.MOUSE_FILTER_STOP
 	#add_theme_color_override("theme_override_style/fill",Color(0,0,0,0.5))
 #
@@ -29,5 +27,4 @@ extends Control
 #
 #
 #func _on_gui_input(event: InputEvent) -> void:
-	#print("asd")
 	#pass # Replace with function body.

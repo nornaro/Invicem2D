@@ -20,9 +20,9 @@ func cal_max(max_range: float, offset: float = 5, multiplier: float = 10) -> flo
 
 func _ready():
 	parent = get_parent()
-	set_process(true)
-
-func _process(delta):
+	set_physics_process(true)
+###unprocess
+func _physics_process(delta):
 	$min/range.shape.radius = cal_min(parent.Data.Upgrades.MinRange, Data.Upgrades.MaxRange)
 	$max/range.shape.radius = cal_max(parent.Data.Upgrades.MaxRange)
 

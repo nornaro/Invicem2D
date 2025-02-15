@@ -9,7 +9,7 @@ func _ready() -> void:
 		return
 	var types = data[name+"s"].keys()
 	for type in types:
-		var instance = inventory.instantiate()
+		var instance:Node = inventory.instantiate()
 		instance.name = type
 		add_child(instance)
 		fill(type)
@@ -17,10 +17,9 @@ func _ready() -> void:
 func fill(type):
 	var minions = Global.Data.Minions[type].keys()
 	for minion in minions:
-		var instance = databox.instantiate()
+		var instance:Node = databox.instantiate()
 		instance.name = minion
 		var data = Global.Data.Minions
-		print(data)
 		var keys = Global.Data.Minions[type][minion].keys()
 		var sprite = data[type][minion][keys.pick_random()]
 		instance.get_node("HeadShot").texture = sprite.get_frame_texture("Idle",0)

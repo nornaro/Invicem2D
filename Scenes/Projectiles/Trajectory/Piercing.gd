@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var Data = {}
+var Data: Dictionary = {}
 var target = null  
 
 func _ready():
@@ -14,7 +14,6 @@ func _ready():
 	var speed = 50 * (Data.ProjectileSpeed + 10)
 	$AnimatedSprite2D.scale *= 0.5+0.5/Data.Size
 	position += Vector2(1,0) * randf_range(-Data.Size,Data.Size)*2
-	print($AnimatedSprite2D.scale)
 	linear_velocity = ((
 		(tp-global_position) * speed + 
 		target.get_parent().linear_velocity*sqrt(speed)*5).normalized() * speed)

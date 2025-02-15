@@ -24,11 +24,11 @@ func lobby() -> void:
 	initialize_response = Steam.steamInitEx()
 	if initialize_response.status != status:
 		status = initialize_response.status
-		print(initialize_response.verbal)
+		print_debug(initialize_response.verbal)
 	if initialize_response.status:
 		return
 	set_process(true)
-	Steam.lobby_match_list.connect(fill_steam_lobby_menu)
+	Steam.lobby_match_list.connect(_fill_steam_lobby_menu)
 
 func join() -> void:
 	Steam.lobby_joined.connect(_on_lobby_joined.bind())
@@ -61,8 +61,8 @@ func _on_lobby_joined(lobby: int, _permissions: int, _locked: bool, response: in
 func connect_socket(_steam_id: int):
 	var error = multiplayer_peer.create_client(steam_id, 6666)
 	if error != OK:
-		print("Error creating client: %s" % str(error))
-	print("Connecting peer to host...")
+		push_error("Error creating client: %s" % str(error))
+	print_rich("Connecting peer to host...")
 	multiplayer.set_multiplayer_peer(multiplayer_peer)
 
 @rpc("any_peer")
@@ -82,9 +82,10 @@ func disconnected():
 func add_player(id):
 	var player_instance = player.instantiate()
 	player_instance.name = str(id)
+	Global.id = id
 	server_node.add_child(player_instance)
-	
-func _process(delta):
+###unprocess
+func _physics_process(delta):
 	if !search:
 		return
 	refresh -= delta
@@ -96,18 +97,17 @@ func _process(delta):
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
 	Steam.addRequestLobbyListStringFilter("game", Global.game, Steam.LOBBY_COMPARISON_EQUAL)
 
-func fill_steam_lobby_menu(lobbies: Array) -> void:
+func _fill_steam_lobby_menu(lobbies: Array) -> void:
 	var packet: Dictionary
 	for l in lobbies:
 		if Global.server_id != "" and not (
 				str(l).contains(Global.server_id) or 
 				str(Steam.getLobbyData(l, "game")).contains(Global.server_id)):
 			return
-		#print(Steam.getLobbyData(l, "game")," ",Global.game)
 		if Steam.getLobbyData(l, "game") != Global.game:
 			return
 		var players = []
-		for i in range(Steam.getNumLobbyMembers(l)):
+		for i: int in range(Steam.getNumLobbyMembers(l)):
 			players.append( Steam.getPlayerNickname(Steam.getLobbyMemberByIndex(l,i)))
 
 		var details = Steam.getServerDetails(l,0)
@@ -118,7 +118,6 @@ func fill_steam_lobby_menu(lobbies: Array) -> void:
 		packet["Players"] = players
 		packet["Id"] = multiplayer.get_unique_id()
 		packet["Name"] = Steam.getLobbyData(l, "name")
-		#print(Steam.getServerDetails(l,l))
 		packet["Latency"] = Steam.getServerDetails(l,0).ping
 		Global.servers[l] = packet
 
@@ -138,7 +137,6 @@ func fill_steam_lobby_menu(lobbies: Array) -> void:
 		
 		
 		
-		#print(l,": ",lobby[lobby.keys()[2]])
 
 ##Steam
 #var player: PackedScene = preload("res://Scenes/Client/2d_client.tscn")
@@ -163,7 +161,6 @@ func fill_steam_lobby_menu(lobbies: Array) -> void:
 	#Steam.requestLobbyList()
 #
 #func fill_steam_lobby_menu(lobbies: Array) -> void:
-	#print(lobbies)
 	#var lobby = {}
 	#for child in %Lobby.get_children():
 		#lobby[child.name] = child

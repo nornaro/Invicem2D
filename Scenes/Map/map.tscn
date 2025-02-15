@@ -1,11 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://c4ma53dgi0oje"]
+[gd_scene load_steps=27 format=3 uid="uid://c4ma53dgi0oje"]
 
 [ext_resource type="Script" uid="uid://mn612ovgeogq" path="res://Scenes/Map/map.gd" id="1_0bqwf"]
 [ext_resource type="PackedScene" uid="uid://cbm6uy5irqlad" path="res://Scenes/Map/Ground/ground.tscn" id="2_m0gtq"]
 [ext_resource type="PackedScene" uid="uid://buq6q3rkgcyaa" path="res://Scenes/Map/Spawn/spawn.tscn" id="3_sk368"]
 [ext_resource type="PackedScene" uid="uid://cq13xgootxplk" path="res://Scenes/Map/In/in.tscn" id="4_65k1d"]
 [ext_resource type="PackedScene" uid="uid://iwp2p55pke5x" path="res://Scenes/Map/Out/out.tscn" id="5_oy5h8"]
-[ext_resource type="Script" uid="uid://col4cvc855xl0" path="res://addons/astar2d_grid_node/astar2d_grid_node.gd" id="6_sosc1"]
 [ext_resource type="PackedScene" uid="uid://c34xvf4i48axf" path="res://Scenes/Map/Selection/selection_rectangle.tscn" id="7_v3nu7"]
 [ext_resource type="PackedScene" uid="uid://b2qsbye225y0r" path="res://Scenes/Map/Road/road.tscn" id="9_qu23i"]
 
@@ -116,28 +115,20 @@ position = Vector2(-350, 0)
 position = Vector2(0, 0)
 
 [node name="In" parent="." groups=["In"] instance=ExtResource("4_65k1d")]
-visible = false
 position = Vector2(1704, 0)
 
 [node name="Out" parent="." groups=["Out"] instance=ExtResource("5_oy5h8")]
-visible = false
+position = Vector2(-850, 0)
 
 [node name="Top" type="Node2D" parent="."]
 visible = false
 position = Vector2(-800, -450)
-script = ExtResource("6_sosc1")
-grid_size = Vector2i(65, 14)
-cell_size = Vector2(25, 25)
 
 [node name="Bot" type="Node2D" parent="."]
 visible = false
 position = Vector2(-800, 130)
-script = ExtResource("6_sosc1")
-grid_size = Vector2i(65, 14)
-cell_size = Vector2(25, 25)
 
 [node name="SelectionRectangle" parent="." instance=ExtResource("7_v3nu7")]
-visible = false
 
 [node name="Fill" parent="SelectionRectangle" index="1"]
 metadata/_edit_use_anchors_ = true

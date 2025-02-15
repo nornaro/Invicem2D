@@ -1,9 +1,9 @@
 extends StaticBody2D
 
-@onready var minion = preload("res://Scenes/Minions/minion.tscn")
+@onready var minion:PackedScene = preload("res://Scenes/Minions/minion.tscn")
 
 
-@export var Data = {
+@export var Data: Dictionary = {
 	"Properties": {
 		"Power": "Normal", # Can put a barrack to overdrive for higher cost, it can disable, hurt or destroy barrack
 		"Projectile": "FireBall",
@@ -25,7 +25,7 @@ extends StaticBody2D
 		"Size": 1, # 4 # Increase Size&HP or reduce Size&HP and hitbox with it, % or amount
 		"Shield": 0, # 5 # n hit or %HP barrier
 		"Regeneration": 0, # 6 # As time passes, constant % or amount HP regen, or % regained on hit, or increase Size&HP, or regain % HP at % HP if not executed
-		"Movement": 0, # 7 # ground vs air
+		"Movement": 0, # 7 # ground vs aííir
 		"Efficiency": 0, # 8 # Energy efficiency of the Barrack
 		"SpeedBoost": 0, # 9 # If not eliminated in time, significantly increases speed for the finish
 		
@@ -39,10 +39,10 @@ extends StaticBody2D
 		##" ": 0, # 17 # Revives at % of the HP once, or HP has to be recuced to 0 multiple times, or Shatter and splits into n pieces with portion of the HP m times
 	},
 }
-@export var Modifier = {}
+@export var Modifier: Dictionary = {}
 
-func _ready():
-	var group = get_parent().name
+func _ready() -> void:
+	var group: String = get_parent().name
 	add_to_group(group)
 		
 	##Debug
@@ -50,15 +50,15 @@ func _ready():
 		continue
 	Data.Equip.Minion[1] = Global.Data.Minions["Chibi"].keys().pick_random()
 
-func spawn():
-	var spawnin = get_tree().get_first_node_in_group("Spawn")
-	var minions = get_tree().get_first_node_in_group("Minions")
+func spawn() -> void:
+	var spawnin: Node = get_tree().get_first_node_in_group("Spawn")
+	var minions: Node = get_tree().get_first_node_in_group("Minions")
 	
 	if is_in_group("temp"):
 		return
 	if Data.Equip.Minion[1] == "Select":
 		return
-	var instance = minion.instantiate()
+	var instance:Node = minion.instantiate()
 	instance.global_position = Vector2(spawnin.global_position.x,randi_range(-spawnin.scale.y,spawnin.scale.y))/2
 	instance.name = str(instance.get_instance_id())
 	instance.Data["Spawn"] = Data.Upgrades
@@ -66,18 +66,3 @@ func spawn():
 	instance.Data.merge(Data.Properties)
 	instance.Data.merge(Data.Equip)
 	minions.add_child(instance)
-
-func _on_area_2d_area_entered(_area):
-	pass
-	
-func _on_area_2d_area_exited(_area):
-	pass
-	
-func _on_area_2d_input_event(_viewport, _event, _shape_idx):
-	pass
-	
-func _on_area_2d_mouse_entered():
-	pass
-	
-func _on_area_2d_mouse_exited():
-	pass

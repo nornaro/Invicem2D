@@ -18,9 +18,9 @@ func cal_max(max_range: float, offset: float = 5, multiplier: float = 10) -> flo
 
 func _ready():
 	parent = get_parent()
-	set_process(true)
-
-func _process(delta):
+	set_physics_process(true)
+###unprocess
+func _physics_process(delta):
 	$min/range.shape.radius = cal_min(parent.Data.Upgrades.MinRange, parent.Data.Upgrades.MaxRange)
 	$max/range.shape.radius = cal_max(parent.Data.Upgrades.MaxRange)
 
@@ -29,7 +29,7 @@ func _process(delta):
 	for target in targets:
 		if !is_instance_valid(target):
 			targets.erase(target)
-	for i in range(targeting.size()):
+	for i: int in range(targeting.size()):
 		targeting[i] = retarget(targeting[i])
 
 func retarget(target):

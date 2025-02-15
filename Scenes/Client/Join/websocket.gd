@@ -6,7 +6,6 @@ var socket = WebSocketPeer.new()
 func _ready():
 	var err = socket.connect_to_url(websocket_url)
 	if err != OK:
-		await get_tree().create_timer(2).timeout
 		socket.send_text("Test packet")
 		return
 	push_error("Unable to connect")

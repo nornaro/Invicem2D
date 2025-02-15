@@ -125,7 +125,6 @@ extends Node
 	#Steam.requestLobbyList()
 #
 #func fill_steam_lobby_menu(lobbies: Array) -> void:
-	#print(lobbies)
 	#var lobby = {}
 	#for child in %Lobby.get_children():
 		#lobby[child.name] = child
@@ -173,7 +172,7 @@ extends Node
 ### Common
 #@rpc("any_peer")
 #func add_player(id: int):
-	#var instance = multiplayer_client.instantiate()
+	#var instance:Node = multiplayer_client.instantiate()
 	#instance.player_id = id
 	#instance.name = str(id)
 	#server_node.add_child(instance, true)
@@ -186,4 +185,3 @@ extends Node
 #
 #@rpc("any_peer", "call_remote", "reliable")
 #func my_relay_rpc(data: String):
-	#print(data)

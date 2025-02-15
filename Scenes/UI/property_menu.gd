@@ -1,30 +1,30 @@
 extends GridContainer
 
-var root = "res://Scenes/Building/"
-var scene = preload("res://Scenes/UI/item_list.tscn")
-var button = preload("res://Scenes/UI/property_menu_button.tscn")
-var icon_path = "res://Scenes/UI/Icon/"
+var root: String = "res://Scenes/Building/"
+var scene: PackedScene = preload("res://Scenes/UI/item_list.tscn")
+var button: PackedScene = preload("res://Scenes/UI/property_menu_button.tscn")
+var icon_path: String = "res://Scenes/UI/Icon/"
 
 func _ready() -> void:
-	for i in range(4):
-		var instance = button.instantiate()
+	for i: int in range(4):
+		var instance:Node = button.instantiate()
 		instance.name = str(i+1)
-		instance.connect("pressed",list)
+		instance.connect("pressed",_list)
 		add_child(instance)
 	clear()
 
 func fill() -> void:
 	clear()
-	var source = get_tree().get_first_node_in_group("selected")
+	var source: Node = get_tree().get_first_node_in_group("selected")
 	var data: Dictionary = source.get_parent().Data[name]
 	var keys: Array = data.keys()
-	for i in range(data.size()):
-		var node = get_node(str(i+1))
+	for i: int in range(data.size()):
+		var node: Node = get_node(str(i+1))
 		node.tooltip_text = keys[i]
 		set_icon(node,keys[i])
-		list(source,node,data,keys[i])
+		_list(source,node,data,keys[i])
 		
-func set_icon(node,icon):
+func set_icon(node: Node,icon: String) -> void:
 	if Global.RL.file_exists(icon_path+icon+".png"):
 		node.texture_normal = Global.RL.load(icon_path+icon+".png")
 		return
@@ -33,11 +33,11 @@ func set_icon(node,icon):
 		return
 	node.texture_normal = ImageTexture.new(	)
 	
-func list(source,node,data,key):
+func _list(source: Node,node: Node,data: Dictionary,key: String) -> void:
 	var itemlist:ItemList = scene.instantiate()
-	var path = root + source.get_parent().get_parent().name + "/Menu/" + key
-	var menu_list = Global.RL.get_files_at(path)
-	if !list:
+	var path: String = root + source.get_parent().get_parent().name + "/Menu/" + key
+	var menu_list: Array = Global.RL.get_files_at(path)
+	if !_list:
 		return
 	for item:String in menu_list:
 		if !item.ends_with("gd"):

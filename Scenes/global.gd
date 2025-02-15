@@ -2,10 +2,15 @@ extends Node
 
 const GAME_ID:String = "xcNhLTRbBH"
 
-@export var style = "Sci-fi"
+@export var style:String = "Sci-fi"
 var peer: PacketPeer
-var clients: Array
-var clienthp: Dictionary
+var clients: Dictionary = {
+	#"id": {
+		#"name": "",
+		#"hp": 0,
+		#"score": 0,
+	#}
+}
 var mp: bool = true
 var Data: Dictionary
 var Currecny: Dictionary = {
@@ -14,18 +19,23 @@ var Currecny: Dictionary = {
 	"Zeny": 100,
 }
 
-var RL = ResLoad.new()
+var RL:ResLoad = ResLoad.new()
+var threads:Dictionary = {
+	"minion":Thread.new(),
+	"projectile":Thread.new(),
+	"building":Thread.new(),
+}
+var servers:Dictionary = {}
+var join_data:String
+var server_id:String =""
+var id:int
+var C:Node
+var game:String = "InvicemTD"
 
-var servers = {}
-var join_data
-var server_id =""
-var C
-var game = "InvicemTD"
-
-func console(txt) -> void:
+func console(txt:String) -> void:
 	if !C:
 		C = get_tree().get_first_node_in_group("Console")
 	if !C:
 		return
-	C += str(txt) + "\n"
+	C.text += str(txt) + "\n"
 	

@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://kggue0ptdok4"]
 
-[ext_resource type="Texture2D" uid="uid://nxq4f25gh6oq" path="res://Scenes/Building/Castle/Styles/Fantasy/Castle.png" id="1_6g8ne"]
-[ext_resource type="Texture2D" uid="uid://b2k3p6q0a1gae" path="res://Scenes/Building/Castle/Styles/Sci-fi/Castle2.png" id="2_yshen"]
+[ext_resource type="Texture2D" uid="uid://b2df227f681nh" path="res://Scenes/Building/Castle/Styles/Fantasy/Castle.png" id="1_6g8ne"]
+[ext_resource type="Texture2D" uid="uid://cwjcyn4cf8mch" path="res://Scenes/Building/Castle/Styles/Sci-fi/Castle2.png" id="2_yshen"]
 
 [resource]
 animations = [{

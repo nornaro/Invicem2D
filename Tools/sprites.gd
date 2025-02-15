@@ -10,7 +10,7 @@ var sprites: Array
 func _ready():
 	return
 	# Automatically start the animation processing when the scene is ready (after F6)
-	print("Starting animation process...")
+	print_rich("Starting animation process...")
 	sprites = Global.RL.get_directories_at(folder_base_path)
 	for sprite in sprites:
 		process_animations(sprite)
@@ -19,7 +19,7 @@ func process_animations(sprite):
 	var base_resource : SpriteFrames = Global.RL.load(base_resource_path)
 	
 	if base_resource == null:
-		print("Failed to load base resource (0.tres).")
+		push_warning("Failed to load base resource (0.tres).")
 		return
 	
 	# Assuming base_resource is a dictionary or array containing animation names
@@ -32,7 +32,7 @@ func process_animations(sprite):
 		
 		var files = get_files_in_directory(sprite_sequence_path)
 		if files.is_empty():
-			print("No PNG files found for animation: " + animation)
+			push_warning("No PNG files found for animation: " + animation)
 			continue
 		
 		# Add the PNG files to the spriteframes
@@ -43,16 +43,16 @@ func process_animations(sprite):
 				frames.append(texture)
 		
 		# Add frames to the animation
-		for i in range(frames.size()):
+		for i: int in range(frames.size()):
 			sprite_frames.add_frame(animation, frames[i])
 
 		# Save the spriteframes as a .tres file
 		var output_path = folder_base_path + sprite + ".tres"
 		ResourceSaver.save(sprite_frames, output_path)
-		print("Saved spriteframes for " + sprite + " to " + output_path)
+		print_rich("Saved spriteframes for " + sprite + " to " + output_path)
 
 	# Quit the application after processing is complete
-	print("Process complete. Quitting the game.")
+	print_rich("Process complete. Quitting the game.")
 	get_tree().quit()
 
 

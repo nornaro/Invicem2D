@@ -36,21 +36,21 @@ func loading_done():
 	var timeB = Time.get_ticks_msec()
 	print("Took: ", timeB-timeA)
 
-func _process(delta):
-	var all_loaded = true
-	# Check the status of loading
-	for path:String in loading_resources.keys():
-		var status = ResourceLoader.load_threaded_get_status(path)
-		if status == ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
-			var resource = ResourceLoader.load_threaded_get(path)
-			var sub_path = path.split(base_path)[1]
-			var path_parts = sub_path.split("/")
-			var type = path_parts[0]
-			var minion_parts = path_parts[1].split(".")[0].split("_")
-			
-			minions[type][minion_parts[0]][minion_parts[1]] = resource
-			loading_resources.erase(path)  # Resource is done loading
-	
-		# Emit signal when all resources are loaded
-		if loading_resources.is_empty():
-			emit_signal("resources_loaded")
+#func _physics_process(delta):
+	#var all_loaded = true
+	## Check the status of loading
+	#for path:String in loading_resources.keys():
+		#var status = ResourceLoader.load_threaded_get_status(path)
+		#if status == ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
+			#var resource = ResourceLoader.load_threaded_get(path)
+			#var sub_path = path.split(base_path)[1]
+			#var path_parts = sub_path.split("/")
+			#var type = path_parts[0]
+			#var minion_parts = path_parts[1].split(".")[0].split("_")
+			#
+			#minions[type][minion_parts[0]][minion_parts[1]] = resource
+			#loading_resources.erase(path)  # Resource is done loading
+	#
+		## Emit signal when all resources are loaded
+		#if loading_resources.is_empty():
+			#emit_signal("resources_loaded")

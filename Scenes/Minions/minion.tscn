@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://dur4d3pyb716n" path="res://Scenes/Minions/minion.gd" id="1_xsgkh"]
 [ext_resource type="SpriteFrames" uid="uid://cn0gtx28tbird" path="res://Scenes/Minions/Chibi/Fallen_3.tres" id="3_8v04g"]
 [ext_resource type="Script" uid="uid://da2j13dlftb2n" path="res://Scenes/Minions/Area2D.gd" id="3_u5uqm"]
-[ext_resource type="Texture2D" uid="uid://ceny62aeietv3" path="res://Scenes/Shield/pipo-btleffect208h_480.png" id="4_t3dqa"]
-[ext_resource type="Texture2D" uid="uid://238snm4ejvhy" path="res://Scenes/Shield/pipo-btleffect206h_480.png" id="5_s68jy"]
-[ext_resource type="Texture2D" uid="uid://bhyqbfabcqmj1" path="res://Scenes/Shield/pipo-btleffect206_480.png" id="6_o6qx1"]
+[ext_resource type="Texture2D" uid="uid://jxiuo8m58ada" path="res://Scenes/Shield/pipo-btleffect208h_480.png" id="4_t3dqa"]
+[ext_resource type="Texture2D" uid="uid://c6uk32etep4to" path="res://Scenes/Shield/pipo-btleffect206h_480.png" id="5_s68jy"]
+[ext_resource type="Texture2D" uid="uid://b2upkwlx8w3cv" path="res://Scenes/Shield/pipo-btleffect206_480.png" id="6_o6qx1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7goe2"]
 radius = 4.0

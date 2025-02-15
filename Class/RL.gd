@@ -12,16 +12,16 @@ func list_directory(directory_path: String) -> Array:
 
 func get_files_at(directory_path: String) -> Array:
 	var list:Array
-	var cotents = ResourceLoader.list_directory(directory_path)
-	for c in cotents:
+	var cotents:Array = ResourceLoader.list_directory(directory_path)
+	for c:String in cotents:
 		if !c.ends_with("/"):
 			list.append(c)
 	return list
 
 func get_directories_at(directory_path: String) -> Array:
 	var list:Array
-	var cotents = ResourceLoader.list_directory(directory_path)
-	for c in cotents:
+	var cotents:PackedStringArray = ResourceLoader.list_directory(directory_path)
+	for c:String in cotents:
 		if c.ends_with("/"):
 			list.append(c.replace("/",""))
 	return list

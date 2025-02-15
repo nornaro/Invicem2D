@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ds57nc6h7eej5"]
+[gd_scene load_steps=9 format=3 uid="uid://ds57nc6h7eej5"]
 
 [ext_resource type="Script" uid="uid://dpybx6sa4juvj" path="res://Scenes/main.gd" id="1_fvccw"]
 [ext_resource type="Script" uid="uid://boilt1hwandwc" path="res://Docs/Bugs.gd" id="2_lg1kx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://csturuooqdhlg" path="res://Scenes/sec_steps.gd" id="5_kry3j"]
 [ext_resource type="Script" uid="uid://fwg07imldc3k" path="res://Docs/modifiers.gd" id="6_21xkr"]
 [ext_resource type="Script" uid="uid://byvwrl58i5gg1" path="res://Docs/kafra.gd" id="7_6bp64"]
+[ext_resource type="Script" uid="uid://ddfxbqfnqowys" path="res://addons/gd_profiler/profiler/gd_profiler.gd" id="8_344ge"]
 
 [node name="Main" type="Camera2D" groups=["Main"]]
 anchor_mode = 0
@@ -31,3 +32,12 @@ script = ExtResource("6_21xkr")
 script = ExtResource("7_6bp64")
 
 [node name="Server" type="Node" parent="." groups=["Server"]]
+
+[node name="GodotProfiler" type="Panel" parent="."]
+top_level = true
+clip_contents = true
+offset_right = 200.0
+offset_bottom = 250.0
+script = ExtResource("8_344ge")
+highest = 100
+metadata/_custom_type_script = ExtResource("8_344ge")

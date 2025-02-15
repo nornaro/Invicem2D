@@ -1,33 +1,32 @@
 extends Area2D
 
-var id
-var type
-var multiselect
-var selected
-var selection_rectangle = CollisionShape2D.new()
+var type:String
+var multiselect:bool=false
+var selected:bool = false
+var selection_rectangle:CollisionShape2D = CollisionShape2D.new()
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Ctrl"):
 		multiselect = true
 	if event.is_action_released("Ctrl"):
 		multiselect = false
 
 func set_data(data: Dictionary) -> void:
-	var parent = get_parent()
+	var parent:Node = get_parent()
 	parent.Data.Properties.merge(data,true)
 	if data.has("Targeting"):
 		parent.set_targeting()
 		
 func upgrade(data: String) -> void:
-	var value = 1
+	var value:int = 1
 	if Input.is_key_pressed(KEY_CTRL):
 		value = 16
-	var parent = get_parent()
+	var parent:Node = get_parent()
 	if parent.Data.Upgrades[data] >= 16:
 		return
 	parent.Data.Upgrades[data] = clamp(parent.Data.Upgrades[data]+value ,parent.Data.Upgrades[data], 16)
 
-func set_selected(selection):
+func set_selected(selection:bool) -> void:
 	if selection:
 		_make_exclusive()
 		add_to_group("selected")
@@ -42,29 +41,23 @@ func set_selected(selection):
 	selected = selection
 #	emit_signal("selection_toggled",selected)
 
-func _make_exclusive() :
+func _make_exclusive() -> void:
 	if multiselect:
 		return
 	get_tree().call_group("selected", "set_selected", false)
 
-func _on_input_event(_viewport, event, _shape_idx):
+func _on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
 	if get_tree().get_nodes_in_group("temp"):
 		return
 	if event.is_action_pressed("LMB"):
 		set_selected(!selected)
 
-func _on_area_entered(area):
+func _on_area_entered(area:Area2D) -> void:
 	if !get_parent().is_in_group("temp"):
 		return
 	if !area.is_in_group("building"):
 		return
 	area.add_to_group(str(get_instance_id()))
 
-func _on_area_exited(area):
+func _on_area_exited(area:Area2D) -> void:
 	area.remove_from_group(str(get_instance_id()))
-
-func _on_mouse_entered():
-	pass
-
-func _on_mouse_exited():
-	pass

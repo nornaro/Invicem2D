@@ -1,8 +1,8 @@
 @tool
 extends Button
 
-var ready_check = []
-@onready var main_circle = preload("main_circle.tscn")
+var ready_check:Array = []
+@onready var main_circle:PackedScene = preload("main_circle.tscn")
 
 #func _ready() -> void:
 	#connect("pressed", _on_pressed)
@@ -15,12 +15,6 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	$Bubble.hide()
 
-
-#func _process(delta: float) -> void:
-	#if Engine.is_editor_hint():
-		#text = name
-
-
 func _on_pressed() -> void:
 	get_tree().call_group("MainCircle","hide")
 	if $MainCircle:
@@ -28,7 +22,7 @@ func _on_pressed() -> void:
 	#get_tree().call_group(name,"main")
 
 func load_buttons(data: Array) -> void:
-	var instance = main_circle.instantiate()
+	var instance:Node = main_circle.instantiate()
 	add_child(instance)
 	name = data[1]
 	text = name

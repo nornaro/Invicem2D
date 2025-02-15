@@ -1,15 +1,15 @@
 extends GridContainer
 
-var button = preload("res://Scenes/UI/info_panel.tscn")
+var button:PackedScene = preload("res://Scenes/UI/info_panel.tscn")
 
 func _ready() -> void:
-	for i in range(3):
-		var instance = button.instantiate()
+	for i: int in range(3):
+		var instance: Node = button.instantiate()
 		instance.name = str(i+1)
 		add_child(instance)
 		
 func fill() -> void:
-	var source = get_tree().get_first_node_in_group("selected")
+	var source: Node = get_tree().get_first_node_in_group("selected")
 	if !source:
 		return
 	var data: Dictionary = source.get_parent().Data
@@ -18,19 +18,19 @@ func fill() -> void:
 	fill_2(data)
 	fill_3(data)
 	
-func fill_1(_data):
+func fill_1(_data:Dictionary) -> void:
 	pass
-func fill_2(_data):
+func fill_2(_data:Dictionary) -> void:
 	pass
 	
-func fill_3(data):
+func fill_3(data:Dictionary) -> void:
 	get_node(str(3) + "/" + str(1)).text = str(data["Properties"]).replace("{", "").replace("}", "").replace("\"", "").replace(",","\n")
 	get_node(str(3) + "/" + str(1)).tooltip_text = "Properties"
 	var text: String = ""
-	var tab = 2  # Reset `tab` to 2 at the start of the method
-	var line_count = 0  # To track the number of lines
+	var tab:int = 2  # Reset `tab` to 2 at the start of the method
+	var line_count:int = 0  # To track the number of lines
 
-	for line in str(data["Upgrades"]).replace("{", "").replace("}", "").replace("\"", "").split(","):
+	for line:String in str(data["Upgrades"]).replace("{", "").replace("}", "").replace("\"", "").split(","):
 		text += line
 		line_count += 1
 
@@ -49,15 +49,15 @@ func fill_3(data):
 		get_node(str(3) + "/" + str(tab)).text = text
 		get_node(str(3) + "/" + str(tab)).tooltip_text = "Upgrades"
 
-func _process(_delta: float) -> void:
+func  _physics_process(_delta: float) -> void:
 	fill()
 
 
 func clear() -> void:
-	for child in get_children():
+	for child:Node in get_children():
 		child.tooltip_text = name
-		get_node(str(1)).text = ""
-		get_node(str(2)).text = ""
-		get_node(str(3)).text = ""
+		child.get_node(str(1)).text = ""
+		child.get_node(str(2)).text = ""
+		child.get_node(str(3)).text = ""
 		#for grandchild in child.get_children():
 			#grandchild.queue_free()

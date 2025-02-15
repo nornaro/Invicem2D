@@ -4,7 +4,7 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_physical_key_pressed(KEY_K):
 		visible = !visible
 		
-func equip(window,tab,data,_source,category):
+func equip(window: String,tab: int,data: Dictionary,_source: String,category: String) -> void:
 	for child in get_children():
 		if child.name != window:
 			child.hide()
@@ -14,7 +14,7 @@ func equip(window,tab,data,_source,category):
 			return
 		child.set_current_tab(tab)
 		$TabBar.clear_tabs()
-	for key in data.keys():
+	for key: String in data.keys():
 		$TabBar.add_tab(key)
 		if !category:
 			continue

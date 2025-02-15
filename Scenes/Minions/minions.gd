@@ -2,50 +2,51 @@ extends Node
 
 var loading_resources : Dictionary = {}
 var minions : Dictionary = {}
-var counter = 0
-var base_path = "res://Scenes/Minions/"
-var timeA
+var counter:int = 0
+var base_path:String = "res://Scenes/Minions/"
+var timeA:int
 
 # Custom signal to notify when all resources are loaded
 signal resources_loaded
 signal done
 
-func _ready():
+func _ready() -> void:
 	timeA = Time.get_ticks_msec()
 	load_minions()  # Make sure to call load_minions when the node is ready
 
-func load_minions():
-	var types = Global.RL.get_directories_at(base_path)
+func load_minions() -> void:
+	var types:Array = Global.RL.get_directories_at(base_path)
 	
-	for type in types:
+	for type:String in types:
 		minions[type] = {}
-		for minion in Global.RL.get_directories_at(base_path + type):
+		for minion:String in Global.RL.get_directories_at(base_path + type):
 			counter += 1
-			var minion_parts = minion.split("_")  # Only split once
+			var minion_parts:Array = minion.split("_")  # Only split once
 			if not minions[type].has(minion_parts[0]):
 				minions[type][minion_parts[0]] = {}
 
-			var path = base_path + type + "/" + minion + ".tres"
+			var path:String = base_path + type + "/" + minion + ".tres"
 			# Start loading resource in a separate thread
 			loading_resources[path] = ResourceLoader.load_threaded_request(path, "SpriteFrames")
 	
 	# Wait for all resources to load asynchronously (via custom signal)
 	await resources_loaded
 	Global.Data["Minions"] = minions
-	var timeB = Time.get_ticks_msec()
-	print("Minion loading took: ", (timeB-timeA)/1000.0,"ms")
+	var timeB:int = Time.get_ticks_msec()
+	print_debug("Minion loading took: ", (timeB-timeA)/1000.0,"ms")
 	emit_signal("done")
+	set_script("")
 
-func _process(_delta):
+func _physics_process(_delta: float) -> void:
 	for path:String in loading_resources.keys():
-		var status = ResourceLoader.load_threaded_get_status(path)
+		var status:ResourceLoader.ThreadLoadStatus = ResourceLoader.load_threaded_get_status(path)
 		if status == ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
-			var resource = ResourceLoader.load_threaded_get(path)
-			var sub_path = path.split(base_path)[1]
-			var path_parts = sub_path.split("/")
-			var type = path_parts[0]
-			var minion_parts = path_parts[1].split(".")[0].split("_")
-			
+			var resource:Resource = ResourceLoader.load_threaded_get(path)
+			var sub_path:String = path.split(base_path)[1]
+			var path_parts:Array = sub_path.split("/")
+			var type:String = path_parts[0]
+			var minion_parts:Array = path_parts[1].split(".")[0].split("_")
+			print_debug(path_parts)
 			minions[type][minion_parts[0]][minion_parts[1]] = resource
 			loading_resources.erase(path)
 	if loading_resources.is_empty():

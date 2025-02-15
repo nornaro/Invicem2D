@@ -1,6 +1,6 @@
 extends ItemList
 
-@onready var menu = preload("res://Scenes/UI/item_list.tscn")
+@onready var menu:PackedScene = preload("res://Scenes/UI/item_list.tscn")
 
 func _enter_tree() -> void:
 	connect("item_clicked",on_item_clicked)
@@ -12,11 +12,10 @@ func on_item_clicked(index: int, _at_position: Vector2, _mouse_button_index: int
 		return
 	main(index)
 	
-func main(index):
+func main(index:int) -> void:
 	get_tree().call_group("ProjectilePropertyList","hide")
-	#print(get_tree().get_nodes_in_group("selected"))
-	var data = {get_parent().tooltip_text:get_item_text(index)}
-	var _first = get_tree().get_first_node_in_group("selected")
+	var data: Dictionary = {get_parent().tooltip_text:get_item_text(index)}
+	var _first: Node = get_tree().get_first_node_in_group("selected")
 	#if first.Data.has(data):
 		#if first.Data[data] is Dictionary:
 			#$submenu.show()
@@ -32,7 +31,7 @@ func _on_mouse_exited() -> void:
 func submenu_clicked(_index: int, _at_position: Vector2, _mouse_button_index: int) -> void:
 	pass
 	
-func submenu(index):
+func submenu(index:int) -> void:
 	if get_item_text(index).contains("max") or get_item_text(index).contains("min"):
 		clear()
 		add_item("Min")

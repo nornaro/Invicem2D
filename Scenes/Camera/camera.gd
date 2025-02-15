@@ -14,10 +14,10 @@ func _ready() -> void:
 	zoom = Vector2.ONE * (min_zoom+max_zoom)/2
 	new_zoom = zoom.x
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP or event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			var direction = Input.get_axis("MWD","MWU")
+			var direction: float = Input.get_axis("MWD","MWU")
 			new_zoom = clamp(new_zoom + direction * zoom_speed, min_zoom, max_zoom)
 			
 		if event.button_index == MOUSE_BUTTON_MIDDLE:
@@ -26,7 +26,7 @@ func _input(event):
 				dragging = true
 				drag_start_pos = event.global_position
 	if event is InputEventMouseMotion and dragging:
-		var drag_offset = event.global_position - drag_start_pos
+		var drag_offset: Vector2 = event.global_position - drag_start_pos
 		global_position -= drag_offset
 		drag_start_pos = event.global_position
 

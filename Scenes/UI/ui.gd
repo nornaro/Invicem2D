@@ -1,16 +1,16 @@
 extends CanvasLayer
 
-@export var fixed = true
-@export var Items = {}
-@export var Data = {}
-var build = false
-var text = ""
-var pressed = false
+@export var fixed:bool = true
+@export var Items:Dictionary = {}
+@export var Data:Dictionary = {}
+var build:bool = false
+var text:String = ""
+var pressed:StringName
 @onready var client: Node = $".."
 @onready var buildings: Node = $"../Buildings"
 var stylefolder: String
 
-func _ready():
+func _ready() -> void:
 	stylefolder = "res://Scenes/Building/"
 	dir_to_list(stylefolder, "Buildings")
 	buildings.add_buildings_list(Items["Buildings"])
@@ -21,14 +21,14 @@ func _ready():
 	dir_to_list(stylefolder + "Turret/Type/", "Turret")
 	add_json_list("Buildings")
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().call_group("Outline", "hide")
 		buildings.clear_collision()
 		clear()
 	if pressed:
 		if event.is_action_released(pressed):
-			pressed = null
+			pressed = ""
 			build = false
 		return
 						
@@ -51,7 +51,7 @@ func _input(event):
 #		if !active():
 #			menu("Buildings")
 			
-	for i in range(10):
+	for i:int in range(10):
 		if !event is InputEventKey:
 			return
 		if !event.pressed:
@@ -66,18 +66,19 @@ func _input(event):
 			pressed = str(i)
 			_on_list_item_selected(i)
 
-func clear():
-	for ui in get_children():
+func clear() -> void:
+	for ui:Node in get_children():
 		if ui.get_class() == "ItemList":
 			ui.deselect_all()
 	text = ""
 
-func active():
-	for ui in get_children():
+func active() -> Node:
+	for ui:Node in get_children():
 		if ("List" in ui.name) && ui.visible:
 			return ui
+	return null
 
-func _on_list_item_selected(index):
+func _on_list_item_selected(index:int) -> void:
 	if index >= $List.item_count:
 		return
 	text = $List.get_item_text(index)
@@ -86,8 +87,8 @@ func _on_list_item_selected(index):
 		return
 	buildings.change_buildings(text, true)
 
-func dir_to_list(dir, dirname):
-	var directory = Global.RL.get_directories_at(dir)
+func dir_to_list(dir:String, dirname:String) -> void:
+	var directory:Array = Global.RL.get_directories_at(dir)
 	if !directory:
 		return
 	Items[dirname] = directory
@@ -100,27 +101,27 @@ func dir_to_list(dir, dirname):
 		#list.append(building)
 	#return list
 
-func menu(list):
+func menu(list:String) -> void:
 	if !Items.has(list):
 		return
 	$List.clear()
 	if Items[list].has("menu"):
-		for item in Items[list]["menu"]:
+		for item:Dictionary in Items[list]["menu"]:
 			$List.add_item(item)
 	if !Items[list].has("menu"):
-		for item in Items[list]:
+		for item:String in Items[list]:
 			$List.add_item(item)
 	if Items[list]:
 		$Numbers.update(Items[list].size())
 	$List.show()
 
-func add_json_list(list):
-	for item in Items[list]:
+func add_json_list(list:String) -> void:
+	for item:String in Items[list]:
 		if !buildings.get_node_or_null(item):
 			continue
-		var path = stylefolder + item + "/" + item + ".json"
+		var path:String = stylefolder + item + "/" + item + ".json"
 		var file:JSON = Global.RL.load(path)
-		var json = file.get_data()
+		var json:Dictionary = file.get_data()
 		if !json.has("menu"):
 			continue
 		if !Items.has(item):

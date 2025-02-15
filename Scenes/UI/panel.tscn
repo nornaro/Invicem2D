@@ -29,7 +29,6 @@ offset_top = -150.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 2
-mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_56q1t")
 script = ExtResource("1_tw6yc")
 
@@ -53,7 +52,6 @@ offset_right = 1675.0
 offset_bottom = 145.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
-mouse_filter = 2
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 3
