@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://be5vgoanyxh12"]
+
+[ext_resource type="Script" uid="uid://dbvtl7ww2ody6" path="res://Scenes/Build/Building/building.gd" id="1_t4iwd"]
+[ext_resource type="PackedScene" uid="uid://b365gc0lijb6r" path="res://Scenes/Build/BuildingArea/building_area.tscn" id="1_wfd6y"]
+[ext_resource type="PackedScene" uid="uid://bydkjmor6dd4g" path="res://Scenes/Build/Select/select.tscn" id="3_t3j57"]
+[ext_resource type="Script" uid="uid://pm2s806xegaj" path="res://Scenes/Build/Building/sprite.gd" id="4_dwypq"]
+[ext_resource type="Texture2D" uid="uid://bbk2jsgyk02an" path="res://Scenes/Minions/icon.svg" id="4_gc5s8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5tgk"]
+size = Vector2(1, 1)
+
+[node name="Building" type="StaticBody2D" groups=["BuildingMesh"]]
+script = ExtResource("1_t4iwd")
+
+[node name="Area" parent="." instance=ExtResource("1_wfd6y")]
+
+[node name="Outline" type="Line2D" parent="." groups=["Outline"]]
+points = PackedVector2Array(-1, -1, 1, -1, 1, 1, -1, 1, -1, -1)
+width = 3.0
+default_color = Color(0, 1, 0, 0.588235)
+
+[node name="Select" parent="." instance=ExtResource("3_t3j57")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b5tgk")
+
+[node name="Camera" type="Camera2D" parent="."]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." groups=["BuildingSprite"]]
+script = ExtResource("4_dwypq")
+
+[node name="ID" type="RichTextLabel" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Icon" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_gc5s8")
+
+[connection signal="area_entered" from="Area" to="Area" method="_on_area_entered"]
+[connection signal="area_exited" from="Area" to="Area" method="_on_area_exited"]
+[connection signal="input_event" from="Area" to="Area" method="_on_input_event"]
+[connection signal="mouse_entered" from="Area" to="Area" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area" to="Area" method="_on_mouse_exited"]
+
+[editable path="Area"]
+[editable path="Select"]

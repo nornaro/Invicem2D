@@ -15,8 +15,8 @@ run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 run/low_processor_mode=true
 run/low_processor_mode_sleep_usec=0
-boot_splash/image="res://Scenes/MainMenu/Home.png"
-config/icon="res://Invicem2D.png"
+boot_splash/image="uid://chw7bp42yvdya"
+config/icon="res://Invicem2D.webp"
 
 [autoload]
 
@@ -34,7 +34,6 @@ window/size/mode=2
 window/size/initial_position_type=3
 window/size/extend_to_title=true
 window/stretch/mode="canvas_items"
-window/vsync/vsync_mode=0
 
 [dotnet]
 
@@ -43,6 +42,17 @@ project/assembly_name="Invicem2D"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gd_profiler/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Class/": "red",
+"res://Docs/": "yellow",
+"res://Scenes/": "blue",
+"res://Temp/": "gray",
+"res://Tools/": "green",
+"res://addons/": "pink"
+}
 
 [global_group]
 
@@ -159,13 +169,11 @@ MWU={
 
 [physics]
 
-2d/run_on_separate_thread=true
-2d/physics_engine="Rapier2D"
-2d/solver/solver_iterations=8
 common/physics_interpolation=true
 
 [rendering]
 
+textures/vram_compression/import_etc2_astc=true
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
 textures/default_filters/anisotropic_filtering_level=0

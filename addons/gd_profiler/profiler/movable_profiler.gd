@@ -23,8 +23,8 @@ var profiler:GodotProfiler;
 var name_label:Label;
 var toggle:TextureButton;
 
-const MAXIMIZE = preload("res://addons/gd_profiler/textures/Maximize.png")
-const MINIMIZE = preload("res://addons/gd_profiler/textures/Minimize.png")
+const MAXIMIZE = preload("res://addons/gd_profiler/textures/Maximize.webp")
+const MINIMIZE = preload("res://addons/gd_profiler/textures/Minimize.webp")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	name_label = Label.new();

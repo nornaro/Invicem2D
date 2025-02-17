@@ -7,11 +7,12 @@ var build:bool = false
 var text:String = ""
 var pressed:StringName
 @onready var client: Node = $".."
-@onready var buildings: Node = $"../Buildings"
+@onready var buildings: Node
 var stylefolder: String
 
 func _ready() -> void:
-	stylefolder = "res://Scenes/Building/"
+	buildings = get_tree().get_first_node_in_group("Buildings")
+	stylefolder = "res://Scenes/Build/Building/"
 	dir_to_list(stylefolder, "Buildings")
 	buildings.add_buildings_list(Items["Buildings"])
 	buildings.build_castle("Castle")

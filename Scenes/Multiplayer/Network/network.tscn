@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b75w40p5l0ghf"]
-
-[ext_resource type="Script" uid="uid://i5uo8pe4yiws" path="res://Scenes/Multiplayer/Network/client.gd" id="1_fp3tv"]
-
-[node name="Network" type="Node" groups=["Network"]]
-script = ExtResource("1_fp3tv")

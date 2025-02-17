@@ -10,7 +10,8 @@ var dragging: bool = false
 var drag_start_pos: Vector2
 
 func _ready() -> void:
-	make_current()
+	add_to_group("Camera2")
+	#make_current()
 	zoom = Vector2.ONE * (min_zoom+max_zoom)/2
 	new_zoom = zoom.x
 

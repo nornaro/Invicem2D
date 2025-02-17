@@ -2,6 +2,8 @@ extends Node
 
 const GAME_ID:String = "xcNhLTRbBH"
 
+@export var client: PackedScene = preload("res://Scenes/Multiplayer/2d_client.tscn")
+@export var dummy_client: PackedScene = preload("res://Scenes/Multiplayer/dummy_client.tscn")
 @export var style:String = "Sci-fi"
 var peer: PacketPeer
 var clients: Dictionary = {
@@ -25,14 +27,20 @@ var RL:ResLoad = ResLoad.new()
 	#"projectile":Thread.new(),
 	#"building":Thread.new(),
 #}
+
+var dedicated: bool = OS.has_feature("dedicated_server")
 var servers:Dictionary = {}
 var join_data:String
 var server_id:String =""
 var id:int
 var C:Node
 var game:String = "InvicemTD"
+var start_port:int = 6666
+var network_ports:Dictionary
 
 func console(txt:String) -> void:
+	if dedicated:
+		return
 	if !C:
 		C = get_tree().get_first_node_in_group("Console")
 	if !C:

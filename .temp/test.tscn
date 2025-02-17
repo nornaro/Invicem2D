@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6cnneq0a4lid"]
+
+[sub_resource type="Resource" id="Resource_1o7wd"]
+metadata/__load_path__ = "res://Temp/Test.gd"
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("Resource_1o7wd")

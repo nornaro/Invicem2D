@@ -4,8 +4,8 @@ extends Button
 var ready_check:Array = []
 @onready var main_circle:PackedScene = preload("main_circle.tscn")
 
-#func _ready() -> void:
-	#connect("pressed", _on_pressed)
+func _ready() -> void:
+	add_to_group("Homs_Screen_Button")
 
 
 func _on_mouse_entered() -> void:

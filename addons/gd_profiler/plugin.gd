@@ -3,8 +3,8 @@ extends EditorPlugin
 
 
 func _enter_tree():
-	add_custom_type("GodotProfiler", "Panel", preload("res://addons/gd_profiler/profiler/gd_profiler.gd"), preload("res://addons/gd_profiler/textures/minimize.png"))
-	add_custom_type("MovableProfiler", "Panel", preload("res://addons/gd_profiler/profiler/movable_profiler.gd"), preload("res://addons/gd_profiler/textures/maximize.png"))
+	add_custom_type("GodotProfiler", "Panel", preload("res://addons/gd_profiler/profiler/gd_profiler.gd"), preload("res://addons/gd_profiler/textures/Minimize.webp"))
+	add_custom_type("MovableProfiler", "Panel", preload("res://addons/gd_profiler/profiler/movable_profiler.gd"), preload("res://addons/gd_profiler/textures/Minimize.webp"))
 	# Initialization of the plugin goes here.
 	print_rich("[b]Godot Profiler has Loaded![/b]")
 

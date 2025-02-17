@@ -5,9 +5,9 @@ func _ready() -> void:
 
 func _on_timeout() -> void:
 	if Global.mp:
-		spawn.rpc(Global.clients)
+		spawn.rpc(Global.clients,{})
 		return
-	get_tree().call_group("Barrack","spawn")
+	get_tree().call_group("Barrack","spawn",{})
 	
 
 @rpc("authority", "call_remote", "reliable")

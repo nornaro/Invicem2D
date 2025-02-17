@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://baxfxdj4rmfn4"]
+
+[ext_resource type="Script" uid="uid://dkrndoaemrhtq" path="res://Scenes/Multiplayer/dummy_timer.gd" id="1_ils2t"]
+
+[node name="RoundTimer" type="Node"]
+script = ExtResource("1_ils2t")

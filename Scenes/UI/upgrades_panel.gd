@@ -21,10 +21,10 @@ func fill() -> void:
 
 
 func set_icon(node: Node,icon: String) -> void:
-	if Global.RL.file_exists(icon_path+icon+".png"):
-		node.texture_normal = Global.RL.load(icon_path+icon+".png")
+	if Global.RL.file_exists(icon_path+icon+".webp"):
+		node.texture_normal = Global.RL.load(icon_path+icon+".webp")
 		return
-	node.texture_normal = Global.RL.load(icon_path+name+".png")
+	node.texture_normal = Global.RL.load(icon_path+name+".webp")
 	
 		#var label = RichTextLabel.new()
 		#label.name = "Label"

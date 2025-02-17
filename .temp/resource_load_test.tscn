@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6nxiywucqjmf"]
+
+[sub_resource type="Resource" id="Resource_gspvc"]
+metadata/__load_path__ = "res://Temp/resource_load_test.gd"
+
+[node name="ResourceLoadTest" type="Node"]
+script = SubResource("Resource_gspvc")

@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Node2D
 
 @export var Data:Dictionary = {}
 var regen:float = 0
@@ -10,7 +10,7 @@ var regen:float = 0
 @onready var h2:Node = $Shield/Hit2
 @onready var depleted:Node = $Shield/Depleted
 @onready var area:Node = $MinionArea
-var linear_velocity
+var linear_velocity: Vector2
 
 func _ready() -> void:
 	add_to_group("minions")
@@ -28,22 +28,29 @@ func _ready() -> void:
 	Data.Speed += 5 - floor(Data.Size / 4)
 	Data.Speed -= floor(Data.Size / 4)
 	shBar.value = Data.max_sh
-	linear_velocity = Vector2(-Data.Speed * 5, 0)
+	linear_velocity = Vector2(-Data.Speed/5, 0)
 	var global:Dictionary = Global.Data.Minions
 	var type:String = Data.Minion[0]
 	var minion:String = Data.Minion[1]
 	var sprite:String = global[type][minion].keys().pick_random()
-	if global[type][minion][sprite].has_meta("scale"):
-		Sprite.scale = Vector2(1,1) * global[type][minion][sprite].get_meta("scale")
+	#var area_scale = Sprite.sprite_frames.get_frame_texture("Idle",0).set_size()
+	#if global[type][minion][sprite].has_meta("scale"):
+		#Sprite.scale = Vector2(1,1) * global[type][minion][sprite].get_meta("scale")
 	Sprite.speed_scale = 1+Data.Speed
 	Sprite.sprite_frames = global[type][minion][sprite]
-	sh.scale *= (1+Data.Size)/2.0
-	Sprite.scale *= (1+Data.Size)/2.0
-	hpBar.scale.x *= (1+Data.Size)/2.0
-	shBar.scale.x *= (1+Data.Size)/2.0
-	hpBar.position += Vector2(-Data.Size*3,-Data.Size*3)
-	shBar.position += Vector2(-Data.Size*3,-Data.Size*3)
-	area.scale *= (1+Data.Size)/2.0
+	#sh.scale *= (1+Data.Size)/2.0
+	scale *= 10+Data.Size
+	print(scale)
+	#hpBar.scale.y = Data.Size/15
+	#shBar.scale.y = Data.Size
+	hpBar.position.y -= Data.Size/10
+	shBar.position.y -= Data.Size/10
+	#print(Sprite.sprite_frames.get_frame_texture("Idle",0).get_size())
+	#area.get_child(0).shape *= (2+Data.Size)
+	#print(area_scale)
+	#$MinionArea/CollisionShape2D.shape = CapsuleShape2D.new()
+	#$MinionArea/CollisionShape2D.shape.radius = 4 * (1+Data.Size)
+	#$MinionArea/CollisionShape2D.shape.height = 20 * (1+Data.Size)
 	Sprite.play("Walking")
 	depleted.connect("animation_finished",sh.hide)
 

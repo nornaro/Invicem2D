@@ -65,7 +65,7 @@ mesh = SubResource("PlaneMesh_qo1ir")
 texture = SubResource("GradientTexture2D_iuac6")
 
 [node name="Spawn" parent="." instance=ExtResource("3_sk368")]
-position = Vector2(-349, 0)
+position = Vector2(-350, 0)
 collision_layer = 0
 collision_mask = 0
 monitoring = false

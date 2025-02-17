@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://baxfxdj4rmfn4"]
-
-[ext_resource type="Script" uid="uid://dkrndoaemrhtq" path="res://Scenes/Client/dummy_timer.gd" id="1_uleeu"]
-
-[node name="RoundTimer" type="Node"]
-script = ExtResource("1_uleeu")

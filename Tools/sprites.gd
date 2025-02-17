@@ -1,22 +1,25 @@
-extends Control
+@tool
+extends EditorScript
 
+
+var RL:ResLoad = ResLoad.new()
 # Path to the existing 0.tres file (your Animations resource)
 @export var base_resource_path: String = "res://Scenes/Minions/Chibi/0.tres"
-# Folder where the PNG sequences are located
+# Folder where the image sequences are located
 @export var folder_base_path: String = "res://Scenes/Minions/Chibi/"
 # Output folder for saving the new .tres file
 var sprites: Array
+@export var extension: String = "webp"
 
-func _ready():
-	return
+func _run():
 	# Automatically start the animation processing when the scene is ready (after F6)
 	print_rich("Starting animation process...")
-	sprites = Global.RL.get_directories_at(folder_base_path)
+	sprites = ["Fallen_1"]#RL.get_directories_at(folder_base_path)
 	for sprite in sprites:
 		process_animations(sprite)
 
 func process_animations(sprite):
-	var base_resource : SpriteFrames = Global.RL.load(base_resource_path)
+	var base_resource : SpriteFrames = RL.load(base_resource_path)
 	
 	if base_resource == null:
 		push_warning("Failed to load base resource (0.tres).")
@@ -38,7 +41,7 @@ func process_animations(sprite):
 		# Add the PNG files to the spriteframes
 		var frames = []
 		for file in files:
-			var texture = Global.RL.load(file)
+			var texture = RL.load(file)
 			if texture is Texture:
 				frames.append(texture)
 		
@@ -53,14 +56,13 @@ func process_animations(sprite):
 
 	# Quit the application after processing is complete
 	print_rich("Process complete. Quitting the game.")
-	get_tree().quit()
 
 
 # Helper function to get files in the folder
 func get_files_in_directory(directory_path: String) -> Array:
-	var dir = Global.RL.get_files_at(directory_path)
+	var dir = RL.get_files_at(directory_path)
 	var files: Array
 	for file in dir:
-		if file.ends_with(".png"):
+		if file.ends_with("." + extension):
 			files.append(directory_path + "/" + file)
 	return files

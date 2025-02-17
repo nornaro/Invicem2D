@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdbpc02lykgoj"]
+
+[sub_resource type="Resource" id="Resource_204we"]
+metadata/__load_path__ = "res://Temp/control.gd"
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("Resource_204we")

@@ -1,6 +1,6 @@
 extends ItemList
 
-@onready var client2d = preload("res://Scenes/Client/2d_client.tscn") # C
+@onready var client2d = preload("res://Scenes/Multiplayer/2d_client.tscn") # C
 @onready var round_timer = preload("res://Scenes/Timers/round_timer.tscn") # s
 
 func _on_item_selected(index: int) -> void:

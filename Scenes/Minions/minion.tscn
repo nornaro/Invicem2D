@@ -1,47 +1,30 @@
-[gd_scene load_steps=60 format=3 uid="uid://5b3v7b6ahib1"]
+[gd_scene load_steps=59 format=3 uid="uid://5b3v7b6ahib1"]
 
 [ext_resource type="Script" uid="uid://dur4d3pyb716n" path="res://Scenes/Minions/minion.gd" id="1_xsgkh"]
-[ext_resource type="SpriteFrames" uid="uid://cn0gtx28tbird" path="res://Scenes/Minions/Chibi/Fallen_3.tres" id="3_8v04g"]
+[ext_resource type="SpriteFrames" uid="uid://bkhh47l3mvrdh" path="res://Scenes/Minions/Chibi/Orc_3.tres" id="2_s68jy"]
 [ext_resource type="Script" uid="uid://da2j13dlftb2n" path="res://Scenes/Minions/minion_area.gd" id="3_u5uqm"]
-[ext_resource type="Texture2D" uid="uid://jxiuo8m58ada" path="res://Scenes/Shield/pipo-btleffect208h_480.png" id="4_t3dqa"]
-[ext_resource type="Texture2D" uid="uid://c6uk32etep4to" path="res://Scenes/Shield/pipo-btleffect206h_480.png" id="5_s68jy"]
-[ext_resource type="Texture2D" uid="uid://b2upkwlx8w3cv" path="res://Scenes/Shield/pipo-btleffect206_480.png" id="6_o6qx1"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7goe2"]
-radius = 4.0
-height = 20.0
+[ext_resource type="Texture2D" uid="uid://cx1bvgruidcd0" path="res://Scenes/Minions/Shield/pipo-btleffect207_480.webp" id="4_o6qx1"]
+[ext_resource type="Texture2D" uid="uid://d0pyx2m7647qj" path="res://Scenes/Minions/Shield/pipo-btleffect208h_480.webp" id="4_t3dqa"]
+[ext_resource type="Texture2D" uid="uid://dualyaunqjmns" path="res://Scenes/Minions/Shield/pipo-btleffect206h_480.webp" id="5_s68jy"]
+[ext_resource type="Texture2D" uid="uid://dgvoesysqw4ul" path="res://Scenes/Minions/Shield/pipo-btleffect206_480.webp" id="7_7g40y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bex45"]
-radius = 4.0
-height = 20.0
+radius = 200.0
+height = 550.0
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dn47t"]
-properties/0/path = NodePath(".:Data")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath("Sprite2D:position")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath("Area2D/CollisionShape2D:scale")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-properties/3/path = NodePath(".:Skin")
-properties/3/spawn = true
-properties/3/replication_mode = 1
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sw10x"]
-atlas = ExtResource("6_o6qx1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ohbs"]
+atlas = ExtResource("4_o6qx1")
 region = Rect2(1920, 1440, 480, 480)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_dwes0"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_xwlt0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sw10x")
+"texture": SubResource("AtlasTexture_2ohbs")
 }],
 "loop": true,
 "name": &"default",
-"speed": 2.0
+"speed": 5.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwlt0"]
@@ -270,63 +253,54 @@ animations = [{
 "speed": 30.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t3dqa"]
-atlas = ExtResource("6_o6qx1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_upoy4"]
+atlas = ExtResource("7_7g40y")
 region = Rect2(1920, 480, 480, 480)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s68jy"]
-atlas = ExtResource("6_o6qx1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sw10x"]
+atlas = ExtResource("7_7g40y")
 region = Rect2(1440, 480, 480, 480)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6qx1"]
-atlas = ExtResource("6_o6qx1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwes0"]
+atlas = ExtResource("7_7g40y")
 region = Rect2(960, 480, 480, 480)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ohbs"]
-atlas = ExtResource("6_o6qx1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk38l"]
+atlas = ExtResource("7_7g40y")
 region = Rect2(480, 480, 480, 480)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_upoy4"]
-atlas = ExtResource("6_o6qx1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eb1j"]
+atlas = ExtResource("7_7g40y")
 region = Rect2(0, 480, 480, 480)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dwes0"]
-atlas = ExtResource("6_o6qx1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbi13"]
+atlas = ExtResource("7_7g40y")
 region = Rect2(1920, 0, 480, 480)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nk38l"]
-atlas = ExtResource("6_o6qx1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_blbk3"]
+atlas = ExtResource("7_7g40y")
 region = Rect2(1440, 0, 480, 480)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4eb1j"]
-atlas = ExtResource("6_o6qx1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jllvc"]
+atlas = ExtResource("7_7g40y")
 region = Rect2(960, 0, 480, 480)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kbi13"]
-atlas = ExtResource("6_o6qx1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqpgq"]
+atlas = ExtResource("7_7g40y")
 region = Rect2(480, 0, 480, 480)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_blbk3"]
-atlas = ExtResource("6_o6qx1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_37xpw"]
+atlas = ExtResource("7_7g40y")
 region = Rect2(0, 0, 480, 480)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jllvc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t3dqa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s68jy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o6qx1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2ohbs")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_upoy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sw10x")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dwes0")
@@ -342,6 +316,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_blbk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jllvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqpgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37xpw")
 }],
 "loop": false,
 "name": &"default",
@@ -361,56 +344,58 @@ border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krg58"]
 bg_color = Color(0, 1, 0, 0.392157)
+border_width_left = 50
+border_width_top = 50
+border_width_right = 50
+border_width_bottom = 50
+border_color = Color(0, 0.188235, 0, 1)
+border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcnvf"]
 bg_color = Color(0, 1, 1, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 1, 1)
+border_width_left = 75
+border_width_top = 50
+border_width_right = 75
+border_width_bottom = 50
+border_color = Color(0, 0, 0.8, 1)
 border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m3o7"]
 bg_color = Color(0, 0.454902, 0.784314, 0.784314)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 15
+border_width_bottom = 25
+border_color = Color(0.8, 0.8, 0.8, 0)
 border_blend = true
 
-[node name="Minion" type="RigidBody2D" groups=["MinionBody", "minions"]]
-collision_mask = 0
-gravity_scale = 0.0
-linear_damp_mode = 1
+[node name="Minion" type="Node2D"]
+scale = Vector2(0.01, 0.01)
 script = ExtResource("1_xsgkh")
-Data = null
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_7goe2")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(0, -50)
+sprite_frames = ExtResource("2_s68jy")
+animation = &"Blinking"
+speed_scale = 15.0
+flip_h = true
 
 [node name="MinionArea" type="Area2D" parent="." groups=["minions"]]
 script = ExtResource("3_u5uqm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MinionArea"]
+position = Vector2(10, -15)
 shape = SubResource("CapsuleShape2D_bex45")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_dn47t")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-show_behind_parent = true
-position = Vector2(-5.96046e-08, -1.3113e-06)
-scale = Vector2(0.03, 0.03)
-sprite_frames = ExtResource("3_8v04g")
-speed_scale = 15.0
-flip_h = true
-
 [node name="Shield" type="AnimatedSprite2D" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0.784314)
-position = Vector2(0, -1)
-scale = Vector2(0.06, 0.06)
-sprite_frames = SubResource("SpriteFrames_dwes0")
-frame_progress = 0.201145
+position = Vector2(10, 0)
+scale = Vector2(1.1, 1.4)
+sprite_frames = SubResource("SpriteFrames_xwlt0")
 
 [node name="Hit2" type="AnimatedSprite2D" parent="Shield"]
+visible = false
 scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_upoy4")
 offset = Vector2(3, -25)
@@ -422,7 +407,6 @@ sprite_frames = SubResource("SpriteFrames_2ohbs")
 offset = Vector2(-5, -20)
 
 [node name="Depleted" type="AnimatedSprite2D" parent="Shield"]
-modulate = Color(1, 1, 1, 0)
 sprite_frames = SubResource("SpriteFrames_jllvc")
 frame = 9
 frame_progress = 1.0
@@ -430,16 +414,16 @@ offset = Vector2(3, -25)
 
 [node name="hpBar" type="ProgressBar" parent="."]
 show_behind_parent = true
-offset_left = -6.0
-offset_top = -13.0
-offset_right = 6.0
-offset_bottom = -8.0
+offset_left = -200.0
+offset_top = -400.0
+offset_right = 200.0
+offset_bottom = -300.0
 mouse_filter = 2
 theme = SubResource("Theme_1g8mw")
 theme_override_styles/background = SubResource("StyleBoxFlat_8v04g")
 theme_override_styles/fill = SubResource("StyleBoxFlat_krg58")
+max_value = 0.0
 step = 0.1
-value = 100.0
 allow_greater = true
 show_percentage = false
 metadata/_edit_use_anchors_ = true
@@ -448,10 +432,10 @@ metadata/_edit_use_anchors_ = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -13.0
-offset_right = 6.0
-offset_bottom = -8.0
+offset_left = -200.0
+offset_top = -400.0
+offset_right = 200.0
+offset_bottom = -300.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

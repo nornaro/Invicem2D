@@ -1,6 +1,6 @@
 extends GridContainer
 
-var root: String = "res://Scenes/Building/"
+var root: String = "res://Scenes/Build/Building/"
 var scene: PackedScene = preload("res://Scenes/UI/item_list.tscn")
 var button: PackedScene = preload("res://Scenes/UI/property_menu_button.tscn")
 var icon_path: String = "res://Scenes/UI/Icon/"
@@ -25,11 +25,11 @@ func fill() -> void:
 		_list(source,node,data,keys[i])
 		
 func set_icon(node: Node,icon: String) -> void:
-	if Global.RL.file_exists(icon_path+icon+".png"):
-		node.texture_normal = Global.RL.load(icon_path+icon+".png")
+	if Global.RL.file_exists(icon_path+icon+".webp"):
+		node.texture_normal = Global.RL.load(icon_path+icon+".webp")
 		return
-	if Global.RL.file_exists(icon_path+name+".png"):
-		node.texture_normal = Global.RL.load(icon_path+name+".png")
+	if Global.RL.file_exists(icon_path+name+".webp"):
+		node.texture_normal = Global.RL.load(icon_path+name+".webp")
 		return
 	node.texture_normal = ImageTexture.new(	)
 	

@@ -1,7 +1,7 @@
 extends Node
 class_name ResLoad
 
-func open(path: String = "res://Scenes/Building/Academy/Academy.json", _mode: int = FileAccess.READ_WRITE) -> Resource:
+func open(path: String, _mode: int = FileAccess.READ_WRITE) -> Resource:
 	return ResourceLoader.load(path,"String")
 
 func load(path: String) -> Resource:

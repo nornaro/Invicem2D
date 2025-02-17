@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cug0754617bke"]
+
+[node name="AspdTimer" type="Timer" groups=["ASPD"]]
+wait_time = 0.1
+autostart = true
+ignore_time_scale = true

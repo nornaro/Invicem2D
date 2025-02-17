@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://d34mxo1ld0ik5"]
+[gd_scene load_steps=3 format=3 uid="uid://d34mxo1ld0ik5"]
 
-[ext_resource type="Script" uid="uid://q7rafbkh87kr" path="res://Scenes/UI/kafta.gd" id="1_704u1"]
 [ext_resource type="Script" uid="uid://c446t4wmho48g" path="res://Scenes/UI/picker.gd" id="1_arcwy"]
 [ext_resource type="PackedScene" uid="uid://cbw1h45r5nyl4" path="res://Scenes/Multiplayer/MPHUD/minion_inventory.tscn" id="3_fvwoe"]
 
@@ -27,7 +26,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 current_tab = 0
-script = ExtResource("1_704u1")
 
 [node name="Minion" type="ScrollContainer" parent="Tabs"]
 layout_mode = 2

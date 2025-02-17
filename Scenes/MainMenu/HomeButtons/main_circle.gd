@@ -65,7 +65,7 @@ func load_buttons(data: Array) -> void:
 
 func pick_random_texture(buttontextures: Array, type: String) -> String:
 	var filtered:Array = buttontextures.filter(func(item:String) -> bool:
-		return item.begins_with(type) and item.ends_with(".png")
+		return item.begins_with(type) and item.ends_with(".webp")
 	)
 	if filtered.size() > 0:
 		return filtered[randi() % filtered.size()]
