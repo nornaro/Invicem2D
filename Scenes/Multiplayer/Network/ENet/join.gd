@@ -29,7 +29,7 @@ func join() -> void:
 	if Global.join_data:
 		join_data = Global.join_data.split(":")
 		res = peer.create_client(str(join_data[0]),int(join_data[1]))
-	print("Connected to server at: ",join_data,"\n",res)
+	print_rich("Connected to server at: ",join_data,"\n",res)
 	multiplayer.multiplayer_peer = peer
 	search = false
 

@@ -34,7 +34,7 @@ func load_minions():
 
 func loading_done():
 	var timeB = Time.get_ticks_msec()
-	print("Took: ", timeB-timeA)
+	print_rich("Took: ", timeB-timeA)
 
 #func _physics_process(delta):
 	#var all_loaded = true

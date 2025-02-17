@@ -24,21 +24,23 @@ func _ready() -> void:
 
 func _on_update_timeout() -> void:
 	var servers: Dictionary = Global.servers
-	for server in servers.keys():
-		var server_name: String = str(server)  # Convert key to string if needed
+	for server: String in servers.keys():
+		var server_name: String = str(server)
 		var child: Node
 		if !get_node_or_null(server_name):
 			var instance: Node = server_select.instantiate()
 			instance.name = server_name
 			add_child(instance)
 		child = get_node(server_name)
-		var latency: String = latency_calc()
-		child.join_data = str(Global.servers[server].Join)  # Ensure 'Join' is a string
+
+		var latency: String = latency_calc()  # Forcefully convert int to string
+		child.join_data = str(Global.servers[server].Join)
 		child.get_node("Name").text = Global.servers[server].Name
 		child.get_node("Code").text = Global.servers[server].UID
-		child.get_node("Players").text = str(Global.servers[server].Players.size())  # Ensure it is a string
-		child.get_node("Players").tooltip_text = str(Global.servers[server].Players)  # Ensure 'Players' is a string
-		child.get_node("Latency").text = str(0)  # Set as string explicitly
+		child.get_node("Players").text = str(Global.servers[server].Players.size())
+		child.get_node("Players").tooltip_text = str(Global.servers[server].Players)
+		child.get_node("Latency").text = latency  # Guaranteed to be a string
+
 
 
 	#update.start()

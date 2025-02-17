@@ -54,7 +54,7 @@ func _ready() -> void:
 		continue
 	Data.Equip.Minion[1] = Global.Data.Minions["Chibi"].keys().pick_random()
 
-func spawn(Data:Dictionary) -> void:
+func spawn(_data:Dictionary) -> void:
 	if is_in_group("temp"):
 		return
 	if Data.Equip.Minion[1] == "Select":

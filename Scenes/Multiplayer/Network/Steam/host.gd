@@ -28,19 +28,19 @@ func host() -> void:
 
 func initialize_steam() -> void:
 	var initialize_response: Dictionary = Steam.steamInitEx()
-	print("Did Steam Initialize?: %s " % initialize_response)
+	print_rich("Did Steam Initialize?: %s " % initialize_response)
 	
 	if initialize_response['status'] > 0:
-		print("Failed to init Steam! %s" % initialize_response)
+		push_warning("Failed to init Steam! %s" % initialize_response)
 		
 	is_owned = Steam.isSubscribed()
 	steam_id = Steam.getSteamID()
 	steam_username = Steam.getPersonaName()
 
-	print("steam_id: %s" % steam_id)
+	print_rich("steam_id: %s" % steam_id)
 	
 	if is_owned == false:
-		print("User does not own game!")
+		push_error("User does not own game!")
 
 func _connected(id:int) -> void:
 	add_player(id)
@@ -49,11 +49,11 @@ func _disconnected(id:int) -> void:
 	remove_player(id)
 
 func _on_lobby_created(res: int, lobby_id:int) -> void:
-	print("On lobby created")
+	print_rich("On lobby created")
 	if res != 1:
 		return
 	_hosted_lobby_id = lobby_id
-	print("Created lobby: %s" % _hosted_lobby_id)
+	print_rich("Created lobby: %s" % _hosted_lobby_id)
 	Steam.setLobbyJoinable(_hosted_lobby_id, true)
 	Steam.setLobbyData(_hosted_lobby_id, "game", Global.game)
 	Steam.setLobbyData(_hosted_lobby_id, "mode", LOBBY_MODE)
@@ -66,7 +66,7 @@ func _create_host() -> void:
 	if error == OK:
 		multiplayer.set_multiplayer_peer(multiplayer_peer)
 		return
-	print("Error creating host: %s" % str(error))
+	push_warning("Error creating host: %s" % str(error))
 
 func _process(_delta: float) -> void:
 	Steam.run_callbacks()

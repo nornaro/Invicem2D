@@ -6,7 +6,7 @@ const TARGET_PATH = "res://"
 
 func _run() -> void:
 	process_directory(TARGET_PATH)
-	print("Metadata added to all .tres files in", TARGET_PATH)
+	print_rich("Metadata added to all .tres files in", TARGET_PATH)
 
 func process_directory(path: String) -> void:
 	var files = DirAccess.get_files_at(path)
@@ -28,6 +28,6 @@ func process_tres(file_path: String) -> void:
 				changed = true
 		if changed:
 			ResourceSaver.save(resource, file_path)
-			print("Updated:", file_path)
+			print_rich("Updated:", file_path)
 	else:
 		push_error("Failed to load: " + file_path)

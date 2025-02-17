@@ -25,8 +25,9 @@ func _on_area_entered(area:Area2D) -> void:
 			network.process_data(minion.Data)
 			return
 		minion.global_position.x = in_area.global_position.x
-		minion.get_node("Area").set_meta("owner",minion.Data["id"])
-		minion.set_meta("owner",minion.Data["id"])
+		minion.get_node("MinionArea").set_meta("owner",minion.Data["id"])
+		minion.set_meta("owner",minion.Data["id"])	
+		print(area," ",area.get_parent().get_groups())
 	if area.is_in_group("projectile"):
 		get_parent().hurt(area.get_parent().Data)
 		area.get_parent().hit()

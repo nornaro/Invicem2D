@@ -11,6 +11,7 @@ var pressed:StringName
 var stylefolder: String
 
 func _ready() -> void:
+	$List.connect("item_selected",_on_list_item_selected)
 	buildings = get_tree().get_first_node_in_group("Buildings")
 	stylefolder = "res://Scenes/Build/Building/"
 	dir_to_list(stylefolder, "Buildings")

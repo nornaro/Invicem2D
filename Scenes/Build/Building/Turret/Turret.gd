@@ -70,31 +70,36 @@ func _on_ASPD_timeout() -> void:
 		aspd_counter = 0
 		return
 	var target: Node2D = $Targeting.targeting[0]
+	if !target:  # Check if the target is valid
+		return
 	if !Data.Properties.has("Trajectory"):
 		return
-	var spread_range: int = Data.spreadbase-Data.Upgrades.Spread
+	var spread_range: int = Data.spreadbase - Data.Upgrades.Spread
 	spread_range /= 20
 	var spread: Vector2 = 5 * Vector2(
-		randf_range(-spread_range,spread_range),
-		randf_range(-spread_range,spread_range)
+		randf_range(-spread_range, spread_range),
+		randf_range(-spread_range, spread_range)
 	)
-	var aspd = 20-Data.Upgrades.AttackSpeed
+	var aspd = 20 - Data.Upgrades.AttackSpeed
 	var multi: Array = calculate_multishot()
 	if shoot:
 		for i: int in range(Data.muzzle.size() + multi[0]):
-			if !target:
+			if !target:  # Double-check target before spawning projectiles
 				return
-			spawn_projectile(multi[0],multi[1],spread,target)
+			spawn_projectile(multi[0], multi[1], spread, target)
 		shoot = false
 		return
 	if aspd_counter < aspd:
 		aspd_counter += 1
 		return
 	aspd_counter = 0
+	if !target:  # Ensure target is still valid before accessing position
+		return
 	var rot: float = get_turret_rotation_to_face_target(target.global_position - global_position)
 	$Sprite.frame = rotation_to_frame(rot)
 	shoot = true
 	return
+
 	
 #func shoot() -> void:
 	#if $Targeting.targeting.is_empty():
@@ -154,7 +159,7 @@ func set_maxrange() -> void:
 	$Targeting.set_range()
 
 func set_targeting() -> void:
-	var script = "res://Scenes/Projectiles/Targeting/"+Data.Properties.Targeting+".gd"
+	var script = "res://Scenes/Build/Building/Turret/Menu/Targeting/" + Data.Properties.Targeting +".gd"
 	Global.RL.file_exists(script)
 	if Global.RL.file_exists(script):
 		$Targeting.set_script(Global.RL.load(script))

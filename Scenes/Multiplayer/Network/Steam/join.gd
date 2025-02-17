@@ -121,7 +121,7 @@ func _fill_steam_lobby_menu(lobbies: Array) -> void:
 		packet["Id"] = multiplayer.get_unique_id()
 		packet["Name"] = Steam.getLobbyData(l, "name")
 		packet["Latency"] = 0
-		Global.servers[l] = packet
+		Global.servers[str(l)] = packet
 
 		
 		

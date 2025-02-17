@@ -39,6 +39,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Invicem2D"
 
+[editor]
+
+export/convert_text_resources_to_binary=false
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gd_profiler/plugin.cfg")

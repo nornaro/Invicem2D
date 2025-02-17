@@ -1,9 +1,9 @@
 extends AnimatedSprite2D
 
 
-# Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
-	#autoplay
+func _ready() -> void:
+	$"..".connect("mouse_entered",_on_option_button_mouse_entered)
+	$"..".connect("mouse_exited",_on_option_button_mouse_exited)
 
 
 func _on_option_button_mouse_entered() -> void:

@@ -13,21 +13,22 @@ var regen:float = 0
 var linear_velocity: Vector2
 
 func _ready() -> void:
-	add_to_group("minions")
-	#gravity_scale = 0
-	Data["name"]= name
-	Data.HP *= 1.0
-	Data.HP = ceil(Data.HP * (1+Data.Size /10))
-	Data["max_hp"] = Data.HP
-	hpBar.max_value=Data.max_hp
-	Data.Shield = int(Data.Shield * Data.max_hp / 10)
-	Data["max_sh"] = Data.Shield
-	shBar.max_value=Data.max_sh
-	hpBar.value = Data.max_sh
-	Data.Defense = ceil(Data.Defense * (1+Data.Size /10))
-	Data.Speed += 5 - floor(Data.Size / 4)
-	Data.Speed -= floor(Data.Size / 4)
-	shBar.value = Data.max_sh
+	if !area.has_meta("owner"):
+		add_to_group("minions")
+		#gravity_scale = 0
+		Data["name"]= name
+		Data.HP *= 100
+		Data.HP = ceil(Data.HP * (1+Data.Size /10))
+		Data["max_hp"] = Data.HP
+		hpBar.max_value=Data.max_hp
+		Data.Shield = int(Data.Shield * Data.max_hp / 10)
+		Data["max_sh"] = Data.Shield
+		shBar.max_value=Data.max_sh
+		hpBar.value = Data.max_sh
+		Data.Defense = ceil(Data.Defense * (1+Data.Size /10))
+		Data.Speed += 5 - floor(Data.Size / 4)
+		Data.Speed -= floor(Data.Size / 4)
+		shBar.value = Data.max_sh
 	linear_velocity = Vector2(-Data.Speed/5, 0)
 	var global:Dictionary = Global.Data.Minions
 	var type:String = Data.Minion[0]
@@ -40,19 +41,17 @@ func _ready() -> void:
 	Sprite.sprite_frames = global[type][minion][sprite]
 	#sh.scale *= (1+Data.Size)/2.0
 	scale *= 10+Data.Size
-	print(scale)
 	#hpBar.scale.y = Data.Size/15
 	#shBar.scale.y = Data.Size
 	hpBar.position.y -= Data.Size/10
 	shBar.position.y -= Data.Size/10
 	#print(Sprite.sprite_frames.get_frame_texture("Idle",0).get_size())
-	#area.get_child(0).shape *= (2+Data.Size)
-	#print(area_scale)
 	#$MinionArea/CollisionShape2D.shape = CapsuleShape2D.new()
 	#$MinionArea/CollisionShape2D.shape.radius = 4 * (1+Data.Size)
 	#$MinionArea/CollisionShape2D.shape.height = 20 * (1+Data.Size)
 	Sprite.play("Walking")
 	depleted.connect("animation_finished",sh.hide)
+	print(Data.max_hp," ",Data.max_sh)
 
 ###unprocess
 func _physics_process(delta: float) -> void:
@@ -130,5 +129,5 @@ func calc_damage(data:Dictionary) -> int:
 
 func update_hpbar() -> void:
 	hpBar.value = Data.HP
-	var new_color:Color = Color(1, pow(Data.HP / Data.max_hp, 2), pow(Data.HP / Data.max_hp, 2)/2, 0.75)
+	var new_color:Color = Color(1, pow(Data.HP*100 / Data.max_hp*100, 2), pow(Data.HP*100 / Data.max_hp*100, 2)/2, 0.75)
 	hpBar.modulate = new_color

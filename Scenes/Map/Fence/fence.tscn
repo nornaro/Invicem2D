@@ -16,3 +16,8 @@ shape = SubResource("RectangleShape2D_oydqy")
 [node name="Top" type="CollisionShape2D" parent="."]
 position = Vector2(475, -95)
 shape = SubResource("RectangleShape2D_oydqy")
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]
+[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]
