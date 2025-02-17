@@ -1,8 +1,8 @@
 [gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://bec3ykp1qv8s"]
 
-[ext_resource type="Texture2D" uid="uid://u6ejhfnn6728" path="res://Scenes/Build/Building/Academy/Styles/Fantasy/Academy.webp" id="1_el8pm"]
-[ext_resource type="Texture2D" uid="uid://cjhvd477478ba" path="res://Scenes/Build/Building/Academy/Styles/Sci-fi/Academy2.webp" id="3_s5j51"]
-[ext_resource type="Texture2D" uid="uid://d1ltmhn2k5ikq" path="res://Scenes/Build/Building/Academy/Styles/Sci-fi/Academy1.webp" id="3_un8he"]
+[ext_resource type="Texture2D" uid="uid://c8euflolksutr" path="res://Scenes/Build/Building/Academy/Styles/Fantasy/Academy.webp" id="1_el8pm"]
+[ext_resource type="Texture2D" uid="uid://b3yxxosl630b4" path="res://Scenes/Build/Building/Academy/Styles/Sci-fi/Academy2.webp" id="3_s5j51"]
+[ext_resource type="Texture2D" uid="uid://dvcskiqufilvf" path="res://Scenes/Build/Building/Academy/Styles/Sci-fi/Academy1.webp" id="3_un8he"]
 
 [resource]
 animations = [{

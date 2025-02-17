@@ -3,7 +3,7 @@ extends Node
 
 @export var Data = {
 	"Info": {},
-	"Equip": {},
+	"Modules": {},
 	"Properties": {},
 	"Inventory": {},
 	"Upgrades":{},

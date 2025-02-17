@@ -4,10 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://b365gc0lijb6r" path="res://Scenes/Build/BuildingArea/building_area.tscn" id="1_wfd6y"]
 [ext_resource type="PackedScene" uid="uid://bydkjmor6dd4g" path="res://Scenes/Build/Select/select.tscn" id="3_t3j57"]
 [ext_resource type="Script" uid="uid://pm2s806xegaj" path="res://Scenes/Build/Building/sprite.gd" id="4_dwypq"]
-[ext_resource type="Texture2D" uid="uid://bbk2jsgyk02an" path="res://Scenes/Minions/icon.svg" id="4_gc5s8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5tgk"]
 size = Vector2(1, 1)
+
+[sub_resource type="Resource" id="Resource_ujgic"]
+metadata/__load_path__ = "res://Scenes/Minions/icon.svg"
 
 [node name="Building" type="StaticBody2D" groups=["BuildingMesh"]]
 script = ExtResource("1_t4iwd")
@@ -37,7 +39,7 @@ offset_bottom = 40.0
 [node name="Icon" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("4_gc5s8")
+texture = SubResource("Resource_ujgic")
 
 [connection signal="area_entered" from="Area" to="Area" method="_on_area_entered"]
 [connection signal="area_exited" from="Area" to="Area" method="_on_area_exited"]

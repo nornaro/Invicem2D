@@ -11,7 +11,7 @@ func _ready() -> void:
 	if err != OK:
 		socket.send_text("Test packet")
 		return
-	push_error("Unable to connect")
+	push_warning("Unable to connect")
 	set_process(false)
 
 func _process(_delta:float) -> void:

@@ -1,6 +1,6 @@
 extends GridContainer
 
-var button: PackedScene = preload("res://Scenes/UI/equip_slot.tscn")
+var button: PackedScene = preload("res://Scenes/UI/module_slot.tscn")
 var icon_path: String = "res://Scenes/UI/Icon/"
 
 func _ready() -> void:

@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://bdfye4letqayj"]
 
-[ext_resource type="Texture2D" uid="uid://b11k7wqgsf5ka" path="res://Scenes/Build/Building/Fort/Styles/Fantasy/Fort.webp" id="1_ymcxr"]
-[ext_resource type="Texture2D" uid="uid://c6jpwa2d3jngc" path="res://Scenes/Build/Building/Fort/Styles/Sci-fi/Fort.webp" id="2_o1yei"]
+[ext_resource type="Texture2D" uid="uid://bturbkyfcxny7" path="res://Scenes/Build/Building/Fort/Styles/Fantasy/Fort.webp" id="1_ymcxr"]
+[ext_resource type="Texture2D" uid="uid://dqceks3q0h6v7" path="res://Scenes/Build/Building/Fort/Styles/Sci-fi/Fort.webp" id="2_o1yei"]
 
 [resource]
 animations = [{

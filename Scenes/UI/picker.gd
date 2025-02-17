@@ -4,7 +4,7 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_physical_key_pressed(KEY_K):
 		visible = !visible
 		
-func equip(window: String,tab: int,data: Dictionary,_source: String,category: String) -> void:
+func module(window: String,tab: int,data: Dictionary,_source: String,category: String) -> void:
 	for child in get_children():
 		if child.name != window:
 			child.hide()

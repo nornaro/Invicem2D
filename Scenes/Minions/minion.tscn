@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://dur4d3pyb716n" path="res://Scenes/Minions/minion.gd" id="1_xsgkh"]
 [ext_resource type="SpriteFrames" uid="uid://bkhh47l3mvrdh" path="res://Scenes/Minions/Chibi/Orc_3.tres" id="2_s68jy"]
 [ext_resource type="Script" uid="uid://da2j13dlftb2n" path="res://Scenes/Minions/minion_area.gd" id="3_u5uqm"]
-[ext_resource type="Texture2D" uid="uid://cx1bvgruidcd0" path="res://Scenes/Minions/Shield/pipo-btleffect207_480.webp" id="4_o6qx1"]
-[ext_resource type="Texture2D" uid="uid://d0pyx2m7647qj" path="res://Scenes/Minions/Shield/pipo-btleffect208h_480.webp" id="4_t3dqa"]
-[ext_resource type="Texture2D" uid="uid://dualyaunqjmns" path="res://Scenes/Minions/Shield/pipo-btleffect206h_480.webp" id="5_s68jy"]
-[ext_resource type="Texture2D" uid="uid://dgvoesysqw4ul" path="res://Scenes/Minions/Shield/pipo-btleffect206_480.webp" id="7_7g40y"]
+[ext_resource type="Texture2D" uid="uid://cl11u5kd31u0g" path="res://Scenes/Minions/Shield/pipo-btleffect207_480.webp" id="4_o6qx1"]
+[ext_resource type="Texture2D" uid="uid://mf0pfscijbgk" path="res://Scenes/Minions/Shield/pipo-btleffect208h_480.webp" id="4_t3dqa"]
+[ext_resource type="Texture2D" uid="uid://to5rhw2bvnx1" path="res://Scenes/Minions/Shield/pipo-btleffect206h_480.webp" id="5_s68jy"]
+[ext_resource type="Texture2D" uid="uid://70pytd4gi6px" path="res://Scenes/Minions/Shield/pipo-btleffect206_480.webp" id="7_7g40y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bex45"]
 radius = 200.0
@@ -370,6 +370,7 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 border_blend = true
 
 [node name="Minion" type="Node2D"]
+position = Vector2(0, -3)
 scale = Vector2(0.01, 0.01)
 script = ExtResource("1_xsgkh")
 

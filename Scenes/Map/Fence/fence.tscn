@@ -5,8 +5,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oydqy"]
 size = Vector2(2816, 10)
 
-[node name="Fence" type="RigidBody2D"]
-freeze = true
+[node name="Fence" type="Area2D"]
+collision_layer = 9
+collision_mask = 9
 script = ExtResource("1_us2b2")
 
 [node name="Bot" type="CollisionShape2D" parent="."]
@@ -17,7 +18,11 @@ shape = SubResource("RectangleShape2D_oydqy")
 position = Vector2(475, -95)
 shape = SubResource("RectangleShape2D_oydqy")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]
-[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]

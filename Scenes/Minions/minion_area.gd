@@ -19,6 +19,7 @@ func _on_area_entered(area:Area2D) -> void:
 		dead.emit(self)	
 		get_parent().queue_free()
 	if area.name == "Out":
+		minion.set_physics_interpolation_mode(Node.PHYSICS_INTERPOLATION_MODE_OFF)
 		minion.Data["id"] = multiplayer.get_unique_id()
 		minion.Data["gposy"] = minion.global_position.y
 		if Global.mp:
@@ -26,11 +27,12 @@ func _on_area_entered(area:Area2D) -> void:
 			return
 		minion.global_position.x = in_area.global_position.x
 		minion.get_node("MinionArea").set_meta("owner",minion.Data["id"])
-		minion.set_meta("owner",minion.Data["id"])	
-		print(area," ",area.get_parent().get_groups())
+		minion.set_meta("owner",minion.Data["id"])
+		await get_tree().create_timer(1).timeout
 	if area.is_in_group("projectile"):
 		get_parent().hurt(area.get_parent().Data)
 		area.get_parent().hit()
+	minion.set_physics_interpolation_mode(Node.PHYSICS_INTERPOLATION_MODE_ON)
 		
 		
 func death() -> void:

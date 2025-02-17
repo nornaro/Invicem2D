@@ -19,7 +19,7 @@ var is_targeting: bool = false
 		"Element": "Normal",
 	},
 	"Info": {},
-	"Equip": {
+	"Modules": {
 		"Projectile": "Basic FireBall Projectile Module",
 		"Frame": "Basic Support Frame Module",
 		"Core": "Basic Drained Core Module",
@@ -46,7 +46,7 @@ var timer_ASPD:Timer = Timer.new()
 var timer_CD:Timer = Timer.new()
 var markers: Array = []
 var rotation_coords: Array = []
-var shoot: bool = false
+var shoot: int = 0
 
 func _ready() -> void:
 	set_physics_process(true)
@@ -65,11 +65,14 @@ func _on_ASPD_timeout() -> void:
 		return
 	if !Data.has("muzzle"):
 		return
-	var targeting = $Targeting.targeting
-	if targeting.is_empty():
+	var targeting:Array = $Targeting.targeting
+	if targeting.size() == 0:
 		aspd_counter = 0
 		return
-	var target: Node2D = $Targeting.targeting[0]
+	if targeting[0] == null:
+		aspd_counter = 0
+		return
+	var target: Node2D = targeting[0]
 	if !target:  # Check if the target is valid
 		return
 	if !Data.Properties.has("Trajectory"):
@@ -80,15 +83,14 @@ func _on_ASPD_timeout() -> void:
 		randf_range(-spread_range, spread_range),
 		randf_range(-spread_range, spread_range)
 	)
-	var aspd = 20 - Data.Upgrades.AttackSpeed
+	var aspd:int = 20 - Data.Upgrades.AttackSpeed
 	var multi: Array = calculate_multishot()
 	if shoot:
-		for i: int in range(Data.muzzle.size() + multi[0]):
-			if !target:  # Double-check target before spawning projectiles
-				return
+		for i: int in range(Data.muzzle.size()):
+			#if !target:  # Double-check target before spawning projectiles
+				#return
 			spawn_projectile(multi[0], multi[1], spread, target)
-		shoot = false
-		return
+		shoot -= 1
 	if aspd_counter < aspd:
 		aspd_counter += 1
 		return
@@ -97,7 +99,7 @@ func _on_ASPD_timeout() -> void:
 		return
 	var rot: float = get_turret_rotation_to_face_target(target.global_position - global_position)
 	$Sprite.frame = rotation_to_frame(rot)
-	shoot = true
+	shoot = multi[0]
 	return
 
 	
@@ -110,15 +112,16 @@ func _on_ASPD_timeout() -> void:
 		
 func calculate_multishot() -> Array:
 	var count: float = 1.0
-	var damage: float = 100.0
+	var damage: float = 1.0
 	var m: Array = [1,7,13]
-	for i: int in range(Data.Upgrades.Multishot):
+	var multishot:int = Data.Upgrades.Multishot
+	for i: int in range(multishot): # 1-16
 		if m.has(i):
 			damage /=2
 			count += 1
 			continue
 		damage += 5
-	return [count,damage/100]
+	return [count,damage]
 
 func spawn_projectile(count:int,damage:int,spread:Vector2,target:Node) -> void:
 		var instance:Node = projectile_scene.instantiate()
@@ -159,7 +162,7 @@ func set_maxrange() -> void:
 	$Targeting.set_range()
 
 func set_targeting() -> void:
-	var script = "res://Scenes/Build/Building/Turret/Menu/Targeting/" + Data.Properties.Targeting +".gd"
+	var script:String = "res://Scenes/Build/Building/Turret/Menu/Targeting/" + Data.Properties.Targeting +".gd"
 	Global.RL.file_exists(script)
 	if Global.RL.file_exists(script):
 		$Targeting.set_script(Global.RL.load(script))
@@ -171,7 +174,7 @@ func rotation_to_frame(rot: float) -> int:
 	while rot < 0:
 		rot += 2 * PI
 	rot = fmod(rot, 2 * PI)
-	var frame = int(rot / (2 * PI) * 64)
+	var frame:int = int(rot / (2 * PI) * 64)
 	return frame
 
 #func correct_allign(frame: int) -> int:
@@ -207,5 +210,5 @@ func get_item_from_slot(slot_index: int) -> Dictionary:
 		#instance._ready()
 		#Data.merge(instance.Data)
 
-func get_turret_rotation_to_face_target(dir) -> float:
+func get_turret_rotation_to_face_target(dir:Vector2) -> float:
 	return atan2(dir.y, dir.x)

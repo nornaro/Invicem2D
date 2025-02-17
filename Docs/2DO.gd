@@ -16,6 +16,11 @@ PRIO:
 	New building ()
 	Networking (UDP, WS, Steam,Epic, Jam, GDS,...)
 	when hosting, start the console with parameter instead of changing the current instance
+	
+	move properties and upgrades:
+		Building has building properties and upgrades
+		Minion has minion properties and upgrades
+		Projectile has projectile properties and upgrades
 """
 
 

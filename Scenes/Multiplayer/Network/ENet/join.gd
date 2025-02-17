@@ -10,6 +10,7 @@ var udp_peers: Array = []
 var uid: String
 
 func lobby() -> void:
+	server_node = get_tree().get_first_node_in_group("Server")
 	udp_server.listen(broadcast_port)
 	set_process(true)
 
@@ -29,9 +30,13 @@ func join() -> void:
 	if Global.join_data:
 		join_data = Global.join_data.split(":")
 		res = peer.create_client(str(join_data[0]),int(join_data[1]))
-	print_rich("Connected to server at: ",join_data,"\n",res)
+	multiplayer.peer_connected.connect(_connected)
+	multiplayer.peer_disconnected.connect(_disconnected)
+	multiplayer.connected_to_server.connect(_connected)
+	multiplayer.server_disconnected.connect(_disconnected)
+	push_warning("Connected to server at: ",join_data,"\n",res)
 	multiplayer.multiplayer_peer = peer
-	search = false
+	set_process(false)
 
 @rpc("any_peer")
 func remove_player(id: int) -> void:

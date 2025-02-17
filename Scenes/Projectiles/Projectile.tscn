@@ -3,6 +3,7 @@
 [ext_resource type="SpriteFrames" uid="uid://8ml40qssjb68" path="res://Scenes/Projectiles/projectile.tres" id="2_qupxw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qupxw"]
+radius = 150.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 scale = Vector2(0.05, 0.05)

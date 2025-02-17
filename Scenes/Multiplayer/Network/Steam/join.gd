@@ -20,6 +20,7 @@ var status:int = 0
 const LOBBY_NAME = "InvicemTD"
 
 func lobby() -> void:
+	server_node = get_tree().get_first_node_in_group("Server")
 	player = Global.client
 	OS.set_environment("SteamAppId", str(steam_app_id))
 	OS.set_environment("SteamGameId", str(steam_app_id))
@@ -34,8 +35,13 @@ func lobby() -> void:
 
 func join() -> void:
 	Steam.lobby_joined.connect(_on_lobby_joined.bind())
-	Steam.joinLobby(int(Global.join_data))
-	search = false
+	Steam.steam_server_connected.connect(_connected)
+	Steam.steam_server_disconnected.connect(_disconnected)
+	var join_data:int = int(Global.join_data)
+	Steam.joinLobby(join_data)
+	Steam.connectP2P(join_data, port, {})
+	Steam.connectByIPAddress("192.168.1.141:"+str(port), {})
+	#search = false
 	set_process(false)
 
 func _on_lobby_joined(steam_lobby: int, _permissions: int, _locked: bool, response: int) -> void:
@@ -61,7 +67,11 @@ func _on_lobby_joined(steam_lobby: int, _permissions: int, _locked: bool, respon
 		connect_socket(id)
 
 func connect_socket(_steam_id: int) -> void:
+	multiplayer_peer.peer_connected.connect(_connected)
 	var error:int = multiplayer_peer.create_client(steam_id, port)
+	multiplayer.multiplayer_peer = multiplayer_peer
+	multiplayer.connected_to_server.connect(_connected)
+	multiplayer.server_disconnected.connect(_disconnected)
 	if error != OK:
 		push_error("Error creating client: %s" % str(error))
 	print_rich("Connecting peer to host...")
@@ -71,12 +81,12 @@ func connect_socket(_steam_id: int) -> void:
 func remove_player(id:int) -> void:
 	server_node.get_node_or_null(str(id)).queue_free()
 
-func connected() -> void:
+func _connected() -> void:
 	add_player(multiplayer.get_unique_id())
 	pass
 	#add_player.rpc_id(1, multiplayer.get_unique_id())
 
-func disconnected() -> void:
+func _disconnected() -> void:
 	push_warning("Connection lost")
 	remove_player.rpc_id(multiplayer.get_unique_id())
 

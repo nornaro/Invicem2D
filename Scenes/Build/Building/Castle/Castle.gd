@@ -8,7 +8,7 @@ extends StaticBody2D
 	"health": 0,
 	"Info": {},
 	"Properties": {},
-	"Equip": {},
+	"Modules": {},
 	"Inventory": {},
 	"Upgrades":{},
 }

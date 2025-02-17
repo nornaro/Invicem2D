@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cji5wf3blhm2u" path="res://Scenes/Timers/round_timer.gd" id="1_wgfm3"]
 
 [node name="RoundTimer" type="Timer"]
+wait_time = 5.0
 autostart = true
 script = ExtResource("1_wgfm3")
 

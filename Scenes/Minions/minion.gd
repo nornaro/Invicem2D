@@ -13,6 +13,8 @@ var regen:float = 0
 var linear_velocity: Vector2
 
 func _ready() -> void:
+	shBar.hide()
+	sh.hide()
 	if !area.has_meta("owner"):
 		add_to_group("minions")
 		#gravity_scale = 0
@@ -21,7 +23,7 @@ func _ready() -> void:
 		Data.HP = ceil(Data.HP * (1+Data.Size /10))
 		Data["max_hp"] = Data.HP
 		hpBar.max_value=Data.max_hp
-		Data.Shield = int(Data.Shield * Data.max_hp / 10)
+		Data.Shield = int(Data.Shield * Data.max_hp / 2)
 		Data["max_sh"] = Data.Shield
 		shBar.max_value=Data.max_sh
 		hpBar.value = Data.max_sh
@@ -51,11 +53,13 @@ func _ready() -> void:
 	#$MinionArea/CollisionShape2D.shape.height = 20 * (1+Data.Size)
 	Sprite.play("Walking")
 	depleted.connect("animation_finished",sh.hide)
-	print(Data.max_hp," ",Data.max_sh)
+	if shBar.value > 0:
+		shBar.show()
+		sh.show()
 
 ###unprocess
 func _physics_process(delta: float) -> void:
-	position += linear_velocity
+	position += linear_velocity * 60 / Engine.physics_ticks_per_second
 	z_index = int(position.y)
 	if get_tree().get_node_count_in_group("true"):
 		return
@@ -87,11 +91,13 @@ func hurt(data:Dictionary) -> void:
 		return
 	Data.HP -= damage
 	update_hpbar()
+	#print(Data.HP,",",Data.max_sh,",",damage,",",data.base_damage)
 	if hpBar.value == 0:
 		remove_from_group("minions")
 		linear_velocity = Vector2.ZERO
 		Sprite.play("Dying")
 		Sprite.connect("animation_looped",queue_free)
+		await get_tree().create_timer(2).timeout
 		area.death()
 		area.queue_free()
 		return
@@ -100,34 +106,59 @@ func hurt(data:Dictionary) -> void:
 
 func shield(delta: float) -> void:
 	if shBar.value == 0:
-		shBar.hide()
-		sh.hide()
 		return
-	shBar.show()
-	sh.show()
 	if h2.modulate.a > 0.0:
 		h2.modulate.a -= delta
+
 #data.Damage*data.base_damage,data.Penetration,data.Crit,data.crit_multi
-func calc_damage(data:Dictionary) -> int:
-	var damage:int = data.Damage*data.base_damage
-	var crit:int = 0
-	if Data.has("CritResit"):
-		crit = data.Crit - Data.CritResit
-	if randi_range(0,100) < crit * data.crit_chance:
-		damage *= 1 + ceil(crit / data.crit_multi)
+func calc_damage(data: Dictionary) -> int:
+	# Step 1: Calculate Crit Multiplier and Apply to Damage
+	var damage: int = data.Damage * data.base_damage
+	var crit: int = data.Crit
+	
+	# If CritResist is available in the current script data (Data), apply it
+	if Data.has("CritResist"):
+		crit -= Data.CritResist  # Adjust crit based on CritResist from the current script data
+	
+	# Calculate critical hit chance and apply crit multiplier if it's a critical hit
+	var crit_chance = randi_range(0, 100) < crit * data.crit_chance
+	if crit_chance:
+		# Apply critical damage multiplier (randomized within a given range)
+		damage *= 1 + randi_range(1, ceil(crit / data.crit_multi))
+	
+	# Step 2: Reduce Damage by Remaining Shield (Keep Above 0)
 	if Data.Shield > 0:
+		var damage_after_shield = damage - Data.Shield
+		if damage_after_shield < 0:
+			Data.Shield = clamp(Data.Shield - damage, 0, Data.Shield)  # Reduce shield accordingly
+			shBar.value = Data.Shield  # Update shield bar value
+			return 0  # All damage absorbed by shield, return 0 damage
+		
+		# If shield isn't enough, reduce shield and keep the remaining damage
 		Data.Shield = clamp(Data.Shield - damage, 0, Data.Shield)
-		shBar.value = Data.Shield
-		if shBar.value > 0:
-			#h1.modulate.a = 1
-			h2.modulate.a = 1
-			h2.play("default")
-		return clamp(damage - Data.Shield, 0, damage)
-	depleted.play("default")	
-	shBar.value = 0
-	return data.Damage / max(1.0, 1.0 + Data.Defense - data.Penetration)
+		if !Data.Shield:
+			shield_depleted()
+		shBar.value = Data.Shield  # Update shield bar value
+		damage = damage_after_shield  # Remaining damage after shield absorption
+	
+	# Step 3: Reduce Remaining Damage Based on Defense and Penetration (Keep Above 0)
+	var defense = clamp(Data.Defense - data.Penetration, 0, 20)
+	var remaining_damage: float = float(damage)
+	if data.has("armor"):
+		if !data.armor[0]:
+			remaining_damage = damage * (1 - data.armor[1] * defense / 100)
+		if data.armor[0]:
+			remaining_damage = damage - defense * data.armor[1]
+	return max(int(remaining_damage), 0)
+
 
 func update_hpbar() -> void:
 	hpBar.value = Data.HP
 	var new_color:Color = Color(1, pow(Data.HP*100 / Data.max_hp*100, 2), pow(Data.HP*100 / Data.max_hp*100, 2)/2, 0.75)
 	hpBar.modulate = new_color
+
+func shield_depleted() -> void:
+	depleted.play("default")
+	await get_tree().create_timer(0.5).timeout 
+	shBar.hide()
+	sh.hide()

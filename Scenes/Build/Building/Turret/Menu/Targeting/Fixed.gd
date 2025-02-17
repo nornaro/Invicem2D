@@ -1,8 +1,7 @@
 extends Node2D
 # First In First Served
 var parent: Node
-var in_targeting_range: Array
-
+var in_targeting_range: Array[Node]
 var targets: Array[Node] = []
 var targeting: Array[Node] = []
 
@@ -26,11 +25,11 @@ func set_range() -> void:
 	$max/range.shape.radius = cal_max(range[1])
 
 func retarget() -> void:
-	var free = parent.Data["max_target_count"] - targeting.size()
+	var free:int = parent.Data["max_target_count"] - targeting.size()
 	if free <= 0:
 		return
 	if in_targeting_range.size() == 0:
-		return
+		return  # If the array is empty, exit the function
 	for i in range(free):
 		var next_target: Node = in_targeting_range.pick_random()
 		if next_target == null:

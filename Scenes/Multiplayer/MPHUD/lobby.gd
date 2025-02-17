@@ -13,7 +13,7 @@ func _ready() -> void:
 	for network:String in networks:
 		var instance:Node = Node.new()
 		instance.name = network.split(".")[0]
-		instance.set_script(Global.RL.load(host_dir+network))
+		instance.set_script(Global.RL.load(host_dir+network+"/join.gd"))
 		add_child(instance)
 		instance.set_process(true)
 		instance.port = port
