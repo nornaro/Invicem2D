@@ -30,7 +30,7 @@ func _on_area_entered(area:Area2D) -> void:
 		minion.set_meta("owner",minion.Data["id"])
 		await get_tree().create_timer(1).timeout
 	if area.is_in_group("projectile"):
-		get_parent().hurt(area.get_parent().Data)
+		get_parent().hurt.call(area.get_parent().Data)
 		area.get_parent().hit()
 	minion.set_physics_interpolation_mode(Node.PHYSICS_INTERPOLATION_MODE_ON)
 		

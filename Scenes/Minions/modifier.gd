@@ -1,42 +1,34 @@
 extends Node
 
-@onready var minion:Node = $".."
-var Data:Dictionary = {
-	"count":5,
-}
+class_name RevivalModifier
 
-#func _ready() -> void:
-	#minion.hurt = Callable(self, "hurt")  # ✅ Assign custom function
+@export var revive_count: int = 3
+@export var revive_hp_threshold: float = 0.1
+@export var revive_hp_restore: float = 0.5
+
+@onready var minion: Node = $".."
+
+func _ready() -> void:
+	minion.hurt = Callable(self, "hurt")
 
 func hurt(data: Dictionary) -> void:
-	print("hurt")
 	if minion.dead:
 		return
-	var damage:int = minion.calc_damage(data)
-	if !damage:
-		return
 	
-	minion.Data.HP -= damage
-	minion.update_hpbar()
+	var damage: int = minion.damage_component.calculate_damage.call(data, minion.Data)
+	damage = minion.shield_component.take_damage.call(damage)
+	
+	if damage > 0:
+		minion.Data.HP -= damage
+		minion.update_hpbar.call()
+	
+	if minion.Data.HP <= minion.Data.max_hp * revive_hp_threshold:
+		check_revival()
 
-	if minion.hpBar.value == 0:
-		if Data.count > 0:
-			Data.count -= 1
-			minion.Data.HP = minion.Data.max_hp
-			minion.update_hpbar()
-			return
-
-		minion.dead = true
-		remove_from_group("minions")
-		minion.linear_velocity = Vector2.ZERO
-		minion.Sprite.connect("animation_looped", queue_free)
-		minion.Sprite.play("Dying")
-		await get_tree().create_timer(10).timeout
-		minion.area.death()
-		minion.area.queue_free()
-		return
-
-# Modify minion to call the function dynamically
-func _physics_process(delta: float) -> void:
-	if minion.has_method("hurt_func"):
-		minion.hurt_func.call({})  # Call custom hurt function
+func check_revival() -> void:
+	if revive_count == 0:
+		minion.die.call()
+	revive_count -= 1
+	minion.Data.HP = minion.Data.max_hp * revive_hp_restore
+	minion.update_hpbar.call()
+	return

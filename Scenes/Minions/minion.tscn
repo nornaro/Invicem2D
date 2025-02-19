@@ -265,7 +265,6 @@ border_blend = true
 
 [node name="Minion" type="Node2D"]
 position = Vector2(0, -3)
-scale = Vector2(0.01, 0.01)
 script = ExtResource("1_xsgkh")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

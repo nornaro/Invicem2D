@@ -148,7 +148,7 @@ func spawn(_data:Dictionary) -> void:
 		return
 	var instance:Node = minion.instantiate()
 	var rect : Rect2 = spawnin.shape.get_rect()
-	var x:float = randf_range(rect.position.x, rect.position.x+rect.size.x)
+	var x:float = randf_range(rect.position.x, rect.position.x+rect.size.x)+50
 	var y:float = randf_range(rect.position.y, rect.position.y+rect.size.y)
 	var gp:Vector2 = spawnin.global_position + Vector2(x,y)
 	instance.global_position = gp
