@@ -15,7 +15,7 @@ run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/low_processor_mode=true
 run/low_processor_mode_sleep_usec=0
-boot_splash/image="uid://chw7bp42yvdya"
+boot_splash/image="uid://bdj225amydviy"
 config/icon="uid://6vno76prvp2"
 
 [autoload]
