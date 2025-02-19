@@ -1,13 +1,13 @@
 extends AnimatedSprite2D
 
 var Data: Dictionary = {}
-var target = null  
+var target:Node
 var linear_velocity:Vector2
 var freedom: bool = false
 var collide: bool = true
 @onready var sprite:AnimatedSprite2D = $"."
 @onready var area: Area2D = $Area2D
-var pierce = 0
+var pierce:int = 0
 
 
 func _enter_tree() -> void:
@@ -27,23 +27,23 @@ func _physics_process(_delta: float) -> void:
 	if sprite.self_modulate.a <= 0.1:
 		queue_free()
 
-func _ready():
+func _ready() -> void:
 	set_physics_process(true)
 	if !target:
 		queue_free()
 		return
-	var tp = target.global_position
+	var tp:Vector2 = target.global_position
 	area.add_to_group("projectile")
-	var speed = Data.ProjectileSpeed + 10
+	var speed:int = Data.ProjectileSpeed + 10
 	sprite.scale *= 0.5+0.5/Data.Size
 	position += Vector2(1,0) * randf_range(-Data.Size,Data.Size)*2
 	linear_velocity = ((
 		(tp-global_position) * speed + 
 		target.get_parent().linear_velocity*sqrt(speed)*60).normalized() * speed)
-	var spread_range = Data.Spread * randf_range(1,2)
+	var spread_range:Vector2 = Data.Spread * randf_range(1,2)
 	linear_velocity += Data.Spread + spread_range
 
-func hit():
+func hit() -> void:
 	pierce -= 1
 	if !pierce:
 		set_free()

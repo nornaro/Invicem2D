@@ -7,10 +7,13 @@ var regen:float = 0
 @onready var hpBar:Node = $hpBar
 @onready var shBar:Node = $shBar
 @onready var sh:Node = $Shield
+@onready var h0:Node = $Shield/s0
 @onready var h2:Node = $Shield/Hit2
 @onready var depleted:Node = $Shield/Depleted
 @onready var area:Node = $MinionArea
 var linear_velocity: Vector2
+var dead:bool = false
+
 
 func _ready() -> void:
 	shBar.hide()
@@ -31,7 +34,7 @@ func _ready() -> void:
 		Data.Speed += 5 - floor(Data.Size / 4)
 		Data.Speed -= floor(Data.Size / 4)
 		shBar.value = Data.max_sh
-	linear_velocity = Vector2(-Data.Speed/5, 0)
+	linear_velocity = clamp(Vector2(-Data.Speed/5, 0),Vector2(-1,0),Vector2(-Data.Speed/5, 0))
 	var global:Dictionary = Global.Data.Minions
 	var type:String = Data.Minion[0]
 	var minion:String = Data.Minion[1]
@@ -54,6 +57,8 @@ func _ready() -> void:
 	Sprite.play("Walking")
 	depleted.connect("animation_finished",sh.hide)
 	if shBar.value > 0:
+		var mod:float = clamp(Data.Shield/10000.0,0.05,1)
+		h0.self_modulate.a = mod
 		shBar.show()
 		sh.show()
 
@@ -66,7 +71,7 @@ func _physics_process(delta: float) -> void:
 	shield(delta)
 	correct_rotation(delta)
 	regeneration(delta)
-	notify_property_list_changed()
+	#notify_property_list_changed()
 
 func regeneration(delta: float) -> void:
 	regen += delta
@@ -85,30 +90,33 @@ func correct_rotation(delta: float) -> void:
 			rotation = 0
 	
 func hurt(data:Dictionary) -> void:
+	if dead:
+		return
 	var damage:int = calc_damage(data)
 	if !damage:
-		notify_property_list_changed()
+		#notify_property_list_changed()
 		return
 	Data.HP -= damage
 	update_hpbar()
 	#print(Data.HP,",",Data.max_sh,",",damage,",",data.base_damage)
 	if hpBar.value == 0:
+		dead = true
 		remove_from_group("minions")
 		linear_velocity = Vector2.ZERO
-		Sprite.play("Dying")
 		Sprite.connect("animation_looped",queue_free)
-		await get_tree().create_timer(2).timeout
+		Sprite.play("Dying")
+		await get_tree().create_timer(10).timeout
 		area.death()
 		area.queue_free()
 		return
-	notify_property_list_changed()
+	#notify_property_list_changed()
 
 
 func shield(delta: float) -> void:
 	if shBar.value == 0:
 		return
-	if h2.modulate.a > 0.0:
-		h2.modulate.a -= delta
+	if h2.self_modulate.a > 0.0:
+		h2.self_modulate.a -= delta
 
 #data.Damage*data.base_damage,data.Penetration,data.Crit,data.crit_multi
 func calc_damage(data: Dictionary) -> int:
@@ -121,14 +129,15 @@ func calc_damage(data: Dictionary) -> int:
 		crit -= Data.CritResist  # Adjust crit based on CritResist from the current script data
 	
 	# Calculate critical hit chance and apply crit multiplier if it's a critical hit
-	var crit_chance = randi_range(0, 100) < crit * data.crit_chance
+	var crit_chance:bool = randi_range(0, 100) < crit * data.crit_chance
 	if crit_chance:
 		# Apply critical damage multiplier (randomized within a given range)
 		damage *= 1 + randi_range(1, ceil(crit / data.crit_multi))
-	
+
 	# Step 2: Reduce Damage by Remaining Shield (Keep Above 0)
 	if Data.Shield > 0:
-		var damage_after_shield = damage - Data.Shield
+		h2.self_modulate.a = 1
+		var damage_after_shield:int = damage - Data.Shield
 		if damage_after_shield < 0:
 			Data.Shield = clamp(Data.Shield - damage, 0, Data.Shield)  # Reduce shield accordingly
 			shBar.value = Data.Shield  # Update shield bar value
@@ -138,11 +147,13 @@ func calc_damage(data: Dictionary) -> int:
 		Data.Shield = clamp(Data.Shield - damage, 0, Data.Shield)
 		if !Data.Shield:
 			shield_depleted()
+		var mod:float = clamp(Data.Shield/10000.0,0.05,1)
+		h0.self_modulate.a = mod
 		shBar.value = Data.Shield  # Update shield bar value
 		damage = damage_after_shield  # Remaining damage after shield absorption
 	
 	# Step 3: Reduce Remaining Damage Based on Defense and Penetration (Keep Above 0)
-	var defense = clamp(Data.Defense - data.Penetration, 0, 20)
+	var defense:int = clamp(Data.Defense - data.Penetration, 0, 20)
 	var remaining_damage: float = float(damage)
 	if data.has("armor"):
 		if !data.armor[0]:
@@ -158,7 +169,8 @@ func update_hpbar() -> void:
 	hpBar.modulate = new_color
 
 func shield_depleted() -> void:
-	depleted.play("default")
-	await get_tree().create_timer(0.5).timeout 
+	#depleted.show()
+	#depleted.play("default")
+	#await get_tree().create_timer(0.5).timeout 
 	shBar.hide()
 	sh.hide()

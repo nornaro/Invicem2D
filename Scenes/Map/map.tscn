@@ -43,7 +43,6 @@ fill_to = Vector2(1, 1)
 size = Vector2(1700, 200)
 
 [node name="Map" type="Node2D" groups=["Map"]]
-z_index = -4096
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 visible = false
@@ -89,6 +88,7 @@ position = Vector2(-800, 130)
 metadata/_edit_use_anchors_ = true
 
 [node name="Fog" parent="." instance=ExtResource("7_eu35m")]
+z_index = 4000
 
 [node name="Ground" parent="." instance=ExtResource("2_m0gtq")]
 

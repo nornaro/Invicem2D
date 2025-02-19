@@ -53,7 +53,7 @@ orientation = 2
 
 [node name="MeshInstance2D10" type="MeshInstance2D" parent="."]
 top_level = true
-z_index = 4096
+z_index = 4000
 position = Vector2(-425, 263)
 rotation = 1.5708
 mesh = SubResource("PlaneMesh_k2lll")
@@ -61,7 +61,7 @@ texture = SubResource("GradientTexture2D_ams2i")
 
 [node name="MeshInstance2D11" type="MeshInstance2D" parent="."]
 top_level = true
-z_index = 4096
+z_index = 4000
 position = Vector2(850, -263)
 rotation = -1.5708
 mesh = SubResource("PlaneMesh_w6qxr")
@@ -69,7 +69,7 @@ texture = SubResource("GradientTexture2D_ams2i")
 
 [node name="MeshInstance2D12" type="MeshInstance2D" parent="."]
 top_level = true
-z_index = 4096
+z_index = 4000
 position = Vector2(-425, -262)
 rotation = 1.5708
 mesh = SubResource("PlaneMesh_k2lll")
@@ -77,7 +77,7 @@ texture = SubResource("GradientTexture2D_nxbs3")
 
 [node name="MeshInstance2D13" type="MeshInstance2D" parent="."]
 top_level = true
-z_index = 4096
+z_index = 4000
 position = Vector2(850, 262)
 rotation = 1.5708
 mesh = SubResource("PlaneMesh_w6qxr")
@@ -86,7 +86,7 @@ texture = SubResource("GradientTexture2D_56g4k")
 [node name="MeshInstance2D16" type="MeshInstance2D" parent="."]
 show_behind_parent = true
 top_level = true
-z_index = 4096
+z_index = 4000
 position = Vector2(-1758.97, -0.00193296)
 rotation = 1.5708
 scale = Vector2(1, 2.42392)
@@ -96,7 +96,7 @@ texture = SubResource("GradientTexture2D_iuac6")
 [node name="MeshInstance2D19" type="MeshInstance2D" parent="."]
 show_behind_parent = true
 top_level = true
-z_index = 4096
+z_index = 4000
 position = Vector2(2075, 0)
 rotation = 1.5708
 mesh = SubResource("PlaneMesh_8mbnc")
@@ -105,7 +105,7 @@ texture = SubResource("GradientTexture2D_iuac6")
 [node name="MeshInstance2D17" type="MeshInstance2D" parent="."]
 show_behind_parent = true
 top_level = true
-z_index = 4096
+z_index = 4000
 position = Vector2(425, 775)
 mesh = SubResource("PlaneMesh_qo1ir")
 texture = SubResource("GradientTexture2D_iuac6")
@@ -113,7 +113,7 @@ texture = SubResource("GradientTexture2D_iuac6")
 [node name="MeshInstance2D18" type="MeshInstance2D" parent="."]
 show_behind_parent = true
 top_level = true
-z_index = 4096
+z_index = 4000
 position = Vector2(425, -775)
 mesh = SubResource("PlaneMesh_qo1ir")
 texture = SubResource("GradientTexture2D_iuac6")

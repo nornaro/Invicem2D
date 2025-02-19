@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://xn73r3wf213t"]
+
+[ext_resource type="Script" uid="uid://xyvfrm6whupc" path="res://Scenes/Loading/black.gd" id="1_cpnrc"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f6wfl"]
+size = Vector2(3840, 3000)
+orientation = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xuifq"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tqgrc"]
+noise = SubResource("FastNoiseLite_xuifq")
+
+[node name="Black" type="MeshInstance2D"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 4090
+mesh = SubResource("PlaneMesh_f6wfl")
+script = ExtResource("1_cpnrc")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+show_behind_parent = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -282.042
+offset_top = -256.0
+offset_right = 229.958
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_progress = SubResource("NoiseTexture2D_tqgrc")

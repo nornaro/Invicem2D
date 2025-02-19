@@ -16,13 +16,11 @@ var step:int = 0
 func _process(delta: float) -> void:
 	get_tree().call_group("Homs_Screen_Button","hide")
 	if step == 0:
-		modulate = lerp(modulate, Color.BLACK, delta)
-	if modulate.r <= 0.01:
-		step = 1
-	if step == 1:
-		modulate.a = lerp(modulate.a, 0.0, delta)
-	if modulate.a <= 0.01:
-		var cam:Camera2D = get_tree().get_first_node_in_group("Camera2")
-		if cam:
-			cam.make_current()
+		modulate = lerp(modulate, Color.BLACK, delta*3)
+	#print(modulate)
+	if modulate.r < 0.001:
+		set_process(false)
+		get_tree().get_first_node_in_group("Black").show()
+		get_tree().get_first_node_in_group("Loading").show()
 		queue_free()
+		

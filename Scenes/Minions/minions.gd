@@ -5,12 +5,14 @@ var minions : Dictionary = {}
 var counter:int = 0
 var base_path:String = "res://Scenes/Minions/"
 var timeA:int
-
+var loading:Node
+var progress:int = 0
 # Custom signal to notify when all resources are loaded
 signal resources_loaded
 signal done
 
 func _ready() -> void:
+	loading = get_tree().get_first_node_in_group("Loading")
 	timeA = Time.get_ticks_msec()
 	load_minions()  # Make sure to call load_minions when the node is ready
 
@@ -18,6 +20,7 @@ func load_minions() -> void:
 	var types:Array = Global.RL.get_directories_at(base_path)
 	
 	for type:String in types:
+		#progress += minions[type].keys().size()
 		minions[type] = {}
 		for minion:String in Global.RL.get_directories_at(base_path + type):
 			counter += 1
@@ -49,6 +52,7 @@ func _physics_process(_delta: float) -> void:
 			print_debug(path_parts)
 			minions[type][minion_parts[0]][minion_parts[1]] = resource
 			loading_resources.erase(path)
+			loading.progress(1-loading_resources.keys().size()/float(counter))
 	if loading_resources.is_empty():
 		emit_signal("resources_loaded")
 		#set_process_mode(PROCESS_MODE_DISABLED)

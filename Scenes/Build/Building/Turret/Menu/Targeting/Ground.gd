@@ -1,6 +1,5 @@
 extends Node2D
 
-
 @export var Data = {
 	#"range" : [100.0, 300.0],
 	#"angle": [-90.0, 90.0],

@@ -148,9 +148,9 @@ func spawn(_data:Dictionary) -> void:
 		return
 	var instance:Node = minion.instantiate()
 	var rect : Rect2 = spawnin.shape.get_rect()
-	var x = randi_range(rect.position.x, rect.position.x+rect.size.x)
-	var y = randi_range(rect.position.y, rect.position.y+rect.size.y)
-	var gp = spawnin.global_position + Vector2(x,y)
+	var x:float = randf_range(rect.position.x, rect.position.x+rect.size.x)
+	var y:float = randf_range(rect.position.y, rect.position.y+rect.size.y)
+	var gp:Vector2 = spawnin.global_position + Vector2(x,y)
 	instance.global_position = gp
 	instance.name = str(instance.get_instance_id())
 	instance.Data["Spawn"] = Data.Upgrades

@@ -28,9 +28,9 @@ func retarget() -> void:
 	var free:int = parent.Data["max_target_count"] - targeting.size()
 	if free <= 0:
 		return
-	if in_targeting_range.size() == 0:
-		return  # If the array is empty, exit the function
 	for i in range(free):
+		if in_targeting_range.is_empty():
+			break  # Exit the loop if the array is empty
 		var next_target: Node = in_targeting_range.pick_random()
 		if next_target == null:
 			continue
@@ -51,7 +51,6 @@ func _on_min_area_entered(area: Area2D) -> void:
 		return
 	targeting.erase(area)
 	in_targeting_range.erase(area)
-	area.disconnect("dead",death)
 	retarget()
 
 func _on_max_area_exited(area: Area2D) -> void:
@@ -59,7 +58,6 @@ func _on_max_area_exited(area: Area2D) -> void:
 		return
 	targeting.erase(area)
 	in_targeting_range.erase(area)
-	area.disconnect("dead",death)
 	retarget()
 
 func _on_min_area_exited(area: Area2D) -> void:
@@ -68,7 +66,6 @@ func _on_min_area_exited(area: Area2D) -> void:
 	if !area.has_meta("owner"):
 		return
 	in_targeting_range.append(area)
-	area.connect("dead",death)
 	retarget()
 	
 func death(area:Area2D) -> void:

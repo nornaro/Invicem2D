@@ -7,6 +7,7 @@ extends Node
 @onready var minions: PackedScene = preload("res://Scenes/Minions/minions.tscn")
 @onready var round_timer: PackedScene = preload("res://Scenes/Multiplayer/dummy_timer.tscn")
 @onready var aspd_timer: PackedScene = preload("res://Scenes/Multiplayer/aspd_timer.tscn")
+#@onready var black: PackedScene = preload("res://Scenes/Multiplayer/black.tscn")
 
 ##2DO MP connect not ok
 
@@ -27,6 +28,7 @@ func _load_next() -> void:
 	add_child(map.instantiate())
 	add_child(buildings.instantiate())
 	add_child(ui.instantiate())
+	#add_child(black.instantiate())	
 	add_child(camera.instantiate())
 
 func _on_home_screen_property_list_changed() -> void:
