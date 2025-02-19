@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bp4rs15tn50dm"]
 
 [ext_resource type="SpriteFrames" uid="uid://c07xdxik2q5fl" path="res://Scenes/Build/Building/Turret/Type/T2/T2.tres" id="1_5cgxu"]
-[ext_resource type="Script" uid="uid://bxu8g4x1qmdfx" path="res://Scenes/Build/Building/Turret/Turret.gd" id="2_hsq2p"]
+[ext_resource type="Script" uid="uid://cl7pqf1fydv7x" path="res://Scenes/Build/Building/Turret/Turret.gd" id="2_hsq2p"]
 
 [node name="Turret" type="AnimatedSprite2D"]
 position = Vector2(0, 1)

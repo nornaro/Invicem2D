@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://86d0ulumruay"]
-
-[sub_resource type="Resource" id="Resource_jvq13"]
-metadata/__load_path__ = "res://Temp/network_mgr.gd"
-
-[node name="NetworkMgr" type="Node" groups=["Multi"]]
-script = SubResource("Resource_jvq13")

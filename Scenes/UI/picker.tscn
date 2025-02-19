@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d34mxo1ld0ik5"]
 
-[ext_resource type="Script" uid="uid://c446t4wmho48g" path="res://Scenes/UI/picker.gd" id="1_arcwy"]
+[ext_resource type="Script" uid="uid://do53yfqpdirwu" path="res://Scenes/UI/picker.gd" id="1_arcwy"]
 [ext_resource type="PackedScene" uid="uid://cbw1h45r5nyl4" path="res://Scenes/Multiplayer/MPHUD/minion_inventory.tscn" id="3_fvwoe"]
 
 [node name="Picker" type="Panel" groups=["Picker"]]

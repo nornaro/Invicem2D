@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 run/low_processor_mode=true
 run/low_processor_mode_sleep_usec=0
 boot_splash/image="uid://chw7bp42yvdya"
-config/icon="res://Invicem2D.webp"
+config/icon="uid://6vno76prvp2"
 
 [autoload]
 

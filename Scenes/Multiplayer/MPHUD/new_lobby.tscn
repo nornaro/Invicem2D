@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://86fj5bkeoxtd"]
 
-[ext_resource type="Script" uid="uid://csoxvgd1w5uwn" path="res://Scenes/Multiplayer/MPHUD/lobby.gd" id="1_156em"]
+[ext_resource type="Script" uid="uid://bi4grx1iomo57" path="res://Scenes/Multiplayer/MPHUD/lobby.gd" id="1_156em"]
 
 [node name="Lobby" type="ScrollContainer"]
 anchors_preset = 15

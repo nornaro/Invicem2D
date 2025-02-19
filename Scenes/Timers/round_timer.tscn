@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://du5pq3swotrs1"]
 
-[ext_resource type="Script" uid="uid://cji5wf3blhm2u" path="res://Scenes/Timers/round_timer.gd" id="1_wgfm3"]
+[ext_resource type="Script" uid="uid://l3ewbp1r1gfx" path="res://Scenes/Timers/round_timer.gd" id="1_wgfm3"]
 
 [node name="RoundTimer" type="Timer"]
 wait_time = 5.0

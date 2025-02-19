@@ -1,13 +1,13 @@
 [gd_resource type="TileSet" load_steps=17 format=3 uid="uid://c1rq4nl3uf44o"]
 
-[ext_resource type="Texture2D" uid="uid://ctotr1uwloyu4" path="res://Scenes/Map/Texture/TX Plant.webp" id="1_fg5dn"]
-[ext_resource type="Texture2D" uid="uid://c5uq3h43f0xke" path="res://Scenes/Map/Texture/TX Props.webp" id="2_6a6r7"]
-[ext_resource type="Texture2D" uid="uid://byo3r3mgtmow8" path="res://Scenes/Map/Texture/TX Shadow Plant.webp" id="3_ul4qx"]
-[ext_resource type="Texture2D" uid="uid://o153tpfh6pro" path="res://Scenes/Map/Texture/TX Shadow.webp" id="4_b3v8x"]
-[ext_resource type="Texture2D" uid="uid://b885vkkodj2lj" path="res://Scenes/Map/Texture/TX Struct.webp" id="5_trw17"]
-[ext_resource type="Texture2D" uid="uid://w8cdm6w1khx" path="res://Scenes/Map/Texture/TX Tileset Grass.webp" id="6_gm1f3"]
-[ext_resource type="Texture2D" uid="uid://3s5dg03fq086" path="res://Scenes/Map/Texture/TX Tileset Stone Ground.webp" id="7_qkpqc"]
-[ext_resource type="Texture2D" uid="uid://w73biygonop5" path="res://Scenes/Map/Texture/TX Tileset Wall.webp" id="8_k3x7p"]
+[ext_resource type="Texture2D" uid="uid://dvdi0h8opa7le" path="res://Scenes/Map/Texture/TX Plant.webp" id="1_fg5dn"]
+[ext_resource type="Texture2D" uid="uid://b8o1huh8r03x3" path="res://Scenes/Map/Texture/TX Props.webp" id="2_6a6r7"]
+[ext_resource type="Texture2D" uid="uid://w33pspexiaq7" path="res://Scenes/Map/Texture/TX Shadow Plant.webp" id="3_ul4qx"]
+[ext_resource type="Texture2D" uid="uid://dsi3axgk4jbw0" path="res://Scenes/Map/Texture/TX Shadow.webp" id="4_b3v8x"]
+[ext_resource type="Texture2D" uid="uid://dibxv2t65dxd0" path="res://Scenes/Map/Texture/TX Struct.webp" id="5_trw17"]
+[ext_resource type="Texture2D" uid="uid://b7uyl6jh4d7bx" path="res://Scenes/Map/Texture/TX Tileset Grass.webp" id="6_gm1f3"]
+[ext_resource type="Texture2D" uid="uid://beeki30uss8e4" path="res://Scenes/Map/Texture/TX Tileset Stone Ground.webp" id="7_qkpqc"]
+[ext_resource type="Texture2D" uid="uid://cjpvrtno4ev0q" path="res://Scenes/Map/Texture/TX Tileset Wall.webp" id="8_k3x7p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_07c83"]
 texture = ExtResource("1_fg5dn")

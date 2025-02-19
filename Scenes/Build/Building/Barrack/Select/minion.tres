@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://b7h5vydgdai04"]
 
-[ext_resource type="Texture2D" uid="uid://dwtp3jwbbl5df" path="res://Scenes/Minions/icon.svg" id="1_63nsy"]
+[ext_resource type="Texture2D" uid="uid://yb5cvy6sw3ye" path="res://Scenes/Minions/icon.svg" id="1_63nsy"]
 
 [resource]
 animations = [{

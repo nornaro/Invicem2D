@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbm6uy5irqlad"]
 
-[ext_resource type="Texture2D" uid="uid://b3806by6bdwso" path="res://Scenes/Map/Ground/openart-image_b5DSGxA0_1735698634067_raw.jpg" id="2_cuqbm"]
-[ext_resource type="Texture2D" uid="uid://duyxniukfn865" path="res://Scenes/Map/Ground/Road.jpg" id="3_yts8o"]
+[ext_resource type="Texture2D" uid="uid://bfy5nwyabs0ch" path="res://Scenes/Map/Ground/openart-image_b5DSGxA0_1735698634067_raw.jpg" id="2_cuqbm"]
+[ext_resource type="Texture2D" uid="uid://budkihiiumn7l" path="res://Scenes/Map/Ground/Road.jpg" id="3_yts8o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k46gt"]
 size = Vector2(1650, 965)

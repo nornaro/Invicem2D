@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://brw22hr1sjyt1"]
 
-[ext_resource type="Script" uid="uid://b2xi3o2ptvxse" path="res://Scenes/Timers/timers.gd" id="1_ql1qr"]
+[ext_resource type="Script" uid="uid://2bdeoauhs767" path="res://Scenes/Timers/timers.gd" id="1_ql1qr"]
 [ext_resource type="PackedScene" uid="uid://du5pq3swotrs1" path="res://Scenes/Timers/round_timer.tscn" id="2_met7m"]
 
 [node name="Timers" type="Node"]

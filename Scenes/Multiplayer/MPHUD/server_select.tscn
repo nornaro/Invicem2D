@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dxekw4u3rtl6n"]
 
-[ext_resource type="Script" uid="uid://bm1bwiggia8ex" path="res://Scenes/Multiplayer/MPHUD/server_select.gd" id="1_6ckxm"]
+[ext_resource type="Script" uid="uid://c0lqtgi1vid4e" path="res://Scenes/Multiplayer/MPHUD/server_select.gd" id="1_6ckxm"]
 
 [node name="ServerSelect" type="Button"]
 custom_minimum_size = Vector2(0, 40)

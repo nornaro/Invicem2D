@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d06p81aopg7re"]
 
-[ext_resource type="Script" uid="uid://u545mu8jpo7u" path="res://Scenes/Projectiles/targeting.gd" id="1_kmiw0"]
+[ext_resource type="Script" uid="uid://cy3jeiyq6s54j" path="res://Scenes/Projectiles/targeting.gd" id="1_kmiw0"]
 
 [node name="Targeting" type="Node2D"]
 script = ExtResource("1_kmiw0")

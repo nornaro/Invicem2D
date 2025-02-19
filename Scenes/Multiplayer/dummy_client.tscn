@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c5bjlyiba1omo"]
 
-[ext_resource type="Script" uid="uid://dd3k6vapon7ea" path="res://Scenes/Multiplayer/dummy_client.gd" id="1_bcjwi"]
+[ext_resource type="Script" uid="uid://35oprwbax3fg" path="res://Scenes/Multiplayer/dummy_client.gd" id="1_bcjwi"]
 
 [node name="Client" type="Node" groups=["Client"]]
 script = ExtResource("1_bcjwi")

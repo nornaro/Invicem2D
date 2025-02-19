@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cd65fylu8cqtu"]
 
-[ext_resource type="Script" uid="uid://cawjgotsybayp" path="res://Scenes/UI/image_panel.gd" id="1_bauhc"]
+[ext_resource type="Script" uid="uid://c5jyqhdmc4han" path="res://Scenes/UI/image_panel.gd" id="1_bauhc"]
 
 [node name="ImagePanel" type="Panel" groups=["BuildingProperties"]]
 custom_minimum_size = Vector2(140, 140)

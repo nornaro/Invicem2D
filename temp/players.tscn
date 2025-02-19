@@ -1,4 +1,0 @@
-[gd_scene format=3 uid="uid://bh1511rg5sbah"]
-
-[node name="Players" type="MultiplayerSpawner" groups=["Players"]]
-spawn_path = NodePath(".")

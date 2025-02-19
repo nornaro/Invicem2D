@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://t5s36h6pjarw"]
 
-[ext_resource type="Script" uid="uid://b5jikgdcclm68" path="res://Scenes/UI/module_slots.gd" id="1_hc2a4"]
+[ext_resource type="Script" uid="uid://bxalpqdker7qx" path="res://Scenes/UI/module_slots.gd" id="1_hc2a4"]
 
 [node name="ModuleSlots" type="GridContainer" groups=["BuildingProperties"]]
 custom_minimum_size = Vector2(35, 140)

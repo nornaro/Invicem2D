@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cuixthaxle0q0"]
 
-[ext_resource type="Script" uid="uid://dimrqmtcwdnuh" path="res://leaderboard.gd" id="1_2t7te"]
+[ext_resource type="Script" uid="uid://dfh3e6h5favi3" path="res://leaderboard.gd" id="1_2t7te"]
 [ext_resource type="PackedScene" uid="uid://iseo66on550f" path="res://leaderboard_player.tscn" id="2_oli24"]
 
 [node name="Leaderboard" type="TabContainer" groups=["Leaderboard"]]

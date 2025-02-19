@@ -1,9 +1,9 @@
 [gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bfxyp1s25v57k"]
 
-[ext_resource type="Texture2D" uid="uid://dgwy8bpne6wke" path="res://Scenes/Build/Building/Market/Styles/Fantasy/Market.webp" id="1_8vv73"]
-[ext_resource type="Texture2D" uid="uid://tqssicoe4wqn" path="res://Scenes/Build/Building/Market/Styles/Fantasy/Market_.webp" id="2_s56hj"]
-[ext_resource type="Texture2D" uid="uid://b6jcm4g41tlrb" path="res://Scenes/Build/Building/Market/Styles/Sci-fi/Market1.webp" id="3_sg4nm"]
-[ext_resource type="Texture2D" uid="uid://c3ywtuprlo5k1" path="res://Scenes/Build/Building/Market/Styles/Sci-fi/Market2.webp" id="4_pa7to"]
+[ext_resource type="Texture2D" uid="uid://csihya8st6upu" path="res://Scenes/Build/Building/Market/Styles/Fantasy/Market.webp" id="1_8vv73"]
+[ext_resource type="Texture2D" uid="uid://x7yevhiaoin1" path="res://Scenes/Build/Building/Market/Styles/Fantasy/Market_.webp" id="2_s56hj"]
+[ext_resource type="Texture2D" uid="uid://bjnrqhfa76k6l" path="res://Scenes/Build/Building/Market/Styles/Sci-fi/Market1.webp" id="3_sg4nm"]
+[ext_resource type="Texture2D" uid="uid://dg7unn3qfuyfh" path="res://Scenes/Build/Building/Market/Styles/Sci-fi/Market2.webp" id="4_pa7to"]
 
 [resource]
 animations = [{

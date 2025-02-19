@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3thtlnn4tiwe"]
-
-[ext_resource type="SpriteFrames" uid="uid://b7h5vydgdai04" path="res://Scenes/Build/Building/Barrack/Select/minion.tres" id="1_3tdbk"]
-
-[node name="PixelArtMinions" type="Node2D"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("1_3tdbk")
-animation = &"Walking"

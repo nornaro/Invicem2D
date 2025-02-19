@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://crtx4pfoxksfn"]
 
-[ext_resource type="Script" uid="uid://iqkq3nwa08s5" path="res://Scenes/Hud/hud.gd" id="1_j7m1u"]
-[ext_resource type="Script" uid="uid://lfcn80l6gag5" path="res://Scenes/Hud/Numbers.gd" id="2_rrqny"]
+[ext_resource type="Script" uid="uid://dtc28pgjdm862" path="res://Scenes/Hud/hud.gd" id="1_j7m1u"]
+[ext_resource type="Script" uid="uid://prf2ws4rfjff" path="res://Scenes/Hud/Numbers.gd" id="2_rrqny"]
 
 [node name="Hud" type="Node"]
 script = ExtResource("1_j7m1u")

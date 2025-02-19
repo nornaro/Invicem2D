@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://towyrhbl2wr4"]
 
-[ext_resource type="Script" uid="uid://dnbj5owyfa8ke" path="res://Scenes/Projectiles/GPUParticles2D.gd" id="1_lorx6"]
+[ext_resource type="Script" uid="uid://dk6qoi2go13yr" path="res://Scenes/Projectiles/GPUParticles2D.gd" id="1_lorx6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ha3ui"]
 

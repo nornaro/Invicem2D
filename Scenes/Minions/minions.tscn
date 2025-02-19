@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bmry5otyyudj1"]
 
-[ext_resource type="Script" uid="uid://cx3pdxqiovfmc" path="res://Scenes/Minions/minions.gd" id="1_28wuj"]
+[ext_resource type="Script" uid="uid://djaicrrvy7vl5" path="res://Scenes/Minions/minions.gd" id="1_28wuj"]
 
 [node name="Minions" type="Node" groups=["Minions"]]
 script = ExtResource("1_28wuj")

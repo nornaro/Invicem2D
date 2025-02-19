@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dhearbilncssa"]
 
-[ext_resource type="Texture2D" uid="uid://bnay2ofqg81yc" path="res://Scenes/Particles/flame_04.webp" id="1_r2yo1"]
+[ext_resource type="Texture2D" uid="uid://dovhhvnmq17l8" path="res://Scenes/Particles/flame_04.webp" id="1_r2yo1"]
 
 [sub_resource type="Curve" id="Curve_6fx1a"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.262032, 0.506867), 0.0, 0.0, 0, 0, Vector2(0.754011, 0.489863), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

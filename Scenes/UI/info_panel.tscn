@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b4jui0e62j4cw"]
 
-[ext_resource type="Script" uid="uid://i1k6xps1vpfv" path="res://Scenes/UI/info_panel.gd" id="1_221im"]
+[ext_resource type="Script" uid="uid://c1qvbb7ajqn75" path="res://Scenes/UI/info_panel.gd" id="1_221im"]
 
 [node name="InfoPanel" type="GridContainer"]
 offset_right = 1.0

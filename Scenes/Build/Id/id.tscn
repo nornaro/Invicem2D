@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqejbv3xdrebh"]
 
-[ext_resource type="Script" uid="uid://bh8475v2bqb2g" path="res://Scenes/Build/Id/id.gd" id="1_t46uf"]
+[ext_resource type="Script" uid="uid://cqle38e3dv2bp" path="res://Scenes/Build/Id/id.gd" id="1_t46uf"]
 
 [node name="ID" type="TextEdit"]
 visible = false

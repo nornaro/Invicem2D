@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b365gc0lijb6r"]
 
-[ext_resource type="Script" uid="uid://bgmsoje2ymtvx" path="res://Scenes/Build/BuildingArea/building_area.gd" id="1_cnk87"]
+[ext_resource type="Script" uid="uid://bjjpgd46eht78" path="res://Scenes/Build/BuildingArea/building_area.gd" id="1_cnk87"]
 
 [node name="Area" type="Area2D" groups=["building"]]
 script = ExtResource("1_cnk87")
