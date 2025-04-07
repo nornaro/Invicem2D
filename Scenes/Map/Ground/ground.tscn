@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbm6uy5irqlad"]
 
-[ext_resource type="Texture2D" uid="uid://bfy5nwyabs0ch" path="res://Scenes/Map/Ground/openart-image_b5DSGxA0_1735698634067_raw.jpg" id="2_cuqbm"]
-[ext_resource type="Texture2D" uid="uid://budkihiiumn7l" path="res://Scenes/Map/Ground/Road.jpg" id="3_yts8o"]
+[ext_resource type="Texture2D" uid="uid://6myhqs54mcg1" path="res://Scenes/Map/Ground/Road.jpg" id="1_qgas0"]
+[ext_resource type="Texture2D" uid="uid://bdyxe2co5tlc6" path="res://Scenes/Map/Ground/openart-image_b5DSGxA0_1735698634067_raw.jpg" id="2_i4i2e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k46gt"]
 size = Vector2(1650, 965)
@@ -24,121 +24,121 @@ shape = SubResource("RectangleShape2D_k46gt")
 position = Vector2(-923, 0)
 rotation = 1.5708
 scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
+texture = ExtResource("1_qgas0")
 
 [node name="Road0" type="Sprite2D" parent="."]
 position = Vector2(-718, 0)
 rotation = 1.5708
 scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
+texture = ExtResource("1_qgas0")
 
 [node name="Road1" type="Sprite2D" parent="."]
 position = Vector2(-513, 0)
 rotation = 1.5708
 scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
+texture = ExtResource("1_qgas0")
 
 [node name="Road2" type="Sprite2D" parent="."]
 position = Vector2(-308, 0)
 rotation = 1.5708
 scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
+texture = ExtResource("1_qgas0")
 
 [node name="Road3" type="Sprite2D" parent="."]
 position = Vector2(-103, 0)
 rotation = 1.5708
 scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
+texture = ExtResource("1_qgas0")
 
 [node name="Road4" type="Sprite2D" parent="."]
 position = Vector2(103, 0)
 rotation = 1.5708
 scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
+texture = ExtResource("1_qgas0")
 
 [node name="Road5" type="Sprite2D" parent="."]
 position = Vector2(308, 0)
 rotation = 1.5708
 scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
+texture = ExtResource("1_qgas0")
 
 [node name="Road6" type="Sprite2D" parent="."]
 position = Vector2(513, 0)
 rotation = 1.5708
 scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
+texture = ExtResource("1_qgas0")
 
 [node name="Road7" type="Sprite2D" parent="."]
 position = Vector2(718, 0)
 rotation = 1.5708
 scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
+texture = ExtResource("1_qgas0")
 
 [node name="Road+" type="Sprite2D" parent="."]
 position = Vector2(923, 0)
 rotation = 1.5708
 scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
+texture = ExtResource("1_qgas0")
 
 [node name="Road+2" type="Sprite2D" parent="."]
 position = Vector2(1129, 0)
 rotation = 1.5708
 scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
+texture = ExtResource("1_qgas0")
 
 [node name="Road+3" type="Sprite2D" parent="."]
 position = Vector2(1334, 0)
 rotation = 1.5708
 scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
+texture = ExtResource("1_qgas0")
 
 [node name="Road+4" type="Sprite2D" parent="."]
 position = Vector2(1539, 0)
 rotation = 1.5708
 scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
+texture = ExtResource("1_qgas0")
 
 [node name="Road+5" type="Sprite2D" parent="."]
 position = Vector2(1744, 0)
 rotation = 1.5708
 scale = Vector2(0.23, 0.23)
-texture = ExtResource("3_yts8o")
+texture = ExtResource("1_qgas0")
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
 position = Vector2(-500, 300)
 rotation = 3.14159
 mesh = SubResource("PlaneMesh_j5cvp")
-texture = ExtResource("2_cuqbm")
+texture = ExtResource("2_i4i2e")
 
 [node name="MeshInstance2D3" type="MeshInstance2D" parent="."]
 position = Vector2(500, 300)
 rotation = 3.14159
 scale = Vector2(-1, 1)
 mesh = SubResource("PlaneMesh_j5cvp")
-texture = ExtResource("2_cuqbm")
+texture = ExtResource("2_i4i2e")
 
 [node name="MeshInstance2D6" type="MeshInstance2D" parent="."]
 position = Vector2(1500, 300)
 rotation = -3.14159
 mesh = SubResource("PlaneMesh_j5cvp")
-texture = ExtResource("2_cuqbm")
+texture = ExtResource("2_i4i2e")
 
 [node name="MeshInstance2D7" type="MeshInstance2D" parent="."]
 position = Vector2(1500, -300)
 scale = Vector2(-1, 1)
 mesh = SubResource("PlaneMesh_j5cvp")
-texture = ExtResource("2_cuqbm")
+texture = ExtResource("2_i4i2e")
 
 [node name="MeshInstance2D4" type="MeshInstance2D" parent="."]
 position = Vector2(-500, -300)
 rotation = 3.14159
 scale = Vector2(1, -1)
 mesh = SubResource("PlaneMesh_j5cvp")
-texture = ExtResource("2_cuqbm")
+texture = ExtResource("2_i4i2e")
 
 [node name="MeshInstance2D5" type="MeshInstance2D" parent="."]
 position = Vector2(500, -300)
 rotation = 3.14159
 scale = Vector2(-1, -1)
 mesh = SubResource("PlaneMesh_j5cvp")
-texture = ExtResource("2_cuqbm")
+texture = ExtResource("2_i4i2e")

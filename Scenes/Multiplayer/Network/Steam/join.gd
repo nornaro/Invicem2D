@@ -39,8 +39,8 @@ func join() -> void:
 	Steam.steam_server_disconnected.connect(_disconnected)
 	var join_data:int = int(Global.join_data)
 	Steam.joinLobby(join_data)
-	Steam.connectP2P(join_data, port, {})
-	Steam.connectByIPAddress("192.168.1.141:"+str(port), {})
+	#Steam.connectP2P(join_data, port, {})
+	#Steam.connectByIPAddress("192.168.1.141:"+str(port), {})
 	#search = false
 	set_process(false)
 

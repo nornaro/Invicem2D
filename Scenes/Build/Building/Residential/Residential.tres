@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://23kf6rbawp6u"]
 
-[ext_resource type="Texture2D" uid="uid://cgebpkgd2y0y7" path="res://icon.svg" id="1_60rgb"]
-[ext_resource type="Texture2D" uid="uid://c4c6e5uyxg4y4" path="res://Scenes/Build/Building/Forge/Styles/Sci-fi/Forge.webp" id="1_ybj6o"]
+[ext_resource type="Texture2D" uid="uid://t24jtbxsgu0i" path="res://icon.svg" id="1_60rgb"]
+[ext_resource type="Texture2D" uid="uid://ldogtr4u3ulc" path="res://Scenes/Build/Building/Forge/Styles/Sci-fi/Forge.webp" id="1_ybj6o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4a58f"]
 atlas = ExtResource("1_60rgb")

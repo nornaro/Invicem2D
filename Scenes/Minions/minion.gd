@@ -13,14 +13,20 @@ var dead: bool = false
 @onready var h2: Node = $Shield/Hit2
 @onready var depleted: Node = $Shield/Depleted
 @onready var area: Node = $MinionArea
-@onready var shield_component: ShieldComponent = $ShieldComponent
-@onready var damage_component: DamageComponent = $DamageComponent
+@onready var shield_component: ShieldComponent = ShieldComponent.new()
+@onready var damage_component: DamageComponent = DamageComponent.new()
 
 func _ready() -> void:
 	if !area.has_meta("owner"):
 		add_to_group("minions")
 		initialize_data.call()
+		initialize_sprite.call()
+		shield_component.initialize.call(Data.max_sh, shBar, h2, depleted, sh)
+	extra.call()
 	linear_velocity = Vector2(-Data.Speed / 5, 0).clamp(Vector2(-1, 0), Vector2(-Data.Speed / 5, 0))
+
+@export var extra: Callable = func() -> void:
+	pass
 
 @export var initialize_data: Callable = func() -> void:
 	Data["name"] = name
@@ -40,7 +46,7 @@ func _ready() -> void:
 	var sprite: String = global[type][minion].keys().pick_random()
 	Sprite.speed_scale = 1 + Data.Speed
 	Sprite.sprite_frames = global[type][minion][sprite]
-	scale *= 1000 * Data.Size
+	scale *= 10 * Data.Size
 	adjust_ui_positions.call()
 	Sprite.play("Walking")
 

@@ -31,7 +31,13 @@ func retarget() -> void:
 	for i in range(free):
 		if in_targeting_range.is_empty():
 			break  # Exit the loop if the array is empty
-		var next_target: Node = in_targeting_range.pick_random()
+		var r = randi_range(0,in_targeting_range.size()-1)
+		if 0 == in_targeting_range.size():
+			break
+		if !is_instance_valid(in_targeting_range[r-1]):
+			continue
+		var next_target: Node = in_targeting_range[r]
+		
 		if next_target == null:
 			continue
 		in_targeting_range.erase(next_target)

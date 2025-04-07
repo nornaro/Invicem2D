@@ -4,6 +4,8 @@ extends Camera2D
 @onready var network_scene:PackedScene = preload("res://Scenes/Multiplayer/network.tscn")
 
 func _ready() -> void:
+	var folders = Global.folders
+	print(folders)
 	make_current()
 	add_child(network_scene.instantiate())
 	add_child(main_menu.instantiate())

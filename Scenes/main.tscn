@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://ds57nc6h7eej5"]
 
-[ext_resource type="Script" uid="uid://b4y1mdg6utnri" path="res://Scenes/main.gd" id="1_fvccw"]
+[ext_resource type="Script" uid="uid://beyvdbpt1vtxu" path="res://Scenes/main.gd" id="1_fvccw"]
 [ext_resource type="Script" uid="uid://8qndcaprqnkg" path="res://Docs/Bugs.gd" id="2_lg1kx"]
 [ext_resource type="Script" uid="uid://ceaif0gq7khyx" path="res://Docs/readme.gd" id="3_lukef"]
 [ext_resource type="Script" uid="uid://do8w3s8sfyqms" path="res://Docs/2DO.gd" id="3_tggs8"]
 [ext_resource type="Script" uid="uid://effo0l82h64a" path="res://Scenes/sec_steps.gd" id="5_kry3j"]
-[ext_resource type="Script" uid="uid://dmfe2wi3rmwi3" path="res://Docs/modifiers.gd" id="6_21xkr"]
+[ext_resource type="Script" uid="uid://cw1xlyke8pau4" path="res://Docs/modifiers.gd" id="6_21xkr"]
 [ext_resource type="Script" uid="uid://o8iplwjtj12n" path="res://Docs/kafra.gd" id="7_6bp64"]
 [ext_resource type="Script" uid="uid://doudgpn21pm14" path="res://Scenes/Loading/black.gd" id="8_ynf5e"]
 [ext_resource type="Script" uid="uid://dxa2tk7qq77dh" path="res://Scenes/Map/progress_bar.gd" id="9_hptm8"]

@@ -17,7 +17,6 @@ func _process(delta: float) -> void:
 	get_tree().call_group("Homs_Screen_Button","hide")
 	if step == 0:
 		modulate = lerp(modulate, Color.BLACK, delta*3)
-	#print(modulate)
 	if modulate.r < 0.001:
 		set_process(false)
 		get_tree().get_first_node_in_group("Black").show()

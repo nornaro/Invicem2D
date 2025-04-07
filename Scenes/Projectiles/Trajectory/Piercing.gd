@@ -26,10 +26,13 @@ func _physics_process(_delta: float) -> void:
 	sprite.self_modulate.a = lerp(sprite.self_modulate.a,0.0,0.5)
 	if sprite.self_modulate.a <= 0.1:
 		queue_free()
+		Global.counter -= 1
 
 func _ready() -> void:
+	Global.counter += 1
 	set_physics_process(true)
 	if !target:
+		Global.counter -= 1
 		queue_free()
 		return
 	var tp:Vector2 = target.global_position
@@ -46,5 +49,5 @@ func _ready() -> void:
 func hit() -> void:
 	pierce -= 1
 	if !pierce:
-		set_free()
+		Global.counter -= 1
 		queue_free()

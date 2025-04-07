@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=131 format=3 uid="uid://cywpgil6msv4o"]
 
-[ext_resource type="Texture2D" uid="uid://bggkufyn8v3ys" path="res://Scenes/Build/Building/Turret/Type/T1/Styles/Fantasy/T1.webp" id="1_08p7j"]
-[ext_resource type="Texture2D" uid="uid://do8ya4lx8nsps" path="res://Scenes/Build/Building/Turret/Type/T1/Styles/Sci-fi/T1.webp" id="2_u8jko"]
+[ext_resource type="Texture2D" uid="uid://nplluli4747i" path="res://Scenes/Build/Building/Turret/Type/T1/Styles/Fantasy/T1.webp" id="1_08p7j"]
+[ext_resource type="Texture2D" uid="uid://d15pouy0fk46y" path="res://Scenes/Build/Building/Turret/Type/T1/Styles/Sci-fi/T1.webp" id="2_u8jko"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_clujy"]
 atlas = ExtResource("1_08p7j")

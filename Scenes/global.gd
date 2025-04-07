@@ -6,6 +6,8 @@ const GAME_ID:String = "xcNhLTRbBH"
 @export var dummy_client: PackedScene = preload("res://Scenes/Multiplayer/dummy_client.tscn")
 @export var style:String = "Sci-fi"
 var peer: PacketPeer
+
+var folders: Dictionary
 var clients: Dictionary = {
 	#"id": {
 		#"name": "",
@@ -20,7 +22,7 @@ var Currecny: Dictionary = {
 	"Power": 100,
 	"Zeny": 100,
 }
-
+var counter:int
 var RL:ResLoad = ResLoad.new()
 #var threads:Dictionary = {
 	#"minion":Thread.new(),
@@ -47,3 +49,10 @@ func console(txt:String) -> void:
 		return
 	C.text += str(txt) + "\n"
 	
+func _enter_tree() -> void:
+	get_folders()
+	
+func get_folders(root:String = "res://Scenes/") -> void:
+	for folder in DirAccess.get_directories_at(root):
+		Global.folders[folder] = root+folder+"/"
+		get_folders(Global.folders[folder])

@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuixthaxle0q0"]
+
+[ext_resource type="Script" uid="uid://dfh3e6h5favi3" path="res://leaderboard.gd" id="1_2t7te"]
+[ext_resource type="PackedScene" uid="uid://iseo66on550f" path="res://leaderboard_player.tscn" id="2_oli24"]
+
+[node name="Leaderboard" type="TabContainer" groups=["Leaderboard"]]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(300, 30)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -305.0
+offset_top = 39.0
+offset_right = -5.0
+offset_bottom = 369.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "Right click to change sort"
+tab_alignment = 2
+current_tab = 0
+tab_focus_mode = 1
+deselect_enabled = true
+script = ExtResource("1_2t7te")
+
+[node name="Scoreboard" type="GridContainer" parent="."]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="0" parent="Scoreboard" instance=ExtResource("2_oli24")]
+layout_mode = 2
+
+[node name="Spacer" parent="Scoreboard" instance=ExtResource("2_oli24")]
+layout_mode = 2
+
+[node name="1" parent="Scoreboard" instance=ExtResource("2_oli24")]
+layout_mode = 2
+
+[node name="2" parent="Scoreboard" instance=ExtResource("2_oli24")]
+layout_mode = 2
+
+[node name="3" parent="Scoreboard" instance=ExtResource("2_oli24")]
+layout_mode = 2
+
+[node name="4" parent="Scoreboard" instance=ExtResource("2_oli24")]
+layout_mode = 2
+
+[node name="5" parent="Scoreboard" instance=ExtResource("2_oli24")]
+layout_mode = 2
+
+[node name="6" parent="Scoreboard" instance=ExtResource("2_oli24")]
+layout_mode = 2
+
+[node name="7" parent="Scoreboard" instance=ExtResource("2_oli24")]
+layout_mode = 2
+
+[node name="8" parent="Scoreboard" instance=ExtResource("2_oli24")]
+layout_mode = 2
+
+[node name="9" parent="Scoreboard" instance=ExtResource("2_oli24")]
+layout_mode = 2

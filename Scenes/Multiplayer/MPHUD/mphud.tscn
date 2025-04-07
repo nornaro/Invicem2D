@@ -1,20 +1,20 @@
 [gd_scene load_steps=20 format=3 uid="uid://bp18rk6u47rpe"]
 
 [ext_resource type="Script" uid="uid://ipaaw4xvob5a" path="res://Scenes/Multiplayer/MPHUD/mphud.gd" id="1_bw4dg"]
-[ext_resource type="Texture2D" uid="uid://ddixpo7vduamr" path="res://Scenes/Multiplayer/Network/Godot/icon.webp" id="2_mhrge"]
-[ext_resource type="Texture2D" uid="uid://fhcaavj5m5ny" path="res://Scenes/Multiplayer/Network/Steam/icon.webp" id="3_5q074"]
-[ext_resource type="Texture2D" uid="uid://cpm3ibfmnua1u" path="res://Scenes/Multiplayer/Network/WebSocket/icon.webp" id="3_xyki0"]
-[ext_resource type="Texture2D" uid="uid://ct4dxveugm77w" path="res://Scenes/Multiplayer/Network/Nakama/icon.webp" id="4_yrhr7"]
-[ext_resource type="Texture2D" uid="uid://d32bpsa3l5v7b" path="res://Scenes/Multiplayer/Network/GDSync/icon.webp" id="5_7v3yp"]
-[ext_resource type="Texture2D" uid="uid://be8d2p7ex3otx" path="res://Scenes/Multiplayer/Network/EPIC/icon.webp" id="6_rtfh4"]
-[ext_resource type="Texture2D" uid="uid://yq8lx4qhridy" path="res://Scenes/Multiplayer/Network/W4Games/icon.webp" id="7_2pc1p"]
+[ext_resource type="Texture2D" uid="uid://c3atog6h031g1" path="res://Scenes/Multiplayer/Network/Godot/icon.webp" id="2_mhrge"]
+[ext_resource type="Texture2D" uid="uid://k3t0jvk3p6h0" path="res://Scenes/Multiplayer/Network/Steam/icon.webp" id="3_5q074"]
+[ext_resource type="Texture2D" uid="uid://bhxchn5d4d1e4" path="res://Scenes/Multiplayer/Network/WebSocket/icon.webp" id="3_xyki0"]
+[ext_resource type="Texture2D" uid="uid://bqejodjux2q6k" path="res://Scenes/Multiplayer/Network/Nakama/icon.webp" id="4_yrhr7"]
+[ext_resource type="Texture2D" uid="uid://btlnuyw324tuh" path="res://Scenes/Multiplayer/Network/GDSync/icon.webp" id="5_7v3yp"]
+[ext_resource type="Texture2D" uid="uid://5p7hqlbn0ql3" path="res://Scenes/Multiplayer/Network/EPIC/icon.webp" id="6_rtfh4"]
+[ext_resource type="Texture2D" uid="uid://8ywhx67cat75" path="res://Scenes/Multiplayer/Network/W4Games/icon.webp" id="7_2pc1p"]
 [ext_resource type="Script" uid="uid://byw8ubeb57vam" path="res://Scenes/Multiplayer/MPHUD/network_type.gd" id="7_pnjyg"]
 [ext_resource type="Script" uid="uid://6yeolfrr0i0d" path="res://Scenes/Multiplayer/host.gd" id="8_ttryd"]
-[ext_resource type="Texture2D" uid="uid://cts0fh1qbw2f" path="res://Scenes/Multiplayer/Network/JamLaunch/icon.webp" id="8_xyki0"]
-[ext_resource type="Texture2D" uid="uid://b2eet07x2ktq8" path="res://Scenes/Multiplayer/Network/HIGHT/icon.webp" id="9_2pc1p"]
+[ext_resource type="Texture2D" uid="uid://dgam5cfueflgi" path="res://Scenes/Multiplayer/Network/JamLaunch/icon.webp" id="8_xyki0"]
+[ext_resource type="Texture2D" uid="uid://r32fujoqkmb1" path="res://Scenes/Multiplayer/Network/HIGHT/icon.webp" id="9_2pc1p"]
 [ext_resource type="Script" uid="uid://chiemh3iamvfr" path="res://Scenes/Multiplayer/join.gd" id="9_f4ja4"]
 [ext_resource type="Script" uid="uid://1hm4aplias4h" path="res://Scenes/Multiplayer/search.gd" id="10_tyone"]
-[ext_resource type="Texture2D" uid="uid://cj4gq01b06r5x" path="res://Scenes/Multiplayer/Network/Colyseus/icon.webp" id="11_ked6n"]
+[ext_resource type="Texture2D" uid="uid://ciogkpqrjgt50" path="res://Scenes/Multiplayer/Network/Colyseus/icon.webp" id="11_ked6n"]
 [ext_resource type="Script" uid="uid://cevd3jwtq1inj" path="res://Scenes/Multiplayer/MPHUD/back.gd" id="11_tsjd1"]
 [ext_resource type="Script" uid="uid://bi4grx1iomo57" path="res://Scenes/Multiplayer/MPHUD/lobby.gd" id="12_emtdj"]
 
@@ -24,6 +24,7 @@
 bg_color = Color(0.0475577, 0.0475577, 0.0475576, 1)
 
 [node name="MPHUD" type="Panel" groups=["MPHUD", "MainCircle"]]
+visible = false
 light_mask = 2
 visibility_layer = 2
 anchors_preset = 8

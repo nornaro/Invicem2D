@@ -4,6 +4,8 @@ extends StaticBody2D
 var spawnin: CollisionShape2D
 var minions: Node
 
+#func _ready() -> void:
+	#minion = 
 
 @export var Data: Dictionary = { # Barrack is responsible for producing minion every turn, based on Data
 	"Properties": { 
@@ -43,8 +45,28 @@ var minions: Node
 			# Advanced → Allows production of stronger minions. Blue
 			# Elite → Allows production of powerful minions. Yellow
 			# Boss -> Allows production of boss minions. Red
-		"Core": ["Basic", "Drained", "Core"], # Basic/Normal/Advanced/Exceptional, Empty/Drained/Low/""/Charged/Fully charged
-		"Efficiency": ["Basic", "Low", "Efficiency"], # Basic/Normal/Advanced/Exceptional, Low,Medium,High
+		"Core": ["Basic", "Drained", "Core"], 
+			# Basic 100p
+			# Normal 500p
+			# Advanced 1000p 
+			# Exceptional 5000p
+			# Perfect 10000p
+			
+			# Empty 0%
+			# Drained 5%
+			# Low 10%
+			# Draining 50%
+			# Charged 75%
+			# Fully Charged 100%
+		"Efficiency": ["Basic", "Low", "Efficiency"], 
+			# Basic 75% production
+			# Normal 100% production
+			# Advanced 150% production
+			# Exceptional 300% production
+			
+			# Low 110% energy drain
+			# Medium 100% energy drain
+			# High 90% energy drain
 	},
 	"Inventory": {}, # Additional minion properties, or modified minion properties
 	"Upgrades" : { # changes basic stats for minion, or power efficiency of building
@@ -71,6 +93,7 @@ Minion Innate Properties:
 	"Evasion":
 		everx n hits it blocks the next m, 
 		% chance to block
+		periodic
 	"Stealth": 0, 
 		onhit
 		periodic
@@ -96,7 +119,7 @@ Minion Innate Properties:
 	"SpeedBoost": (non stackable)
 		gives minion % speed boost based on hp%
 		gives minion % speed boost based on Castle proximity
-Barrack Item:
+Minion modifiers from Barrack Item:
 	"Element": (non stackable)
 		Changes element
 	"Armor": (stackable)
@@ -119,8 +142,9 @@ Barrack Item:
 		multiplying after time alive
 		spawns multiple of the unit but with less stats
 		fragmentation splits into multiple smaller with % of original hp at low health
-	"Deny death": (non stackable)
+	"DenyDeath": (non stackable)
 		revives at % of the HP once
+		return x% hp at y%
 		Returns to new max_hp at max_hp/2 from low % hp unless hit to 0 with last hit from %
 	"Sabotage": (stackable)
 		appy negative effect on turret
@@ -158,3 +182,6 @@ func spawn(_data:Dictionary) -> void:
 	instance.Data.merge(Data.Properties)
 	instance.Data.merge(Data.Modules)
 	minions.add_child(instance)
+	
+func select() -> void:
+	add_to_group("selected")
