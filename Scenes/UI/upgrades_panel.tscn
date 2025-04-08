@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c8pgtbi1yllmm"]
 
-[ext_resource type="Script" uid="uid://cptxjgwx3ouua" path="res://Scenes/UI/upgrades_panel.gd" id="1_w3wm0"]
+[ext_resource type="Script" uid="uid://b0cgfq2kvmhna" path="res://Scenes/UI/upgrades_panel.gd" id="1_w3wm0"]
 
 [node name="UpgradesPanel" type="GridContainer" groups=["BuildingProperties"]]
 custom_minimum_size = Vector2(110, 110)

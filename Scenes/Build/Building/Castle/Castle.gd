@@ -20,7 +20,6 @@ func _ready() -> void:
 
 func life_stolen() -> void:
 	Data["health"] -= 1
-#	get_tree().call_group("Network","rpc_id","life_stolen",multiplayer.get_unique_id())
 	get_tree().call_group("HealthBar","value_change",Data["health"])
 	if Data["health"] <= 0:
 		queue_free()

@@ -1,10 +1,10 @@
 [gd_scene load_steps=33 format=3 uid="uid://t41phsm2wrag"]
 
-[ext_resource type="Script" uid="uid://8u2sjkyidcx0" path="res://Scenes/MainMenu/home_screen.gd" id="1_ajl7f"]
-[ext_resource type="Texture2D" uid="uid://buvhsnogoabh7" path="res://Scenes/MainMenu/Home.png" id="1_y2i7d"]
+[ext_resource type="Script" uid="uid://tggt7cyxfrk0" path="res://Scenes/MainMenu/home_screen.gd" id="1_ajl7f"]
+[ext_resource type="Texture2D" uid="uid://h1b53qck8qoy" path="res://Scenes/MainMenu/Home.png" id="1_y2i7d"]
 [ext_resource type="PackedScene" uid="uid://dhearbilncssa" path="res://Scenes/GameMenu/gpu_particles_2d.tscn" id="4_5yl82"]
-[ext_resource type="Texture2D" uid="uid://dovhhvnmq17l8" path="res://Scenes/Particles/flame_04.webp" id="5_l35pp"]
-[ext_resource type="Script" uid="uid://01o0qkppv3yw" path="res://Scenes/MainMenu/HomeButtons/home_button.gd" id="6_c6w5i"]
+[ext_resource type="Texture2D" uid="uid://bmu73vuekfuo" path="res://Scenes/Particles/flame_04.webp" id="5_l35pp"]
+[ext_resource type="Script" uid="uid://cipyj8crbddkx" path="res://Scenes/MainMenu/HomeButtons/home_button.gd" id="6_c6w5i"]
 [ext_resource type="PackedScene" uid="uid://bp18rk6u47rpe" path="res://Scenes/Multiplayer/MPHUD/mphud.tscn" id="6_h1k81"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ab77t"]

@@ -1,22 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://bp18rk6u47rpe"]
+[gd_scene load_steps=10 format=3 uid="uid://bp18rk6u47rpe"]
 
-[ext_resource type="Script" uid="uid://ipaaw4xvob5a" path="res://Scenes/Multiplayer/MPHUD/mphud.gd" id="1_bw4dg"]
-[ext_resource type="Texture2D" uid="uid://ddixpo7vduamr" path="res://Scenes/Multiplayer/Network/Godot/icon.webp" id="2_mhrge"]
-[ext_resource type="Texture2D" uid="uid://fhcaavj5m5ny" path="res://Scenes/Multiplayer/Network/Steam/icon.webp" id="3_5q074"]
-[ext_resource type="Texture2D" uid="uid://cpm3ibfmnua1u" path="res://Scenes/Multiplayer/Network/WebSocket/icon.webp" id="3_xyki0"]
-[ext_resource type="Texture2D" uid="uid://ct4dxveugm77w" path="res://Scenes/Multiplayer/Network/Nakama/icon.webp" id="4_yrhr7"]
-[ext_resource type="Texture2D" uid="uid://d32bpsa3l5v7b" path="res://Scenes/Multiplayer/Network/GDSync/icon.webp" id="5_7v3yp"]
-[ext_resource type="Texture2D" uid="uid://be8d2p7ex3otx" path="res://Scenes/Multiplayer/Network/EPIC/icon.webp" id="6_rtfh4"]
-[ext_resource type="Texture2D" uid="uid://yq8lx4qhridy" path="res://Scenes/Multiplayer/Network/W4Games/icon.webp" id="7_2pc1p"]
-[ext_resource type="Script" uid="uid://byw8ubeb57vam" path="res://Scenes/Multiplayer/MPHUD/network_type.gd" id="7_pnjyg"]
-[ext_resource type="Script" uid="uid://6yeolfrr0i0d" path="res://Scenes/Multiplayer/host.gd" id="8_ttryd"]
-[ext_resource type="Texture2D" uid="uid://cts0fh1qbw2f" path="res://Scenes/Multiplayer/Network/JamLaunch/icon.webp" id="8_xyki0"]
-[ext_resource type="Texture2D" uid="uid://b2eet07x2ktq8" path="res://Scenes/Multiplayer/Network/HIGHT/icon.webp" id="9_2pc1p"]
-[ext_resource type="Script" uid="uid://chiemh3iamvfr" path="res://Scenes/Multiplayer/join.gd" id="9_f4ja4"]
-[ext_resource type="Script" uid="uid://1hm4aplias4h" path="res://Scenes/Multiplayer/search.gd" id="10_tyone"]
-[ext_resource type="Texture2D" uid="uid://cj4gq01b06r5x" path="res://Scenes/Multiplayer/Network/Colyseus/icon.webp" id="11_ked6n"]
-[ext_resource type="Script" uid="uid://cevd3jwtq1inj" path="res://Scenes/Multiplayer/MPHUD/back.gd" id="11_tsjd1"]
-[ext_resource type="Script" uid="uid://bi4grx1iomo57" path="res://Scenes/Multiplayer/MPHUD/lobby.gd" id="12_emtdj"]
+[ext_resource type="Script" uid="uid://cwystn510g27d" path="res://Scenes/Multiplayer/MPHUD/mphud.gd" id="1_bw4dg"]
+[ext_resource type="PackedScene" uid="uid://dgy2hssu6prlx" path="res://Scenes/Multiplayer/MPHUD/network_type.tscn" id="2_werij"]
+[ext_resource type="Script" uid="uid://10t2ic6hb3xt" path="res://Scenes/Multiplayer/host.gd" id="8_ttryd"]
+[ext_resource type="Script" uid="uid://p61llhntcgte" path="res://Scenes/Multiplayer/join.gd" id="9_f4ja4"]
+[ext_resource type="Script" uid="uid://ppcg6byxrf6c" path="res://Scenes/Multiplayer/search.gd" id="10_tyone"]
+[ext_resource type="Script" uid="uid://davfgbwyeacii" path="res://Scenes/Multiplayer/MPHUD/back.gd" id="11_tsjd1"]
+[ext_resource type="Script" uid="uid://c30blol4jl1ik" path="res://Scenes/Multiplayer/MPHUD/lobby.gd" id="12_emtdj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4wgv"]
 
@@ -48,39 +38,9 @@ offset_bottom = 1000.0
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="NetworkType" type="TabBar" parent="LobbyControl/Top"]
+[node name="NetworkType" parent="LobbyControl/Top" instance=ExtResource("2_werij")]
 unique_name_in_owner = true
 layout_mode = 2
-current_tab = 0
-tab_alignment = 1
-tab_count = 10
-tab_0/tooltip = "ENet"
-tab_0/icon = ExtResource("2_mhrge")
-tab_1/tooltip = "Websocket"
-tab_1/icon = ExtResource("3_xyki0")
-tab_2/tooltip = "Steam"
-tab_2/icon = ExtResource("3_5q074")
-tab_3/tooltip = "Nakama"
-tab_3/icon = ExtResource("4_yrhr7")
-tab_3/disabled = true
-tab_4/tooltip = "GDSync"
-tab_4/icon = ExtResource("5_7v3yp")
-tab_4/disabled = true
-tab_5/tooltip = "Epic"
-tab_5/icon = ExtResource("6_rtfh4")
-tab_5/disabled = true
-tab_6/tooltip = "W4"
-tab_6/icon = ExtResource("7_2pc1p")
-tab_6/disabled = true
-tab_7/tooltip = "Jam"
-tab_7/icon = ExtResource("8_xyki0")
-tab_7/disabled = true
-tab_8/tooltip = "Hight"
-tab_8/icon = ExtResource("9_2pc1p")
-tab_8/disabled = true
-tab_9/tooltip = "Colyseus"
-tab_9/icon = ExtResource("11_ked6n")
-script = ExtResource("7_pnjyg")
 
 [node name="Menu" type="HBoxContainer" parent="LobbyControl/Top"]
 layout_mode = 2

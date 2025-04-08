@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cg4bvtevroaa5"]
 
-[ext_resource type="Script" uid="uid://irx12telk2ie" path="res://server_select.gd" id="1_8uxl5"]
+[ext_resource type="Script" uid="uid://ddqpq0h4e47a7" path="res://server_select.gd" id="1_8uxl5"]
 
 [node name="ServerSelect" type="Button"]
 custom_minimum_size = Vector2(0, 40)

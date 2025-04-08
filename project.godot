@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 run/low_processor_mode=true
 run/low_processor_mode_sleep_usec=0
 boot_splash/image="uid://bdj225amydviy"
-config/icon="uid://6vno76prvp2"
+config/icon="uid://cvy1hxrd0l8y7"
 
 [autoload]
 
@@ -24,16 +24,18 @@ Global="*res://Scenes/global.gd"
 
 [debug]
 
+gdscript/warnings/shadowed_global_identifier=0
 gdscript/warnings/untyped_declaration=1
+gdscript/warnings/confusable_identifier=0
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1000
-window/size/mode=2
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/initial_position_type=3
 window/size/extend_to_title=true
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [dotnet]
 
@@ -55,7 +57,8 @@ folder_colors={
 "res://Scenes/": "blue",
 "res://Temp/": "gray",
 "res://Tools/": "green",
-"res://addons/": "pink"
+"res://addons/": "pink",
+"res://plugins/": "gray"
 }
 
 [global_group]
@@ -182,3 +185,4 @@ textures/vram_compression/import_etc2_astc=true
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
 textures/default_filters/anisotropic_filtering_level=0
+scaling_3d/fsr_sharpness=0.0

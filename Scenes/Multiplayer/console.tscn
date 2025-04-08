@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccqdvgiafo4tg"]
 
-[ext_resource type="Script" uid="uid://dffe6g4oiwcx2" path="res://Scenes/Multiplayer/console.gd" id="1_k2tdm"]
+[ext_resource type="Script" uid="uid://b4b8mgb6fljd" path="res://Scenes/Multiplayer/console.gd" id="1_k2tdm"]
 
 [sub_resource type="SystemFont" id="SystemFont_urhdb"]
 subpixel_positioning = 0

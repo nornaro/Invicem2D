@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b51kc51ccj186"]
 
-[ext_resource type="Script" uid="uid://chu2cpbn3b2xn" path="res://Scenes/UI/inventory_slot.gd" id="1_brh76"]
+[ext_resource type="Script" uid="uid://e0qx5plsnt1a" path="res://Scenes/UI/inventory_slot.gd" id="1_brh76"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s3gqk"]
 

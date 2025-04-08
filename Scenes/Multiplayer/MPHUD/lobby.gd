@@ -36,6 +36,7 @@ func _on_update_timeout() -> void:
 		var latency: String = latency_calc()  # Forcefully convert int to string
 		child.join_data = str(Global.servers[server].Join)
 		child.get_node("Name").text = Global.servers[server].Name
+		child.get_node("Name").tooltip_text += Global.servers[server].Network
 		child.get_node("Code").text = Global.servers[server].UID
 		child.get_node("Players").text = str(Global.servers[server].Players.size())
 		child.get_node("Players").tooltip_text = str(Global.servers[server].Players)

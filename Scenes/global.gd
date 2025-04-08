@@ -28,15 +28,18 @@ var RL:ResLoad = ResLoad.new()
 	#"building":Thread.new(),
 #}
 
+#Global.discovery = Marshalls.utf8_to_base64(str(Time.get_ticks_msec()) + str(randf()))
 var dedicated: bool = OS.has_feature("dedicated_server")
 var servers:Dictionary = {}
 var join_data:String
 var server_id:String =""
 var id:int
 var C:Node
+var uid:String = CryptoKey.generate_scene_unique_id()
 var game:String = "InvicemTD"
-var start_port:int = 6666
+var start_port:int = randi_range(6000,6666)
 var network_ports:Dictionary
+var search: bool = true
 
 func console(txt:String) -> void:
 	if dedicated:

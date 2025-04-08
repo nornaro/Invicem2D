@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cq13xgootxplk" path="res://Scenes/Map/In/in.tscn" id="4_65k1d"]
 [ext_resource type="PackedScene" uid="uid://iwp2p55pke5x" path="res://Scenes/Map/Out/out.tscn" id="5_oy5h8"]
 [ext_resource type="PackedScene" uid="uid://bl7fsct6364pn" path="res://Scenes/Map/Fog/fog.tscn" id="7_eu35m"]
-[ext_resource type="Script" uid="uid://d24q8khh27avw" path="res://Scenes/Map/road.gd" id="7_oydqy"]
+[ext_resource type="Script" uid="uid://c3j47g2uehdb3" path="res://Scenes/Map/road.gd" id="7_oydqy"]
 [ext_resource type="PackedScene" uid="uid://c34xvf4i48axf" path="res://Scenes/Map/Selection/selection_rectangle.tscn" id="7_v3nu7"]
 
 [sub_resource type="Gradient" id="Gradient_xklc3"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ct3y5sva7tum"]
 
-[ext_resource type="Script" uid="uid://bjstl8ia07phk" path="res://Scenes/Build/Outline/outline.gd" id="1_w0jw5"]
+[ext_resource type="Script" uid="uid://cfnrx6cdpgk7f" path="res://Scenes/Build/Outline/outline.gd" id="1_w0jw5"]
 
 [node name="Outline" type="Line2D"]
 visible = false

@@ -1,0 +1,45 @@
+[gd_scene load_steps=12 format=3 uid="uid://dgy2hssu6prlx"]
+
+[ext_resource type="Texture2D" uid="uid://y1mbacvhtl5x" path="res://Scenes/Multiplayer/Network_temp/Godot/icon.webp" id="1_vndp0"]
+[ext_resource type="Texture2D" uid="uid://cjytfsda3n0x2" path="res://Scenes/Multiplayer/Network_Done/WebSocket/icon.webp" id="2_jv5qk"]
+[ext_resource type="Texture2D" uid="uid://bmillj5glr1nl" path="res://Scenes/Multiplayer/Network/Steam/icon.webp" id="3_qxwj2"]
+[ext_resource type="Texture2D" uid="uid://0lnklvgoxwsy" path="res://Scenes/Multiplayer/Network_temp/Nakama/icon.webp" id="4_0xlkg"]
+[ext_resource type="Texture2D" uid="uid://cdifh2lk1i55x" path="res://Scenes/Multiplayer/Network_temp/GDSync/icon.webp" id="5_8y6i0"]
+[ext_resource type="Texture2D" uid="uid://didrefjjotevq" path="res://Scenes/Multiplayer/Network_temp/EPIC/icon.webp" id="6_5kikh"]
+[ext_resource type="Texture2D" uid="uid://by285jk487mol" path="res://Scenes/Multiplayer/Network_temp/W4Games/icon.webp" id="7_xljgs"]
+[ext_resource type="Texture2D" uid="uid://da0r8glnt5qsw" path="res://Scenes/Multiplayer/Network_temp/JamLaunch/icon.webp" id="8_xa157"]
+[ext_resource type="Texture2D" uid="uid://d3dvyjda3dwbt" path="res://Scenes/Multiplayer/Network_temp/HIGHT/icon.webp" id="9_3hrre"]
+[ext_resource type="Texture2D" uid="uid://qh1xn1i425vw" path="res://Scenes/Multiplayer/Network_temp/Colyseus/icon.webp" id="10_hft20"]
+[ext_resource type="Script" uid="uid://jogxbfsk6vm3" path="res://Scenes/Multiplayer/MPHUD/network_type.gd" id="11_mmynk"]
+
+[node name="NetworkType" type="TabBar"]
+current_tab = 0
+tab_alignment = 1
+tab_count = 10
+tab_0/tooltip = "ENet"
+tab_0/icon = ExtResource("1_vndp0")
+tab_1/tooltip = "Websocket"
+tab_1/icon = ExtResource("2_jv5qk")
+tab_2/tooltip = "Steam"
+tab_2/icon = ExtResource("3_qxwj2")
+tab_3/tooltip = "Nakama"
+tab_3/icon = ExtResource("4_0xlkg")
+tab_3/disabled = true
+tab_4/tooltip = "GDSync"
+tab_4/icon = ExtResource("5_8y6i0")
+tab_4/disabled = true
+tab_5/tooltip = "Epic"
+tab_5/icon = ExtResource("6_5kikh")
+tab_5/disabled = true
+tab_6/tooltip = "W4"
+tab_6/icon = ExtResource("7_xljgs")
+tab_6/disabled = true
+tab_7/tooltip = "Jam"
+tab_7/icon = ExtResource("8_xa157")
+tab_7/disabled = true
+tab_8/tooltip = "Hight"
+tab_8/icon = ExtResource("9_3hrre")
+tab_8/disabled = true
+tab_9/tooltip = "Colyseus"
+tab_9/icon = ExtResource("10_hft20")
+script = ExtResource("11_mmynk")

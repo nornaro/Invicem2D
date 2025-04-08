@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bk7lea7d34lqc"]
 
-[ext_resource type="Script" uid="uid://cac5tnp66x4bj" path="res://Scenes/Map/Road/road.gd" id="1_83jdl"]
+[ext_resource type="Script" uid="uid://bgntq4dl7llic" path="res://Scenes/Map/Road/road.gd" id="1_83jdl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djfgi"]
 size = Vector2(1800, 200)

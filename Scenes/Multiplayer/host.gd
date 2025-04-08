@@ -17,7 +17,7 @@ func _on_pressed() -> void:
 	
 	var networks_path:String = "res://Scenes/Multiplayer/Network/"
 	var network_node: Node = get_tree().get_first_node_in_group("Network")
-	network_node.set_script(Global.RL.load("res://Scenes/Multiplayer/server.gd"))
+	#network_node.set_script(Global.RL.load("res://Scenes/Multiplayer/server.gd"))
 	var networks: Array = Global.RL.get_directories_at(networks_path)
 	var port:int = Global.start_port
 	for network:String in networks:

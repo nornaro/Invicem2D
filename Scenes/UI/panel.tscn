@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://bq6obs6f5somh"]
 
-[ext_resource type="Script" uid="uid://dvjuej7ascdju" path="res://Scenes/UI/panel.gd" id="1_tw6yc"]
-[ext_resource type="Script" uid="uid://bt4h5153f68gy" path="res://Scenes/UI/info_panels.gd" id="2_ddvuy"]
-[ext_resource type="Script" uid="uid://c5jyqhdmc4han" path="res://Scenes/UI/image_panel.gd" id="2_xoyw5"]
-[ext_resource type="Script" uid="uid://quin75kxfa80" path="res://Scenes/UI/inventory_slots.gd" id="3_xoyw5"]
-[ext_resource type="Script" uid="uid://bxalpqdker7qx" path="res://Scenes/UI/module_slots.gd" id="4_piq27"]
-[ext_resource type="Script" uid="uid://cvn1nahwajdgf" path="res://Scenes/UI/property_menu.gd" id="4_t5r24"]
-[ext_resource type="Script" uid="uid://cptxjgwx3ouua" path="res://Scenes/UI/upgrades_panel.gd" id="5_piq27"]
-[ext_resource type="Script" uid="uid://bcbbw8l7a12w" path="res://Scenes/UI/module_upgrades_panel.gd" id="8_piq27"]
+[ext_resource type="Script" uid="uid://chjyd82x61507" path="res://Scenes/UI/panel.gd" id="1_tw6yc"]
+[ext_resource type="Script" uid="uid://x0twj7pd7sa4" path="res://Scenes/UI/info_panels.gd" id="2_ddvuy"]
+[ext_resource type="Script" uid="uid://lo5dkhxtayvk" path="res://Scenes/UI/image_panel.gd" id="2_xoyw5"]
+[ext_resource type="Script" uid="uid://wqehkfxniplt" path="res://Scenes/UI/inventory_slots.gd" id="3_xoyw5"]
+[ext_resource type="Script" uid="uid://donbc8knfeg7j" path="res://Scenes/UI/module_slots.gd" id="4_piq27"]
+[ext_resource type="Script" uid="uid://cyg88yy7nk8c6" path="res://Scenes/UI/property_menu.gd" id="4_t5r24"]
+[ext_resource type="Script" uid="uid://b0cgfq2kvmhna" path="res://Scenes/UI/upgrades_panel.gd" id="5_piq27"]
+[ext_resource type="Script" uid="uid://bevo1sd6x4xbx" path="res://Scenes/UI/module_upgrades_panel.gd" id="8_piq27"]
 
 [sub_resource type="Gradient" id="Gradient_h6tq4"]
 offsets = PackedFloat32Array(0)

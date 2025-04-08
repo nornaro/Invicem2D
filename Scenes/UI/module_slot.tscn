@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cn68u8sgiv7x1"]
 
-[ext_resource type="Script" uid="uid://dpb5pvhmgx156" path="res://Scenes/UI/module_slot.gd" id="1_07gta"]
+[ext_resource type="Script" uid="uid://bywgld7geuea4" path="res://Scenes/UI/module_slot.gd" id="1_07gta"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s3gqk"]
 

@@ -1,11 +1,11 @@
 [gd_scene load_steps=43 format=3 uid="uid://5b3v7b6ahib1"]
 
-[ext_resource type="Script" uid="uid://m7ikrvj42lpg" path="res://Scenes/Minions/minion.gd" id="1_xsgkh"]
+[ext_resource type="Script" uid="uid://dk6p1ov4a1aun" path="res://Scenes/Minions/minion.gd" id="1_xsgkh"]
 [ext_resource type="SpriteFrames" uid="uid://bkhh47l3mvrdh" path="res://Scenes/Minions/Chibi/Orc_3.tres" id="2_s68jy"]
-[ext_resource type="Script" uid="uid://b8blwc77fa3rc" path="res://Scenes/Minions/minion_area.gd" id="3_u5uqm"]
-[ext_resource type="Texture2D" uid="uid://dqkg5mpau8iao" path="res://Scenes/Minions/Shield/pipo-btleffect206h_480.webp" id="5_s68jy"]
-[ext_resource type="Script" uid="uid://b1yklughrk2qp" path="res://Scenes/Minions/modifier.gd" id="6_t3dqa"]
-[ext_resource type="Texture2D" uid="uid://dki61ae81mawf" path="res://Scenes/Minions/Shield/pipo-btleffect206_480.webp" id="7_7g40y"]
+[ext_resource type="Script" uid="uid://bdgfng4ib726l" path="res://Scenes/Minions/minion_area.gd" id="3_u5uqm"]
+[ext_resource type="Texture2D" uid="uid://db1drx8wvwap0" path="res://Scenes/Minions/Shield/pipo-btleffect206h_480.webp" id="5_s68jy"]
+[ext_resource type="Script" uid="uid://ckkqayk3s54h" path="res://Scenes/Minions/modifier.gd" id="6_t3dqa"]
+[ext_resource type="Texture2D" uid="uid://b1nwehbo847wa" path="res://Scenes/Minions/Shield/pipo-btleffect206_480.webp" id="7_7g40y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bex45"]
 radius = 200.0

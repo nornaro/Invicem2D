@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://duahqxjl5ik7d"]
 
-[ext_resource type="Script" uid="uid://dtcrh1a7sc278" path="res://Scenes/MainMenu/HomeButtons/main_circle.gd" id="1_6sd78"]
+[ext_resource type="Script" uid="uid://x8ho2d6oefq" path="res://Scenes/MainMenu/HomeButtons/main_circle.gd" id="1_6sd78"]
 
 [node name="MainCircle" type="GridContainer" groups=["MainCircle"]]
 visible = false
