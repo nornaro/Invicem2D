@@ -32,24 +32,26 @@ focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_56q1t")
 script = ExtResource("1_tw6yc")
 
-[node name="Image" type="Panel" parent="." groups=["BuildingProperties"]]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="Image" type="Panel" parent="HBoxContainer" groups=["BuildingProperties"]]
 custom_minimum_size = Vector2(140, 140)
-layout_mode = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 145.0
-offset_bottom = 145.0
+layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 script = ExtResource("2_xoyw5")
 
-[node name="Info" type="GridContainer" parent="." groups=["BuildingProperties"]]
+[node name="Info" type="GridContainer" parent="HBoxContainer" groups=["BuildingProperties"]]
 custom_minimum_size = Vector2(0, 140)
-layout_mode = 0
-offset_left = 150.0
-offset_top = 5.0
-offset_right = 1675.0
-offset_bottom = 145.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_constants/h_separation = 5
@@ -57,13 +59,9 @@ theme_override_constants/v_separation = 5
 columns = 3
 script = ExtResource("2_ddvuy")
 
-[node name="Modules" type="GridContainer" parent="." groups=["BuildingProperties"]]
+[node name="Modules" type="GridContainer" parent="HBoxContainer" groups=["BuildingProperties"]]
 custom_minimum_size = Vector2(35, 140)
-layout_mode = 0
-offset_left = 1680.0
-offset_top = 5.0
-offset_right = 1715.0
-offset_bottom = 145.0
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 tooltip_text = "Equip Slots"
@@ -71,13 +69,9 @@ theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 script = ExtResource("4_piq27")
 
-[node name="Inventory" type="GridContainer" parent="." groups=["BuildingProperties"]]
+[node name="Inventory" type="GridContainer" parent="HBoxContainer" groups=["BuildingProperties"]]
 custom_minimum_size = Vector2(35, 140)
-layout_mode = 0
-offset_left = 1720.0
-offset_top = 5.0
-offset_right = 1755.0
-offset_bottom = 145.0
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 tooltip_text = "Inventory Slots"
@@ -85,13 +79,16 @@ theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 script = ExtResource("3_xoyw5")
 
-[node name="Properties" type="GridContainer" parent="." groups=["BuildingProperties"]]
-custom_minimum_size = Vector2(115, 20)
-layout_mode = 0
-offset_left = 1760.0
-offset_top = 5.0
-offset_right = 1915.0
-offset_bottom = 25.0
+[node name="Panel" type="BoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+alignment = 2
+vertical = true
+
+[node name="Properties" type="GridContainer" parent="HBoxContainer/Panel" groups=["BuildingProperties"]]
+custom_minimum_size = Vector2(145, 21)
+layout_mode = 2
 size_flags_vertical = 6
 tooltip_text = "Property Menu"
 theme_override_constants/h_separation = 5
@@ -99,43 +96,36 @@ theme_override_constants/v_separation = 5
 columns = 4
 script = ExtResource("4_t5r24")
 
-[node name="Upgrades" type="GridContainer" parent="." groups=["BuildingProperties"]]
-custom_minimum_size = Vector2(110, 110)
-layout_mode = 0
-offset_left = 1760.0
-offset_top = 30.0
-offset_right = 1915.0
-offset_bottom = 145.0
-size_flags_vertical = 4
+[node name="Upgrades" type="GridContainer" parent="HBoxContainer/Panel" groups=["BuildingProperties"]]
+custom_minimum_size = Vector2(145, 115)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 4
 script = ExtResource("5_piq27")
 
-[node name="ModuleProperty" type="GridContainer" parent="." groups=["EquipProperties"]]
+[node name="ModuleProperty" type="GridContainer" parent="HBoxContainer/Panel" groups=["EquipProperties"]]
 visible = false
 custom_minimum_size = Vector2(115, 20)
-layout_mode = 0
-offset_left = 1760.0
-offset_top = 5.0
-offset_right = 1915.0
-offset_bottom = 25.0
+layout_mode = 2
 size_flags_vertical = 6
 tooltip_text = "Property Menu"
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 4
 
-[node name="ModuleUpgrades" type="GridContainer" parent="." groups=["EquipProperties"]]
+[node name="ModuleUpgrades" type="GridContainer" parent="HBoxContainer/Panel" groups=["EquipProperties"]]
 visible = false
 custom_minimum_size = Vector2(110, 110)
-layout_mode = 0
-offset_left = 1760.0
-offset_top = 30.0
-offset_right = 1915.0
-offset_bottom = 145.0
+layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 4
 script = ExtResource("8_piq27")
+
+[node name="Panel2" type="Panel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2

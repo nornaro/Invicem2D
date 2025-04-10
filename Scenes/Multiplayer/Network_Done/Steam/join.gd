@@ -23,14 +23,16 @@ func lobby() -> void:
 	set_process(true)
 	Steam.lobby_match_list.connect(_fill_steam_lobby_menu)
 
-func join():
+func join() -> void:
 	server_node = get_tree().get_current_scene().get_node("Server")
-	server_node.player = Global.dummy_client
+	server_node.player = Global.client
 	print("Joining lobby %s" % Global.join_data)
+	multiplayer.peer_connected.connect(_connected)
+	multiplayer.peer_disconnected.connect(_disconnected)
 	Steam.lobby_joined.connect(_on_lobby_joined.bind())
-	Steam.joinLobby(int(Global.join_data))
+	Steam.joinLobby(int(109775243890626418))
 
-func _on_lobby_joined(lobby: int, permissions: int, locked: bool, response: int):
+func _on_lobby_joined(lobby_id: int, _permissions: int, _locked: bool, response: int) -> void:
 	if response != 1:
 		var FAIL_REASON: String
 		match response: # Get the failure reason
@@ -46,20 +48,20 @@ func _on_lobby_joined(lobby: int, permissions: int, locked: bool, response: int)
 			11: FAIL_REASON = "A user you have blocked is in the lobby."
 		print(FAIL_REASON)
 		return
-	var id = Steam.getLobbyOwner(lobby)
+	var id:int = Steam.getLobbyOwner(lobby_id)
 	if id != Steam.getSteamID():
 		print("Connecting client to socket...")
 		connect_socket(id)
 	
-func connect_socket(steam_id: int):
-	var error = peer.create_client(steam_id, 0)
-	if error == OK:
-		print("Connecting peer to host...")
-		multiplayer.set_multiplayer_peer(peer)
-	else:
+func connect_socket(steam_id: int) -> void:
+	var error:int = peer.create_client(steam_id, 0)
+	if error != OK:
 		print("Error creating client: %s" % str(error))
+		return
+	print("Connecting peer to host...")
+	multiplayer.set_multiplayer_peer(peer)
 
-func list_lobbies():
+func list_lobbies() -> void:
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
 	# NOTE: If you are using the test app id, you will need to apply a filter on your game name
 	# Otherwise, it may not show up in the lobby list of your clients
@@ -102,8 +104,8 @@ func _fill_steam_lobby_menu(lobbies: Array) -> void:
 		packet["Latency"] = 0
 		Global.servers[str(l)] = packet
 
-func _add_player_to_game():
-	server_node.add_player(multiplayer.get_unique_id())
+func _connected(id:int) -> void:
+	server_node.add_player(id)
 	
-func _del_player():
-	server_node.remove_player(multiplayer.get_unique_id())
+func _disconnected(id:int) -> void:
+	server_node.remove_player(id)

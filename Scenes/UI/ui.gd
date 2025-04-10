@@ -7,11 +7,14 @@ var build:bool = false
 var text:String = ""
 var pressed:StringName
 @onready var client: Node = $".."
+@onready var blist: Node = $Control/List
+@onready var bnumbers: Node = $Control/Numbers
+@onready var menu_bar: Node =$MenuBar
 @onready var buildings: Node
 var stylefolder: String
 
 func _ready() -> void:
-	$List.connect("item_selected",_on_list_item_selected)
+	blist.connect("item_selected",_on_list_item_selected)
 	buildings = get_tree().get_first_node_in_group("Buildings")
 	stylefolder = "res://Scenes/Build/Building/"
 	dir_to_list(stylefolder, "Buildings")
@@ -58,7 +61,7 @@ func _input(event: InputEvent) -> void:
 			return
 		if !event.pressed:
 			return
-		if i > $List.item_count:
+		if i > blist.item_count:
 			return
 		if event.is_action_pressed("Ctrl"):
 			return
@@ -81,9 +84,9 @@ func active() -> Node:
 	return null
 
 func _on_list_item_selected(index:int) -> void:
-	if index >= $List.item_count:
+	if index >= blist.item_count:
 		return
-	text = $List.get_item_text(index)
+	text = blist.get_item_text(index)
 	if text == "Turret":
 		menu("Turret")
 		return
@@ -106,16 +109,16 @@ func dir_to_list(dir:String, dirname:String) -> void:
 func menu(list:String) -> void:
 	if !Items.has(list):
 		return
-	$List.clear()
+	blist.clear()
 	if Items[list].has("menu"):
 		for item:Dictionary in Items[list]["menu"]:
-			$List.add_item(item)
+			blist.add_item(item)
 	if !Items[list].has("menu"):
 		for item:String in Items[list]:
-			$List.add_item(item)
+			blist.add_item(item)
 	if Items[list]:
-		$Numbers.update(Items[list].size())
-	$List.show()
+		bnumbers.update(Items[list].size())
+	blist.show()
 
 func add_json_list(list:String) -> void:
 	for item:String in Items[list]:

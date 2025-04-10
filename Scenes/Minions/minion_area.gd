@@ -37,3 +37,6 @@ func _on_area_entered(area:Area2D) -> void:
 		
 func death() -> void:
 	dead.emit(self)
+
+func set_free() -> void:
+	minion.freedom = true

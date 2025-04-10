@@ -11,4 +11,8 @@ func _item_selected(index: int) -> void:
 			%Exit.show()
 		"Reload":
 			get_tree().reload_current_scene()
+		"Change Name":
+			$"../../PlayerName".show_change_name()
+		"Resolution":
+			%Resolution.show()
 	_select_int(-1)

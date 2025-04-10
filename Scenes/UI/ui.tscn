@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://ctyric4lpymab"]
+[gd_scene load_steps=50 format=3 uid="uid://ctyric4lpymab"]
 
 [ext_resource type="Script" uid="uid://reqh0iyijrrr" path="res://Scenes/UI/ui.gd" id="1_2xbke"]
 [ext_resource type="PackedScene" uid="uid://bq6obs6f5somh" path="res://Scenes/UI/panel.tscn" id="2_pmm6b"]
@@ -7,14 +7,17 @@
 [ext_resource type="Script" uid="uid://cj56vc552ii4o" path="res://Scenes/UI/style.gd" id="4_a2yal"]
 [ext_resource type="Script" uid="uid://f36oxrps5nw3" path="res://Scenes/Multiplayer/MPHUD/menu_gear.gd" id="5_jfwrg"]
 [ext_resource type="Script" uid="uid://dyw0fpwwh68oq" path="res://Scenes/UI/Confirm.gd" id="5_rq4vg"]
-[ext_resource type="Texture2D" uid="uid://dfj1evc1thrim" path="res://Scenes/UI/gear.webp" id="6_t7te2"]
+[ext_resource type="Texture2D" uid="uid://ddooro0k722ll" path="res://Scenes/UI/gear.webp" id="6_t7te2"]
 [ext_resource type="Script" uid="uid://bpm0ptr6l7nf8" path="res://Scenes/UI/animated_sprite_2d.gd" id="6_xkir2"]
 [ext_resource type="Script" uid="uid://bahwj5xovo2bj" path="res://Scenes/UI/defeat.gd" id="9_s3gqk"]
+[ext_resource type="PackedScene" uid="uid://drbs8u6ai0tym" path="res://Scenes/UI/Resolution/options_example.tscn" id="10_56q1t"]
 [ext_resource type="Script" uid="uid://cyfmc17ro8v26" path="res://Scenes/UI/exit.gd" id="10_pmm6b"]
 [ext_resource type="PackedScene" uid="uid://d34mxo1ld0ik5" path="res://Scenes/UI/picker.tscn" id="12_vy225"]
 [ext_resource type="Script" uid="uid://bttn05uxs470y" path="res://addons/gd_profiler/profiler/gd_profiler.gd" id="14_h6tq4"]
 [ext_resource type="Script" uid="uid://cjjaaaemnsp6v" path="res://Scenes/UI/player_name.gd" id="16_56q1t"]
 [ext_resource type="PackedScene" uid="uid://cuixthaxle0q0" path="res://leaderboard.tscn" id="16_fevae"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h6tq4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dq6f6"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -233,12 +236,18 @@ animations = [{
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56q1t"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h6tq4"]
-
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_2xbke")
 
-[node name="List" type="ItemList" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 40.0
+offset_right = 66.0
+offset_bottom = 274.0
+
+[node name="List" type="ItemList" parent="Control"]
+layout_mode = 0
 offset_left = 15.0
 offset_top = 1.0
 offset_right = 115.0
@@ -247,7 +256,8 @@ scale = Vector2(0.5, 0.5)
 focus_mode = 0
 allow_reselect = true
 
-[node name="Numbers" type="ItemList" parent="."]
+[node name="Numbers" type="ItemList" parent="Control"]
+layout_mode = 0
 offset_top = 1.0
 offset_right = 30.0
 offset_bottom = 301.0
@@ -257,14 +267,78 @@ mouse_filter = 2
 allow_search = false
 script = ExtResource("3_xheqc")
 
-[node name="HealthBar" type="ProgressBar" parent="." groups=["HealthBar"]]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -480.0
-offset_bottom = 10.0
+[node name="GodotProfiler" type="Panel" parent="Control"]
+clip_contents = true
+layout_mode = 0
+offset_top = 152.0
+offset_right = 200.0
+offset_bottom = 402.0
+scale = Vector2(0.325, 0.325)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h6tq4")
+script = ExtResource("14_h6tq4")
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 30)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 30.0
 grow_horizontal = 2
-scale = Vector2(2, 2)
+
+[node name="PlayerName" type="RichTextLabel" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Rught click to change name"
+bbcode_enabled = true
+text = "Change name"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 131
+script = ExtResource("16_56q1t")
+
+[node name="EditName" type="HBoxContainer" parent="TopBar"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorPickerButton" parent="TopBar/EditName"]
+layout_mode = 2
+focus_mode = 0
+text = "     "
+icon_alignment = 1
+
+[node name="B" type="Button" parent="TopBar/EditName"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.0687983, 0.0687983, 0.0687983, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+toggle_mode = true
+text = "B"
+flat = true
+
+[node name="U" type="Button" parent="TopBar/EditName"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.0687983, 0.0687983, 0.0687983, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+toggle_mode = true
+text = "_"
+flat = true
+
+[node name="NameEdit" type="TextEdit" parent="TopBar/EditName"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+placeholder_text = "Type here"
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+caret_blink = true
+
+[node name="HealthBar" type="ProgressBar" parent="TopBar" groups=["HealthBar"]]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
 mouse_filter = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_dq6f6")
 theme_override_styles/fill = SubResource("StyleBoxFlat_o5xb7")
@@ -274,14 +348,13 @@ allow_greater = true
 show_percentage = false
 script = ExtResource("3_gom3w")
 
-[node name="Style" type="OptionButton" parent="HealthBar"]
+[node name="Style" type="OptionButton" parent="TopBar/HealthBar"]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 0
-offset_left = 1.0
-offset_right = 71.0
-offset_bottom = 33.0
-scale = Vector2(0.2, 0.3)
+offset_right = 32.0
+offset_bottom = 30.0
 focus_mode = 0
 mouse_filter = 2
 flat = true
@@ -293,31 +366,163 @@ popup/item_1/text = "Fantasy"
 popup/item_1/id = 1
 script = ExtResource("4_a2yal")
 
-[node name="MenuGear" type="OptionButton" parent="HealthBar"]
-layout_mode = 0
-offset_left = 1.0
-offset_right = 71.0
-offset_bottom = 33.0
-scale = Vector2(0.2, 0.3)
+[node name="MenuGear" type="OptionButton" parent="TopBar/HealthBar"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 32.0
+grow_vertical = 2
 focus_mode = 0
 flat = true
 fit_to_longest_item = false
-item_count = 3
+item_count = 5
 popup/item_0/text = "Style"
 popup/item_0/id = 0
 popup/item_1/text = "Exit"
 popup/item_1/id = 1
 popup/item_2/text = "Reload"
 popup/item_2/id = 2
+popup/item_3/text = "Change Name"
+popup/item_3/id = 3
+popup/item_4/text = "Resolution"
+popup/item_4/id = 4
 script = ExtResource("5_jfwrg")
 
-[node name="Gear" type="AnimatedSprite2D" parent="HealthBar/MenuGear"]
-position = Vector2(21.6675, 16.6667)
-scale = Vector2(1, 0.666667)
+[node name="Gear" type="AnimatedSprite2D" parent="TopBar/HealthBar/MenuGear"]
+position = Vector2(15, 15)
+scale = Vector2(0.725, 0.725)
 sprite_frames = SubResource("SpriteFrames_h6tq4")
 frame = 11
 frame_progress = 0.579016
 script = ExtResource("6_xkir2")
+
+[node name="Currecny" type="HBoxContainer" parent="TopBar"]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="TopBar/Currecny"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_56q1t")
+
+[node name="Minions" type="Panel" parent="TopBar/Currecny"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar/Currecny/Minions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Icon" type="TextureRect" parent="TopBar/Currecny/Minions/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Name" type="RichTextLabel" parent="TopBar/Currecny/Minions/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Minions"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+justification_flags = 131
+
+[node name="Value" type="RichTextLabel" parent="TopBar/Currecny/Minions/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Power" type="Panel" parent="TopBar/Currecny"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar/Currecny/Power"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Icon" type="TextureRect" parent="TopBar/Currecny/Power/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Name" type="RichTextLabel" parent="TopBar/Currecny/Power/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Power"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+justification_flags = 131
+
+[node name="Value" type="RichTextLabel" parent="TopBar/Currecny/Power/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Zeny" type="Panel" parent="TopBar/Currecny"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar/Currecny/Zeny"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Icon" type="TextureRect" parent="TopBar/Currecny/Zeny/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Name" type="RichTextLabel" parent="TopBar/Currecny/Zeny/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Zeny"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+justification_flags = 131
+
+[node name="Value" type="RichTextLabel" parent="TopBar/Currecny/Zeny/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Destroy" type="Panel" parent="."]
 visible = false
@@ -418,6 +623,12 @@ text = "Confirm"
 layout_mode = 2
 text = "Cancel"
 
+[node name="Resolution" parent="." instance=ExtResource("10_56q1t")]
+unique_name_in_owner = true
+visible = false
+offset_top = 48.0
+offset_bottom = 48.0
+
 [node name="Exit" type="Panel" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -475,208 +686,6 @@ z_index = 100
 [node name="Kafra" parent="." instance=ExtResource("12_vy225")]
 visible = false
 
-[node name="Currecny" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(150, 30)
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -473.0
-offset_bottom = 30.0
-grow_horizontal = 0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Minions" type="Panel" parent="Currecny"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Currecny/Minions"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="Icon" type="TextureRect" parent="Currecny/Minions/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-expand_mode = 2
-stretch_mode = 4
-
-[node name="Name" type="RichTextLabel" parent="Currecny/Minions/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Minions"
-scroll_active = false
-vertical_alignment = 1
-justification_flags = 131
-
-[node name="Value" type="RichTextLabel" parent="Currecny/Minions/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "100"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Power" type="Panel" parent="Currecny"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Currecny/Power"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="Icon" type="TextureRect" parent="Currecny/Power/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-expand_mode = 2
-stretch_mode = 4
-
-[node name="Name" type="RichTextLabel" parent="Currecny/Power/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Power"
-scroll_active = false
-vertical_alignment = 1
-justification_flags = 131
-
-[node name="Value" type="RichTextLabel" parent="Currecny/Power/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "100"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Zeny" type="Panel" parent="Currecny"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Currecny/Zeny"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="Icon" type="TextureRect" parent="Currecny/Zeny/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-expand_mode = 2
-stretch_mode = 4
-
-[node name="Name" type="RichTextLabel" parent="Currecny/Zeny/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Zeny"
-scroll_active = false
-vertical_alignment = 1
-justification_flags = 131
-
-[node name="Value" type="RichTextLabel" parent="Currecny/Zeny/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "100"
-horizontal_alignment = 2
-vertical_alignment = 1
-
 [node name="Leaderboard" parent="." instance=ExtResource("16_fevae")]
-
-[node name="PlayerName" type="RichTextLabel" parent="."]
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 205.0
-offset_right = -1600.0
-offset_bottom = 23.0
-grow_horizontal = 2
-size_flags_vertical = 3
-tooltip_text = "Rught click to change name"
-bbcode_enabled = true
-text = "Change name"
-fit_content = true
-horizontal_alignment = 1
-vertical_alignment = 1
-justification_flags = 131
-script = ExtResource("16_56q1t")
-
-[node name="EditName" type="Panel" parent="."]
-visible = false
-offset_left = 79.0
-offset_top = 45.0
-offset_right = 1057.0
-offset_bottom = 106.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_56q1t")
-
-[node name="NameEdit" type="TextEdit" parent="EditName"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -452.0
-offset_top = 25.0
-offset_right = 487.0
-offset_bottom = 60.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-placeholder_text = "Type here"
-caret_blink = true
-
-[node name="ColorRect" type="ColorPickerButton" parent="EditName"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 25.0
-offset_right = 36.0
-offset_bottom = 60.0
-focus_mode = 0
-
-[node name="B" type="Button" parent="EditName"]
-layout_mode = 1
-offset_left = 3.0
-offset_top = 9.0
-offset_right = 22.0
-offset_bottom = 40.0
-scale = Vector2(0.5, 0.5)
-focus_mode = 0
-theme_override_colors/font_color = Color(0.0687983, 0.0687983, 0.0687983, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-toggle_mode = true
-text = "B"
-flat = true
-
-[node name="U" type="Button" parent="EditName"]
-layout_mode = 1
-offset_left = 14.0
-offset_top = 9.0
-offset_right = 33.0
-offset_bottom = 40.0
-scale = Vector2(0.5, 0.5)
-focus_mode = 0
-theme_override_colors/font_color = Color(0.0687983, 0.0687983, 0.0687983, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-toggle_mode = true
-text = "_"
-flat = true
-
-[node name="GodotProfiler" type="Panel" parent="."]
-clip_contents = true
-offset_top = 152.0
-offset_right = 200.0
-offset_bottom = 402.0
-scale = Vector2(0.325, 0.325)
-theme_override_styles/panel = SubResource("StyleBoxEmpty_h6tq4")
-script = ExtResource("14_h6tq4")
-metadata/_custom_type_script = "uid://ddfxbqfnqowys"
 
 [connection signal="pressed" from="Destroy/VBoxContainer/HBoxContainer/Confirm" to="Destroy" method="_on_confirm_pressed"]

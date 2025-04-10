@@ -9,11 +9,11 @@ var steam_app_id: int = 480 # Test game app id
 var steam_id: int = 0
 var steam_username: String = ""
 var initialize_response: Dictionary
-var _hosted_lobby_id = 0
+var _hosted_lobby_id:int = 0
 const LOBBY_MODE = "FFA"
 var refresh:float = 1.0
 
-func host():
+func host() -> void:
 	initialize_steam()
 	print("Starting host!")
 	server_node = get_tree().get_first_node_in_group("Server")
@@ -23,11 +23,10 @@ func host():
 	multiplayer.peer_connected.connect(_connected)
 	multiplayer.peer_disconnected.connect(_disconnected)
 	Steam.createLobby(Steam.LOBBY_TYPE_PUBLIC, 16)
-	Steam.lobby_created
 
 func initialize_steam() -> void:
 	print("Initializing host!")
-	var initialize_response: Dictionary = Steam.steamInitEx()
+	initialize_response = Steam.steamInitEx()
 	if initialize_response['status'] > 0:
 		push_warning("Failed to init Steam! %s" % initialize_response)
 	is_owned = Steam.isSubscribed()
@@ -37,7 +36,7 @@ func initialize_steam() -> void:
 	if is_owned == false:
 		push_error("User does not own game!")
 		
-func _physics_process(delta:float) -> void:
+func _physics_process(_delta:float) -> void:
 	Steam.run_callbacks()
 	#refresh -= delta
 	#if refresh > 0:
@@ -57,7 +56,7 @@ func _on_lobby_created(res: int, lobby_id:int) -> void:
 	print_rich("Created lobby: %s" % _hosted_lobby_id)
 	_create_host()
 
-func _on_lobby_joined(lobby: int, permissions: int, locked: bool, response: int):
+func _on_lobby_joined(lobby: int, _permissions: int, _locked: bool, response: int) -> void:
 	if response != 1:
 		var FAIL_REASON: String
 		match response: # Get the failure reason
@@ -73,30 +72,30 @@ func _on_lobby_joined(lobby: int, permissions: int, locked: bool, response: int)
 			11: FAIL_REASON = "A user you have blocked is in the lobby."
 		print(FAIL_REASON)
 		return
-	var id = Steam.getLobbyOwner(lobby)
+	var id:int = Steam.getLobbyOwner(lobby)
 	if id != Steam.getSteamID():
 		print("Connecting client to socket...")
 		connect_socket(id)
 
-func _create_host():
-	var error = peer.create_host(0)
+func _create_host() -> void:
+	var error:int = peer.create_host(0)
 	if error != OK:
 		print("error creating host: %s" % str(error))
 		return
 	multiplayer.set_multiplayer_peer(peer)
 	
-func connect_socket(steam_id: int):
-	var error = peer.create_client(steam_id, 0)
+func connect_socket(id: int) -> void:
+	var error:int = peer.create_client(id, 0)
 	if error != OK:
 		print("Error creating client: %s" % str(error))
 		return
 	print("Connecting peer to host...")
 	multiplayer.set_multiplayer_peer(peer)
 
-func _connected(id: int):
+func _connected(id: int) -> void:
 	print("Player %s joined the game!" % id)
 	server_node.add_player(id)
 	
-func _disconnected(id: int):
+func _disconnected(id: int) -> void:
 	print("Player %s left the game!" % id)
 	server_node.remove_player(id)

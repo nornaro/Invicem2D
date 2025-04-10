@@ -9,25 +9,32 @@ var dead: bool = false
 @onready var hpBar: Node = $hpBar
 @onready var shBar: Node = $shBar
 @onready var sh: Node = $Shield
-@onready var h0: Node = $Shield/s0
-@onready var h2: Node = $Shield/Hit2
+@onready var aura: Node = $Shield/Aura
+@onready var hit: Node = $Shield/Hit
 @onready var depleted: Node = $Shield/Depleted
 @onready var area: Node = $MinionArea
-@onready var shield_component: ShieldComponent = $ShieldComponent
-@onready var damage_component: DamageComponent = $DamageComponent
+@onready var shield_component: ShieldComponent = ShieldComponent.new()
+@onready var damage_component: DamageComponent = DamageComponent.new()
 
 func _ready() -> void:
 	if !area.has_meta("owner"):
 		add_to_group("minions")
 		initialize_data.call()
+		initialize_sprite.call()
+		shield_component.initialize.call(Data.max_sh, shBar, aura, depleted, sh, hit)
+	extra.call()
 	linear_velocity = Vector2(-Data.Speed / 5, 0).clamp(Vector2(-1, 0), Vector2(-Data.Speed / 5, 0))
+
+@export var extra: Callable = func() -> void:
+	pass
 
 @export var initialize_data: Callable = func() -> void:
 	Data["name"] = name
 	Data.HP = ceil(Data.HP * 100 * (1 + Data.Size / 10))
 	Data["max_hp"] = Data.HP
 	hpBar.max_value = Data.max_hp
-	Data.Shield = int(Data.Shield * Data.max_hp / 2)
+	hpBar.value = hpBar.max_value
+	Data.Shield = int(Data.Shield * Data.max_hp / 25) * 4
 	Data["max_sh"] = Data.Shield
 	shBar.max_value = Data.max_sh
 	Data.Defense = ceil(Data.Defense * (1 + Data.Size / 10))
@@ -40,7 +47,7 @@ func _ready() -> void:
 	var sprite: String = global[type][minion].keys().pick_random()
 	Sprite.speed_scale = 1 + Data.Speed
 	Sprite.sprite_frames = global[type][minion][sprite]
-	scale *= 1000 * Data.Size
+	scale *= 10 * Data.Size
 	adjust_ui_positions.call()
 	Sprite.play("Walking")
 
@@ -73,14 +80,18 @@ func _physics_process(delta: float) -> void:
 @export var hurt: Callable = func(data: Dictionary) -> void:
 	if dead:
 		return
-	
-	var damage: int = damage_component.calculate_damage.call(data, Data)
+		
+	var damage: int = 0
+	damage = damage_component.calculate_damage.call(data, Data)
 	damage = shield_component.take_damage.call(damage)
+	damage = damage_component.apply_defense.call(damage, data, Data)
 	
-	if damage > 0:
-		Data.HP -= damage
-		update_hpbar.call()
-	
+	if damage <= 0:
+		return
+		
+	Data.HP -= damage
+	update_hpbar.call()
+
 	if Data.HP <= 0:
 		die.call()
 

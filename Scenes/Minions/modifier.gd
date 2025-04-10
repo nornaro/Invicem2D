@@ -2,9 +2,9 @@ extends Node
 
 class_name RevivalModifier
 
-@export var revive_count: int = 3
+@export var revive_count: int = 2
 @export var revive_hp_threshold: float = 0.1
-@export var revive_hp_restore: float = 0.5
+@export var revive_hp_restore: float = 1
 
 @onready var minion: Node = $".."
 

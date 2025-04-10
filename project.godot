@@ -30,12 +30,7 @@ gdscript/warnings/confusable_identifier=0
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
-window/size/initial_position_type=3
-window/size/extend_to_title=true
-window/stretch/aspect="expand"
-window/stretch/scale=0.5
+window/size/mode=3
 
 [dotnet]
 

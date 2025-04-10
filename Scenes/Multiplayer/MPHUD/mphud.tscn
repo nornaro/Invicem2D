@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cwystn510g27d" path="res://Scenes/Multiplayer/MPHUD/mphud.gd" id="1_bw4dg"]
 [ext_resource type="PackedScene" uid="uid://dgy2hssu6prlx" path="res://Scenes/Multiplayer/MPHUD/network_type.tscn" id="2_werij"]
-[ext_resource type="Script" uid="uid://10t2ic6hb3xt" path="res://Scenes/Multiplayer/host.gd" id="8_ttryd"]
+[ext_resource type="Script" uid="uid://d1gw2s5xqqws4" path="res://Scenes/Multiplayer/host.gd" id="8_ttryd"]
 [ext_resource type="Script" uid="uid://p61llhntcgte" path="res://Scenes/Multiplayer/join.gd" id="9_f4ja4"]
 [ext_resource type="Script" uid="uid://ppcg6byxrf6c" path="res://Scenes/Multiplayer/search.gd" id="10_tyone"]
 [ext_resource type="Script" uid="uid://davfgbwyeacii" path="res://Scenes/Multiplayer/MPHUD/back.gd" id="11_tsjd1"]

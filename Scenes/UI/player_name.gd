@@ -1,5 +1,6 @@
 extends RichTextLabel
 
+@onready var pn: Node = $"."
 @onready var en: Node = $"../EditName"
 @onready var ne: Node = $"../EditName/NameEdit"
 @onready var cr: Node = $"../EditName/ColorRect"
@@ -15,8 +16,12 @@ func _ready() -> void:
 	
 func _change_name_clicked(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("RMB"):
-		en.show()
-		ne.grab_focus()
+		show_change_name()
+	
+func show_change_name() -> void:
+	pn.hide()
+	en.show()
+	ne.grab_focus()
 			
 func _change_name() -> void:
 	text = ne.text
@@ -25,6 +30,7 @@ func _change_name() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_text_newline"):
 		en.hide()
+		pn.show()
 
 func _change_name_color(color: Color) -> void:
 	var text_parts: Array = ne.text.replace("]","|||").replace("[","|||").split("|||")
