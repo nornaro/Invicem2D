@@ -9,7 +9,7 @@ var shield_hit_effect: Node
 var depleted_animation: Node
 var shield_aura: Node
 
-@export var initialize: Callable = func(max_shield_value: float, bar: Node, aura: Node, depleted: Node, shiled_node: Node, hit_effect: AnimationPlayer) -> void:
+@export var initialize: Callable = func(max_shield_value: int, bar: Node, aura: Node, depleted: Node, shiled_node: Node, hit_effect: AnimationPlayer) -> void:
 	if max_shield_value == 0:
 		shiled_node.hide()
 		bar.hide()

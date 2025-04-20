@@ -1,44 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://ds57nc6h7eej5"]
+[gd_scene load_steps=7 format=3 uid="uid://ds57nc6h7eej5"]
 
 [ext_resource type="Script" uid="uid://bmphx2toyvxbt" path="res://Scenes/main.gd" id="1_fvccw"]
-[ext_resource type="Script" uid="uid://cl1oqpgktp4lg" path="res://Docs/Bugs.gd" id="2_lg1kx"]
-[ext_resource type="Script" uid="uid://bwknv42lc1hht" path="res://Docs/readme.gd" id="3_lukef"]
-[ext_resource type="Script" uid="uid://wkdu2kqsfhu1" path="res://Docs/2DO.gd" id="3_tggs8"]
-[ext_resource type="Script" uid="uid://cphiemr7iss8c" path="res://Scenes/sec_steps.gd" id="5_kry3j"]
-[ext_resource type="Script" uid="uid://dkr5w5o0vawf6" path="res://Docs/modifiers.gd" id="6_21xkr"]
-[ext_resource type="Script" uid="uid://dn77hsbt10ggy" path="res://Docs/kafra.gd" id="7_6bp64"]
+[ext_resource type="PackedScene" uid="uid://b78bsw6hqadsw" path="res://docs.tscn" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://cpxbhof40hrhd" path="res://Scenes/Multiplayer/server.gd" id="8_hptm8"]
 [ext_resource type="Script" uid="uid://hqgjhtd4vk6k" path="res://Scenes/Loading/black.gd" id="8_ynf5e"]
-[ext_resource type="Script" uid="uid://b88s25ud48ep5" path="res://Scenes/Map/progress_bar.gd" id="9_hptm8"]
+[ext_resource type="PackedScene" uid="uid://byn70pt7p1fu8" path="res://transition_screen.tscn" id="11_d1ilt"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_d1ilt"]
 size = Vector2(10000, 5000)
 orientation = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6iyac"]
-bg_color = Color(0.00679537, 0.223933, 0.00552452, 1)
-
 [node name="Main" type="Camera2D" groups=["Main"]]
 anchor_mode = 0
 script = ExtResource("1_fvccw")
-
-[node name="Bugs" type="Node" parent="."]
-script = ExtResource("2_lg1kx")
-
-[node name="2DO" type="Node" parent="."]
-script = ExtResource("3_tggs8")
-
-[node name="Readme" type="Node" parent="."]
-script = ExtResource("3_lukef")
-
-[node name="Sec Steps" type="Node" parent="."]
-script = ExtResource("5_kry3j")
-
-[node name="Modifiers" type="Node" parent="."]
-script = ExtResource("6_21xkr")
-
-[node name="Kafra" type="Node" parent="."]
-script = ExtResource("7_6bp64")
 
 [node name="Server" type="Node" parent="." groups=["Server"]]
 script = ExtResource("8_hptm8")
@@ -52,15 +26,7 @@ scale = Vector2(0.676823, 0.369667)
 mesh = SubResource("PlaneMesh_d1ilt")
 script = ExtResource("8_ynf5e")
 
-[node name="ProgressBar" type="ProgressBar" parent="." groups=["Loading"]]
+[node name="Docs" parent="." instance=ExtResource("4_jjvhh")]
+
+[node name="TransitionScreen" parent="." instance=ExtResource("11_d1ilt")]
 visible = false
-z_index = 4096
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 201.0
-offset_top = 444.0
-offset_right = 1701.0
-offset_bottom = 494.0
-grow_horizontal = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_6iyac")
-script = ExtResource("9_hptm8")

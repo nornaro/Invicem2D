@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://byn70pt7p1fu8"]
+
+[ext_resource type="Script" uid="uid://ry53byohjlpl" path="res://transition_screen.gd" id="1_57neh"]
+[ext_resource type="Script" uid="uid://b88s25ud48ep5" path="res://Scenes/Map/progress_bar.gd" id="2_n6j18"]
+
+[sub_resource type="Animation" id="Animation_n6j18"]
+resource_name = "fade_to_black"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.588235)]
+}
+
+[sub_resource type="Animation" id="Animation_0edib"]
+resource_name = "fade_to_transparent"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jd3j0"]
+_data = {
+&"fade_to_black": SubResource("Animation_n6j18"),
+&"fade_to_transparent": SubResource("Animation_0edib")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2sm7"]
+bg_color = Color(0.00679537, 0.223933, 0.00552452, 1)
+
+[node name="TransitionScreen" type="CanvasLayer" groups=["TransitionScreen"]]
+script = ExtResource("1_57neh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0.588235)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jd3j0")
+}
+
+[node name="VBoxContainer" type="HBoxContainer" parent="." groups=["ProgressBar"]]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel2" type="Panel" parent="VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer" groups=["Loading"]]
+z_index = 4096
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_n2sm7")
+script = ExtResource("2_n6j18")
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25

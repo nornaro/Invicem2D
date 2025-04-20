@@ -20,14 +20,14 @@ func process_directory(path: String) -> void:
 
 func process_tres(file_path: String) -> void:
 	var resource := ResourceLoader.load(file_path)
-	if resource:
-		var changed = false
-		for property in resource.get_property_list():
-			if property["type"] == TYPE_STRING and ".png" in resource.get(property["name"]):
-				resource.set(property["name"], resource.get(property["name"]).replace(".png", ".webp"))
-				changed = true
-		if changed:
-			ResourceSaver.save(resource, file_path)
-			print_rich("Updated:", file_path)
-	else:
+	if !resource:
 		push_error("Failed to load: " + file_path)
+		return
+	var changed = false
+	for property in resource.get_property_list():
+		if property["type"] == TYPE_STRING and ".png" in resource.get(property["name"]):
+			resource.set(property["name"], resource.get(property["name"]).replace(".png", ".webp"))
+			changed = true
+	if changed:
+		ResourceSaver.save(resource, file_path)
+		print_rich("Updated:", file_path)

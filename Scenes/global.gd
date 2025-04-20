@@ -2,6 +2,7 @@ extends Node
 
 const GAME_ID:String = "xcNhLTRbBH"
 
+
 @export var client: PackedScene = preload("res://Scenes/Multiplayer/2d_client.tscn")
 @export var dummy_client: PackedScene = preload("res://Scenes/Multiplayer/dummy_client.tscn")
 @export var style:String = "Sci-fi"

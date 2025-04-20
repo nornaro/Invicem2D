@@ -16,11 +16,18 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 run/low_processor_mode=true
 run/low_processor_mode_sleep_usec=0
 boot_splash/image="uid://bdj225amydviy"
-config/icon="uid://cvy1hxrd0l8y7"
+config/icon="res://icon.webp"
 
 [autoload]
 
 Global="*res://Scenes/global.gd"
+Noray="*res://addons/netfox.noray/noray.gd"
+PacketHandshake="*res://addons/netfox.noray/packet-handshake.gd"
+NetworkTime="*res://addons/netfox/network-time.gd"
+NetworkTimeSynchronizer="*res://addons/netfox/network-time-synchronizer.gd"
+NetworkRollback="*res://addons/netfox/rollback/network-rollback.gd"
+NetworkEvents="*res://addons/netfox/network-events.gd"
+NetworkPerformance="*res://addons/netfox/network-performance.gd"
 
 [debug]
 
@@ -30,7 +37,14 @@ gdscript/warnings/confusable_identifier=0
 
 [display]
 
-window/size/mode=3
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/resizable=false
+window/size/borderless=true
+window/size/transparent=true
+window/subwindows/embed_subwindows=false
+window/stretch/mode="canvas_items"
+window/per_pixel_transparency/allowed=true
 
 [dotnet]
 
@@ -42,7 +56,7 @@ export/convert_text_resources_to_binary=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/export_and_run/plugin.cfg", "res://addons/gd_profiler/plugin.cfg")
+enabled=PackedStringArray("res://addons/gamedev_assistant/plugin.cfg", "res://addons/gd_profiler/plugin.cfg", "res://addons/netfox.internals/plugin.cfg", "res://addons/netfox.noray/plugin.cfg", "res://addons/netfox/plugin.cfg")
 
 [file_customization]
 

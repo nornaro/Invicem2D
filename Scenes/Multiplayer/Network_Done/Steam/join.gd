@@ -1,13 +1,12 @@
 extends Node
 
-
-var player: PackedScene
 var port: int = 9001
-var server_node: Node
 var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
-var refresh:float = 1.0
+var player: PackedScene
+var server_node: Node
 var initialize_response: Dictionary
-var status:int = 0
+var refresh: float = 1.0
+var status: int = 0
 
 func lobby() -> void:
 	OS.set_environment("SteamAppId", str(480))
@@ -26,7 +25,7 @@ func lobby() -> void:
 func join() -> void:
 	server_node = get_tree().get_current_scene().get_node("Server")
 	server_node.player = Global.client
-	print("Joining lobby %s" % Global.join_data)
+	print_rich("Joining lobby %s" % Global.join_data)
 	multiplayer.peer_connected.connect(_connected)
 	multiplayer.peer_disconnected.connect(_disconnected)
 	Steam.lobby_joined.connect(_on_lobby_joined.bind())
@@ -35,7 +34,7 @@ func join() -> void:
 func _on_lobby_joined(lobby_id: int, _permissions: int, _locked: bool, response: int) -> void:
 	if response != 1:
 		var FAIL_REASON: String
-		match response: # Get the failure reason
+		match response:
 			2:  FAIL_REASON = "This lobby no longer exists."
 			3:  FAIL_REASON = "You don't have permission to join this lobby."
 			4:  FAIL_REASON = "The lobby is now full."
@@ -46,53 +45,38 @@ func _on_lobby_joined(lobby_id: int, _permissions: int, _locked: bool, response:
 			9:  FAIL_REASON = "This lobby is community locked."
 			10: FAIL_REASON = "A user in the lobby has blocked you from joining."
 			11: FAIL_REASON = "A user you have blocked is in the lobby."
-		print(FAIL_REASON)
+		print_rich(FAIL_REASON)
 		return
-	var id:int = Steam.getLobbyOwner(lobby_id)
+	var id: int = Steam.getLobbyOwner(lobby_id)
 	if id != Steam.getSteamID():
-		print("Connecting client to socket...")
+		print_rich("Connecting client to socket...")
 		connect_socket(id)
-	
+
 func connect_socket(steam_id: int) -> void:
-	var error:int = peer.create_client(steam_id, 0)
+	var error: int = peer.create_client(steam_id, 0)
 	if error != OK:
-		print("Error creating client: %s" % str(error))
+		print_rich("Error creating client: %s" % str(error))
 		return
-	print("Connecting peer to host...")
+	print_rich("Connecting peer to host...")
 	multiplayer.set_multiplayer_peer(peer)
 
 func list_lobbies() -> void:
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
-	# NOTE: If you are using the test app id, you will need to apply a filter on your game name
-	# Otherwise, it may not show up in the lobby list of your clients
 	Steam.addRequestLobbyListStringFilter("name", Global.game, Steam.LOBBY_COMPARISON_EQUAL)
 	Steam.requestLobbyList()
 
-func _physics_process(delta:float) -> void:
-	Steam.run_callbacks()
-	refresh -= delta
-	if refresh > 0:
-		return
-	refresh = 1.0
-	#list_lobbies()
-	Steam.requestLobbyList()
-	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
-	Steam.addRequestLobbyListStringFilter("game", Global.game, Steam.LOBBY_COMPARISON_EQUAL)
-
 func _fill_steam_lobby_menu(lobbies: Array) -> void:
 	var packet: Dictionary
-	for l:int in lobbies:
+	for l: int in lobbies:
 		if Global.server_id != "" and not (
-				str(l).contains(Global.server_id) or 
-				str(Steam.getLobbyData(l, "game")).contains(Global.server_id)):
+			str(l).contains(Global.server_id) or 
+			str(Steam.getLobbyData(l, "game")).contains(Global.server_id)):
 			return
 		if Steam.getLobbyData(l, "game") != Global.game:
 			return
-		var players:Array = []
+		var players: Array = []
 		for i: int in range(Steam.getNumLobbyMembers(l)):
-			players.append( Steam.getPlayerNickname(Steam.getLobbyMemberByIndex(l,i)))
-
-		#var details:Dictionary = Steam.getServerDetails(l,0)
+			players.append(Steam.getPlayerNickname(Steam.getLobbyMemberByIndex(l, i)))
 		packet["Game"] = Steam.getLobbyData(l, "game")
 		packet["Join"] = str(l)
 		packet["Code"] = Steam.getLobbyData(l, "UID")
@@ -104,8 +88,18 @@ func _fill_steam_lobby_menu(lobbies: Array) -> void:
 		packet["Latency"] = 0
 		Global.servers[str(l)] = packet
 
-func _connected(id:int) -> void:
+func _connected(id: int) -> void:
 	server_node.add_player(id)
-	
-func _disconnected(id:int) -> void:
+
+func _disconnected(id: int) -> void:
 	server_node.remove_player(id)
+
+func _physics_process(delta: float) -> void:
+	Steam.run_callbacks()
+	refresh -= delta
+	if refresh > 0:
+		return
+	refresh = 1.0
+	Steam.requestLobbyList()
+	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
+	Steam.addRequestLobbyListStringFilter("game", Global.game, Steam.LOBBY_COMPARISON_EQUAL)

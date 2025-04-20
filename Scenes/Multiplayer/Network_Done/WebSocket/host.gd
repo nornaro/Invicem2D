@@ -94,7 +94,6 @@ func _peer_disconnected(id: int) -> void:
 	#peer.close()
 #
 #func _connected(id: int) -> void:
-	#print("_connected")
 	#server_node.add_player(id)
 #
 #func _disconnected(id: int) -> void:

@@ -18,12 +18,12 @@ func fill() -> void:
 	#for i: int in range(keys.size()):  # Loop through all keys
 		#var node_index = int(i / 2.0) + 1  # Node numbers go from 1 to 9
 		#var node: Node = get_node(str(node_index))  # Get the node based on the calculated index
-		#if i % 2 == 0:  # Even index: assign to the left
-			#node.left = keys[i]
-			#node.tooltip_text = keys[i]
-		#else:  # Odd index: assign to the right
+		#if i % 2 != 0:  # Even index: assign to the left
 			#node.right = keys[i]
-		#node.tooltip_text = node.left + "/" + node.right
+			#return
+		#node.left = keys[i]
+		#node.tooltip_text = keys[i]
+		##node.tooltip_text = node.left + "/" + node.right
 
 func clear() -> void:
 	for child in get_children():

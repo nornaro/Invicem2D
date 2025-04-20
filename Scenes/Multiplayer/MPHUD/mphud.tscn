@@ -16,43 +16,44 @@ bg_color = Color(0.0475577, 0.0475577, 0.0475576, 1)
 [node name="MPHUD" type="Panel" groups=["MPHUD", "MainCircle"]]
 light_mask = 2
 visibility_layer = 2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -900.0
-offset_top = -500.0
-offset_right = 900.0
-offset_bottom = 500.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bw4dg")
 
-[node name="LobbyControl" type="VBoxContainer" parent="."]
-layout_mode = 2
-offset_right = 288.0
-offset_bottom = 1000.0
+[node name="VSplitContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Top" type="VBoxContainer" parent="LobbyControl"]
+[node name="LobbyControl" type="VBoxContainer" parent="VSplitContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+
+[node name="Top" type="VBoxContainer" parent="VSplitContainer/LobbyControl"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="NetworkType" parent="LobbyControl/Top" instance=ExtResource("2_werij")]
+[node name="NetworkType" parent="VSplitContainer/LobbyControl/Top" instance=ExtResource("2_werij")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Menu" type="HBoxContainer" parent="LobbyControl/Top"]
+[node name="Menu" type="HBoxContainer" parent="VSplitContainer/LobbyControl/Top"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Panel" type="Panel" parent="LobbyControl/Top/Menu"]
+[node name="Panel" type="Panel" parent="VSplitContainer/LobbyControl/Top/Menu"]
 self_modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MainArea" type="VBoxContainer" parent="LobbyControl/Top/Menu/Panel"]
+[node name="MainArea" type="VBoxContainer" parent="VSplitContainer/LobbyControl/Top/Menu/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -66,7 +67,7 @@ offset_bottom = 21.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Name" type="RichTextLabel" parent="LobbyControl/Top/Menu/Panel/MainArea"]
+[node name="Name" type="RichTextLabel" parent="VSplitContainer/LobbyControl/Top/Menu/Panel/MainArea"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 bbcode_enabled = true
@@ -74,17 +75,17 @@ text = "Name"
 fit_content = true
 scroll_active = false
 
-[node name="Host" type="Button" parent="LobbyControl/Top/Menu/Panel/MainArea"]
+[node name="Host" type="Button" parent="VSplitContainer/LobbyControl/Top/Menu/Panel/MainArea"]
 layout_mode = 2
 text = "Host"
 script = ExtResource("8_ttryd")
 
-[node name="Join" type="Button" parent="LobbyControl/Top/Menu/Panel/MainArea"]
+[node name="Join" type="Button" parent="VSplitContainer/LobbyControl/Top/Menu/Panel/MainArea"]
 layout_mode = 2
 text = "Join"
 script = ExtResource("9_f4ja4")
 
-[node name="Search" type="TextEdit" parent="LobbyControl/Top/Menu/Panel/MainArea"]
+[node name="Search" type="TextEdit" parent="VSplitContainer/LobbyControl/Top/Menu/Panel/MainArea"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -93,13 +94,13 @@ context_menu_enabled = false
 scroll_fit_content_height = true
 script = ExtResource("10_tyone")
 
-[node name="Join_data" type="TextEdit" parent="LobbyControl/Top/Menu/Panel/MainArea" groups=["Join_data"]]
+[node name="Join_data" type="TextEdit" parent="VSplitContainer/LobbyControl/Top/Menu/Panel/MainArea" groups=["Join_data"]]
 custom_minimum_size = Vector2(200, 35)
 layout_mode = 2
 drag_and_drop_selection_enabled = false
 scroll_past_end_of_file = true
 
-[node name="WindowControlArea" type="VBoxContainer" parent="LobbyControl/Top/Menu/Panel"]
+[node name="WindowControlArea" type="VBoxContainer" parent="VSplitContainer/LobbyControl/Top/Menu/Panel"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 1
 anchors_preset = 7
@@ -114,38 +115,50 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 2
 
-[node name="Hide" type="Button" parent="LobbyControl/Top/Menu/Panel/WindowControlArea"]
+[node name="Hide" type="Button" parent="VSplitContainer/LobbyControl/Top/Menu/Panel/WindowControlArea"]
 layout_mode = 2
 text = "Hide"
 script = ExtResource("11_tsjd1")
 
-[node name="Separator" type="Panel" parent="LobbyControl/Top/Menu/Panel/WindowControlArea"]
+[node name="Separator" type="Panel" parent="VSplitContainer/LobbyControl/Top/Menu/Panel/WindowControlArea"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_l4wgv")
 
-[node name="Bot" type="Panel" parent="LobbyControl"]
+[node name="Bot" type="Panel" parent="VSplitContainer/LobbyControl"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_l4wgv")
 
-[node name="TitleBar" type="Panel" parent="."]
-custom_minimum_size = Vector2(1500, 40)
+[node name="Description" type="RichTextLabel" parent="VSplitContainer/LobbyControl/Bot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer"]
 layout_mode = 2
-offset_left = 300.0
-offset_right = 1800.0
-offset_bottom = 40.0
-size_flags_horizontal = 8
+size_flags_horizontal = 3
+
+[node name="TitleBar" type="Panel" parent="VSplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7v4l0")
 
-[node name="Name" type="Button" parent="TitleBar"]
-clip_contents = true
-custom_minimum_size = Vector2(1150, 40)
-layout_mode = 2
-offset_right = 1150.0
+[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/VBoxContainer/TitleBar"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 40.0
-grow_vertical = 2
+grow_horizontal = 2
+
+[node name="Name" type="Button" parent="VSplitContainer/VBoxContainer/TitleBar/HBoxContainer"]
+clip_contents = true
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "UID
@@ -155,14 +168,9 @@ mouse_filter = 1
 text = "Server"
 flat = true
 
-[node name="Join code" type="Button" parent="TitleBar"]
+[node name="Join code" type="Button" parent="VSplitContainer/VBoxContainer/TitleBar/HBoxContainer"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-offset_left = 1150.0
-offset_right = 1350.0
-offset_bottom = 40.0
-grow_vertical = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "UID
 IP:PORT
@@ -171,54 +179,39 @@ mouse_filter = 1
 text = "Join code"
 flat = true
 
-[node name="Players" type="Button" parent="TitleBar"]
+[node name="Players" type="Button" parent="VSplitContainer/VBoxContainer/TitleBar/HBoxContainer"]
 custom_minimum_size = Vector2(70, 40)
 layout_mode = 2
-offset_left = 1350.0
-offset_right = 1425.0
-offset_bottom = 40.0
-size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "LIST"
 mouse_filter = 1
 text = "Players"
 flat = true
 
-[node name="Latency" type="Button" parent="TitleBar"]
+[node name="Latency" type="Button" parent="VSplitContainer/VBoxContainer/TitleBar/HBoxContainer"]
 custom_minimum_size = Vector2(75, 40)
 layout_mode = 2
-offset_left = 1425.0
-offset_right = 1500.0
-offset_bottom = 40.0
-grow_horizontal = 0
-grow_vertical = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "LIST"
 mouse_filter = 1
 text = "Latency"
 flat = true
 
-[node name="LobbyPanel" type="ScrollContainer" parent="."]
-custom_minimum_size = Vector2(1450, 0)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1500.0
-offset_top = -955.0
-offset_bottom = -5.0
-grow_horizontal = 0
-grow_vertical = 0
+[node name="Panel" type="Panel" parent="VSplitContainer/VBoxContainer/TitleBar/HBoxContainer"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
 
-[node name="Lobby" type="GridContainer" parent="LobbyPanel"]
-custom_minimum_size = Vector2(0, 900)
+[node name="LobbyPanel" type="ScrollContainer" parent="VSplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Lobby" type="GridContainer" parent="VSplitContainer/VBoxContainer/LobbyPanel"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("12_emtdj")
 
-[node name="Update" type="Timer" parent="LobbyPanel"]
+[node name="Update" type="Timer" parent="VSplitContainer/VBoxContainer/LobbyPanel"]
 autostart = true
 ignore_time_scale = true

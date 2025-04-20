@@ -1,6 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
 addons/
-*.tmp
+Export/
 *.import
-*.uid
+*.tmp
+*.uid"
+*.exe" 

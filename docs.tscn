@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://b78bsw6hqadsw"]
+
+[ext_resource type="Script" uid="uid://cl1oqpgktp4lg" path="res://Docs/Bugs.gd" id="1_ctyfi"]
+[ext_resource type="Script" uid="uid://wkdu2kqsfhu1" path="res://Docs/2DO.gd" id="2_3uon2"]
+[ext_resource type="Script" uid="uid://bwknv42lc1hht" path="res://Docs/readme.gd" id="3_jn36w"]
+[ext_resource type="Script" uid="uid://cphiemr7iss8c" path="res://Scenes/sec_steps.gd" id="4_6son5"]
+[ext_resource type="Script" uid="uid://dkr5w5o0vawf6" path="res://Docs/modifiers.gd" id="5_uoxh5"]
+[ext_resource type="Script" uid="uid://dn77hsbt10ggy" path="res://Docs/kafra.gd" id="6_sdhbr"]
+
+[node name="Docs" type="Node"]
+
+[node name="Bugs" type="Node" parent="."]
+script = ExtResource("1_ctyfi")
+
+[node name="2DO" type="Node" parent="."]
+script = ExtResource("2_3uon2")
+
+[node name="Readme" type="Node" parent="."]
+script = ExtResource("3_jn36w")
+
+[node name="Sec Steps" type="Node" parent="."]
+script = ExtResource("4_6son5")
+
+[node name="Modifiers" type="Node" parent="."]
+script = ExtResource("5_uoxh5")
+
+[node name="Kafra" type="Node" parent="."]
+script = ExtResource("6_sdhbr")

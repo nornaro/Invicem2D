@@ -1,11 +1,8 @@
-[gd_scene load_steps=33 format=3 uid="uid://t41phsm2wrag"]
+[gd_scene load_steps=17 format=3 uid="uid://t41phsm2wrag"]
 
 [ext_resource type="Script" uid="uid://tggt7cyxfrk0" path="res://Scenes/MainMenu/home_screen.gd" id="1_ajl7f"]
-[ext_resource type="Texture2D" uid="uid://h1b53qck8qoy" path="res://Scenes/MainMenu/Home.png" id="1_y2i7d"]
-[ext_resource type="PackedScene" uid="uid://dhearbilncssa" path="res://Scenes/GameMenu/gpu_particles_2d.tscn" id="4_5yl82"]
-[ext_resource type="Texture2D" uid="uid://bmu73vuekfuo" path="res://Scenes/Particles/flame_04.webp" id="5_l35pp"]
+[ext_resource type="Texture2D" uid="uid://bht2lbr7tkrtm" path="res://Scenes/MainMenu/Home.png" id="1_y2i7d"]
 [ext_resource type="Script" uid="uid://cipyj8crbddkx" path="res://Scenes/MainMenu/HomeButtons/home_button.gd" id="6_c6w5i"]
-[ext_resource type="PackedScene" uid="uid://bp18rk6u47rpe" path="res://Scenes/Multiplayer/MPHUD/mphud.tscn" id="6_h1k81"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ab77t"]
 texture = ExtResource("1_y2i7d")
@@ -38,69 +35,12 @@ material = SubResource("ShaderMaterial_47me8")
 radius = 120.0
 height = 200.0
 
-[sub_resource type="Curve" id="Curve_6fx1a"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.262032, 0.506867), 0.0, 0.0, 0, 0, Vector2(0.754011, 0.489863), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_xnc3c"]
-curve = SubResource("Curve_6fx1a")
-
-[sub_resource type="Curve" id="Curve_im025"]
-_limits = [-360.0, 360.0, 0.0, 1.0]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.253119, -117.489), 0.0, 0.0, 0, 0, Vector2(0.764706, 350.818), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_1rbtw"]
-curve = SubResource("Curve_im025")
-
-[sub_resource type="Curve" id="Curve_7ry65"]
-_limits = [0.0, 200.0, 0.0, 1.0]
-_data = [Vector2(0.454545, 0), 0.0, 0.0, 0, 0, Vector2(1, 200), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_3wba4"]
-curve = SubResource("Curve_7ry65")
-
-[sub_resource type="Gradient" id="Gradient_uapky"]
-colors = PackedColorArray(0, 1, 0, 1, 1, 1, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ck0xb"]
-gradient = SubResource("Gradient_uapky")
-
-[sub_resource type="Gradient" id="Gradient_7mghd"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_rggw4"]
-gradient = SubResource("Gradient_7mghd")
-
-[sub_resource type="Curve" id="Curve_0y2i8"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5637, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_kdnbg"]
-curve = SubResource("Curve_0y2i8")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g6gow"]
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 100.0
-angle_min = -45.0
-angle_max = 45.0
-angle_curve = SubResource("CurveTexture_1rbtw")
-gravity = Vector3(0, -98, 0)
-color = Color(0.988235, 0.321569, 0.988235, 1)
-color_ramp = SubResource("GradientTexture1D_rggw4")
-color_initial_ramp = SubResource("GradientTexture1D_ck0xb")
-alpha_curve = SubResource("CurveTexture_xnc3c")
-anim_speed_curve = SubResource("CurveTexture_3wba4")
-turbulence_noise_scale = 1.0
-turbulence_influence_over_life = SubResource("CurveTexture_kdnbg")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5yhyo"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ib800"]
 material = SubResource("ShaderMaterial_5yhyo")
-radius = 105.0
-height = 130.0
+radius = 70.0
+height = 65.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ewyv"]
 
@@ -109,11 +49,11 @@ material = SubResource("ShaderMaterial_3ewyv")
 radius = 105.0
 height = 130.0
 
-[node name="Home Screen" type="Panel" groups=["Home"]]
+[node name="Home Panel" type="Panel" groups=["Home"]]
 show_behind_parent = true
-custom_minimum_size = Vector2(1920, 1000)
-offset_right = 1920.0
-offset_bottom = 1000.0
+clip_contents = true
+offset_right = 1280.0
+offset_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_ab77t")
@@ -121,17 +61,17 @@ script = ExtResource("1_ajl7f")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 top_level = true
-position = Vector2(960, 500)
+position = Vector2(641, 361)
 
 [node name="Camera2D" type="Camera2D" parent="Marker2D"]
 
 [node name="0" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 848.0
-offset_top = 102.0
-offset_right = 1068.0
-offset_bottom = 305.0
+offset_left = 529.9
+offset_top = 41.0
+offset_right = 749.9
+offset_bottom = 244.0
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
@@ -145,14 +85,12 @@ self_modulate = Color(1, 1, 1, 0.0980392)
 position = Vector2(110.5, 102)
 mesh = SubResource("SphereMesh_410l8")
 
-[node name="GPUParticles2D" parent="0/Bubble" instance=ExtResource("4_5yl82")]
-
 [node name="1" type="Button" parent="."]
 layout_mode = 1
-offset_left = 1122.0
-offset_top = 160.0
-offset_right = 1342.0
-offset_bottom = 363.0
+offset_left = 721.7
+offset_top = 81.6
+offset_right = 941.7
+offset_bottom = 284.6
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
@@ -163,17 +101,16 @@ script = ExtResource("6_c6w5i")
 [node name="Bubble" type="MeshInstance2D" parent="1"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.0980392)
-position = Vector2(116, 102)
+position = Vector2(101.8, 106.9)
+scale = Vector2(0.66894, 0.730769)
 mesh = SubResource("SphereMesh_410l8")
-
-[node name="GPUParticles2D" parent="1/Bubble" instance=ExtResource("4_5yl82")]
 
 [node name="2" type="Button" parent="."]
 layout_mode = 1
-offset_left = 1244.0
-offset_top = 336.0
-offset_right = 1464.0
-offset_bottom = 539.0
+offset_left = 807.1
+offset_top = 204.8
+offset_right = 1027.1
+offset_bottom = 407.8
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
@@ -184,17 +121,16 @@ script = ExtResource("6_c6w5i")
 [node name="Bubble" type="MeshInstance2D" parent="2"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.0980392)
-position = Vector2(116, 102)
+position = Vector2(99.4001, 113.2)
+scale = Vector2(0.685777, 0.676923)
 mesh = SubResource("SphereMesh_02jyj")
-
-[node name="GPUParticles2D" parent="2/Bubble" instance=ExtResource("4_5yl82")]
 
 [node name="3" type="Button" parent="."]
 layout_mode = 1
-offset_left = 1244.0
-offset_top = 540.0
-offset_right = 1464.0
-offset_bottom = 743.0
+offset_left = 807.1
+offset_top = 347.6
+offset_right = 1027.1
+offset_bottom = 550.6
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
@@ -205,18 +141,16 @@ script = ExtResource("6_c6w5i")
 [node name="Bubble" type="MeshInstance2D" parent="3"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.0980392)
-position = Vector2(116, 102.5)
-scale = Vector2(0.910122, 0.992308)
+position = Vector2(99.4, 118.2)
+scale = Vector2(0.632535, 0.750769)
 mesh = SubResource("SphereMesh_410l8")
-
-[node name="GPUParticles2D" parent="3/Bubble" instance=ExtResource("4_5yl82")]
 
 [node name="4" type="Button" parent="."]
 layout_mode = 1
-offset_left = 1116.0
-offset_top = 740.0
-offset_right = 1349.0
-offset_bottom = 945.0
+offset_left = 717.5
+offset_top = 487.6
+offset_right = 950.5
+offset_bottom = 692.6
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
@@ -227,18 +161,16 @@ script = ExtResource("6_c6w5i")
 [node name="Bubble" type="MeshInstance2D" parent="4"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.0980392)
-position = Vector2(120, 111)
-scale = Vector2(0.90102, 0.65)
+position = Vector2(105.5, 126.4)
+scale = Vector2(0.592337, 0.47)
 mesh = SubResource("SphereMesh_4l12t")
-
-[node name="GPUParticles2D" parent="4/Bubble" instance=ExtResource("4_5yl82")]
 
 [node name="5" type="Button" parent="."]
 layout_mode = 1
-offset_left = 852.0
-offset_top = 816.0
-offset_right = 1072.0
-offset_bottom = 1019.0
+offset_left = 532.7
+offset_top = 540.8
+offset_right = 752.7
+offset_bottom = 743.8
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
@@ -249,18 +181,16 @@ script = ExtResource("6_c6w5i")
 [node name="Bubble" type="MeshInstance2D" parent="5"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.0980392)
-position = Vector2(111.062, 99.5)
-scale = Vector2(0.955061, 1.03846)
+position = Vector2(108.8, 119.1)
+scale = Vector2(0.659838, 0.736922)
 mesh = SubResource("SphereMesh_410l8")
-
-[node name="GPUParticles2D" parent="5/Bubble" instance=ExtResource("4_5yl82")]
 
 [node name="6" type="Button" parent="."]
 layout_mode = 1
-offset_left = 570.0
-offset_top = 736.0
-offset_right = 807.0
-offset_bottom = 939.0
+offset_left = 335.3
+offset_top = 484.8
+offset_right = 572.3
+offset_bottom = 687.8
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
@@ -271,32 +201,16 @@ script = ExtResource("6_c6w5i")
 [node name="Bubble" type="MeshInstance2D" parent="6"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.0980392)
-position = Vector2(122, 114)
-scale = Vector2(0.934392, 0.64)
+position = Vector2(125.7, 130.7)
+scale = Vector2(0.650737, 0.455)
 mesh = SubResource("SphereMesh_qkddb")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="6/Bubble"]
-visible = false
-position = Vector2(1.5, 10)
-amount = 20
-sub_emitter = NodePath(".")
-texture = ExtResource("5_l35pp")
-lifetime = 5.0
-speed_scale = 0.5
-explosiveness = 0.1
-randomness = 1.0
-trail_enabled = true
-trail_lifetime = 5.0
-trail_sections = 10
-trail_section_subdivisions = 10
-process_material = SubResource("ParticleProcessMaterial_g6gow")
 
 [node name="7" type="Button" parent="."]
 layout_mode = 1
-offset_left = 440.0
-offset_top = 542.0
-offset_right = 677.0
-offset_bottom = 745.0
+offset_left = 244.3
+offset_top = 349.0
+offset_right = 481.3
+offset_bottom = 552.0
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
@@ -307,17 +221,16 @@ script = ExtResource("6_c6w5i")
 [node name="Bubble" type="MeshInstance2D" parent="7"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.0980392)
-position = Vector2(116, 102)
+position = Vector2(122, 113.5)
+scale = Vector2(1, 1.4)
 mesh = SubResource("SphereMesh_ib800")
-
-[node name="GPUParticles2D" parent="7/Bubble" instance=ExtResource("4_5yl82")]
 
 [node name="8" type="Button" parent="."]
 layout_mode = 1
-offset_left = 442.0
-offset_top = 338.0
-offset_right = 679.0
-offset_bottom = 541.0
+offset_left = 245.7
+offset_top = 206.2
+offset_right = 485.7
+offset_bottom = 406.2
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
@@ -328,18 +241,16 @@ script = ExtResource("6_c6w5i")
 [node name="Bubble" type="MeshInstance2D" parent="8"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.0980392)
-position = Vector2(116, 103.5)
-scale = Vector2(0.953461, 0.976923)
+position = Vector2(125.8, 112.8)
+scale = Vector2(0.634052, 0.661538)
 mesh = SubResource("SphereMesh_2j0xa")
-
-[node name="GPUParticles2D" parent="8/Bubble" instance=ExtResource("4_5yl82")]
 
 [node name="9" type="Button" parent="."]
 layout_mode = 1
-offset_left = 566.0
-offset_top = 160.0
-offset_right = 786.0
-offset_bottom = 363.0
+offset_left = 332.5
+offset_top = 81.6
+offset_right = 552.5
+offset_bottom = 281.6
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
@@ -350,13 +261,9 @@ script = ExtResource("6_c6w5i")
 [node name="Bubble" type="MeshInstance2D" parent="9"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.0980392)
-position = Vector2(116, 102)
+position = Vector2(125, 105.4)
+scale = Vector2(0.646187, 0.723077)
 mesh = SubResource("SphereMesh_410l8")
-
-[node name="GPUParticles2D" parent="9/Bubble" instance=ExtResource("4_5yl82")]
-
-[node name="MPHUD" parent="." instance=ExtResource("6_h1k81")]
-layout_mode = 1
 
 [connection signal="mouse_entered" from="0" to="0" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="0" to="0" method="_on_mouse_exited"]

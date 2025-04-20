@@ -1,5 +1,4 @@
 extends Node
-
 class_name RevivalModifier
 
 @export var revive_count: int = 2

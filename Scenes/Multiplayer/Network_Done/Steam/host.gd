@@ -15,7 +15,7 @@ var refresh:float = 1.0
 
 func host() -> void:
 	initialize_steam()
-	print("Starting host!")
+	print_rich("Starting host!")
 	server_node = get_tree().get_first_node_in_group("Server")
 	server_node.player = Global.dummy_client
 	Steam.lobby_joined.connect(_on_lobby_joined.bind())
@@ -25,7 +25,7 @@ func host() -> void:
 	Steam.createLobby(Steam.LOBBY_TYPE_PUBLIC, 16)
 
 func initialize_steam() -> void:
-	print("Initializing host!")
+	print_rich("Initializing host!")
 	initialize_response = Steam.steamInitEx()
 	if initialize_response['status'] > 0:
 		push_warning("Failed to init Steam! %s" % initialize_response)
@@ -44,7 +44,7 @@ func _physics_process(_delta:float) -> void:
 	#refresh = 1.0
 	
 func _on_lobby_created(res: int, lobby_id:int) -> void:
-	print("Creating lobby")
+	print_rich("Creating lobby")
 	if res != 1:
 		return
 	_hosted_lobby_id = lobby_id
@@ -70,32 +70,32 @@ func _on_lobby_joined(lobby: int, _permissions: int, _locked: bool, response: in
 			9:  FAIL_REASON = "This lobby is community locked."
 			10: FAIL_REASON = "A user in the lobby has blocked you from joining."
 			11: FAIL_REASON = "A user you have blocked is in the lobby."
-		print(FAIL_REASON)
+		print_rich(FAIL_REASON)
 		return
 	var id:int = Steam.getLobbyOwner(lobby)
 	if id != Steam.getSteamID():
-		print("Connecting client to socket...")
+		print_rich("Connecting client to socket...")
 		connect_socket(id)
 
 func _create_host() -> void:
 	var error:int = peer.create_host(0)
 	if error != OK:
-		print("error creating host: %s" % str(error))
+		print_rich("error creating host: %s" % str(error))
 		return
 	multiplayer.set_multiplayer_peer(peer)
 	
 func connect_socket(id: int) -> void:
 	var error:int = peer.create_client(id, 0)
 	if error != OK:
-		print("Error creating client: %s" % str(error))
+		print_rich("Error creating client: %s" % str(error))
 		return
-	print("Connecting peer to host...")
+	print_rich("Connecting peer to host...")
 	multiplayer.set_multiplayer_peer(peer)
 
 func _connected(id: int) -> void:
-	print("Player %s joined the game!" % id)
+	print_rich("Player %s joined the game!" % id)
 	server_node.add_player(id)
 	
 func _disconnected(id: int) -> void:
-	print("Player %s left the game!" % id)
+	print_rich("Player %s left the game!" % id)
 	server_node.remove_player(id)

@@ -11,16 +11,15 @@ func _ready() -> void:
 var time_to_black : float = 5.0  # Time to transition to black
 var time_to_transparent : float = 5.0  # Time to transition to transparent
 var current_time : float = 0.0  # Time counter
-var step:int = 0
+#var step:int = 0
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	get_tree().call_group("Homs_Screen_Button","hide")
-	if step == 0:
-		modulate = lerp(modulate, Color.BLACK, delta*3)
-	#print(modulate)
-	if modulate.r < 0.001:
-		set_process(false)
-		get_tree().get_first_node_in_group("Black").show()
-		get_tree().get_first_node_in_group("Loading").show()
-		queue_free()
+	#if step == 0:
+		#modulate = lerp(modulate, Color.BLACK, delta*3)
+	#if modulate.r < 0.001:
+		#set_process(false)
+		#get_tree().get_first_node_in_group("Black").show()
+		#get_tree().get_first_node_in_group("Loading").show()
+		#queue_free()
 		

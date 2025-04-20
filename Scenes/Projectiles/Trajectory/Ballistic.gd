@@ -41,7 +41,7 @@ func _physics_process(delta):
 	
 	# Threshold for enabling collision
 	if global_position.y - t.y < 10 and out:
-		print(threshold, "  ",t.y," - ",global_position.y)
+		print_debug(threshold, "  ",t.y," - ",global_position.y)
 		$Area2D.collide = true
 	
 	# Free the projectile if it moves past the target
