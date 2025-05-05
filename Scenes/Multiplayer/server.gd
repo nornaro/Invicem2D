@@ -43,3 +43,20 @@ func spawn(_clients: Dictionary) -> void:
 	#if lb:
 		#lb.update(clients)
 	get_tree().call_group("Barrack", "spawn", {})
+
+# Add this new RPC
+@rpc("any_peer", "reliable")
+func request_connection_info(requester_id: int):
+	var info = {
+		"ip": IP.get_local_addresses()[0],
+		"port": get_parent().port,  # Assuming port is stored in parent
+		"max_players": 8,
+		"current_players": multiplayer.get_peers().size()
+	}
+	rpc_id(requester_id, "receive_connection_info", info)
+
+@rpc("authority", "reliable") 
+func receive_connection_info(info: Dictionary):
+	print("Server Connection Info:")
+	for key in info:
+		print("%s: %s" % [key, str(info[key])])

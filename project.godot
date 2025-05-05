@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 run/low_processor_mode=true
 run/low_processor_mode_sleep_usec=0
 boot_splash/image="uid://bdj225amydviy"
-config/icon="res://icon.webp"
+config/icon="res://Invicem2D.webp"
 
 [autoload]
 
@@ -56,17 +56,18 @@ export/convert_text_resources_to_binary=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gamedev_assistant/plugin.cfg", "res://addons/gd_profiler/plugin.cfg", "res://addons/netfox.internals/plugin.cfg", "res://addons/netfox.noray/plugin.cfg", "res://addons/netfox/plugin.cfg")
+enabled=PackedStringArray("res://addons/gamedev_assistant/plugin.cfg", "res://addons/gd_profiler/plugin.cfg", "res://addons/gdscript_formatter/plugin.cfg", "res://addons/netfox.internals/plugin.cfg", "res://addons/netfox.noray/plugin.cfg", "res://addons/netfox/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://Class/": "red",
 "res://Docs/": "yellow",
+"res://Export/": "gray",
+"res://Export/Modules/": "gray",
 "res://Scenes/": "blue",
 "res://Temp/": "gray",
 "res://Tools/": "green",
-"res://addons/": "pink",
 "res://plugins/": "gray"
 }
 

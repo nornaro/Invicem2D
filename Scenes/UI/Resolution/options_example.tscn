@@ -72,6 +72,10 @@ size_flags_horizontal = 3
 scroll_fit_content_height = true
 scroll_fit_content_width = true
 
+[node name="Button" type="Button" parent="HBoxContainer/Options_Setting/HBoxContainer"]
+layout_mode = 2
+text = "Set"
+
 [node name="ScaleBox" type="HBoxContainer" parent="HBoxContainer/Options_Setting"]
 layout_mode = 2
 
@@ -131,6 +135,7 @@ text = "VSYNC Enabled"
 layout_mode = 2
 
 [connection signal="item_selected" from="HBoxContainer/Options_Setting/Resolution_OptionButton" to="HBoxContainer/Options_Setting" method="_on_option_button_item_selected"]
+[connection signal="pressed" from="HBoxContainer/Options_Setting/HBoxContainer/Button" to="HBoxContainer/Options_Setting" method="_on_button_pressed"]
 [connection signal="value_changed" from="HBoxContainer/Options_Setting/ScaleBox/ScaleSlider" to="HBoxContainer/Options_Setting" method="_on_scale_slider_value_changed"]
 [connection signal="item_selected" from="HBoxContainer/Options_Setting/Scaler" to="HBoxContainer/Options_Setting" method="_on_scaler_item_selected"]
 [connection signal="item_selected" from="HBoxContainer/Options_Setting/FSROptions" to="HBoxContainer/Options_Setting" method="_on_fsr_options_item_selected"]

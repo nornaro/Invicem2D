@@ -1,72 +1,76 @@
+# Edit file: res://Scenes/Multiplayer/Network/NetFox/join.gd
 extends Node
 
-var port: int = 8890
-var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
+# Configuration
+@export var port: int = 8890
+var host: String = "tomfol.io"
+var connection_timeout: Timer
+
+# Connection
+var peer: ENetMultiplayerPeer
 var server_node: Node
-var host: String = ""
-#var adress: String = ""
-var game_id: String = ""
-var _current_host_oid: String = ""
+var server_oid: String = "" # Set this to host's Noray OID
 
 func lobby() -> void:
-	pass
+	# Implement server discovery here
+	# Should populate server_oid with the host's Noray OID
+	print("Searching for servers...")
 
 func join() -> void:
+	if server_oid.is_empty():
+		push_error("No server OID specified")
+		return
+	
 	server_node = get_tree().get_first_node_in_group("Server")
-	server_node.player = Global.client
-	_current_host_oid = game_id
-	multiplayer.connected_to_server.connect(_connected)
-	multiplayer.server_disconnected.connect(_disconnected)
-	Noray.on_connect_nat.connect(_handle_nat_connect)
-	Noray.on_connect_relay.connect(_handle_relay_connect)
-	await _register_with_noray()
-	Noray.connect_nat(game_id)
-	set_process(true)
-
-func _register_with_noray() -> int:
-	var err:int = await Noray.connect_to_host(host,port)
+	if !server_node:
+		push_error("Server node not found")
+		return
+	
+	# Connect to Noray
+	var err: int = await Noray.connect_to_host(host)
 	if err != OK:
-		push_warning("Noray registration failed: %s" % err)
-		return err
-	await Noray.register_remote()
-	return 0
-
-func _handle_nat_connect() -> Error:
-	var err:int = await _connect_to_host()
+		push_error("Noray connection failed")
+		return
+	
+	# Register client
+	err = await Noray.register_remote()
 	if err != OK:
-		push_warning("NAT failed, falling back to relay")
-		Noray.connect_relay(_current_host_oid)
-		return OK
-	print_debug("NAT successful")
-	return err
-
-func _handle_relay_connect() -> Error:
-	return await _connect_to_host()
-
-func _connect_to_host() -> Error:
-	var udp := PacketPeerUDP.new()
-	udp.bind(Noray.local_port)
-	udp.set_dest_address(host, port)
-	var err:int = await PacketHandshake.over_packet_peer(udp, 8)
-	udp.close()
-	if err != OK:
-		push_warning("Handshake failed: %s" % err)
-		return err
+		push_error("Noray registration failed")
+		return
+	
+	# Attempt NAT connection using host's OID
+	Noray.connect_nat(server_oid)
+	
+	# Wait for connection (with timeout)
+	#var timeout: SceneTreeTimer = get_tree().create_timer(connection_timeout)
+	var connected: bool = await Noray.on_connect_nat
+	
+	if !connected:
+		push_warning("NAT failed, trying relay")
+		Noray.connect_relay(server_oid)
+		connected = await Noray.on_connect_relay
+	
+	if !connected:
+		push_error("Failed to connect to server")
+		return
+	
+	# Create ENet client
+	peer = ENetMultiplayerPeer.new()
 	err = peer.create_client(host, port, 0, 0, 0, Noray.local_port)
 	if err != OK:
-		push_warning("Client connect failed: %s" % err)
-		return err
+		push_error("Client creation failed")
+		return
+	
 	multiplayer.multiplayer_peer = peer
-	return OK
+	multiplayer.connected_to_server.connect(_on_connected)
+	multiplayer.server_disconnected.connect(_on_disconnected)
 
-func _connected() -> void:
-	print_debug("Successfully connected to server!")
+func _on_connected() -> void:
+	print("Connected to server!")
 	server_node.add_player(multiplayer.get_unique_id())
 
-func _disconnected() -> void:
-	push_warning("Connection lost")
+func _on_disconnected() -> void:
+	print("Disconnected from server")
 	server_node.remove_player(multiplayer.get_unique_id())
-
-func _input(event: InputEvent) -> void:
-	if event.is_action("ui_accept"):
-		server_node.my_relay_rpc.rpc_id(1, "My player name is: " + str(multiplayer.get_unique_id()))
+	if peer:
+		peer.close()
