@@ -21,19 +21,25 @@ var mapsize:Vector2 = Vector2.ZERO
 var building_path:String = "res://Scenes/Build/Building/"
 
 func _ready() -> void:
+	Global.RL.dir_to_items(building_path, "Buildings")
+	Global.RL.dir_to_items(building_path + "Turret/Type/", "Turret")
+	add_buildings_list()
+	Global.Items["Buildings"].erase("Castle")
 	var map:Node = get_tree().get_first_node_in_group("Map")
 	if map:
 		mapsize = map.get_node("Ground/CollisionShape2D").shape.size
+	add_json_list("Buildings")
+	build_castle("Castle")
 
-func add_buildings_list(Items:Array) -> void:
-	for building:String in Items:
+func add_buildings_list() -> void:
+	for building:String in Global.Items["Buildings"]:
 		var instance:Node = Node.new()
 		instance.name = building
 		add_child(instance)
 		
 func _input(event: InputEvent) -> void:
-	UI = $"../UI"
-	if !is_instance_valid($"../UI"):
+	UI = get_tree().get_first_node_in_group("UI")
+	if !is_instance_valid(UI):
 		return
 	if event.is_action_released("ShowCollisionToggle"):
 		var buildings:Array = get_tree().get_nodes_in_group("building")
@@ -193,9 +199,9 @@ func change_buildings(text:String, change:bool) -> void:
 	instance_scene_from_name(text, building_logic(text))
 	
 func building_logic(text:String) -> String:
-	if UI.Items["Buildings"].has(text):
+	if Global.Items["Buildings"].has(text):
 		return text
-	if UI.Items["Turret"].has(text):
+	if Global.Items["Turret"].has(text):
 		return "Turret"
 	return ""
 		
@@ -211,3 +217,18 @@ func clear_collision() -> void:
 		instance = null		
 	temp_instance = 0
 	collides = []
+
+func add_json_list(list:String) -> void:
+	for item:String in Global.Items[list]:
+		if !get_tree().get_first_node_in_group("Buildings"):
+			continue
+		if !get_tree().get_first_node_in_group("Buildings").get_node_or_null(item):
+			continue
+		var path:String = building_path + item + "/" + item + ".json"
+		var file:JSON = Global.RL.load(path)
+		var json:Dictionary = file.get_data()
+		if !json.has("menu"):
+			continue
+		if !Global.Items.has(item):
+			Global.Items[item] = []
+		Global.Items[item].append(json)

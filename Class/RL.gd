@@ -32,3 +32,9 @@ func file_exists(path: String, hint: String = "") -> bool:
 
 func dir_exists(path: String, hint: String = "") -> bool:
 	return ResourceLoader.exists(path,hint)
+
+func dir_to_items(dir:String, dirname:String) -> void:
+	var directory:Array = get_directories_at(dir)
+	if !directory:
+		return
+	Global.Items[dirname] = directory

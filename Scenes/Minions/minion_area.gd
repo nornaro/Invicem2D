@@ -1,9 +1,10 @@
 extends Area2D
 
+signal dead
+
 var network: Node
 var in_area: Node
 @onready var minion: Node = $".."
-signal dead
 
 func _ready() -> void:
 	connect("area_entered",_on_area_entered)

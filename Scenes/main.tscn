@@ -1,14 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ds57nc6h7eej5"]
+[gd_scene load_steps=4 format=3 uid="uid://ds57nc6h7eej5"]
 
 [ext_resource type="Script" uid="uid://bmphx2toyvxbt" path="res://Scenes/main.gd" id="1_fvccw"]
 [ext_resource type="PackedScene" uid="uid://b78bsw6hqadsw" path="res://docs.tscn" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://cpxbhof40hrhd" path="res://Scenes/Multiplayer/server.gd" id="8_hptm8"]
-[ext_resource type="Script" uid="uid://hqgjhtd4vk6k" path="res://Scenes/Loading/black.gd" id="8_ynf5e"]
-[ext_resource type="PackedScene" uid="uid://byn70pt7p1fu8" path="res://transition_screen.tscn" id="11_d1ilt"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_d1ilt"]
-size = Vector2(10000, 5000)
-orientation = 2
 
 [node name="Main" type="Camera2D" groups=["Main"]]
 anchor_mode = 0
@@ -17,16 +11,4 @@ script = ExtResource("1_fvccw")
 [node name="Server" type="Node" parent="." groups=["Server"]]
 script = ExtResource("8_hptm8")
 
-[node name="Black" type="MeshInstance2D" parent="." groups=["Black"]]
-visible = false
-self_modulate = Color(0, 0, 0, 1)
-z_index = 4090
-position = Vector2(1312, 469)
-scale = Vector2(0.676823, 0.369667)
-mesh = SubResource("PlaneMesh_d1ilt")
-script = ExtResource("8_ynf5e")
-
 [node name="Docs" parent="." instance=ExtResource("4_jjvhh")]
-
-[node name="TransitionScreen" parent="." instance=ExtResource("11_d1ilt")]
-visible = false

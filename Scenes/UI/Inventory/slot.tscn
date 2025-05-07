@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b51kc51ccj186"]
+[gd_scene load_steps=3 format=3 uid="uid://cyhf3p6774idc"]
 
-[ext_resource type="Script" uid="uid://e0qx5plsnt1a" path="res://Scenes/UI/inventory_slot.gd" id="1_brh76"]
+[ext_resource type="Script" uid="uid://cvlvdr382liby" path="res://Scenes/UI/Inventory/slot.gd" id="1_jx25c"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s3gqk"]
 
-[node name="InventorySlot" type="TextureButton"]
+[node name="Slot" type="TextureButton"]
 self_modulate = Color(1, 1, 0, 1)
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -12,4 +12,4 @@ mouse_filter = 1
 texture_normal = SubResource("PlaceholderTexture2D_s3gqk")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("1_brh76")
+script = ExtResource("1_jx25c")

@@ -6,7 +6,7 @@ var button_count:int = 0
 #var sc
 
 func _ready() -> void:
-	var node:Node = get_node_or_null("../../Marker2D")
+	var node:Node = get_tree().get_first_node_in_group("CenterMarker")
 	if !node:
 		return
 	position = node.position

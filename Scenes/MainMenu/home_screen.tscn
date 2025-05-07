@@ -59,7 +59,7 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_ab77t")
 script = ExtResource("1_ajl7f")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Marker2D" type="Marker2D" parent="." groups=["CenterMarker"]]
 top_level = true
 position = Vector2(641, 361)
 

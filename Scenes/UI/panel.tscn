@@ -1,10 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bq6obs6f5somh"]
+[gd_scene load_steps=10 format=3 uid="uid://bq6obs6f5somh"]
 
 [ext_resource type="Script" uid="uid://chjyd82x61507" path="res://Scenes/UI/panel.gd" id="1_tw6yc"]
-[ext_resource type="Script" uid="uid://x0twj7pd7sa4" path="res://Scenes/UI/info_panels.gd" id="2_ddvuy"]
-[ext_resource type="Script" uid="uid://lo5dkhxtayvk" path="res://Scenes/UI/image_panel.gd" id="2_xoyw5"]
-[ext_resource type="Script" uid="uid://wqehkfxniplt" path="res://Scenes/UI/inventory_slots.gd" id="3_xoyw5"]
-[ext_resource type="Script" uid="uid://donbc8knfeg7j" path="res://Scenes/UI/module_slots.gd" id="4_piq27"]
+[ext_resource type="Script" uid="uid://gppwnbbc4c3m" path="res://Scenes/UI/Inventory/slots.gd" id="2_ddvuy"]
+[ext_resource type="Script" uid="uid://x0twj7pd7sa4" path="res://Scenes/UI/info_panels.gd" id="3_xoyw5"]
 [ext_resource type="Script" uid="uid://cyg88yy7nk8c6" path="res://Scenes/UI/property_menu.gd" id="4_t5r24"]
 [ext_resource type="Script" uid="uid://b0cgfq2kvmhna" path="res://Scenes/UI/upgrades_panel.gd" id="5_piq27"]
 [ext_resource type="Script" uid="uid://bevo1sd6x4xbx" path="res://Scenes/UI/module_upgrades_panel.gd" id="8_piq27"]
@@ -47,7 +45,7 @@ custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
-script = ExtResource("2_xoyw5")
+script = ExtResource("2_ddvuy")
 
 [node name="Info" type="GridContainer" parent="HBoxContainer" groups=["BuildingProperties"]]
 custom_minimum_size = Vector2(0, 140)
@@ -57,7 +55,7 @@ size_flags_vertical = 4
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 3
-script = ExtResource("2_ddvuy")
+script = ExtResource("3_xoyw5")
 
 [node name="Modules" type="GridContainer" parent="HBoxContainer" groups=["BuildingProperties"]]
 custom_minimum_size = Vector2(35, 140)
@@ -67,7 +65,7 @@ size_flags_vertical = 4
 tooltip_text = "Equip Slots"
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
-script = ExtResource("4_piq27")
+script = ExtResource("2_ddvuy")
 
 [node name="Inventory" type="GridContainer" parent="HBoxContainer" groups=["BuildingProperties"]]
 custom_minimum_size = Vector2(35, 140)
@@ -77,7 +75,7 @@ size_flags_vertical = 4
 tooltip_text = "Inventory Slots"
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
-script = ExtResource("3_xoyw5")
+script = ExtResource("2_ddvuy")
 
 [node name="Panel" type="BoxContainer" parent="HBoxContainer"]
 layout_mode = 2

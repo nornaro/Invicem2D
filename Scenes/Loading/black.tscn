@@ -11,7 +11,7 @@ orientation = 2
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tqgrc"]
 noise = SubResource("FastNoiseLite_xuifq")
 
-[node name="Black" type="MeshInstance2D"]
+[node name="Black" type="MeshInstance2D" groups=["Black"]]
 self_modulate = Color(0, 0, 0, 1)
 z_index = 4090
 mesh = SubResource("PlaneMesh_f6wfl")

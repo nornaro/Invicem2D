@@ -12,6 +12,8 @@ signal resources_loaded
 signal done
 
 func _ready() -> void:
+	if get_tree().get_first_node_in_group("ProgressBar"):
+		get_tree().get_first_node_in_group("ProgressBar").show()
 	loading = get_tree().get_first_node_in_group("Loading")
 	timeA = Time.get_ticks_msec()
 	load_minions()  # Make sure to call load_minions when the node is ready
@@ -38,6 +40,8 @@ func load_minions() -> void:
 	var timeB:int = Time.get_ticks_msec()
 	print_debug("Minion loading took: ", (timeB-timeA)/1000.0,"ms")
 	emit_signal("done")
+	if get_tree().get_first_node_in_group("ProgressBar"):
+		get_tree().get_first_node_in_group("ProgressBar").hide()
 	set_script("")
 
 func _physics_process(_delta: float) -> void:
@@ -52,7 +56,8 @@ func _physics_process(_delta: float) -> void:
 			print_debug(path_parts)
 			minions[type][minion_parts[0]][minion_parts[1]] = resource
 			loading_resources.erase(path)
-			loading.progress(1-loading_resources.keys().size()/float(counter))
+			if loading:
+				loading.progress(1-loading_resources.keys().size()/float(counter))
 	if loading_resources.is_empty():
 		emit_signal("resources_loaded")
 		#set_process_mode(PROCESS_MODE_DISABLED)

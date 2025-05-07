@@ -9,7 +9,7 @@ extends Node
 	"Upgrades":{},
 }
 
-## Minion production
+## Minion resource production
 
 func _ready() -> void:
 	pass

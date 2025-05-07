@@ -52,6 +52,10 @@ modulate = Color(1, 1, 1, 0.588235)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 360.0
+offset_top = 592.0
+offset_right = 360.0
+offset_bottom = 592.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -81,6 +85,7 @@ z_index = 4096
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/fill = SubResource("StyleBoxFlat_n2sm7")
+value = 50.0
 script = ExtResource("2_n6j18")
 
 [node name="Panel" type="Panel" parent="VBoxContainer"]

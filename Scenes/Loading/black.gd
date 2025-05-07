@@ -7,6 +7,7 @@ func _ready() -> void:
 		mesh.size = get_viewport_rect().size
 
 func _process(delta: float) -> void:
+	print(name)
 	if !fade:
 		return
 	#get_tree().get_first_node_in_group("Home").queue_free()

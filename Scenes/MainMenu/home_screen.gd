@@ -14,6 +14,7 @@ var current_time : float = 0.0  # Time counter
 #var step:int = 0
 
 func _process(_delta: float) -> void:
+	print(name)
 	get_tree().call_group("Homs_Screen_Button","hide")
 	#if step == 0:
 		#modulate = lerp(modulate, Color.BLACK, delta*3)

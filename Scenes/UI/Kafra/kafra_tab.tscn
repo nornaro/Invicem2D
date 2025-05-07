@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsogod1nq0mef"]
+
+[ext_resource type="PackedScene" uid="uid://cbw1h45r5nyl4" path="res://Scenes/UI/minion_inventory.tscn" id="1_3fjkr"]
+
+[node name="Dummy" type="ScrollContainer"]
+visible = false
+metadata/_tab_index = 4
+
+[node name="Dummy" parent="." instance=ExtResource("1_3fjkr")]
+layout_mode = 2
+columns = 4

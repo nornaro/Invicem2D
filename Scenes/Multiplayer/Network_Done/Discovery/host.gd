@@ -7,6 +7,7 @@ func host() -> void:
 	set_process(true)
 
 func _process(_delta: float) -> void:
+	print(name)
 	udp_peer.connect_to_host("255.255.255.255", 4242)
 	var lobby: Dictionary = {
 		"UID": Global.uid,

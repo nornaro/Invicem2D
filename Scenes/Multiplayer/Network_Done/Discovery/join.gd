@@ -15,6 +15,7 @@ func ready() -> void:
 	udp_server.listen(4242)
 
 func _process(_delta: float) -> void:
+	print(name)
 	udp_server.poll() # Important!
 	if udp_server.is_connection_available():
 		var udp_peer: PacketPeerUDP = udp_server.take_connection()

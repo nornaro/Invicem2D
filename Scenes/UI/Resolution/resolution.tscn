@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://drbs8u6ai0tym"]
+[gd_scene load_steps=3 format=3 uid="uid://drbs8u6ai0tym"]
 
-[ext_resource type="Script" uid="uid://cgpj822wunyna" path="res://Scenes/UI/Resolution/FPS_Label.gd" id="1_g57hw"]
 [ext_resource type="Script" uid="uid://bv7iu5lbb8m6m" path="res://Scenes/UI/Resolution/window.gd" id="1_qiel4"]
-[ext_resource type="Script" uid="uid://cq6exor85ru08" path="res://Scenes/UI/Resolution/Options_Setting.gd" id="2_p6hdn"]
+[ext_resource type="Script" uid="uid://cq6exor85ru08" path="res://Scenes/UI/Resolution/resolution.gd" id="2_p6hdn"]
 
 [node name="Options_Example" type="Control"]
 layout_mode = 3
@@ -21,10 +20,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
-
-[node name="FPS_Label" type="Label" parent="HBoxContainer"]
-layout_mode = 2
-script = ExtResource("1_g57hw")
 
 [node name="Options_Setting" type="VBoxContainer" parent="HBoxContainer"]
 unique_name_in_owner = true
@@ -79,31 +74,30 @@ text = "Set"
 [node name="ScaleBox" type="HBoxContainer" parent="HBoxContainer/Options_Setting"]
 layout_mode = 2
 
-[node name="ScaleSlider" type="HSlider" parent="HBoxContainer/Options_Setting/ScaleBox"]
-custom_minimum_size = Vector2(200, 0)
+[node name="FSR" type="Label" parent="HBoxContainer/Options_Setting/ScaleBox"]
 layout_mode = 2
-min_value = 50.0
-max_value = 200.0
-step = 5.0
-value = 100.0
+text = "FSR:"
+
+[node name="ScaleSlider" type="HSlider" parent="HBoxContainer/Options_Setting/ScaleBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 5
+max_value = 5.0
+value = 5.0
 ticks_on_borders = true
 
 [node name="ScaleLabel" type="Label" parent="HBoxContainer/Options_Setting/ScaleBox"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "100%"
+horizontal_alignment = 2
 
-[node name="Scaler" type="OptionButton" parent="HBoxContainer/Options_Setting"]
+[node name="ScaleName" type="Label" parent="HBoxContainer/Options_Setting/ScaleBox"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-selected = 0
-item_count = 3
-popup/item_0/text = "SCALER"
-popup/item_0/id = 0
-popup/item_0/disabled = true
-popup/item_0/separator = true
-popup/item_1/text = "BILINEAR"
-popup/item_1/id = 1
-popup/item_2/text = "AMS FSR 2.2"
-popup/item_2/id = 2
+text = "Off"
+horizontal_alignment = 2
+clip_text = true
 
 [node name="FSROptions" type="OptionButton" parent="HBoxContainer/Options_Setting"]
 visible = false
@@ -137,7 +131,6 @@ layout_mode = 2
 [connection signal="item_selected" from="HBoxContainer/Options_Setting/Resolution_OptionButton" to="HBoxContainer/Options_Setting" method="_on_option_button_item_selected"]
 [connection signal="pressed" from="HBoxContainer/Options_Setting/HBoxContainer/Button" to="HBoxContainer/Options_Setting" method="_on_button_pressed"]
 [connection signal="value_changed" from="HBoxContainer/Options_Setting/ScaleBox/ScaleSlider" to="HBoxContainer/Options_Setting" method="_on_scale_slider_value_changed"]
-[connection signal="item_selected" from="HBoxContainer/Options_Setting/Scaler" to="HBoxContainer/Options_Setting" method="_on_scaler_item_selected"]
 [connection signal="item_selected" from="HBoxContainer/Options_Setting/FSROptions" to="HBoxContainer/Options_Setting" method="_on_fsr_options_item_selected"]
 [connection signal="toggled" from="HBoxContainer/Options_Setting/FullScreen_CheckBox" to="HBoxContainer/Options_Setting" method="_on_full_screen_check_box_toggled"]
 [connection signal="toggled" from="HBoxContainer/Options_Setting/vsync_checkbox" to="HBoxContainer/Options_Setting" method="_on_vsync_checkbox_toggled"]

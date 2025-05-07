@@ -31,5 +31,5 @@ func _input(event: InputEvent) -> void:
 		global_position -= drag_offset
 		drag_start_pos = event.global_position
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	zoom = Vector2.ONE * lerpf(zoom.x,new_zoom,10*delta)

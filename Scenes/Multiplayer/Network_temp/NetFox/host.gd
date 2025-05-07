@@ -1,4 +1,4 @@
-# Edit file: res://Scenes/Multiplayer/Network/NetFox/host.gd
+## Edit file: res://Scenes/Multiplayer/Network/NetFox/host.gd
 extends Node
 
 # Configuration

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cvgmsqc0goaeq" path="res://Scenes/Camera/camera.gd" id="1_2pt3t"]
 
-[node name="Camera" type="Camera2D"]
-zoom = Vector2(0.8, 0.8)
+[node name="Camera" type="Camera2D" groups=["MainCamera"]]
+zoom = Vector2(2, 2)
 limit_left = -850
 limit_top = -600
 limit_right = 1700

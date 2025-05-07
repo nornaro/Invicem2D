@@ -16,6 +16,7 @@ var clients: Dictionary = {
 }
 var mp: bool = true
 var Data: Dictionary
+var Items: Dictionary
 var Currecny: Dictionary = {
 	"Minions": 100,
 	"Power": 100,

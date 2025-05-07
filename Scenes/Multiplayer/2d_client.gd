@@ -20,6 +20,7 @@ func _ready() -> void:
 	var instance:Node = minions.instantiate()
 	instance.connect("done",_load_next)
 	add_child(instance)
+	get_tree().call_group("Home","free")
 	
 func _load_next() -> void:
 	#for thread:Thread in Global.threads:

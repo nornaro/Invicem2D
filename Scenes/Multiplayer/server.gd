@@ -46,8 +46,8 @@ func spawn(_clients: Dictionary) -> void:
 
 # Add this new RPC
 @rpc("any_peer", "reliable")
-func request_connection_info(requester_id: int):
-	var info = {
+func request_connection_info(requester_id: int) -> void:
+	var info := {
 		"ip": IP.get_local_addresses()[0],
 		"port": get_parent().port,  # Assuming port is stored in parent
 		"max_players": 8,
@@ -56,7 +56,7 @@ func request_connection_info(requester_id: int):
 	rpc_id(requester_id, "receive_connection_info", info)
 
 @rpc("authority", "reliable") 
-func receive_connection_info(info: Dictionary):
+func receive_connection_info(info: Dictionary) -> void:
 	print("Server Connection Info:")
-	for key in info:
+	for key:String in info:
 		print("%s: %s" % [key, str(info[key])])
