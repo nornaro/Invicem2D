@@ -1,7 +1,7 @@
 extends Node
 
 
-@export var Data = {
+@export var Data: Dictionary = {
 	"Info": {},
 	"Modules": {},
 	"Properties": {},

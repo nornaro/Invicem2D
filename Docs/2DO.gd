@@ -6,21 +6,13 @@ home
 	mp
 """
 
-"""
-PRIO:
-	#1. Separate HUD
-	#2. MultiPlayer
-	Leaderboard
-	Items, Modules, Inventory
-	Resource usage
-	New building ()
-	Networking (UDP, WS, Steam,Epic, Jam, GDS,...)
+""" High Prio:
+	-Separate HUD
+	-MultiPlayer
+	-Leaderboard - partially working
+	- Items, Modules, Inventory
+	- Resource usage
 	when hosting, start the console with parameter instead of changing the current instance
-	
-	move properties and upgrades:
-		Building has building properties and upgrades
-		Minion has minion properties and upgrades
-		Projectile has projectile properties and upgrades
 """
 
 
@@ -89,4 +81,9 @@ PRIO:
 		-	Stats can be redistributed to give extra for something else
 			-	for exampe: give X% range, but take away Y% ASPD
 - make every aspekt work with 2D, 2.5D, 3D assets
+"""
+
+""" Low Prio
+	#New building ()
+	#Networking (UDP, WS, Steam,Epic, Jam, GDS,...)
 """

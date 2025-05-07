@@ -1,4 +1,5 @@
 extends Node2D
+class_name Minion
 
 @export var Data: Dictionary = {}
 var dummyData: Dictionary = {
