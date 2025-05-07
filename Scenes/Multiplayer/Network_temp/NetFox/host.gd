@@ -20,7 +20,6 @@ func host() -> void:
 	
 	# Get our public Noray ID
 	await Noray.pid
-	print(Noray.pid)
 	err = await Noray.register_remote(port)
 	if err != OK:
 		push_error("Noray registration failed: %s" % error_string(err))
@@ -51,12 +50,11 @@ func lobby() -> void:
 	pass
 
 func _on_peer_connected(id: int) -> void:
-	print("Player connected: ", id)
-	players[id] = true
+	print_debug("Player connected: ", id)
 	get_tree().get_first_node_in_group("Server").add_player(id)
 
 func _on_peer_disconnected(id: int) -> void:
-	print("Player disconnected: ", id)
+	print_debug("Player disconnected: ", id)
 	players.erase(id)
 	get_tree().get_first_node_in_group("Server").remove_player(id)
 

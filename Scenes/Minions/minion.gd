@@ -6,7 +6,7 @@ var dummyData: Dictionary = {
 	"Size": 0,
 	"Shield": 0,
 	"Defense": 0,
-	"Speed": 0,
+	"Speed": 0.0,
 	"Regeneration": 0,
 	"Minion": ["Dummy", "Minion"]
 }
@@ -29,12 +29,13 @@ var dead: bool = false
 func _ready() -> void:
 	if !area.has_meta("owner"):
 		add_to_group("minions")
-		if !Data.has("HP"): Data = dummyData
-		initialize_data.call()
-		initialize_sprite.call()
-		shield_component.initialize.call(Data.max_sh, shBar, aura, depleted, sh, hit)
+	if !Data.has("HP"):
+		Data = dummyData
+	initialize_data.call()
+	initialize_sprite.call()
+	shield_component.initialize.call(Data.max_sh, shBar, aura, depleted, sh, hit)
 	extra.call()
-	linear_velocity = Vector2(-Data.Speed / 5, 0).clamp(Vector2(-1, 0), Vector2(-Data.Speed / 5, 0))
+	linear_velocity = Vector2(-Data.Velocity,0)
 
 @export var extra: Callable = func() -> void:
 	pass
@@ -49,19 +50,16 @@ func _ready() -> void:
 	Data["max_sh"] = Data.Shield
 	shBar.max_value = Data.max_sh
 	Data.Defense = ceil(Data.Defense * (1 + Data.Size / 10))
-	Data.Speed = Data.Speed + 5 - floor(Data.Size / 4) - floor(Data.Size / 4)
+	Data.Speed *= 1+(16-(Data.Size-1))
+	Data["Velocity"] = sqrt(sqrt(Data.Speed))/2
 
-# Edit file: res://Scenes/Minions/minion.gd
 @export var initialize_sprite: Callable = func() -> void:
-	# First ensure Global.Data.Minions exists
 	if not Global.Data.has("Minions"):
 		Global.Data["Minions"] = {}
 	
-	# Get type and minion with proper fallbacks
 	var type: String = Data.get("Minion", ["Dummy"])[0]
 	var minion: String = Data.get("Minion", ["Dummy", "Minion"])[1]
-	
-	# Ensure nested dictionaries exist
+
 	if not Global.Data.Minions.has(type):
 		Global.Data.Minions[type] = {}
 	if not Global.Data.Minions[type].has(minion):
@@ -69,15 +67,13 @@ func _ready() -> void:
 		var new_frames: SpriteFrames = SpriteFrames.new()
 		new_frames.add_animation("Walking")
 		Global.Data.Minions[type][minion] = {"default": new_frames}
-	
-	# Get all available sprite variations
+
 	var sprite_variations: Dictionary = Global.Data.Minions[type][minion]
 	var sprite_name: String = sprite_variations.keys().pick_random() if sprite_variations.size() > 0 else "default"
 	
-	# Apply to sprite (matches original behavior)
-	Sprite.speed_scale = 1 + Data.Speed
+	Sprite.speed_scale *= Data.Velocity
 	Sprite.sprite_frames = sprite_variations[sprite_name]
-	scale *= 10 * Data.Size
+	scale *= 5+(Data.Size)
 	adjust_ui_positions.call()
 	Sprite.play("Walking")
 

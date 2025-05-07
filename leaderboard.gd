@@ -1,12 +1,13 @@
 extends TabContainer
 
-var player: PackedScene = preload("res://leaderboard_player.tscn")
+var player: PackedScene = preload("res://Scenes/UI/LeaderBoard/leaderboard_player.tscn")
 var score: int = 1
 
 func _ready() -> void:
 	connect("tab_clicked",_change_sort)
 
-func update(clients:Dictionary) -> void:
+func update() -> void:
+	var clients:Dictionary = Global.clients
 	var id: int = multiplayer.get_unique_id()
 	var n: int = 0
 	var players: Array = []
@@ -27,8 +28,6 @@ func update(clients:Dictionary) -> void:
 		get_node("Scoreboard/" + str(n) + "/Score").text = player_parts[1 - score]
 		get_node("Scoreboard/" + str(n) + "/Name").text = player_parts[2]
 		n += 1
-	
-	
-func _change_sort() -> void:
+
+func _change_sort(_tab: int) -> void:
 	score = 1 - score
-	

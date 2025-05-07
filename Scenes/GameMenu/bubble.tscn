@@ -1,16 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://towyrhbl2wr4"]
+[gd_scene load_steps=3 format=3 uid="uid://towyrhbl2wr4"]
 
 [ext_resource type="Script" uid="uid://bdwbyqcy4pjf2" path="res://Scenes/Projectiles/GPUParticles2D.gd" id="1_lorx6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ha3ui"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wb416"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
 
-[sub_resource type="SphereMesh" id="SphereMesh_410l8"]
-material = SubResource("ShaderMaterial_ha3ui")
-radius = 100.0
-height = 130.0
-
-[node name="MeshInstance2D" type="MeshInstance2D"]
+[node name="GPUParticles2D" type="GPUParticles2D"]
 self_modulate = Color(1, 1, 1, 0.294118)
 position = Vector2(116, 102)
-mesh = SubResource("SphereMesh_410l8")
+process_material = SubResource("ParticleProcessMaterial_wb416")
 script = ExtResource("1_lorx6")

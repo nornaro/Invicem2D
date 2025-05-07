@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bp18rk6u47rpe"]
+[gd_scene load_steps=10 format=3 uid="uid://bp18rk6u47rpe"]
 
 [ext_resource type="Script" uid="uid://cwystn510g27d" path="res://Scenes/Multiplayer/MPHUD/mphud.gd" id="1_bw4dg"]
 [ext_resource type="PackedScene" uid="uid://dgy2hssu6prlx" path="res://Scenes/Multiplayer/MPHUD/network_type.tscn" id="2_werij"]
 [ext_resource type="Script" uid="uid://d1gw2s5xqqws4" path="res://Scenes/Multiplayer/host.gd" id="8_ttryd"]
-[ext_resource type="Script" uid="uid://ctr6d42nl056d" path="res://Scenes/Multiplayer/MPHUD/update.gd" id="8_whq15"]
 [ext_resource type="Script" uid="uid://p61llhntcgte" path="res://Scenes/Multiplayer/join.gd" id="9_f4ja4"]
 [ext_resource type="Script" uid="uid://ppcg6byxrf6c" path="res://Scenes/Multiplayer/search.gd" id="10_tyone"]
 [ext_resource type="Script" uid="uid://davfgbwyeacii" path="res://Scenes/Multiplayer/MPHUD/back.gd" id="11_tsjd1"]
@@ -212,8 +211,3 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("12_emtdj")
-
-[node name="Update" type="Timer" parent="VSplitContainer/VBoxContainer/LobbyPanel"]
-autostart = true
-ignore_time_scale = true
-script = ExtResource("8_whq15")

@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends Container
 
 var latencies: Array
 var server_select:PackedScene = preload("res://Scenes/Multiplayer/MPHUD/server_select.tscn")

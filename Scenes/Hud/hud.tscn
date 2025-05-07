@@ -1,10 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://crtx4pfoxksfn"]
+[gd_scene load_steps=2 format=3 uid="uid://crtx4pfoxksfn"]
 
-[ext_resource type="Script" uid="uid://bgru5qm5pmo1w" path="res://Scenes/Hud/hud.gd" id="1_j7m1u"]
 [ext_resource type="Script" uid="uid://bv7wsguwfwh6x" path="res://Scenes/Hud/Numbers.gd" id="2_rrqny"]
 
 [node name="Hud" type="Node"]
-script = ExtResource("1_j7m1u")
 
 [node name="Numbers" type="ItemList" parent="."]
 offset_left = -960.0

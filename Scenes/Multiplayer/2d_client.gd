@@ -23,13 +23,19 @@ func _ready() -> void:
 	get_tree().call_group("Home","free")
 	
 func _load_next() -> void:
+	var id:int = multiplayer.get_unique_id()
+	Global.id = id
+	Global.clients[id] = {}
+	Global.clients[id]["hp"] = 100
+	Global.clients[id]["score"] = 0
+	Global.clients[id]["name"] = ""
 	#for thread:Thread in Global.threads:
 		#thread.start()
 	add_child(aspd_timer.instantiate())
 	add_child(map.instantiate())
 	add_child(buildings.instantiate())
 	add_child(ui.instantiate())
-	#add_child(black.instantiate())	
+	#add_child(black.instantiate())
 	add_child(camera.instantiate())
 
 func _on_home_screen_property_list_changed() -> void:

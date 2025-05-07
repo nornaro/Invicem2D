@@ -55,8 +55,7 @@ func _ready() -> void:
 	$"Targeting/min/range".shape = CircleShape2D.new()
 	$"Targeting/max/range".shape = CircleShape2D.new()
 	add_child(projectiles_scene.instantiate())
-	var aspd_timer:Timer = get_tree().get_first_node_in_group("ASPD")
-	aspd_timer.connect("timeout",_on_ASPD_timeout)
+	add_to_group("Shooter")
 	set_targeting()
 	set_maxrange()
 
@@ -141,7 +140,9 @@ func spawn_projectile(count:int,damage:int,spread:Vector2,target:Node) -> void:
 		$Projectiles.add_child(instance)
 
 func set_rotation_coords() -> void:
-	var sp:AnimatedSprite2D = get_node("Sprite")
+	var sp:AnimatedSprite2D = get_node_or_null("Sprite")
+	if !sp:
+		return
 	var scene:PackedScene = Global.RL.load(sp.sprite_frames.resource_path.replace(".tres", ".tscn"))
 	var instance:Line2D = scene.instantiate()
 	instance.name = "Muzzle"

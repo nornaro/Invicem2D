@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://cyfmc17ro8v26" path="res://Scenes/UI/exit.gd" id="10_pmm6b"]
 [ext_resource type="PackedScene" uid="uid://d34mxo1ld0ik5" path="res://Scenes/UI/Kafra/kafra.tscn" id="12_vy225"]
 [ext_resource type="Script" uid="uid://cjjaaaemnsp6v" path="res://Scenes/UI/player_name.gd" id="16_56q1t"]
-[ext_resource type="PackedScene" uid="uid://cuixthaxle0q0" path="res://leaderboard.tscn" id="16_fevae"]
+[ext_resource type="PackedScene" uid="uid://cuixthaxle0q0" path="res://Scenes/UI/LeaderBoard/leaderboard.tscn" id="16_fevae"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h6tq4"]
 

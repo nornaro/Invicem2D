@@ -1,6 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://daj6ie22424ki"]
-
-[ext_resource type="Script" uid="uid://dqvt0s0d2oo5r" path="res://Scenes/Map/fence.gd" id="1_us2b2"]
+[gd_scene load_steps=2 format=3 uid="uid://daj6ie22424ki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oydqy"]
 size = Vector2(2816, 10)
@@ -8,7 +6,6 @@ size = Vector2(2816, 10)
 [node name="Fence" type="Area2D"]
 collision_layer = 9
 collision_mask = 9
-script = ExtResource("1_us2b2")
 
 [node name="Bot" type="CollisionShape2D" parent="."]
 position = Vector2(475, 94)

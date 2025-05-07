@@ -13,6 +13,11 @@ func _ready() -> void:
 	cr.connect("color_changed",_change_name_color)
 	b.connect("toggled",_change_name_b)
 	u.connect("toggled",_change_name_u)
+	var user_name := OS.get_environment("USERNAME") # Windows
+	if user_name.is_empty():
+		user_name = OS.get_environment("USER") # Linux/macOS
+	text = user_name
+	ne.text = text
 	
 func _change_name_clicked(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("RMB"):
@@ -26,11 +31,15 @@ func show_change_name() -> void:
 func _change_name() -> void:
 	text = ne.text
 	get_tree().get_first_node_in_group("Network").set_player_name(text, Global.id)
+	Global.clients[multiplayer.get_unique_id()].name = text
+	get_tree().call_group("Update","update")
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_text_newline"):
 		en.hide()
 		pn.show()
+	Global.clients[multiplayer.get_unique_id()].name = text
+	get_tree().call_group("Update","update")
 
 func _change_name_color(color: Color) -> void:
 	var text_parts: Array = ne.text.replace("]","|||").replace("[","|||").split("|||")
@@ -50,11 +59,11 @@ func _change_name_u(toggle: bool) -> void:
 		if toggle:
 			return
 		text = text.replace("[u]","").replace("[/u]","")
-		ne.text = text
+		update()
 	if !toggle:
 		return
 	text = "[u]" + text + "[/u]"
-	ne.text = text
+	update()
 		
 		
 func _change_name_b(toggle: bool) -> void:
@@ -62,8 +71,10 @@ func _change_name_b(toggle: bool) -> void:
 		if toggle:
 			return
 		text = text.replace("[b]","").replace("[/b]","")
-		ne.text = text
 	if !toggle:
 		return
 	text = "[b]" + text + "[/b]"
+	ne.text = text
+
+func update() -> void:
 	ne.text = text

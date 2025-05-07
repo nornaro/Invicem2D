@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://cug0754617bke"]
+[gd_scene load_steps=2 format=3 uid="uid://cug0754617bke"]
+
+[ext_resource type="Script" uid="uid://dfk6533nw5ula" path="res://Scenes/Multiplayer/aspd_timer.gd" id="1_k12q5"]
 
 [node name="AspdTimer" type="Timer" groups=["ASPD"]]
 wait_time = 0.1
 autostart = true
 ignore_time_scale = true
+script = ExtResource("1_k12q5")

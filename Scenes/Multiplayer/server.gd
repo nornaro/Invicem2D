@@ -39,9 +39,9 @@ func remove_player(id: int) -> void:
 
 @rpc("authority", "call_remote", "reliable")
 func spawn(_clients: Dictionary) -> void:
-	#var lb: Node = get_tree().get_first_node_in_group("Leaderboard")
-	#if lb:
-		#lb.update(clients)
+	var lb: Node = get_tree().get_first_node_in_group("Leaderboard")
+	if lb:
+		lb.update(Global.clients)
 	get_tree().call_group("Barrack", "spawn", {})
 
 # Add this new RPC
@@ -57,6 +57,6 @@ func request_connection_info(requester_id: int) -> void:
 
 @rpc("authority", "reliable") 
 func receive_connection_info(info: Dictionary) -> void:
-	print("Server Connection Info:")
+	print_rich("Server Connection Info:")
 	for key:String in info:
-		print("%s: %s" % [key, str(info[key])])
+		print_rich("%s: %s" % [key, str(info[key])])

@@ -14,7 +14,7 @@ var server_oid: String = "" # Set this to host's Noray OID
 func lobby() -> void:
 	# Implement server discovery here
 	# Should populate server_oid with the host's Noray OID
-	print("Searching for servers...")
+	print_debug("Searching for servers...")
 
 
 func join() -> void:
@@ -68,12 +68,12 @@ func join() -> void:
 
 
 func _on_connected() -> void:
-	print("Connected to server!")
+	print_debug("Connected to server!")
 	server_node.add_player(multiplayer.get_unique_id())
 
 
 func _on_disconnected() -> void:
-	print("Disconnected from server")
+	print_debug("Disconnected from server")
 	server_node.remove_player(multiplayer.get_unique_id())
 	if peer:
 		peer.close()

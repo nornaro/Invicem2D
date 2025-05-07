@@ -2,9 +2,6 @@ extends Node
 
 
 
-@export var Data = {
+@export var Data: Dictionary = {
 	"menu":["Upgrade"]
 }
-
-func _ready():
-	pass

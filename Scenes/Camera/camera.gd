@@ -32,4 +32,6 @@ func _input(event: InputEvent) -> void:
 		drag_start_pos = event.global_position
 
 func _physics_process(delta: float) -> void:
+	#print("Minions: ",get_tree().get_node_count_in_group("minions"))
+	#print("Projectiles: ",get_tree().get_node_count_in_group("projectile"))
 	zoom = Vector2.ONE * lerpf(zoom.x,new_zoom,10*delta)
