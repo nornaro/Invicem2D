@@ -1,12 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bq6obs6f5somh"]
+[gd_scene load_steps=7 format=3 uid="uid://bq6obs6f5somh"]
 
 [ext_resource type="Script" uid="uid://chjyd82x61507" path="res://Scenes/UI/panel.gd" id="1_tw6yc"]
 [ext_resource type="Script" uid="uid://gppwnbbc4c3m" path="res://Scenes/UI/Inventory/slots.gd" id="2_ddvuy"]
 [ext_resource type="Script" uid="uid://x0twj7pd7sa4" path="res://Scenes/UI/info_panels.gd" id="3_xoyw5"]
-[ext_resource type="Script" uid="uid://cyg88yy7nk8c6" path="res://Scenes/UI/property_menu.gd" id="4_t5r24"]
-[ext_resource type="Script" uid="uid://b0cgfq2kvmhna" path="res://Scenes/UI/upgrades_panel.gd" id="5_piq27"]
-[ext_resource type="Script" uid="uid://chti7h837bc3d" path="res://Scenes/UI/module_property.gd" id="6_t5r24"]
-[ext_resource type="Script" uid="uid://bevo1sd6x4xbx" path="res://Scenes/UI/module_upgrades_panel.gd" id="8_piq27"]
 
 [sub_resource type="Gradient" id="Gradient_h6tq4"]
 offsets = PackedFloat32Array(0)
@@ -59,6 +55,7 @@ columns = 3
 script = ExtResource("3_xoyw5")
 
 [node name="Modules" type="GridContainer" parent="HBoxContainer" groups=["BuildingProperties"]]
+modulate = Color(0.784314, 0.784314, 0, 1)
 custom_minimum_size = Vector2(35, 140)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -69,6 +66,7 @@ theme_override_constants/v_separation = 5
 script = ExtResource("2_ddvuy")
 
 [node name="Inventory" type="GridContainer" parent="HBoxContainer" groups=["BuildingProperties"]]
+modulate = Color(0, 0.784314, 0, 1)
 custom_minimum_size = Vector2(35, 140)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -86,45 +84,26 @@ alignment = 2
 vertical = true
 
 [node name="Properties" type="GridContainer" parent="HBoxContainer/Panel" groups=["BuildingProperties"]]
-custom_minimum_size = Vector2(145, 21)
+modulate = Color(0, 0, 1, 1)
+custom_minimum_size = Vector2(140, 18)
 layout_mode = 2
 size_flags_vertical = 6
 tooltip_text = "Property Menu"
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 4
-script = ExtResource("4_t5r24")
+script = ExtResource("2_ddvuy")
 
 [node name="Upgrades" type="GridContainer" parent="HBoxContainer/Panel" groups=["BuildingProperties"]]
-custom_minimum_size = Vector2(145, 115)
+custom_minimum_size = Vector2(140, 120)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 4
-script = ExtResource("5_piq27")
-
-[node name="ModuleProperty" type="GridContainer" parent="HBoxContainer/Panel" groups=["EquipProperties"]]
-visible = false
-custom_minimum_size = Vector2(115, 20)
-layout_mode = 2
-size_flags_vertical = 6
-tooltip_text = "Property Menu"
-theme_override_constants/h_separation = 5
-theme_override_constants/v_separation = 5
-columns = 4
-script = ExtResource("6_t5r24")
-
-[node name="ModuleUpgrades" type="GridContainer" parent="HBoxContainer/Panel" groups=["EquipProperties"]]
-visible = false
-custom_minimum_size = Vector2(110, 110)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/h_separation = 5
-theme_override_constants/v_separation = 5
-columns = 4
-script = ExtResource("8_piq27")
+script = ExtResource("2_ddvuy")
+metadata/size = 16
 
 [node name="Panel2" type="Panel" parent="HBoxContainer"]
 custom_minimum_size = Vector2(1, 0)

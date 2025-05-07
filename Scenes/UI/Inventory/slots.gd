@@ -1,12 +1,12 @@
 extends Control
 
 var root: String = "res://Scenes/Build/Building/"
-var scene: PackedScene = preload("res://Scenes/UI/item_list.tscn")
 var button: PackedScene = preload("res://Scenes/UI/Inventory/slot.tscn")
 var icon_path: String = "res://Scenes/UI/Icon/"
+var item_list_scene: PackedScene = preload("res://Scenes/UI/item_list.tscn")
 
 func _ready() -> void:
-	for i: int in range(4):
+	for i: int in range(int(get_meta("size") if has_meta("size") else 4)):
 		var instance:Node = button.instantiate()
 		instance.name = str(i+1)
 		add_child(instance)
@@ -22,15 +22,15 @@ func fill() -> void:
 	for i: int in range(data.size()):
 		var node: Node = get_node(str(i+1))
 		node.tooltip_text = keys[i]
+		#node.name = keys[i]
+		node.type = name.to_lower()
 		set_icon(node,keys[i])
-		_list(source,node,data,keys[i])
+		list(source,node,data,keys[i])
 
-func _list(source: Node,node: Node,data: Dictionary,key: String) -> void:
-	var itemlist:ItemList = scene.instantiate()
+func list(source: Node,node: Node,data: Dictionary,key: String) -> void:
+	var itemlist:ItemList = item_list_scene.instantiate()
 	var path: String = root + source.get_parent().get_parent().name + "/Menu/" + key
 	var menu_list: Array = Global.RL.get_files_at(path)
-	if !_list:
-		return
 	for item:String in menu_list:
 		if !item.ends_with("gd"):
 			continue

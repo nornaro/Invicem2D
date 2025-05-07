@@ -5,6 +5,7 @@ var multiselect:bool=false
 var selected:bool = false
 var selection_rectangle:CollisionShape2D = CollisionShape2D.new()
 
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Ctrl"):
 		multiselect = true
@@ -17,7 +18,8 @@ func set_data(data: Dictionary) -> void:
 	if data.has("Targeting"):
 		parent.set_targeting()
 		
-func upgrade(data: String) -> void:
+func upgrades(source: Node) -> void:
+	var data:String = source.tooltip_text
 	var value:int = 1
 	if Input.is_key_pressed(KEY_CTRL):
 		value = 16
@@ -27,6 +29,11 @@ func upgrade(data: String) -> void:
 	parent.Data.Upgrades[data] = clamp(parent.Data.Upgrades[data]+value ,parent.Data.Upgrades[data], 16)
 	if parent.has_method("set_" + data.to_lower()):
 		parent.call("set_" + data.to_lower())
+
+func properties(source: Node) -> void:
+	var item_list:ItemList = source.get_node("ItemList")
+	item_list.global_position = source.get_parent().global_position
+	item_list.show()
 
 func set_selected(selection:bool) -> void:
 	if selection:
