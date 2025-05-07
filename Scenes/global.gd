@@ -17,6 +17,10 @@ var clients: Dictionary = {
 var mp: bool = true
 var Data: Dictionary
 var Items: Dictionary
+#Data.Minions = 
+#var type: String = Data.Minion[0]
+#var minion: String = Data.Minion[1]
+#var sprite: String = global[type][minion].keys().pick_random()
 var Currecny: Dictionary = {
 	"Minions": 100,
 	"Power": 100,

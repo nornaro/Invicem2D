@@ -46,7 +46,7 @@ func set_icon(node: Node,icon: String) -> void:
 	if Global.RL.file_exists(icon_path+icon+".webp"):
 		node.texture_normal = Global.RL.load(icon_path+icon+".webp")
 		return
-	node.texture_normal = Global.RL.load(icon_path+name+".webp")
+	node.texture_normal = Global.RL.load(icon_path+"Slots.webp")
 
 func clear() -> void:
 	for child: Node in get_children():
