@@ -9,6 +9,9 @@ bg_color = Color(0.00679537, 0.223933, 0.00552452, 1)
 
 [node name="Client" type="Node" groups=["Client"]]
 script = ExtResource("1_th4ev")
+server_ip = null
+server_port = null
+player_id = null
 
 [node name="VBoxContainer" type="HBoxContainer" parent="." groups=["ProgressBar"]]
 visible = false

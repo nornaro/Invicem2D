@@ -10,7 +10,7 @@ func _ready() -> void:
 	minion.die = Callable(self, "die")
 
 func die() -> void:
-	if minion.Data.HP > 1:
+	if minion.Data.hp > 1:
 		return
 		"""
 		Spawn x smaller tramsparent copy of itself, ghost prop, bonus speed
@@ -25,5 +25,5 @@ func die() -> void:
 		#minion.area.death()
 		#minion.area.queue_free()
 		#return
-	#minion.Data.HP = minion.Data.max_hp * multiplier / 3
+	#minion.Data.hp = minion.Data.max_hp * multiplier / 3
 	#minion.update_hpbar.call()

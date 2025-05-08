@@ -1,4 +1,6 @@
 extends Node2D
+class_name Fixed_targeting
+
 # First In First Served
 var parent: Node
 var in_targeting_range: Array[Node]
@@ -31,8 +33,10 @@ func retarget() -> void:
 	for i in range(free):
 		if in_targeting_range.is_empty():
 			break  # Exit the loop if the array is empty
-		var next_target: Node = in_targeting_range.pick_random()
+		var next_target: MinionArea = in_targeting_range.pick_random()
 		if next_target == null:
+			continue
+		if next_target.get_parent().dead > 0:
 			continue
 		in_targeting_range.erase(next_target)
 		targeting.append(next_target)

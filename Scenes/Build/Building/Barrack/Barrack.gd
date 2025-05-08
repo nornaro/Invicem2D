@@ -1,6 +1,7 @@
 extends StaticBody2D
+class_name Barrack
 
-@onready var minion:PackedScene = preload("res://Scenes/Minions/minion.tscn")
+@onready var minion:PackedScene
 var spawnin: CollisionShape2D
 var spawnog: CollisionShape2D
 var minions: Node
@@ -34,7 +35,7 @@ var minions: Node
 	},
 	"Info": {},
 	"Modules": { # changes what and if minion is produced
-		"Minion": ["Chibi", "Select", "Minion"], # SkinType, Skin
+		"Minion": ["Chibi", "Dummy", "Minion"], # SkinType, Skin
 		"Tier": ["Simple", "Basic", "Tier"], # Produce stronger minions, but at what cost?
 			# Simple → Only standard minions can be created. (no effect)
 			# Specialized → Limits minion types but boosts some quality.
@@ -132,9 +133,10 @@ Barrack Item:
 @export var Modifier: Dictionary = {}
 
 func _ready() -> void:
-	spawnin = get_tree().get_first_node_in_group("Spawn")
-	minions = get_tree().get_first_node_in_group("Minions")
-	var group: String = get_parent().name
+	minion  = preload("res://Scenes/Minions/minion.tscn")
+	spawnin = Global.GetTree.get_first_node_in_group("Spawn")
+	minions = Global.GetTree.get_first_node_in_group("Minions")
+	var group: String = get_class()
 	add_to_group(group)
 		
 	##Debug
@@ -156,7 +158,6 @@ func spawn(data: Dictionary) -> void:
 
 	var instance: Minion = minion.instantiate()
 
-	instance.Data = data
 	if !data.has("Spawn"):
 		data["name"] = str(instance.get_instance_id())
 		data["id"] = multiplayer.get_unique_id()
@@ -164,16 +165,23 @@ func spawn(data: Dictionary) -> void:
 		data.merge(Data.Upgrades)
 		data.merge(Data.Properties)
 		data.merge(Data.Modules)
-
+	
+	if !data.has("dead"):
+		data["name"] = str(instance.get_instance_id())
+		data["id"] = multiplayer.get_unique_id()
+		
+	if data.has("dead"):
+		instance.dead = data.dead
 
 	var old_minion: Node = minions.get_node_or_null(str(data.name))
 	if old_minion:
-		minions.remove_child(old_minion)
+		minions.call_deferred("remove_child","old_minion")
 		old_minion.queue_free()
-
+	
+	
 	instance.Data = data
 	instance.name = data.name
 	instance.global_position = data.global_position
 	instance.add_to_group("minions")
 	instance.get_node("MinionArea").set_meta("owner", data.id)
-	minions.add_child(instance)
+	minions.call_deferred("add_child",instance)

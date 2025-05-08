@@ -6,7 +6,7 @@ signal hurt
 
 var network: Node
 var in_area: Node
-@onready var minion: Node = $".."
+@onready var minion: Minion = $".."
 
 func _ready() -> void:
 	connect("area_entered",_on_area_entered)

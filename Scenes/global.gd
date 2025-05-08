@@ -17,6 +17,8 @@ var clients: Dictionary = {
 var mp: bool = true
 var Data: Dictionary
 var Items: Dictionary
+var GetTree: SceneTree
+
 #Data.Minions = 
 #var type: String = Data.Minion[0]
 #var minion: String = Data.Minion[1]
