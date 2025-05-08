@@ -33,7 +33,7 @@ Innate:
 		Different element, different dmg multiplier
 	"Armor": 
 		none, 
-		defense * % reduction, 
+		defense * % reduction,
 		defense * amount reduction
 	"Movement": (changes what damage applies, what can target it)
 		ground vs 

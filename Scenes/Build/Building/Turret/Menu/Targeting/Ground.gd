@@ -25,7 +25,7 @@ func _ready():
 		$max.scale = Vector2(1/get_parent().scale.x,1/get_parent().scale.y)
 
 func _on_max_area_entered(area):
-	if area.get_parent().is_in_group("minions"):
+	if area is MinionArea:
 		var pos = round_to_5s(area.get_parent().global_position)
 		if !targets.has(pos):
 			targets[pos] = 0

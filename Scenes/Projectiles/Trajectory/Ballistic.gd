@@ -49,7 +49,7 @@ func _physics_process(delta):
 		queue_free()
 
 func _on_area_2d_area_entered(area):
-	if !area.get_parent().is_in_group("minions"):
+	if !area is MinionArea:
 		return
 	queue_free()
 	area.get_parent().hurt(Data.Upgrades.Damage, Data.Upgrades.Penetration)

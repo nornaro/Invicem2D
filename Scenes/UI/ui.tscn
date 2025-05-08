@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://ctyric4lpymab"]
+[gd_scene load_steps=51 format=3 uid="uid://ctyric4lpymab"]
 
 [ext_resource type="Script" uid="uid://reqh0iyijrrr" path="res://Scenes/UI/ui.gd" id="1_2xbke"]
 [ext_resource type="PackedScene" uid="uid://bq6obs6f5somh" path="res://Scenes/UI/panel.tscn" id="2_pmm6b"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://d34mxo1ld0ik5" path="res://Scenes/UI/Kafra/kafra.tscn" id="12_vy225"]
 [ext_resource type="Script" uid="uid://cjjaaaemnsp6v" path="res://Scenes/UI/player_name.gd" id="16_56q1t"]
 [ext_resource type="PackedScene" uid="uid://cuixthaxle0q0" path="res://Scenes/UI/LeaderBoard/leaderboard.tscn" id="16_fevae"]
+[ext_resource type="Script" uid="uid://gslb6pu5jep0" path="res://Scenes/UI/clear.gd" id="16_ny3ap"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h6tq4"]
 
@@ -740,8 +741,6 @@ text = "Cancel"
 [node name="Resolution" parent="." instance=ExtResource("10_56q1t")]
 unique_name_in_owner = true
 visible = false
-offset_top = 48.0
-offset_bottom = 48.0
 
 [node name="Exit" type="Panel" parent="."]
 unique_name_in_owner = true
@@ -798,8 +797,17 @@ text = "Cancel"
 z_index = 100
 
 [node name="Leaderboard" parent="." instance=ExtResource("16_fevae")]
+current_tab = -1
 
 [node name="Kafra" parent="." instance=ExtResource("12_vy225")]
 visible = false
+
+[node name="Clear" type="Button" parent="."]
+offset_top = 300.0
+offset_right = 49.0
+offset_bottom = 331.0
+focus_mode = 0
+text = "Clear"
+script = ExtResource("16_ny3ap")
 
 [connection signal="pressed" from="Destroy/VBoxContainer/HBoxContainer/Confirm" to="Destroy" method="_on_confirm_pressed"]

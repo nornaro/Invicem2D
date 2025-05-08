@@ -4,7 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://bkhh47l3mvrdh" path="res://Scenes/Minions/Chibi/Orc_3.tres" id="2_s68jy"]
 [ext_resource type="Script" uid="uid://bdgfng4ib726l" path="res://Scenes/Minions/minion_area.gd" id="3_u5uqm"]
 [ext_resource type="Texture2D" uid="uid://b18ilk3xfqgh7" path="res://Scenes/Minions/Shield/pipo-btleffect206h_480.webp" id="5_s68jy"]
-[ext_resource type="Script" uid="uid://ckkqayk3s54h" path="res://Scenes/Minions/modifier.gd" id="6_t3dqa"]
+[ext_resource type="Script" uid="uid://hi32qhvam1qi" path="res://Scenes/Modifiers/Barrack/Split.gd" id="6_t3dqa"]
 [ext_resource type="Texture2D" uid="uid://cttahojaiwjr4" path="res://Scenes/Minions/Shield/pipo-btleffect206_480.webp" id="7_7g40y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bex45"]
@@ -383,5 +383,5 @@ allow_greater = true
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="Modifier" type="Node" parent="."]
+[node name="Split" type="Node" parent="."]
 script = ExtResource("6_t3dqa")

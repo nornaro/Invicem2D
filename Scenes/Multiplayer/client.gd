@@ -21,17 +21,9 @@ func set_player_name(player_name:String, id: int) -> void:
 
 @rpc("any_peer")
 func spawn(data: Dictionary) -> void:
-	var spawnin:Node = get_tree().get_first_node_in_group("In")
-	var minions:Node = get_tree().get_first_node_in_group("Minions")
-	var old_minion:Node = minions.get_node(str(data.name))
-	minions.remove_child(old_minion)
-	old_minion.queue_free()
-	if is_in_group("temp"):
-		return
-	var instance:Node = minion.instantiate()
-	instance.Data = data
-	instance.add_to_group("minions")
-	instance.get_node("MinionArea").set_meta("owner",data.id)
-	instance.global_position = Vector2(spawnin.global_position.x,data.gposy)
-	instance.name = str(data.name)#str(instance.get_instance_id())
-	minions.add_child(instance)
+	var spawnin: Area2D = get_tree().get_first_node_in_group("In")
+	var rect: Rect2 = spawnin.shape.get_rect()
+	var x: float = randf_range(rect.position.x, rect.position.x + rect.size.x) + 50
+	var y: float = randf_range(rect.position.y, rect.position.y + rect.size.y)
+	data.global_position = spawnin.global_position + Vector2(x, y)
+	get_tree().call_group("Barrack","spawn",data)

@@ -2,6 +2,7 @@ extends StaticBody2D
 
 @onready var minion:PackedScene = preload("res://Scenes/Minions/minion.tscn")
 var spawnin: CollisionShape2D
+var spawnog: CollisionShape2D
 var minions: Node
 
 
@@ -141,20 +142,38 @@ func _ready() -> void:
 		continue
 	Data.Modules.Minion[1] = Global.Data.Minions["Chibi"].keys().pick_random()
 
-func spawn(_data:Dictionary) -> void:
+func spawn(data: Dictionary) -> void:
 	if is_in_group("temp"):
 		return
 	if Data.Modules.Minion[1] == "Select":
 		return
-	var instance:Node = minion.instantiate()
-	var rect : Rect2 = spawnin.shape.get_rect()
-	var x:float = randf_range(rect.position.x, rect.position.x+rect.size.x)+50
-	var y:float = randf_range(rect.position.y, rect.position.y+rect.size.y)
-	var gp:Vector2 = spawnin.global_position + Vector2(x,y)
-	instance.global_position = gp
-	instance.name = str(instance.get_instance_id())
-	instance.Data["Spawn"] = Data.Upgrades
-	instance.Data.merge(Data.Upgrades)
-	instance.Data.merge(Data.Properties)
-	instance.Data.merge(Data.Modules)
+
+	if !data.has("global_position"):
+		var rect: Rect2 = spawnin.shape.get_rect()
+		var x: float = randf_range(rect.position.x, rect.position.x + rect.size.x) + 50
+		var y: float = randf_range(rect.position.y, rect.position.y + rect.size.y)
+		data.global_position = spawnin.global_position + Vector2(x, y)
+
+	var instance: Minion = minion.instantiate()
+
+	instance.Data = data
+	if !data.has("Spawn"):
+		data["name"] = str(instance.get_instance_id())
+		data["id"] = multiplayer.get_unique_id()
+		data["Spawn"] = Data.Upgrades
+		data.merge(Data.Upgrades)
+		data.merge(Data.Properties)
+		data.merge(Data.Modules)
+
+
+	var old_minion: Node = minions.get_node_or_null(str(data.name))
+	if old_minion:
+		minions.remove_child(old_minion)
+		old_minion.queue_free()
+
+	instance.Data = data
+	instance.name = data.name
+	instance.global_position = data.global_position
+	instance.add_to_group("minions")
+	instance.get_node("MinionArea").set_meta("owner", data.id)
 	minions.add_child(instance)

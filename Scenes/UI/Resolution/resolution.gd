@@ -123,3 +123,7 @@ func _on_screen_selector_item_selected(index: int) -> void:
 
 func _on_button_pressed() -> void:
 	Set_Resolution(Vector2i(int($HBoxContainer/Xvalue.text), int($HBoxContainer/Yvalue.text)))
+	
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("fullscreen"):
+		_on_full_screen_check_box_toggled(DisplayServer.window_get_mode() != Window.MODE_MAXIMIZED)

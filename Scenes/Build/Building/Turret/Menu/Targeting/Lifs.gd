@@ -42,21 +42,21 @@ func _physics_process(delta):
 		targeting.append(targets.back())
 
 func _on_max_area_entered(area):
-	if area.get_parent().is_in_group("minions"):
+	if area is MinionArea:
 		if targeting.size() < Data["max_target_count"]:
 			targeting.append(area)
 		targets.append(area)
 
 func _on_max_area_exited(area):
-	if area.get_parent().is_in_group("minions"):
+	if area is MinionArea:
 		targeting.erase(area)
 		targets.erase(area)
 	
 func _on_min_area_entered(area):
-	if area.get_parent().is_in_group("minions"):
+	if area is MinionArea:
 		targeting.erase(area)
 		invalid.append(area)
 
 func _on_min_area_exited(area):
-	if area.get_parent().is_in_group("minions"):
+	if area is MinionArea:
 		invalid.erase(area)

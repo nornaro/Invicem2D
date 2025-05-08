@@ -16,7 +16,7 @@ func _ready():
 	linear_velocity = 0.01 * Vector2(randf_range(-(20-Data.Spread),20-Data.Spread),randf_range(-(20-Data.Spread),20-Data.Spread))
 
 func _on_area_2d_area_entered(area):
-	if !area.get_parent().is_in_group("minions"):
+	if !area is MinionArea:
 		return
 	queue_free()
 	area.get_parent().hurt(Data.Upgrades.Damage,Data.Upgrades.Penetration)

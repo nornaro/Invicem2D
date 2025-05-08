@@ -44,7 +44,7 @@ func retarget(target):
 	return target
 		
 func _on_max_area_entered(area):
-	if !area.get_parent().is_in_group("minions"):
+	if !area is MinionArea:
 		return
 	if !area.get_parent().has_meta("owner"):
 		return
@@ -53,15 +53,15 @@ func _on_max_area_entered(area):
 	targets.append(area)
 
 func _on_max_area_exited(area):
-	if area.get_parent().is_in_group("minions"):
+	if area is MinionArea:
 		targeting.erase(area)
 		targets.erase(area)
 	
 func _on_min_area_entered(area):
-	if area.get_parent().is_in_group("minions"):
+	if area is MinionArea:
 		targeting.erase(area)
 		targets.erase(area)
 
 func _on_min_area_exited(area):
-	if area.get_parent().is_in_group("minions"):
+	if area is MinionArea:
 		targets.append(area)

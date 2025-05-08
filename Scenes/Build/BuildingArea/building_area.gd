@@ -1,4 +1,5 @@
 extends Area2D
+class_name BuildingArea
 
 var type:String
 var multiselect:bool=false
@@ -64,7 +65,7 @@ func _on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) ->
 func _on_area_entered(area:Area2D) -> void:
 	if !get_parent().is_in_group("temp"):
 		return
-	if !area.is_in_group("building"):
+	if area is not BuildingArea:
 		return
 	area.add_to_group(str(get_instance_id()))
 

@@ -1,15 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://drbs8u6ai0tym"]
+[gd_scene load_steps=6 format=3 uid="uid://drbs8u6ai0tym"]
 
 [ext_resource type="Script" uid="uid://bv7iu5lbb8m6m" path="res://Scenes/UI/Resolution/window.gd" id="1_qiel4"]
 [ext_resource type="Script" uid="uid://cq6exor85ru08" path="res://Scenes/UI/Resolution/resolution.gd" id="2_p6hdn"]
 
-[node name="Options_Example" type="Control"]
-layout_mode = 3
+[sub_resource type="Gradient" id="Gradient_h75od"]
+offsets = PackedFloat32Array(0, 0.595833, 1)
+colors = PackedColorArray(0.211765, 0.262745, 0.415686, 0.784314, 0.196078, 0.196078, 0.196078, 0.784314, 0.111011, 0.191104, 0.335477, 0.784314)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mod6b"]
+gradient = SubResource("Gradient_h75od")
+fill = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bnq5p"]
+texture = SubResource("GradientTexture2D_mod6b")
+
+[node name="Options_Example" type="Panel"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_bnq5p")
 script = ExtResource("1_qiel4")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

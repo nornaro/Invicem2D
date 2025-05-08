@@ -2,6 +2,7 @@ extends Area2D
 class_name MinionArea
 
 signal dead
+signal hurt
 
 var network: Node
 var in_area: Node
@@ -22,8 +23,7 @@ func _on_area_entered(area:Area2D) -> void:
 		get_parent().queue_free()
 	if area.name == "Out":
 		minion.set_physics_interpolation_mode(Node.PHYSICS_INTERPOLATION_MODE_OFF)
-		minion.Data["id"] = multiplayer.get_unique_id()
-		minion.Data["gposy"] = minion.global_position.y
+		minion.Data["global_position"] = minion.global_position
 		if Global.mp:
 			network.process_data(minion.Data)
 			return
@@ -32,7 +32,7 @@ func _on_area_entered(area:Area2D) -> void:
 		minion.set_meta("owner",minion.Data["id"])
 		await get_tree().create_timer(1).timeout
 	if area.is_in_group("projectile"):
-		get_parent().hurt.call(area.get_parent().Data)
+		hurt.emit(area.get_parent().Data)
 		area.get_parent().hit()
 	minion.set_physics_interpolation_mode(Node.PHYSICS_INTERPOLATION_MODE_ON)
 		

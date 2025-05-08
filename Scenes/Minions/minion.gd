@@ -4,7 +4,7 @@ class_name Minion
 @export var Data: Dictionary = {}
 var dummyData: Dictionary = {
 	"HP": 1,
-	"Size": 0,
+	"Size": 1,
 	"Shield": 0,
 	"Defense": 0,
 	"Speed": 0.0,
@@ -28,17 +28,21 @@ var dead: bool = false
 @onready var damage_component: DamageComponent = DamageComponent.new()
 
 func _ready() -> void:
+	area.connect("hurt",hurt)
 	if !area.has_meta("owner"):
 		add_to_group("minions")
 	if !Data.has("HP"):
 		Data = dummyData
+	init()
+
+func init() -> void:
 	initialize_data.call()
 	initialize_sprite.call()
 	shield_component.initialize.call(Data.max_sh, shBar, aura, depleted, sh, hit)
-	extra.call()
+	extra.call({})
 	linear_velocity = Vector2(-Data.Velocity,0)
 
-@export var extra: Callable = func() -> void:
+@export var extra: Callable = func(_arguments: Dictionary) -> void:
 	pass
 
 @export var initialize_data: Callable = func() -> void:
@@ -64,7 +68,6 @@ func _ready() -> void:
 	if not Global.Data.Minions.has(type):
 		Global.Data.Minions[type] = {}
 	if not Global.Data.Minions[type].has(minion):
-		# Create minimal frames if missing
 		var new_frames: SpriteFrames = SpriteFrames.new()
 		new_frames.add_animation("Walking")
 		Global.Data.Minions[type][minion] = {"default": new_frames}
@@ -83,9 +86,13 @@ func _ready() -> void:
 	shBar.position.y -= Data.Size / 10
 
 func _physics_process(delta: float) -> void:
+	if dead:
+		return
 	if get_tree().get_node_count_in_group("true"):
 		return
-	apply_physics.call(delta)
+	print(is_inside_tree())
+	if self.apply_physics.is_valid():
+		self.apply_physics.call(delta)
 		
 @export var apply_physics: Callable = func(delta: float) -> void:
 	position += linear_velocity * 60 / Engine.physics_ticks_per_second
