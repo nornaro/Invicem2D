@@ -26,7 +26,7 @@ func split(data:Dictionary) -> void:
 	for splits:int in range(dupes):
 		data.HP = clampi(data.HP - dupes,1,16)
 		data.Size = clampi(data.Size - dupes,1,16)
-		data.global_position = minion.global_position + Vector2(randi_range(-20,20),randi_range(-20,20))
+		data.global_position = minion.global_position# + Vector2(randi_range(-20,20),randi_range(-20,20))
 		data.dead = 1
 		spawner.spawn(data)
 

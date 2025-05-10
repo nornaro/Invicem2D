@@ -26,6 +26,7 @@ var death_timer: SceneTreeTimer
 @onready var area: Node = $MinionArea
 @onready var shield_component: ShieldComponent = ShieldComponent.new()
 @onready var damage_component: DamageComponent = DamageComponent.new()
+
 var dead: float = 0.0
 	
 func _ready() -> void:
@@ -47,10 +48,6 @@ func init() -> void:
 	linear_velocity = Vector2(-Data.Velocity,0)
 	extra.call(dummyData)
 
-#func _enter_tree() -> void:
-	
-#func _notification(_what: int) -> void:
-
 func set_death_timer() -> void:
 	death_timer = get_tree().create_timer(dead)
 	
@@ -71,23 +68,17 @@ func set_death_timer() -> void:
 
 @export var initialize_sprite: Callable = func() -> void:
 	if not Global.Data.has("Minions"):
-		Global.Data["Minions"] = {}
-	
-	var type: String = Data.get("Minion", ["Dummy"])[0]
-	var minion: String = Data.get("Minion", ["Dummy", "Minion"])[1]
-
-	if not Global.Data.Minions.has(type):
-		Global.Data.Minions[type] = {}
-	if not Global.Data.Minions[type].has(minion):
+		#Global.Data["Minions"] = {}
+		#Data.sprite_name = [Data.get("Minion", ["Dummy"])[0],Data.get("Minion", ["Dummy", "Minion"])[1]]
 		var new_frames: SpriteFrames = SpriteFrames.new()
 		new_frames.add_animation("Walking")
-		Global.Data.Minions[type][minion] = {"default": new_frames}
+		new_frames.add_animation("Idle")
+		Data["frames"] = {"default": new_frames}
 
-	var sprite_variations: Dictionary = Global.Data.Minions[type][minion]
-	var sprite_name: String = sprite_variations.keys().pick_random() if sprite_variations.size() > 0 else "default"
+	var sprite_variations: Dictionary = Data.Frames
 	
 	Sprite.speed_scale *= Data.Velocity
-	Sprite.sprite_frames = sprite_variations[sprite_name]
+	Sprite.sprite_frames = Data.sprite_name
 	scale *= 5+(Data.Size)
 	adjust_ui_positions.call()
 	Sprite.play("Idle")

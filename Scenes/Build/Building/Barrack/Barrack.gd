@@ -1,11 +1,10 @@
 extends StaticBody2D
 class_name Barrack
 
-@onready var minion:PackedScene
+@onready var minion_scene:PackedScene
 var spawnin: CollisionShape2D
 var spawnog: CollisionShape2D
 var minions: Node
-
 
 @export var Data: Dictionary = { # Barrack is responsible for producing minion every turn, based on Data
 	"Properties": { 
@@ -35,7 +34,7 @@ var minions: Node
 	},
 	"Info": {},
 	"Modules": { # changes what and if minion is produced
-		"Minion": ["Chibi", "Dummy", "Minion"], # SkinType, Skin
+		"Minion": [], #["Chibi", "Satyr", "Minion"], # SkinType, Skin
 		"Tier": ["Simple", "Basic", "Tier"], # Produce stronger minions, but at what cost?
 			# Simple → Only standard minions can be created. (no effect)
 			# Specialized → Limits minion types but boosts some quality.
@@ -133,38 +132,39 @@ Barrack Item:
 @export var Modifier: Dictionary = {}
 
 func _ready() -> void:
-	minion  = preload("res://Scenes/Minions/minion.tscn")
+	minion_scene  = preload("res://Scenes/Minions/minion.tscn")
 	spawnin = Global.GetTree.get_first_node_in_group("Spawn")
 	minions = Global.GetTree.get_first_node_in_group("Minions")
-	var group: String = get_class()
-	add_to_group(group)
+	#var group: String = get_class()
+	add_to_group("Barrack")
 		
 	##Debug
 	while(!Global.Data.has("Minions")):
 		continue
-	Data.Modules.Minion[1] = Global.Data.Minions["Chibi"].keys().pick_random()
+	#Data.Modules.Minion[1] = Global.Data.Minions["Chibi"].values().pick_random()
 
 func spawn(data: Dictionary) -> void:
 	if is_in_group("temp"):
 		return
+	if !Data.Modules.Minion:
+		return
 	if Data.Modules.Minion[1] == "Select":
 		return
 
+	var instance: Minion = minion_scene.instantiate()
+
 	if !data.has("global_position"):
-		var rect: Rect2 = spawnin.shape.get_rect()
-		var x: float = randf_range(rect.position.x, rect.position.x + rect.size.x) + 50
-		var y: float = randf_range(rect.position.y, rect.position.y + rect.size.y)
-		data.global_position = spawnin.global_position + Vector2(x, y)
-
-	var instance: Minion = minion.instantiate()
-
-	if !data.has("Spawn"):
+		if Data.Modules.Minion.Minion.Size == 0:
+			return
+		data.global_position = spawnin.global_position
 		data["name"] = str(instance.get_instance_id())
 		data["id"] = multiplayer.get_unique_id()
 		data["Spawn"] = Data.Upgrades
 		data.merge(Data.Upgrades)
 		data.merge(Data.Properties)
 		data.merge(Data.Modules)
+	
+	data.global_position += Vector2(randf_range(-35,35),randf_range(-35,35))
 	
 	if !data.has("dead"):
 		data["name"] = str(instance.get_instance_id())
@@ -178,6 +178,9 @@ func spawn(data: Dictionary) -> void:
 		minions.call_deferred("remove_child","old_minion")
 		old_minion.queue_free()
 	
+	if !data.has("sprite_name"):
+		var minion_class = Global.data.Minions.keys().pick_random()
+		data["sprite_name"] = Global.data.Minions
 	
 	instance.Data = data
 	instance.name = data.name
