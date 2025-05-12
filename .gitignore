@@ -4,5 +4,5 @@ addons/
 Export/
 *.import
 *.tmp
-*.uid"
-*.exe" 
+*.uid
+*.exe
