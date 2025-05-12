@@ -1,6 +1,6 @@
 extends Node
 
-@onready var buildings: PackedScene = preload("res://Scenes/Build/build.tscn")
+@onready var buildings: PackedScene = preload("res://Scenes/Buildings/buildings.tscn")
 @onready var map: PackedScene = preload("res://Scenes/Map/map.tscn")
 @onready var ui: PackedScene = preload("res://Scenes/UI/ui.tscn")
 @onready var camera: PackedScene = preload("res://Scenes/Camera/camera.tscn")

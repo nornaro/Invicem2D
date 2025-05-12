@@ -1,6 +1,6 @@
 extends Control
 
-var root: String = "res://Scenes/Build/Building/"
+var root: String = "res://Scenes/Buildings/Building/"
 var button: PackedScene = preload("res://Scenes/UI/Inventory/slot.tscn")
 var icon_path: String = "res://Scenes/UI/Icon/"
 var item_list_scene: PackedScene = preload("res://Scenes/UI/item_list.tscn")

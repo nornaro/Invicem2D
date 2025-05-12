@@ -1,6 +1,6 @@
 extends GridContainer
 
-var root: String = "res://Scenes/Build/Building/"
+var root: String = "res://Scenes/Buildings/Building/"
 var scene: PackedScene = preload("res://Scenes/UI/item_list.tscn")
 var button: PackedScene = preload("res://Scenes/UI/property_menu_button.tscn")
 var icon_path: String = "res://Scenes/UI/Icon/"

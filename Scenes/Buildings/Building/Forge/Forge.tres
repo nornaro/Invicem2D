@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://23kf6rbawp6t"]
+
+[ext_resource type="Texture2D" uid="uid://b54s233rx5hdy" path="res://Scenes/Buildings/Building/Forge/Styles/Fantasy/Forge.webp" id="1_bnayq"]
+[ext_resource type="Texture2D" uid="uid://dv043rtesyvi8" path="res://Scenes/Buildings/Building/Forge/Styles/Sci-fi/Forge.webp" id="1_ybj6o"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bnayq")
+}],
+"loop": true,
+"name": &"Fantasy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ybj6o")
+}],
+"loop": true,
+"name": &"Sci-fi",
+"speed": 5.0
+}]

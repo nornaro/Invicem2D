@@ -75,10 +75,10 @@ func set_death_timer() -> void:
 		new_frames.add_animation("Idle")
 		Data["frames"] = {"default": new_frames}
 
-	var sprite_variations: Dictionary = Data.Frames
+	#var sprite_variations: Dictionary = Data.Frames
 	
 	Sprite.speed_scale *= Data.Velocity
-	Sprite.sprite_frames = Data.sprite_name
+	Sprite.sprite_frames = Global.Data.Minions[Data["minion_class"]][Data["minion_race"]][Data["minion_sprite"]]
 	scale *= 5+(Data.Size)
 	adjust_ui_positions.call()
 	Sprite.play("Idle")
