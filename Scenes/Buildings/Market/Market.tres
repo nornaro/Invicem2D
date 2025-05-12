@@ -1,0 +1,31 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bfxyp1s25v57k"]
+
+[ext_resource type="Texture2D" uid="uid://boq7j680060kf" path="res://Scenes/Buildings/Market/Styles/Fantasy/Market.webp" id="1_8vv73"]
+[ext_resource type="Texture2D" uid="uid://bgt44exf1pr17" path="res://Scenes/Buildings/Market/Styles/Fantasy/Market_.webp" id="2_s56hj"]
+[ext_resource type="Texture2D" uid="uid://52xorbt2p2tr" path="res://Scenes/Buildings/Market/Styles/Sci-fi/Market1.webp" id="3_sg4nm"]
+[ext_resource type="Texture2D" uid="uid://b37wy4ogjt6m1" path="res://Scenes/Buildings/Market/Styles/Sci-fi/Market2.webp" id="4_pa7to"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8vv73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s56hj")
+}],
+"loop": true,
+"name": &"Fantasy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sg4nm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pa7to")
+}],
+"loop": true,
+"name": &"Sci-fi",
+"speed": 5.0
+}]

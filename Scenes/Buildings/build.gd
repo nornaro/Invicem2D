@@ -16,9 +16,9 @@ var rectangle:Area2D = Area2D.new()
 var collides:Array
 @export var showCollision:bool = false
 @onready var UI: Node
-@onready var scene:PackedScene = preload("res://Scenes/Buildings/Building/building.tscn")
+@onready var scene:PackedScene = preload("res://Scenes/Buildings/building.tscn")
 var mapsize:Vector2 = Vector2.ZERO
-var building_path:String = "res://Scenes/Buildings/Building/"
+var building_path:String = "res://Scenes/Buildings/"
 
 func _ready() -> void:
 	Global.RL.dir_to_items(building_path, "Buildings")

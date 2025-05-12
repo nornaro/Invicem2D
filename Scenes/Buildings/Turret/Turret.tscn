@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp4rs15tn50dm"]
+
+[ext_resource type="SpriteFrames" uid="uid://c07xdxik2q5fl" path="res://Scenes/Buildings/Turret/Type/T2/T2.tres" id="1_5cgxu"]
+[ext_resource type="Script" uid="uid://c7yyul5c33f43" path="res://Scenes/Buildings/Turret/Turret.gd" id="2_hsq2p"]
+
+[node name="Turret" type="AnimatedSprite2D"]
+position = Vector2(0, 1)
+sprite_frames = ExtResource("1_5cgxu")
+animation = &"Fantasy"
+frame_progress = 0.205581
+script = ExtResource("2_hsq2p")
+metadata/Turret = true
+
+[node name="Trajectory" type="Node2D" parent="."]
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
