@@ -25,7 +25,6 @@ func _ready() -> void:
 	resize_select(size)
 	name = str(get_instance_id())
 
-
 func animated_sprite(filename:String) -> Vector2:
 	var sprite_path:String = "res://Scenes/Buildings/" + filename + ".tres"
 	if !Global.RL.file_exists(sprite_path):

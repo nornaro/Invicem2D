@@ -6,7 +6,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vfmgb"]
 
-[node name="Kafra" type="Panel" groups=["Picker"]]
+[node name="Kafra" type="Panel" groups=["Kafra"]]
 show_behind_parent = true
 top_level = true
 anchors_preset = 15
@@ -60,7 +60,7 @@ grow_horizontal = 2
 grow_vertical = 2
 current_tab = 0
 
-[node name="Minion" type="ScrollContainer" parent="Picker/Tabs"]
+[node name="Minion" type="ScrollContainer" parent="Picker/Tabs" groups=["KafraMinion"]]
 layout_mode = 2
 script = ExtResource("2_jmay0")
 metadata/_tab_index = 0
