@@ -10,4 +10,4 @@ func _on_pressed() -> void:
 	if node:
 		get_tree().call_group("selected",type, self)
 	#get_tree().call_group("Kafra", name.to_lower(), self)
-	get_tree().call_group("Kafra", "select_tab",int(name))
+	get_tree().call_group("Kafra", "_on_tab_selected",int(name))

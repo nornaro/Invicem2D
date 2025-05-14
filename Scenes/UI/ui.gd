@@ -67,6 +67,7 @@ func clear() -> void:
 		if ui.get_class() == "ItemList":
 			ui.deselect_all()
 	text = ""
+	get_tree().call_group("Popup","hide")
 
 func active() -> Node:
 	for ui:Node in get_children():

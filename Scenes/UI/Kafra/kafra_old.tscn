@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://d34mxo1ld0ik5"]
+
+[ext_resource type="Script" uid="uid://16holwoopud6" path="res://Scenes/UI/Kafra/kafra.gd" id="1_arcwy"]
+[ext_resource type="PackedScene" uid="uid://cbw1h45r5nyl4" path="res://Scenes/UI/minion_inventory.tscn" id="2_geq5j"]
+[ext_resource type="Script" uid="uid://4373ynblafty" path="res://Scenes/UI/minion_picker.gd" id="2_jmay0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vfmgb"]
+
+[node name="Kafra" type="Panel" groups=["Kafra"]]
+show_behind_parent = true
+top_level = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vfmgb")
+script = ExtResource("1_arcwy")
+
+[node name="Picker" type="Panel" parent="."]
+layout_mode = 2
+offset_right = 1280.0
+offset_bottom = 720.0
+scale = Vector2(0.9, 0.9)
+
+[node name="Panel" type="HBoxContainer" parent="Picker"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -239.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Core" type="CheckBox" parent="Picker/Panel"]
+layout_mode = 2
+focus_mode = 0
+text = "Core"
+flat = true
+
+[node name="Efficiency" type="CheckBox" parent="Picker/Panel"]
+layout_mode = 2
+focus_mode = 0
+text = "Efficiency"
+flat = true
+
+[node name="Item" type="CheckBox" parent="Picker/Panel"]
+layout_mode = 2
+focus_mode = 0
+text = "Item"
+flat = true
+
+[node name="Tabs" type="TabContainer" parent="Picker"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="Minion" type="ScrollContainer" parent="Picker/Tabs" groups=["KafraMinion"]]
+layout_mode = 2
+script = ExtResource("2_jmay0")
+metadata/_tab_index = 0
+
+[node name="Minion" parent="Picker/Tabs/Minion" instance=ExtResource("2_geq5j")]
+layout_mode = 2
+columns = 4

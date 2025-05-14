@@ -47,7 +47,7 @@ var minions: Node
 		"Core": ["Basic", "Drained", "Core"], # Basic[0-2]/Normal[0-3]/Advanced[0-4]/Exceptional[0-5], [0-5] Empty/Drained/Low/Draining/Charged/Fully charged
 		"Efficiency": ["Basic", "Low", "Efficiency"], # Basic/Normal/Advanced/Exceptional, Low,Medium,High
 	},
-	"Inventory": {}, # Additional minion properties, or modified minion properties
+	"Inventory": {1:"Empty",2:"Empty",3:"Empty",4:"Empty",}, # Additional minion properties, or modified minion properties
 	"Upgrades" : { # changes basic stats for minion, or power efficiency of building
 		"Speed": 1, # 1 # Movement speed
 		"HP": 1, # 2 # Maximum health

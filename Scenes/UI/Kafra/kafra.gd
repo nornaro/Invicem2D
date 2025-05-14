@@ -1,40 +1,50 @@
 extends Panel
 
 @onready var kafra_tab: PackedScene = preload("res://Scenes/UI/Kafra/kafra_tab.tscn")
-var tabs:Dictionary = {}
 
 func _ready() -> void:
-	$Picker.position += size/20
+	position += size/20
+	scale *= 0.9
 	if !Global.Items.has("Buildings"):
 		return
-	for item:String in Global.Items["Buildings"]:
-		var instance:Node = kafra_tab.instantiate()
-		instance.name = item
-		instance.add_to_group("Kafra"+item)
-		%Tabs.add_child(instance)
+	for item:String in Global.Items.Buildings:
+		%CategoryTabs.add_tab(item)
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_released("kafra"):
+		if visible:
+			get_tree().call_group("Popup", "hide")
+			get_tree().call_group("!Kafra", "show")
+			return
+		if !visible:
+			get_tree().call_group("Popup", "hide")
+			get_tree().call_group("!Kafra", "hide")
+			show()
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_physical_key_pressed(KEY_K):
-		visible = !visible
 		
-func select_tab(window: int) -> void: #,tab: int,data: Dictionary,_source: String,category: String
-	show()
-	%Tabs.set_current_tab(window-1)
-	return
-	#var tab = 0
-	#for child in %Tabs.get_children():
-		#if child.name != window:
-			#tab += 1
-			#continue
-		#if  %Tabs.current_tab == tab:
+
+		
+#func select_tab(item: String) -> void:
+	#for child:TabBar in get_children():
+		#if child.current_tab == item:
 			#return
-	#return
-		#%Tabs.clear_tabs()
-	#for key: String in data.keys():
-		#%Tabs.add_tab(key)
-		#if !category:
-			#continue
-		#if key == category:
-			#%Tabs.set_current_tab(%Tabs.tab_count-1)
-		
+		#for tab in range(0,child.tab_count-1):
+			#if child.get_tab_title(tab) != item:
+				#continue
+			#for tb:TabBar in get_tree().get_nodes_in_group("InventoryModuleTabs"):
+				#tb.current_tab = -1
+			#return
+#
+#func _on_tab_selected(item: int) -> void:
+	#for child:TabBar in get_children():
+		#if child.current_tab == item:
+			#return
+		#for tab in range(0,child.tab_count-1):
+			#if child.get_tab_title(tab) != item:
+				#continue
+			#for tb:TabBar in get_tree().get_nodes_in_group("InventoryModuleTabs"):
+				#tb.current_tab = -1
+			#return
+
+#func _on_tab_selected(item: int) -> void:
+	

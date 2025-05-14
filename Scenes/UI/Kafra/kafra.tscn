@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d34mxo1ld0ik5"]
+[gd_scene load_steps=5 format=3 uid="uid://du2ctm2ru51x5"]
 
 [ext_resource type="Script" uid="uid://16holwoopud6" path="res://Scenes/UI/Kafra/kafra.gd" id="1_arcwy"]
-[ext_resource type="PackedScene" uid="uid://cbw1h45r5nyl4" path="res://Scenes/UI/minion_inventory.tscn" id="2_geq5j"]
-[ext_resource type="Script" uid="uid://4373ynblafty" path="res://Scenes/UI/minion_picker.gd" id="2_jmay0"]
+[ext_resource type="Texture2D" uid="uid://d0wfs1k835fr7" path="res://Scenes/UI/Icon/Slots.webp" id="2_1yi8r"]
+[ext_resource type="Script" uid="uid://b33nggok1dycq" path="res://Scenes/UI/Kafra/kafra_tabs.gd" id="2_jmay0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vfmgb"]
 
@@ -17,54 +17,72 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vfmgb")
 script = ExtResource("1_arcwy")
 
-[node name="Picker" type="Panel" parent="."]
-layout_mode = 2
-offset_right = 1280.0
-offset_bottom = 720.0
-scale = Vector2(0.9, 0.9)
-
-[node name="Panel" type="HBoxContainer" parent="Picker"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -239.0
-offset_bottom = 40.0
-grow_horizontal = 0
-
-[node name="Core" type="CheckBox" parent="Picker/Panel"]
-layout_mode = 2
-focus_mode = 0
-text = "Core"
-flat = true
-
-[node name="Efficiency" type="CheckBox" parent="Picker/Panel"]
-layout_mode = 2
-focus_mode = 0
-text = "Efficiency"
-flat = true
-
-[node name="Item" type="CheckBox" parent="Picker/Panel"]
-layout_mode = 2
-focus_mode = 0
-text = "Item"
-flat = true
-
-[node name="Tabs" type="TabContainer" parent="Picker"]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
 
-[node name="Minion" type="ScrollContainer" parent="Picker/Tabs" groups=["KafraMinion"]]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+
+[node name="CategoryTabs" type="TabBar" parent="VBoxContainer/HBoxContainer" groups=["InventoryTabs"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
 script = ExtResource("2_jmay0")
-metadata/_tab_index = 0
 
-[node name="Minion" parent="Picker/Tabs/Minion" instance=ExtResource("2_geq5j")]
+[node name="ModuleTabs" type="TabBar" parent="VBoxContainer/HBoxContainer" groups=["InventoryModuleTabs"]]
+unique_name_in_owner = true
+self_modulate = Color(0.784314, 0.784314, 0, 1)
 layout_mode = 2
+current_tab = 0
+tab_alignment = 2
+clip_tabs = false
+deselect_enabled = true
+tab_count = 4
+tab_0/icon = ExtResource("2_1yi8r")
+tab_1/icon = ExtResource("2_1yi8r")
+tab_2/icon = ExtResource("2_1yi8r")
+tab_3/icon = ExtResource("2_1yi8r")
+script = ExtResource("2_jmay0")
+
+[node name="InventoryTabs" type="TabBar" parent="VBoxContainer/HBoxContainer" groups=["InventoryModuleTabs"]]
+unique_name_in_owner = true
+self_modulate = Color(0, 0.784314, 0, 1)
+layout_mode = 2
+current_tab = 0
+tab_alignment = 2
+clip_tabs = false
+deselect_enabled = true
+tab_count = 4
+tab_0/icon = ExtResource("2_1yi8r")
+tab_1/icon = ExtResource("2_1yi8r")
+tab_2/icon = ExtResource("2_1yi8r")
+tab_3/icon = ExtResource("2_1yi8r")
+script = ExtResource("2_jmay0")
+
+[node name="Picker" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Scroll" type="ScrollContainer" parent="VBoxContainer/Picker"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_tab_index = 4
+
+[node name="InventoryGrid" type="GridContainer" parent="VBoxContainer/Picker/Scroll" groups=["InventoryGrid"]]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
 columns = 4
+metadata/_tab_index = 0
