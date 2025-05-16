@@ -26,7 +26,7 @@ var Data:Dictionary = {
 @onready var bleed_timer: SceneTreeTimer
 var physics_time = 0
 
-func _enter_tree() -> void:
+func _ready() -> void:
 	await get_tree().create_timer(bleed_time)
 	queue_free()
 

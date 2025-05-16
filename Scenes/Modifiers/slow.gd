@@ -8,7 +8,7 @@ class_name Slow
 @onready var minion: Minion = $".."
 @onready var og: float
 
-func _enter_tree() -> void:
+func _ready() -> void:
 	minion.Data.Speed -= slow_value_a
 	minion.Data.Speed *= 100 - slow_percent
 	minion.Data.Speed -= slow_value_b
