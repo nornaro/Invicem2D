@@ -21,11 +21,11 @@ func fill() -> void:
 	var keys: Array = data.keys()
 	for i: int in range(data.size()):
 		var node: Node = get_node(str(i+1))
-		node.tooltip_text = keys[i]
+		node.tooltip_text = str(keys[i])
 		#node.name = keys[i]
 		node.type = name.to_lower()
-		set_icon(node,keys[i])
-		list(source,node,data,keys[i])
+		set_icon(node,str(keys[i]))
+		list(source,node,data,str(keys[i]))
 
 func list(source: Node,node: Node,data: Dictionary,key: String) -> void:
 	var itemlist:ItemList = item_list_scene.instantiate()

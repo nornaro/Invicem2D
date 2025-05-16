@@ -18,6 +18,9 @@ var mp: bool = true
 var Data: Dictionary
 var Items: Dictionary
 var GetTree: SceneTree
+var GetClientTree: SceneTree = SceneTree.new()
+var GetMenuTree: SceneTree = SceneTree.new()
+var reload: bool = false
 
 #Data.Minions = 
 #var type: String = Data.Minion[0]

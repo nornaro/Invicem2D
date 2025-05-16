@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://du2ctm2ru51x5"]
+[gd_scene load_steps=6 format=3 uid="uid://du2ctm2ru51x5"]
 
 [ext_resource type="Script" uid="uid://16holwoopud6" path="res://Scenes/UI/Kafra/kafra.gd" id="1_arcwy"]
 [ext_resource type="Texture2D" uid="uid://d0wfs1k835fr7" path="res://Scenes/UI/Icon/Slots.webp" id="2_1yi8r"]
 [ext_resource type="Script" uid="uid://b33nggok1dycq" path="res://Scenes/UI/Kafra/kafra_tabs.gd" id="2_jmay0"]
+[ext_resource type="Script" uid="uid://4373ynblafty" path="res://Scenes/UI/picker.gd" id="4_78oli"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vfmgb"]
 
@@ -28,14 +29,14 @@ grow_vertical = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="CategoryTabs" type="TabBar" parent="VBoxContainer/HBoxContainer" groups=["InventoryTabs"]]
+[node name="CategoryTabs" type="TabBar" parent="VBoxContainer/HBoxContainer" groups=["CategoryTabs"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 script = ExtResource("2_jmay0")
 
-[node name="ModuleTabs" type="TabBar" parent="VBoxContainer/HBoxContainer" groups=["InventoryModuleTabs"]]
+[node name="ModulesTabs" type="TabBar" parent="VBoxContainer/HBoxContainer" groups=["InventoryModulesTabs", "ModulesTabs"]]
 unique_name_in_owner = true
 self_modulate = Color(0.784314, 0.784314, 0, 1)
 layout_mode = 2
@@ -50,7 +51,7 @@ tab_2/icon = ExtResource("2_1yi8r")
 tab_3/icon = ExtResource("2_1yi8r")
 script = ExtResource("2_jmay0")
 
-[node name="InventoryTabs" type="TabBar" parent="VBoxContainer/HBoxContainer" groups=["InventoryModuleTabs"]]
+[node name="InventoryTabs" type="TabBar" parent="VBoxContainer/HBoxContainer" groups=["InventoryModulesTabs", "InventoryTabs"]]
 unique_name_in_owner = true
 self_modulate = Color(0, 0.784314, 0, 1)
 layout_mode = 2
@@ -68,6 +69,7 @@ script = ExtResource("2_jmay0")
 [node name="Picker" type="Panel" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("4_78oli")
 
 [node name="Scroll" type="ScrollContainer" parent="VBoxContainer/Picker"]
 layout_mode = 1

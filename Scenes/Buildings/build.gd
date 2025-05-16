@@ -155,6 +155,7 @@ func build_castle(scene_name:String) -> void:
 	if Global.RL.file_exists(script):
 		instance.set_script(Global.RL.load(script))
 		instance._ready()
+	instance.remove_from_group("BuildingMesh")
 
 func load_script_from_name(id:int,scene_name: String,parent_scene_name: String) -> int:
 	if !temp_instance:

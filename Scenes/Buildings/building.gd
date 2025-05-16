@@ -1,7 +1,5 @@
 extends StaticBody2D
 
-
-
 @export var Data:Dictionary = {}
 @export var type:String = ""
 

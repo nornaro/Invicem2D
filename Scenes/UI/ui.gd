@@ -68,6 +68,7 @@ func clear() -> void:
 			ui.deselect_all()
 	text = ""
 	get_tree().call_group("Popup","hide")
+	get_tree().call_group("!Kafra", "show")
 
 func active() -> Node:
 	for ui:Node in get_children():

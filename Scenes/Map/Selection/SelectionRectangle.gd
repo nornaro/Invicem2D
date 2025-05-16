@@ -48,13 +48,13 @@ func get_size_vector(v1: Vector2, v2: Vector2) -> Vector2:
 	return Vector2(abs(v1.x - v2.x), abs(v1.y - v2.y))
 
 func _on_area_entered(area:Area2D) -> void:
-	if area is not BuildingArea:
+	if !area.is_in_group("building"):
 		return
 	area.multiselect = true
 	area.set_selected(!area.selected)
 
 func _on_area_exited(area:Area2D) -> void:
-	if area is not BuildingArea:
+	if !area.is_in_group("building"):
 		return
 	if !dragging:
 		return

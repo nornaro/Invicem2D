@@ -800,6 +800,7 @@ z_index = 100
 current_tab = -1
 
 [node name="Kafra" parent="." groups=["Popup", "UI_Element"] instance=ExtResource("12_vy225")]
+visible = false
 
 [node name="Clear" type="Button" parent="."]
 offset_top = 300.0

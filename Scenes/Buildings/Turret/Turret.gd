@@ -1,4 +1,5 @@
 extends Node2D
+class_name Turret
 
 @onready var targeting_scene: PackedScene = preload("res://Scenes/Projectiles/Targeting.tscn")
 @onready var projectiles_scene: PackedScene = preload("res://Scenes/Projectiles/Projectiles.tscn")

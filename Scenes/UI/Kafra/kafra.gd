@@ -5,21 +5,27 @@ extends Panel
 func _ready() -> void:
 	position += size/20
 	scale *= 0.9
+	var i: int = 0
 	if !Global.Items.has("Buildings"):
 		return
 	for item:String in Global.Items.Buildings:
 		%CategoryTabs.add_tab(item)
+		%CategoryTabs.category_tabs[item] = i
+		i += 1
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("kafra"):
-		if visible:
-			get_tree().call_group("Popup", "hide")
-			get_tree().call_group("!Kafra", "show")
-			return
-		if !visible:
-			get_tree().call_group("Popup", "hide")
-			get_tree().call_group("!Kafra", "hide")
-			show()
+		toggle()
+
+func toggle() -> void:
+	if visible:
+		get_tree().call_group("Popup", "hide")
+		get_tree().call_group("!Kafra", "show")
+		return
+	if !visible:
+		get_tree().call_group("Popup", "hide")
+		get_tree().call_group("!Kafra", "hide")
+		show()
 
 		
 

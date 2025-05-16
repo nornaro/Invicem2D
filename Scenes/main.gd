@@ -9,4 +9,3 @@ func _ready() -> void:
 	make_current()
 	add_child(network_scene.instantiate())
 	add_child(main_menu.instantiate())
- 

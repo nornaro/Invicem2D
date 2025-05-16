@@ -21,7 +21,7 @@ var minions: Node
 			# Balanced – 100% work speed, 100% energy consumption
 			# Optimized – 90% work speed, 85% energy consumption
 			# Efficiet – 85% work speed, 70% energy consumption
-		"Deployment": "Standard",
+		"Deploy": "Standard",
 			# Standard – Every turn
 			# Pair - Every 1-3 turns
 			# Batch – Every 4-6 turns

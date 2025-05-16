@@ -17,8 +17,7 @@ func _on_mouse_exited() -> void:
 
 func _on_pressed() -> void:
 	get_tree().call_group("MainCircle","hide")
-	if $MainCircle:
-		$MainCircle.show()
+	get_tree().call_group("MainCircle","show")
 	#get_tree().call_group(name,"main")
 
 func load_buttons(data: Array) -> void:
